@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>restfule api</title>
+      <link href="/2020/06/27/restfule-api/"/>
+      <url>/2020/06/27/restfule-api/</url>
+      
+        <content type="html"><![CDATA[<h2 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​    最近在项目中单独负责一个组件的开发，这个组件的输出是通过api的方式输出。虽然接口不多，也就15个api左右，但是越往后写就越感觉不太对劲。在和同时联调沟通的时候也发现了很多的问题。一直都想要好好总结下，趁着今天下班早有时间就反思一下吧。</p><p>​    我总结了目前我发现的这个项目的一些问题</p><ol><li>API风格混乱</li><li>API设计不好，不能更加友好的支持API升级</li><li>返回状态码的滥用</li><li>接口返回数据结构不一致</li><li>接口太碎片化</li><li>由于是go语言写的，基本每个接口都用到了defer</li></ol><p>​    站在现在的角度来看，其实这个组件的api是想当失败，可以说是不忍直视。当然有一小部分原因是项目紧急的缘故。但是不可否认的是主要还是因为我的原因才导致了这样的结果。所以我决定新开一个分支，在下班时间重构这个组件的API。虽然这个新重构后的API上线的可能性不大（因为好多项目已经集成了该组件，改动起来花费的资源很大）。但也算是对自己的一个交代吧。</p><p>​    自己算了算之前也参与过三个项目相关业务API的开发。但是都是在别人的基础上进行开发，看到别人没有过多的去关注这些东西。所以自己也就自然而然的没有过多的去思考，就顺着那种思路开发下去了。总之该来的还是会来的。这次的更改可能对这个组件起不了多大的作用。但是希望能够给自己敲响警钟，避免下次出现同样的问题。</p><h3 id="REST-API的一些规范"><a href="#REST-API的一些规范" class="headerlink" title="REST API的一些规范"></a>REST API的一些规范</h3><p>实现REST API标准比较好的例子就是<a href="https://developer.github.com/v3/#current-version" target="_blank" rel="noopener">https://developer.github.com/v3/#current-version</a></p><ol><li><p>在API中指定版本</p><p>一种是可以放在url中，另外一种就是将版本放在HTTP请求头中。还是放在url中比较方便</p></li><li><p>url中不能出现动词，名词也应该使用复数</p><p>因为RESTful面向的都是资源，所以在url中不能包含动词。</p></li><li><p>对资源的操作都是用HTTP动词</p><p>常用到的HTTP动词</p><table><thead><tr><th>动词</th><th>作用</th><th>返回结果</th></tr></thead><tbody><tr><td>GET</td><td>从服务器获取资源</td><td>获取单个资源对象或者资源对象数组</td></tr><tr><td>POST</td><td>新建资源</td><td>新生成的资源对象</td></tr><tr><td>PUT</td><td>更新整个对象，需要客户端提供完整的对象</td><td>更新后的资源对象</td></tr><tr><td>PATCH</td><td>更新对象的某个部分，需要客户端提供更新的部分</td><td>更新后的资源对象</td></tr><tr><td>DELETE</td><td>删除整个对象</td><td>返回一个空文档</td></tr></tbody></table></li></ol><p>一些例子</p><pre><code>```bashGET /zoos：列出所有动物园POST /zoos：新建一个动物园GET /zoos/ID：获取某个指定动物园的信息PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）DELETE /zoos/ID：删除某个动物园GET /zoos/ID/animals：列出某个指定动物园的所有动物DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物```</code></pre><ol start="4"><li><p>过滤信息</p><p>一些例子</p><pre class="line-numbers language-bash"><code class="language-bash">?limit<span class="token operator">=</span>10：指定返回记录的数量?offset<span class="token operator">=</span>10：指定返回记录的开始位置。?page<span class="token operator">=</span>2<span class="token operator">&amp;</span>per_page<span class="token operator">=</span>100：指定第几页，以及每页的记录数。?sortby<span class="token operator">=</span>name<span class="token operator">&amp;</span>order<span class="token operator">=</span>asc：指定返回结果按照哪个属性排序，以及排序顺序。?animal_type_id<span class="token operator">=</span>1：指定筛选条件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>其中 GET /zoo/ID/animals 与 GET /animals?zoo=ID都是REST的风格。一直都以为只有第一种才是</p></li><li><p>状态码</p><pre class="line-numbers language-bash"><code class="language-bash">200 OK - <span class="token punctuation">[</span>GET<span class="token punctuation">]</span>：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。201 CREATED - <span class="token punctuation">[</span>POST/PUT/PATCH<span class="token punctuation">]</span>：用户新建或修改数据成功。202 Accepted - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：表示一个请求已经进入后台排队（异步任务）204 NO CONTENT - <span class="token punctuation">[</span>DELETE<span class="token punctuation">]</span>：用户删除数据成功。400 INVALID REQUEST - <span class="token punctuation">[</span>POST/PUT/PATCH<span class="token punctuation">]</span>：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。401 Unauthorized - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：表示用户没有权限（令牌、用户名、密码错误）。403 Forbidden - <span class="token punctuation">[</span>*<span class="token punctuation">]</span> 表示用户得到授权（与401错误相对），但是访问是被禁止的。404 NOT FOUND - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。406 Not Acceptable - <span class="token punctuation">[</span>GET<span class="token punctuation">]</span>：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。410 Gone -<span class="token punctuation">[</span>GET<span class="token punctuation">]</span>：用户请求的资源被永久删除，且不会再得到的。422 Unprocesable entity - <span class="token punctuation">[</span>POST/PUT/PATCH<span class="token punctuation">]</span> 当创建一个对象时，发生一个验证错误。500 INTERNAL SERVER ERROR - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：服务器发生错误，用户将无法判断发出的请求是否成功。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>返回结果</p><pre class="line-numbers language-bash"><code class="language-bash">GET /collection：返回资源对象的列表（数组）GET /collection/resource：返回单个资源对象POST /collection：返回新生成的资源对象PUT /collection/resource：返回完整的资源对象PATCH /collection/resource：返回完整的资源对象DELETE /collection/resource：返回一个空文档<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>Hypermedia API</p><p>个人认为这个在公司这种项目中是可以省略的，毕竟公司项目中的API都是面向特定的用户，而且有安全限制，不会把所有的API都暴露出去。</p></li><li><p>API的用户认证使用OAuth 2.0框架</p><p>这个单独拿出来写一写</p></li></ol><p>其实RESTful规范也不多，在实际中除非有特殊情况，都要尽量的遵守规范。</p><p>参考链接：</p><p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a></p><p><a href="https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作问题解决 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RESTful </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python可变对象和不可变对象</title>
       <link href="/2020/06/27/python-mutable/"/>
       <url>/2020/06/27/python-mutable/</url>

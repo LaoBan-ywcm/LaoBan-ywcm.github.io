@@ -4,18 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Python可变对象和不可变对象, python golang k8s 算法 mongo elasticsearch">
+    <meta name="keywords" content="restfule api, python golang k8s 算法 mongo elasticsearch">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="在Python中所有的一切都是对象，都是继承同一个对象object。
-
-object是所有对象的基类，type也是继承object
-
-
-type是一切type的类型
-
-借用某博客里的一张图片，他们的关系应该是这样的（蓝色表示继承，红色表示类">
+    <meta name="description" content="REST API问题​    最近在项目中单独负责一个组件的开发，这个组件的输出是通过api的方式输出。虽然接口不多，也就15个api左右，但是越往后写就越感觉不太对劲。在和同时联调沟通的时候也发现了很多的问题。一直都想要好好总结下，趁着今">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +16,7 @@ type是一切type的类型
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python可变对象和不可变对象 | 鱼丸粗面的博客</title>
+    <title>restfule api | 鱼丸粗面的博客</title>
     <link rel="icon" type="image/jpeg" href="/laoban.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -305,13 +298,13 @@ type是一切type的类型
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Python可变对象和不可变对象
+                        restfule api
                     </div>
                 </div>
             </div>
@@ -422,8 +415,8 @@ type是一切type的类型
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Python/" target="_blank">
-                            <span class="chip bg-color">Python</span>
+                        <a href="/tags/RESTful/" target="_blank">
+                            <span class="chip bg-color">RESTful</span>
                         </a>
                         
                     </div>
@@ -434,8 +427,8 @@ type是一切type的类型
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/编程学习/" class="post-category" target="_blank">
-                            编程学习
+                        <a href="/categories/工作问题解决/" class="post-category" target="_blank">
+                            工作问题解决
                         </a>
                         
                     </div>
@@ -467,7 +460,7 @@ type是一切type的类型
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
                 
@@ -478,213 +471,117 @@ type是一切type的类型
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在Python中所有的一切都是对象，都是继承同一个对象<code>object</code>。</p>
-<blockquote>
-<p><code>object</code>是所有对象的基类，<code>type</code>也是继承<code>object</code></p>
-</blockquote>
-<blockquote>
-<p><code>type</code>是一切type的类型</p>
-</blockquote>
-<p>借用<a href="https://colinoftroy.wordpress.com/2012/12/03/differences-between-python-types-and-objects/" target="_blank" rel="noopener">某博客里的一张图片</a>，他们的关系应该是这样的（蓝色表示继承，红色表示类型）</p>
-<p><img src="./python.jpg" alt="img"></p>
-<h3 id="可变和不可变对象的区别"><a href="#可变和不可变对象的区别" class="headerlink" title="可变和不可变对象的区别"></a>可变和不可变对象的区别</h3><p>Python中的数据结构也可以分为可变对象和不可变对象两类</p>
-<ul>
-<li>可变对象：<code>list</code>,<code>set</code>,<code>dict</code></li>
-<li>不可变对象：<code>tuple</code>,<code>int</code>,<code>float</code>,<code>string</code>,<code>bool</code></li>
-</ul>
-<p><strong>这里说的可变和不可变都是基于内存地址中的数据来区分的</strong>，看个例子</p>
-<pre class="line-numbers language-python"><code class="language-python">In <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
-
-In <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b <span class="token operator">=</span> a
-
-In <span class="token punctuation">[</span><span class="token number">11</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-
-In <span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a
-Out<span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在这里a和b都指向了同一个内存地址，因为是<code>list</code>，所以b能够修改内存地址当中的数据，所以打印a时就会输出内存地址当中修改后的数据。</p>
-<p>下面看看不可变对象的例子</p>
-<pre class="line-numbers language-python"><code class="language-python">In <span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-
-In <span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b <span class="token operator">=</span> a
-
-In <span class="token punctuation">[</span><span class="token number">17</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
-<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>
-TypeError       Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>
-<span class="token operator">&lt;</span>ipython<span class="token operator">-</span>input<span class="token number">-17</span><span class="token operator">-</span><span class="token number">62bbbc50f611</span><span class="token operator">></span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">></span> <span class="token number">1</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
-
-TypeError<span class="token punctuation">:</span> <span class="token string">'tuple'</span> object does <span class="token operator">not</span> support item assignment<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>因为<code>tuple</code>是不可变对象，既内存中记录的数据是不可以修改的，所以当我们修改数据时就出现了错误。</p>
-<p>可能会有人疑问，不可变对象也是可以改变内存地址内容的，比如</p>
-<pre class="line-numbers language-python"><code class="language-python">In <span class="token punctuation">[</span><span class="token number">18</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a <span class="token operator">=</span> <span class="token string">"test"</span>
-
-In <span class="token punctuation">[</span><span class="token number">19</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b <span class="token operator">=</span> a
-
-In <span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a <span class="token operator">=</span> <span class="token string">"hello"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>其实这并不是修改了内存地址中的数据，而是将a重新指向了另外一个内存地址，如果我们在打印输出b，就会发现b还是”test”。</strong></p>
-<p>从内存地址中更容易理解</p>
-<blockquote>
-<p><code>id()</code>方法可以查看内存地址，其实是不是内存地址，而是逻辑地址</p>
-</blockquote>
-<p>可变对象：</p>
-<pre class="line-numbers language-python"><code class="language-python">In <span class="token punctuation">[</span><span class="token number">21</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span>
-
-In <span class="token punctuation">[</span><span class="token number">22</span><span class="token punctuation">]</span><span class="token punctuation">:</span> id<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-Out<span class="token punctuation">[</span><span class="token number">22</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">4370511024</span>
-
-In <span class="token punctuation">[</span><span class="token number">23</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b <span class="token operator">=</span> a
-
-In <span class="token punctuation">[</span><span class="token number">24</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-
-In <span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a
-Out<span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
-
-In <span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">:</span> id<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-Out<span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">4370511024</span>
-
-In <span class="token punctuation">[</span><span class="token number">27</span><span class="token punctuation">]</span><span class="token punctuation">:</span> id<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-Out<span class="token punctuation">[</span><span class="token number">27</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">4370511024</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到a和b指向的内存地址并没有发生变化</p>
-<p>不可变对象：</p>
-<pre class="line-numbers language-python"><code class="language-python">In <span class="token punctuation">[</span><span class="token number">28</span><span class="token punctuation">]</span><span class="token punctuation">:</span> a <span class="token operator">=</span> <span class="token string">"test"</span>
-
-In <span class="token punctuation">[</span><span class="token number">29</span><span class="token punctuation">]</span><span class="token punctuation">:</span> id<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-Out<span class="token punctuation">[</span><span class="token number">29</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">4343187248</span>
-
-In <span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b <span class="token operator">=</span> a
-
-In <span class="token punctuation">[</span><span class="token number">31</span><span class="token punctuation">]</span><span class="token punctuation">:</span> b <span class="token operator">=</span> <span class="token string">"hello"</span>
-
-In <span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">:</span> id<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-Out<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">4343187248</span>
-
-In <span class="token punctuation">[</span><span class="token number">33</span><span class="token punctuation">]</span><span class="token punctuation">:</span> id<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-Out<span class="token punctuation">[</span><span class="token number">33</span><span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token number">4372234608</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到其实是b指向的内存地址变化了，并不是内存地址当中的数据发生变化了</p>
-<h3 id="可变对象和不可变对象的应用"><a href="#可变对象和不可变对象的应用" class="headerlink" title="可变对象和不可变对象的应用"></a>可变对象和不可变对象的应用</h3><p><strong>我们在实际工作中应该避免使用可变对象作为函数参数传入，除非你明确的知道会发生什么。</strong></p>
-<p>这么做的原因是因为在Python当中是传递参数都是引用传递而不是值传递。关于引用传递可以简单的用下面的例子证明：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>args<span class="token punctuation">:</span> int<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> id<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    args <span class="token operator">+=</span> <span class="token number">10</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> id<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    args <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> id<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    test<span class="token punctuation">(</span>args<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> id<span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>结果：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">1 4517510832
-1 4517510832
-11 4517511152
-1 4517510832<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到在<code>test</code>函数中，<code>args</code>和在函数外的<code>args</code>的内存地址都是相同的，所以证明了Python中是传递参数是引用传递。但是最后并没有改变函数外<code>args</code>的值，是因为<code>int</code>类型是不可变对象。如果是可变对象就会改变值。</p>
-<h4 id="可变对象作为函数参数的正向作用"><a href="#可变对象作为函数参数的正向作用" class="headerlink" title="可变对象作为函数参数的正向作用"></a>可变对象作为函数参数的正向作用</h4><p>在有些情况下，可变对象作为函数参数还是非常有用的。</p>
-<p>比如要实现一个生产者-消费者模式</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> time
-<span class="token keyword">from</span> queue <span class="token keyword">import</span> Queue
-<span class="token keyword">from</span> concurrent<span class="token punctuation">.</span>futures <span class="token keyword">import</span> ThreadPoolExecutor
-
-
-<span class="token keyword">class</span> <span class="token class-name">Producer</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> queue<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>queue <span class="token operator">=</span> queue
-
-    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>queue<span class="token punctuation">.</span>put<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"producet put a message {i}"</span><span class="token punctuation">)</span>
-            time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">class</span> <span class="token class-name">Consumer</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> queue<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>queue <span class="token operator">=</span> queue
-
-    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            data <span class="token operator">=</span> self<span class="token punctuation">.</span>queue<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"consumer get a message {data}"</span><span class="token punctuation">)</span>
-            time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    queue <span class="token operator">=</span> Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    producer <span class="token operator">=</span> Producer<span class="token punctuation">(</span>queue<span class="token punctuation">)</span>
-    consumer <span class="token operator">=</span> Consumer<span class="token punctuation">(</span>queue<span class="token punctuation">)</span>
-    thread <span class="token operator">=</span> ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-    thread<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>producer<span class="token punctuation">.</span>run<span class="token punctuation">)</span>
-    thread<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>consumer<span class="token punctuation">.</span>run<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>结果：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">producet put a message 0
-consumer get a message 0
-producet put a message 1
-consumer get a message 1
-producet put a message 2
-consumer get a message 2
-producet put a message 3
-consumer get a message 3
-producet put a message 4
-consumer get a message 4
-producet put a message 5
-consumer get a message 5
-producet put a message 6
-consumer get a message 6
-producet put a message 7
-consumer get a message 7
-producet put a message 8
-consumer get a message 8
-producet put a message 9
-consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>通过可变对象，能够方便的在两个函数中进行通信，不必每次改变数据都去通知对方。</p>
-<h4 id="可变对象作为函数参数的负向作用"><a href="#可变对象作为函数参数的负向作用" class="headerlink" title="可变对象作为函数参数的负向作用"></a>可变对象作为函数参数的负向作用</h4><p>看下面的例子：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> a
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"hello"</span><span class="token punctuation">]</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>test<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>test<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>test<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>test<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>结果：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token string">'world'</span><span class="token punctuation">]</span>
-<span class="token punctuation">[</span><span class="token string">'world'</span>, <span class="token string">'world'</span><span class="token punctuation">]</span>
-<span class="token punctuation">[</span><span class="token string">'world'</span>, <span class="token string">'world'</span>, <span class="token string">'world'</span><span class="token punctuation">]</span>
-<span class="token punctuation">[</span><span class="token string">'world'</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>会出现这个问题的原因主要有两个</p>
-<ul>
-<li><strong>默认参数的值只会在函数定义的时候赋值一次</strong></li>
-<li><strong>a变量指向了一个可变对象</strong></li>
-</ul>
-<p>当不给test函数传递参数时，a变量就会修改<code>test(a=[])</code>中的[]的内存地址，而且因为<strong>默认参数的值只会在函数定义的时候赋值一次</strong>，所以后面再次不给test函数传递参数时，a变量还是会指向<code>test(a=[])</code>中的[]的内存地址，所以就出现了上面的结果</p>
-<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>需要将默认值改为不可变对象</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> a<span class="token punctuation">:</span>
-        a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但是改成这样还是有个问题，就是有时候函数传递进来的是比如说false、空字符串等。会把这些输入当做没有输入</p>
-<p>优化：</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token operator">=</span>None<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> a <span class="token keyword">is</span> None<span class="token punctuation">:</span>
-        a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如果你的目标是检测函数调用时是否传递了默认值，而不是提供默认值那么会有一个更好的方式</p>
-<p>改进：将<code>None</code>替换为一个独一无二的，用户不可能传入的类型，<code>object</code>是个好的选择</p>
-<pre class="line-numbers language-python"><code class="language-python">_no_value <span class="token operator">=</span> object<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>a<span class="token operator">=</span>_no_value<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> a <span class="token keyword">is</span> _no_value<span class="token punctuation">:</span>
-        a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> a<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这样即使函数的参数是<code>None</code>，也会判断为传递进来了参数</p>
+                <h2 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​    最近在项目中单独负责一个组件的开发，这个组件的输出是通过api的方式输出。虽然接口不多，也就15个api左右，但是越往后写就越感觉不太对劲。在和同时联调沟通的时候也发现了很多的问题。一直都想要好好总结下，趁着今天下班早有时间就反思一下吧。</p>
+<p>​    我总结了目前我发现的这个项目的一些问题</p>
+<ol>
+<li>API风格混乱</li>
+<li>API设计不好，不能更加友好的支持API升级</li>
+<li>返回状态码的滥用</li>
+<li>接口返回数据结构不一致</li>
+<li>接口太碎片化</li>
+<li>由于是go语言写的，基本每个接口都用到了defer</li>
+</ol>
+<p>​    站在现在的角度来看，其实这个组件的api是想当失败，可以说是不忍直视。当然有一小部分原因是项目紧急的缘故。但是不可否认的是主要还是因为我的原因才导致了这样的结果。所以我决定新开一个分支，在下班时间重构这个组件的API。虽然这个新重构后的API上线的可能性不大（因为好多项目已经集成了该组件，改动起来花费的资源很大）。但也算是对自己的一个交代吧。</p>
+<p>​    自己算了算之前也参与过三个项目相关业务API的开发。但是都是在别人的基础上进行开发，看到别人没有过多的去关注这些东西。所以自己也就自然而然的没有过多的去思考，就顺着那种思路开发下去了。总之该来的还是会来的。这次的更改可能对这个组件起不了多大的作用。但是希望能够给自己敲响警钟，避免下次出现同样的问题。</p>
+<h3 id="REST-API的一些规范"><a href="#REST-API的一些规范" class="headerlink" title="REST API的一些规范"></a>REST API的一些规范</h3><p>实现REST API标准比较好的例子就是<a href="https://developer.github.com/v3/#current-version" target="_blank" rel="noopener">https://developer.github.com/v3/#current-version</a></p>
+<ol>
+<li><p>在API中指定版本</p>
+<p>一种是可以放在url中，另外一种就是将版本放在HTTP请求头中。还是放在url中比较方便</p>
+</li>
+<li><p>url中不能出现动词，名词也应该使用复数</p>
+<p>因为RESTful面向的都是资源，所以在url中不能包含动词。</p>
+</li>
+<li><p>对资源的操作都是用HTTP动词</p>
+<p>常用到的HTTP动词</p>
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>作用</th>
+<th>返回结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>从服务器获取资源</td>
+<td>获取单个资源对象或者资源对象数组</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>新建资源</td>
+<td>新生成的资源对象</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>更新整个对象，需要客户端提供完整的对象</td>
+<td>更新后的资源对象</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>更新对象的某个部分，需要客户端提供更新的部分</td>
+<td>更新后的资源对象</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除整个对象</td>
+<td>返回一个空文档</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<p>一些例子</p>
+<pre><code>```bash
+GET /zoos：列出所有动物园
+POST /zoos：新建一个动物园
+GET /zoos/ID：获取某个指定动物园的信息
+PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）
+PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）
+DELETE /zoos/ID：删除某个动物园
+GET /zoos/ID/animals：列出某个指定动物园的所有动物
+DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
+```</code></pre><ol start="4">
+<li><p>过滤信息</p>
+<p>一些例子</p>
+<pre class="line-numbers language-bash"><code class="language-bash">?limit<span class="token operator">=</span>10：指定返回记录的数量
+?offset<span class="token operator">=</span>10：指定返回记录的开始位置。
+?page<span class="token operator">=</span>2<span class="token operator">&amp;</span>per_page<span class="token operator">=</span>100：指定第几页，以及每页的记录数。
+?sortby<span class="token operator">=</span>name<span class="token operator">&amp;</span>order<span class="token operator">=</span>asc：指定返回结果按照哪个属性排序，以及排序顺序。
+?animal_type_id<span class="token operator">=</span>1：指定筛选条件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中 GET /zoo/ID/animals 与 GET /animals?zoo=ID都是REST的风格。一直都以为只有第一种才是</p>
+</li>
+<li><p>状态码</p>
+<pre class="line-numbers language-bash"><code class="language-bash">200 OK - <span class="token punctuation">[</span>GET<span class="token punctuation">]</span>：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
+201 CREATED - <span class="token punctuation">[</span>POST/PUT/PATCH<span class="token punctuation">]</span>：用户新建或修改数据成功。
+202 Accepted - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：表示一个请求已经进入后台排队（异步任务）
+204 NO CONTENT - <span class="token punctuation">[</span>DELETE<span class="token punctuation">]</span>：用户删除数据成功。
+400 INVALID REQUEST - <span class="token punctuation">[</span>POST/PUT/PATCH<span class="token punctuation">]</span>：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
+401 Unauthorized - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：表示用户没有权限（令牌、用户名、密码错误）。
+403 Forbidden - <span class="token punctuation">[</span>*<span class="token punctuation">]</span> 表示用户得到授权（与401错误相对），但是访问是被禁止的。
+404 NOT FOUND - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
+406 Not Acceptable - <span class="token punctuation">[</span>GET<span class="token punctuation">]</span>：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
+410 Gone -<span class="token punctuation">[</span>GET<span class="token punctuation">]</span>：用户请求的资源被永久删除，且不会再得到的。
+422 Unprocesable entity - <span class="token punctuation">[</span>POST/PUT/PATCH<span class="token punctuation">]</span> 当创建一个对象时，发生一个验证错误。
+500 INTERNAL SERVER ERROR - <span class="token punctuation">[</span>*<span class="token punctuation">]</span>：服务器发生错误，用户将无法判断发出的请求是否成功。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>返回结果</p>
+<pre class="line-numbers language-bash"><code class="language-bash">GET /collection：返回资源对象的列表（数组）
+GET /collection/resource：返回单个资源对象
+POST /collection：返回新生成的资源对象
+PUT /collection/resource：返回完整的资源对象
+PATCH /collection/resource：返回完整的资源对象
+DELETE /collection/resource：返回一个空文档<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>Hypermedia API</p>
+<p>个人认为这个在公司这种项目中是可以省略的，毕竟公司项目中的API都是面向特定的用户，而且有安全限制，不会把所有的API都暴露出去。</p>
+</li>
+<li><p>API的用户认证使用OAuth 2.0框架</p>
+<p>这个单独拿出来写一写</p>
+</li>
+</ol>
+<p>其实RESTful规范也不多，在实际中除非有特殊情况，都要尽量的遵守规范。</p>
+<p>参考链接：</p>
+<p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/azure/architecture/best-practices/api-design</a></p>
 
             </div>
             <hr />
@@ -843,9 +740,9 @@ consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Python可变对象和不可变对象》
+                    《restfule api》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/27/python-mutable/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/27/restfule-api/" property="cc:attributionName"
                rel="cc:attributionURL">
                 KaKa
             </a> 采用
@@ -1147,9 +1044,10 @@ consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/27/restfule-api/">
                     <div class="card-image">
@@ -1167,9 +1065,9 @@ consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1182,6 +1080,7 @@ consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1197,7 +1096,7 @@ consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/06/27/python-mutable/">
@@ -1231,7 +1130,6 @@ consumer get a message 9<span aria-hidden="true" class="line-numbers-rows"><span
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

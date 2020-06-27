@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fendou10nian.com/"/>
-  <updated>2020-06-27T15:32:08.823Z</updated>
+  <updated>2020-06-27T15:46:28.581Z</updated>
   <id>https://fendou10nian.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>restfule api</title>
+    <link href="https://fendou10nian.com/2020/06/27/restfule-api/"/>
+    <id>https://fendou10nian.com/2020/06/27/restfule-api/</id>
+    <published>2020-06-27T15:45:19.000Z</published>
+    <updated>2020-06-27T15:46:28.581Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;REST-API&quot;&gt;&lt;a href=&quot;#REST-API&quot; class=&quot;headerlink&quot; title=&quot;REST API&quot;&gt;&lt;/a&gt;REST API&lt;/h2&gt;&lt;h3 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="工作问题解决" scheme="https://fendou10nian.com/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+    
+    
+      <category term="RESTful" scheme="https://fendou10nian.com/tags/RESTful/"/>
+    
+  </entry>
   
   <entry>
     <title>Python可变对象和不可变对象</title>
