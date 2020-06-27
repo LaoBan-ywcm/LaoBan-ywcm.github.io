@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fendou10nian.com/"/>
-  <updated>2020-06-27T15:15:58.981Z</updated>
+  <updated>2020-06-27T15:32:08.823Z</updated>
   <id>https://fendou10nian.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Python可变对象和不可变对象</title>
-    <link href="https://fendou10nian.com/2020/06/27/python-ke-bian-dui-xiang-he-bu-ke-bian-dui-xiang/"/>
-    <id>https://fendou10nian.com/2020/06/27/python-ke-bian-dui-xiang-he-bu-ke-bian-dui-xiang/</id>
+    <link href="https://fendou10nian.com/2020/06/27/python-mutable/"/>
+    <id>https://fendou10nian.com/2020/06/27/python-mutable/</id>
     <published>2020-06-27T15:02:15.000Z</published>
-    <updated>2020-06-27T15:15:58.981Z</updated>
+    <updated>2020-06-27T15:32:08.823Z</updated>
     
     <summary type="html">
     
