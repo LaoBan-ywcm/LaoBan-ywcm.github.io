@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fendou10nian.com/"/>
-  <updated>2020-06-29T14:35:05.178Z</updated>
+  <updated>2020-06-29T14:45:38.623Z</updated>
   <id>https://fendou10nian.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://fendou10nian.com/2020/06/29/python-object-3/"/>
     <id>https://fendou10nian.com/2020/06/29/python-object-3/</id>
     <published>2020-06-29T14:20:09.000Z</published>
-    <updated>2020-06-29T14:35:05.178Z</updated>
+    <updated>2020-06-29T14:45:38.623Z</updated>
     
     <summary type="html">
     
@@ -38,7 +38,11 @@
       <category term="笔记" scheme="https://fendou10nian.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Python 笔记 面向对象" scheme="https://fendou10nian.com/tags/Python-%E7%AC%94%E8%AE%B0-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <category term="Python" scheme="https://fendou10nian.com/tags/Python/"/>
+    
+      <category term="面向对象" scheme="https://fendou10nian.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="笔记" scheme="https://fendou10nian.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
