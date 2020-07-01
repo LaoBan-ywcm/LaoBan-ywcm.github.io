@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>《Git tags Explained》翻译</title>
+      <link href="/2020/07/01/fanyi-git-tag/"/>
+      <url>/2020/07/01/fanyi-git-tag/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Git-tags-简明教程"><a href="#Git-tags-简明教程" class="headerlink" title="Git tags 简明教程"></a>Git tags 简明教程</h2><p><img src="./git-tags.png" alt="git-tags"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 文章翻译 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+            <tag> 翻译 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《Python3 面向对象编程》笔记 - 第3章 对象相似时</title>
       <link href="/2020/06/29/python-object-3/"/>
       <url>/2020/06/29/python-object-3/</url>

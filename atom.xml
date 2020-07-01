@@ -5,9 +5,9 @@
   <subtitle>鱼丸粗面的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://fendou10nian.com/"/>
-  <updated>2020-06-29T14:45:38.623Z</updated>
-  <id>https://fendou10nian.com/</id>
+  <link href="https://qiuqideblog.com/"/>
+  <updated>2020-07-01T05:52:18.046Z</updated>
+  <id>https://qiuqideblog.com/</id>
   
   <author>
     <name>KaKa</name>
@@ -17,9 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《Git tags Explained》翻译</title>
+    <link href="https://qiuqideblog.com/2020/07/01/fanyi-git-tag/"/>
+    <id>https://qiuqideblog.com/2020/07/01/fanyi-git-tag/</id>
+    <published>2020-07-01T05:38:39.000Z</published>
+    <updated>2020-07-01T05:52:18.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Git-tags-简明教程&quot;&gt;&lt;a href=&quot;#Git-tags-简明教程&quot; class=&quot;headerlink&quot; title=&quot;Git tags 简明教程&quot;&gt;&lt;/a&gt;Git tags 简明教程&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;./git-tags.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="文章翻译" scheme="https://qiuqideblog.com/categories/%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="Git" scheme="https://qiuqideblog.com/tags/Git/"/>
+    
+      <category term="翻译" scheme="https://qiuqideblog.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《Python3 面向对象编程》笔记 - 第3章 对象相似时</title>
-    <link href="https://fendou10nian.com/2020/06/29/python-object-3/"/>
-    <id>https://fendou10nian.com/2020/06/29/python-object-3/</id>
+    <link href="https://qiuqideblog.com/2020/06/29/python-object-3/"/>
+    <id>https://qiuqideblog.com/2020/06/29/python-object-3/</id>
     <published>2020-06-29T14:20:09.000Z</published>
     <updated>2020-06-29T14:45:38.623Z</updated>
     
@@ -35,21 +63,21 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://fendou10nian.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqideblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Python" scheme="https://fendou10nian.com/tags/Python/"/>
+      <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
     
-      <category term="面向对象" scheme="https://fendou10nian.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
-      <category term="笔记" scheme="https://fendou10nian.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>RESTful API</title>
-    <link href="https://fendou10nian.com/2020/06/27/restfule-api/"/>
-    <id>https://fendou10nian.com/2020/06/27/restfule-api/</id>
+    <link href="https://qiuqideblog.com/2020/06/27/restfule-api/"/>
+    <id>https://qiuqideblog.com/2020/06/27/restfule-api/</id>
     <published>2020-06-27T15:45:19.000Z</published>
     <updated>2020-06-28T03:17:39.268Z</updated>
     
@@ -65,17 +93,17 @@
     
     </summary>
     
-      <category term="工作问题解决" scheme="https://fendou10nian.com/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <category term="工作问题解决" scheme="https://qiuqideblog.com/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     
-      <category term="RESTful" scheme="https://fendou10nian.com/tags/RESTful/"/>
+      <category term="RESTful" scheme="https://qiuqideblog.com/tags/RESTful/"/>
     
   </entry>
   
   <entry>
     <title>Python可变对象和不可变对象</title>
-    <link href="https://fendou10nian.com/2020/06/27/python-mutable/"/>
-    <id>https://fendou10nian.com/2020/06/27/python-mutable/</id>
+    <link href="https://qiuqideblog.com/2020/06/27/python-mutable/"/>
+    <id>https://qiuqideblog.com/2020/06/27/python-mutable/</id>
     <published>2020-06-27T15:02:15.000Z</published>
     <updated>2020-06-27T15:32:08.823Z</updated>
     
@@ -93,10 +121,10 @@
     
     </summary>
     
-      <category term="编程学习" scheme="https://fendou10nian.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="https://qiuqideblog.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Python" scheme="https://fendou10nian.com/tags/Python/"/>
+      <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
     
   </entry>
   
