@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiuqideblog.com/"/>
-  <updated>2020-07-01T16:20:50.617Z</updated>
+  <updated>2020-07-13T15:09:12.250Z</updated>
   <id>https://qiuqideblog.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python实现无重复数字</title>
+    <link href="https://qiuqideblog.com/2020/07/13/python-random/"/>
+    <id>https://qiuqideblog.com/2020/07/13/python-random/</id>
+    <published>2020-07-13T14:15:49.000Z</published>
+    <updated>2020-07-13T15:09:12.250Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Python实现无重复数字&quot;&gt;&lt;a href=&quot;#Python实现无重复数字&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://qiuqideblog.com/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
+    
+      <category term="算法" scheme="https://qiuqideblog.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>《Python3 面向对象编程》笔记 - 第4章 异常捕获</title>

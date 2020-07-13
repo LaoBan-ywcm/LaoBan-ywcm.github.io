@@ -4,18 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="《Git tags Explained》翻译, python golang k8s 算法 mongo elasticsearch">
+    <meta name="keywords" content="Python实现无重复数字, python golang k8s 算法 mongo elasticsearch">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="原文链接
-Git tags 简明教程
-Git对于开发者来说是个非常必要的工具，它能非常方便的维护多人共享的代码库
-Git-scm简单的定义：
+    <meta name="description" content="Python实现无重复数字当我们想要取的一些不重复的数字时，通常我们会想到random.sample方法
+import random
 
-Git是一个开源的分布式版本控制系统，设计用来快速有效的管理各种小项目和大项目
-
-如果你还不知道">
+print(random.sample(range(0, 10), 4))
+# [5, 1, 0, 2]">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +20,7 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>《Git tags Explained》翻译 | 鱼丸粗面的博客</title>
+    <title>Python实现无重复数字 | 鱼丸粗面的博客</title>
     <link rel="icon" type="image/jpeg" href="/laoban.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -305,13 +302,13 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        《Git tags Explained》翻译
+                        Python实现无重复数字
                     </div>
                 </div>
             </div>
@@ -422,12 +419,12 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Git/" target="_blank">
-                            <span class="chip bg-color">Git</span>
+                        <a href="/tags/Python/" target="_blank">
+                            <span class="chip bg-color">Python</span>
                         </a>
                         
-                        <a href="/tags/翻译/" target="_blank">
-                            <span class="chip bg-color">翻译</span>
+                        <a href="/tags/算法/" target="_blank">
+                            <span class="chip bg-color">算法</span>
                         </a>
                         
                     </div>
@@ -438,8 +435,8 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/文章翻译/" class="post-category" target="_blank">
-                            文章翻译
+                        <a href="/categories/Python/" class="post-category" target="_blank">
+                            Python
                         </a>
                         
                     </div>
@@ -450,7 +447,7 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-01
+                    2020-07-13
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -464,14 +461,14 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    478
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
                 
@@ -482,88 +479,107 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a href="https://mohitkhare.me/blog/git-tags-explained/" target="_blank" rel="noopener">原文链接</a></p>
-<h2 id="Git-tags-简明教程"><a href="#Git-tags-简明教程" class="headerlink" title="Git tags 简明教程"></a>Git tags 简明教程</h2><p><img src="./git-tags.png" alt="git-tags"></p>
-<p><code>Git</code>对于开发者来说是个非常必要的工具，它能非常方便的维护多人共享的代码库</p>
-<p><code>Git-scm</code>简单的定义：</p>
-<blockquote>
-<p><code>Git</code>是一个开源的分布式版本控制系统，设计用来快速有效的管理各种小项目和大项目</p>
-</blockquote>
-<p>如果你还不知道<code>Git</code>，我推荐你首先学习一些基础知识</p>
-<ul>
-<li><a href="https://try.github.io/" target="_blank" rel="noopener">https://try.github.io/</a></li>
-<li><a href="https://www.vogella.com/tutorials/Git/article.html" target="_blank" rel="noopener">https://www.vogella.com/tutorials/Git/article.html</a></li>
-</ul>
-<p>在这篇文章中，我们将学习到什么是<code>git tag</code>，为什么要使用它和什么时候以及怎么使用它。这因该足够让你在你的项目使用它了</p>
-<p>让我们开始吧</p>
-<h3 id="什么是git-tag"><a href="#什么是git-tag" class="headerlink" title="什么是git tag"></a>什么是<code>git tag</code></h3><p><code>git tag</code>实际上是指向了Git history 中的一个commit，它可以标记git history中某个的commit，以后可以方便的找到它</p>
-<p>你可以将 tag 看做是一个不变的分支</p>
-<p>Tag 代表某个特定分支在一定时刻的版本。所以，tag 本质上是开发者在程序中做的一个标记</p>
-<h3 id="为什么和什么时候使用git-tag"><a href="#为什么和什么时候使用git-tag" class="headerlink" title="为什么和什么时候使用git tag"></a>为什么和什么时候使用<code>git tag</code></h3><p>你肯定看到过<code>v1.0.0</code>这样的标记。它表示一个产品的版本号。通常，当产品有重大的更新并且需要推送给用户时，就会创建一个tag。</p>
-<p>tag 通常用户标记一个里程碑，例如可以发布给用户或者企业的新功能或一些bug修复</p>
-<p>你肯定不希望每次修复Bug都要推送给客户，Tag 可以确保用户使用的是某个特定时刻的版本，而不需要每次代码的新提交都推送给客户。</p>
-<h3 id="怎么使用git-tag"><a href="#怎么使用git-tag" class="headerlink" title="怎么使用git tag"></a>怎么使用<code>git tag</code></h3><p>现在你已经知道了tag的应用场景，下面就开始看看怎么使用它</p>
-<h4 id="创建tag"><a href="#创建tag" class="headerlink" title="创建tag"></a>创建<code>tag</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag <span class="token operator">&lt;</span>tag_name<span class="token operator">></span>
-// Eg. <span class="token function">git</span> tag v1.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>这条命令会将最新的commit打上tag，<code>tag_name</code>就是你要起得tag 名字，通常是类似v1.0.1这种。当然你也可以命名任何你喜欢的名字</p>
-<p>通常 tag name 是：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">v<span class="token operator">&lt;</span>major<span class="token operator">></span>.<span class="token operator">&lt;</span>minor<span class="token operator">></span>.<span class="token operator">&lt;</span>patch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>major:重大修改</li>
-<li>minor: 版本与先前版本兼容</li>
-<li>patch: bug 修复</li>
-</ul>
-<p>创建了tag之后，可以push到远端代码库</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push --tags<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>也可以为tag添加描述信息</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag -a <span class="token operator">&lt;</span>tag_name<span class="token operator">></span> -m <span class="token string">"message"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>-a</code>是什么意思呢？下面来看看</p>
-<h4 id="tag类型"><a href="#tag类型" class="headerlink" title="tag类型"></a><code>tag</code>类型</h4><p>一共有两种<code>tag</code>类型：</p>
-<ul>
-<li>附注标签（Annonated）</li>
-<li>轻量标签（Lightweight）</li>
-</ul>
-<h5 id="附注标签"><a href="#附注标签" class="headerlink" title="附注标签"></a>附注标签</h5><p>附注标签存储一个额外的信息，比如作者、发行说明、tag 信息存储为Git仓库中完整的数据，这些数据对于一个公开的项目是非常重要的</p>
-<p><code>-a</code>表示该tag是附注标签</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag -a v1.0.1 -m <span class="token string">"First release"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h5 id="轻量标签"><a href="#轻量标签" class="headerlink" title="轻量标签"></a>轻量标签</h5><p>轻量标签时最简单的打tag的方式，它只存储tag name和关联的commit的hash值，不包含额外的信息，就类似于一个书签</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag v2.1-lw<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>lw</code>表示轻量级标签，在tag name中加<code>lw</code>是为了更好的可读性</p>
-<h4 id="为一个特殊的commit打tag"><a href="#为一个特殊的commit打tag" class="headerlink" title="为一个特殊的commit打tag"></a>为一个特殊的commit打tag</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag <span class="token operator">&lt;</span>tag_name<span class="token operator">></span> <span class="token operator">&lt;</span>commit_sha<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>上面的命令可以让你为一些老的commit打tag</p>
-<h4 id="查看所有tag"><a href="#查看所有tag" class="headerlink" title="查看所有tag"></a>查看所有<code>tag</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>这条命令将会展示所有存在的tag</p>
-<p>输出可能是这样：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">1.0.0
-1.0.1
-1.0.2
-1.0.3
-2.0.0
-2.1.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>你可以使用<code>-l</code>或者<code>--list</code>选项利用正则表达式进行过滤</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag -l <span class="token string">"1.0*"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>结果：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">1.0.0
-1.0.1
-1.0.2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="查看tag信息"><a href="#查看tag信息" class="headerlink" title="查看tag信息"></a>查看<code>tag</code>信息</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> show <span class="token operator">&lt;</span>tag_name<span class="token operator">></span>
-// Eg. <span class="token function">git</span> show v1.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>将会展示作者、tag 信息、commit信息等其他信息</p>
-<h4 id="删除tag"><a href="#删除tag" class="headerlink" title="删除tag"></a>删除<code>tag</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> tag -d <span class="token operator">&lt;</span>tag_name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="推送tag"><a href="#推送tag" class="headerlink" title="推送tag"></a>推送<code>tag</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push origin <span class="token operator">&lt;</span>branch<span class="token operator">></span> --tags<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>将会把本地<code>tag</code>推送到远程仓库</p>
-<h4 id="拉取tag"><a href="#拉取tag" class="headerlink" title="拉取tag"></a>拉取<code>tag</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> fetch --tags<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>将会把远程仓库<code>tag</code>拉取到本地</p>
-<h4 id="切换tag"><a href="#切换tag" class="headerlink" title="切换tag"></a>切换<code>tag</code></h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>tag_name<span class="token operator">></span>
-// Eg. <span class="token function">git</span> checkout v1.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>你可以用这条命名，将代码回退到打某个<code>tag</code>的时候</p>
-<p>你现在已经掌握了<code>Git tag</code>，开始在你的项目中应用起来吧😁</p>
-<p>更多学习资源：</p>
-<ul>
-<li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Excellent book to learn git</a></li>
-<li><a href="https://softwareengineering.stackexchange.com/questions/165725/git-branching-and-tagging-best-practices" target="_blank" rel="noopener">Best git tag practices</a></li>
-<li><a href="https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag" target="_blank" rel="noopener">On tagging by atlassian</a></li>
-</ul>
+                <h1 id="Python实现无重复数字"><a href="#Python实现无重复数字" class="headerlink" title="Python实现无重复数字"></a>Python实现无重复数字</h1><p>当我们想要取的一些不重复的数字时，通常我们会想到<code>random.sample</code>方法</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># [5, 1, 0, 2]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是这样只能保证每次运行这行代码时的数字是不重复的，如果要多次运行上面的代码就会有重复的数字出现。</p>
+<p>最先想到的方法就是将每次取到数字都放在一个set内，每次产生新的随机数字时，先判断它是否在这个set内</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">import</span> functools
+<span class="token keyword">import</span> time
+
+
+<span class="token keyword">def</span> <span class="token function">scale_time</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        start_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        result <span class="token operator">=</span> fn<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+        end_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{end_time - start_time}"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token keyword">return</span> wrapper
+
+
+@scale_time
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result_set <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">9999</span><span class="token punctuation">:</span>
+        _data <span class="token operator">=</span> random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        result_set <span class="token operator">=</span> result_set <span class="token operator">|</span> set<span class="token punctuation">(</span>_data<span class="token punctuation">)</span>
+
+
+test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 6.2531819343566895</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从上面代码可以看到，这种方式效率是比较低的，越到后面，产生不重复随机数的概率就会越来越低，就需要重试更多的次数</p>
+<p>有没有优化的方式呢？那就是下面要讲的，利用列表来取不重复的随机数，每次取出来的随机数都能保证和之前取出来的不重复</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">import</span> functools
+<span class="token keyword">import</span> time
+
+
+<span class="token keyword">def</span> <span class="token function">scale_time</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        start_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        result <span class="token operator">=</span> fn<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+        end_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{end_time - start_time}"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token keyword">return</span> wrapper
+
+
+@scale_time
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result_set <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    data <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">9999</span><span class="token punctuation">:</span>
+        _data <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        result_set<span class="token punctuation">.</span>add<span class="token punctuation">(</span>data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        data<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>_data<span class="token punctuation">)</span>
+
+test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 0.027987957000732422</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面的代码会pop原来数组的值，如果要继续优化，可以不pop，而是修改元素的位置</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token keyword">import</span> functools
+<span class="token keyword">import</span> time
+
+
+<span class="token keyword">def</span> <span class="token function">scale_time</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        start_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        result <span class="token operator">=</span> fn<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
+        end_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{end_time - start_time}"</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> result
+
+    <span class="token keyword">return</span> wrapper
+
+
+@scale_time
+<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result_set <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    data <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    _index <span class="token operator">=</span> len<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">9999</span><span class="token punctuation">:</span>
+        _data <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> _index<span class="token punctuation">)</span>
+        result_set<span class="token punctuation">.</span>add<span class="token punctuation">(</span>data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        _index <span class="token operator">-=</span> <span class="token number">1</span>
+        data<span class="token punctuation">[</span><span class="token operator">-</span>len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span><span class="token operator">-</span>len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+test<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 0.02704787254333496</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
             </div>
             <hr />
@@ -722,9 +738,9 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《《Git tags Explained》翻译》
+                    《Python实现无重复数字》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/07/01/fanyi-git-tag/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/07/13/python-random/" property="cc:attributionName"
                rel="cc:attributionURL">
                 KaKa
             </a> 采用
@@ -1026,9 +1042,64 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/07/13/python-random/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Python实现无重复数字">
+                        
+                        <span class="card-title">Python实现无重复数字</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            巧妙的方法实现无重复数字
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category" target="_blank">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/" target="_blank">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/算法/" target="_blank">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/07/02/python-object-4/">
                     <div class="card-image">
@@ -1046,65 +1117,8 @@ Git是一个开源的分布式版本控制系统，设计用来快速有效的�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-02
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/笔记/" class="post-category" target="_blank">
-                                    笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/面向对象/" target="_blank">
-                        <span class="chip bg-color">面向对象</span>
-                    </a>
-                    
-                    <a href="/tags/笔记/" target="_blank">
-                        <span class="chip bg-color">笔记</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/29/python-object-3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="《Python3 面向对象编程》笔记 - 第3章 对象相似时">
-                        
-                        <span class="card-title">《Python3 面向对象编程》笔记 - 第3章 对象相似时</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            介绍了面向对象几个比较重要的概念：继承、多态、多重继承、鸭子类型
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-29
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-02
                             </span>
                         <span class="publish-author">
                             
