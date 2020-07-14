@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiuqideblog.com/"/>
-  <updated>2020-07-13T15:09:12.250Z</updated>
+  <updated>2020-07-13T15:11:43.126Z</updated>
   <id>https://qiuqideblog.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://qiuqideblog.com/2020/07/13/python-random/"/>
     <id>https://qiuqideblog.com/2020/07/13/python-random/</id>
     <published>2020-07-13T14:15:49.000Z</published>
-    <updated>2020-07-13T15:09:12.250Z</updated>
+    <updated>2020-07-13T15:11:43.126Z</updated>
     
     <summary type="html">
     
@@ -36,6 +36,8 @@
     </summary>
     
       <category term="Python" scheme="https://qiuqideblog.com/categories/Python/"/>
+    
+      <category term="编程学习" scheme="https://qiuqideblog.com/categories/Python/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
       <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
