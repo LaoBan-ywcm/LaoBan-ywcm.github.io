@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qiuqideblog.com/2020/09/02/rsync/</loc>
+    
+    <lastmod>2020-09-03T06:25:39.898Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qiuqideblog.com/2020/06/27/restfule-api/</loc>
+    
+    <lastmod>2020-09-02T01:41:29.866Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://qiuqideblog.com/2020/07/13/python-random/</loc>
     
     <lastmod>2020-07-13T15:11:43.126Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>https://qiuqideblog.com/2020/07/02/python-object-4/</loc>
     
     <lastmod>2020-07-01T16:20:50.617Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://qiuqideblog.com/2020/06/27/restfule-api/</loc>
-    
-    <lastmod>2020-07-01T16:09:52.974Z</lastmod>
     
   </url>
   
