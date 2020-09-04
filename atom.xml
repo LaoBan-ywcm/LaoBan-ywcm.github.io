@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiuqideblog.com/"/>
-  <updated>2020-09-03T06:25:39.898Z</updated>
+  <updated>2020-09-03T14:39:51.953Z</updated>
   <id>https://qiuqideblog.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MongoDB复制集群搭建</title>
+    <link href="https://qiuqideblog.com/2020/09/03/mongo-replice/"/>
+    <id>https://qiuqideblog.com/2020/09/03/mongo-replice/</id>
+    <published>2020-09-03T07:22:51.000Z</published>
+    <updated>2020-09-03T14:39:51.953Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;MongoDB复制集原理及搭建&quot;&gt;&lt;a href=&quot;#MongoDB复制集原理及搭建&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://qiuqideblog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="https://qiuqideblog.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MongoDB" scheme="https://qiuqideblog.com/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>rsync 学习</title>
     <link href="https://qiuqideblog.com/2020/09/02/rsync/"/>
     <id>https://qiuqideblog.com/2020/09/02/rsync/</id>
     <published>2020-09-02T01:31:37.000Z</published>
-    <updated>2020-09-03T06:25:39.898Z</updated>
+    <updated>2020-09-03T07:21:51.826Z</updated>
     
     <summary type="html">
     
@@ -96,9 +124,9 @@
     
       <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
     
-      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
       <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
   </entry>
   
@@ -107,7 +135,7 @@
     <link href="https://qiuqideblog.com/2020/07/01/fanyi-git-tag/"/>
     <id>https://qiuqideblog.com/2020/07/01/fanyi-git-tag/</id>
     <published>2020-07-01T05:38:39.000Z</published>
-    <updated>2020-07-02T14:53:15.791Z</updated>
+    <updated>2020-09-03T14:40:27.402Z</updated>
     
     <summary type="html">
     
@@ -155,9 +183,9 @@
     
       <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
     
-      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
-    
       <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
   </entry>
   

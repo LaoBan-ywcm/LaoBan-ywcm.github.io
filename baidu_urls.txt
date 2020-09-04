@@ -1,3 +1,4 @@
+https://qiuqideblog.com/2020/09/03/mongo-replice/
 https://qiuqideblog.com/2020/09/02/rsync/
 https://qiuqideblog.com/2020/07/13/python-random/
 https://qiuqideblog.com/2020/07/02/python-object-4/
