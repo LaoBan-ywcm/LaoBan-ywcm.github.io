@@ -310,7 +310,7 @@ cp -a a b
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -465,14 +465,14 @@ cp -a a b
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
                 
@@ -614,6 +614,43 @@ drwx------+  10 xx  staff      320 Mar  6  2020 Music
 <span class="token comment" spellcheck="true"># staff： 用户组</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p><code>-</code>：普通文件</p>
 <p><code>d</code>：目录文件</p>
+<p><code>b</code>：块特殊文件</p>
+<p><code>c</code>：字符特殊文件</p>
+<p><code>l</code>：符号链接</p>
+<p><code>f</code>：命令管道</p>
+<p><code>s</code>：套接字文件</p>
+<h4 id="文件权限的表示方法"><a href="#文件权限的表示方法" class="headerlink" title="文件权限的表示方法"></a>文件权限的表示方法</h4><p>数字权限的表示方法</p>
+<p>r=4</p>
+<p>w=2</p>
+<p>x=1</p>
+<h4 id="目录权限的表示方法"><a href="#目录权限的表示方法" class="headerlink" title="目录权限的表示方法"></a>目录权限的表示方法</h4><p><code>x</code>：可以进入目录</p>
+<p><code>rx</code>：显示目录内的文件名</p>
+<p><code>wx</code>：修改目录内的文件名</p>
+<h4 id="修改文件属主和属组的方法"><a href="#修改文件属主和属组的方法" class="headerlink" title="修改文件属主和属组的方法"></a>修改文件属主和属组的方法</h4><p>修改属主</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chown</span> user1 /test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>修改属组</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">chgrp</span> :user1 /test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h4><p><code>u</code>：属主</p>
+<p><code>g</code>：属组</p>
+<p><code>o</code>：其他用户</p>
+<p><code>a</code>：包括上述三种</p>
+<p><code>+</code>：增加权限</p>
+<p><code>-</code>：减少权限</p>
+<p><code>=</code>：设置权限</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 为test的属主设置w权限</span>
+<span class="token function">chmod</span> u+w ./test
+
+<span class="token comment" spellcheck="true"># 为属主、属组合其他用户设置只有wr权限</span>
+<span class="token function">chmod</span> a<span class="token operator">=</span>wr ./test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>linux中默认的文件权限是644,是666-umask(022)=644，既<code>rw-r--r--</code></p>
+<p>如果属主权限和属组权限冲突，则以属主权限为主</p>
+<h4 id="特殊权限"><a href="#特殊权限" class="headerlink" title="特殊权限"></a>特殊权限</h4><p><code>SUID</code>：用户可执行的二进制文件，执行命令时获取文件属主的权限</p>
+<pre class="line-numbers language-bash"><code class="language-bash">root@master:~<span class="token comment" spellcheck="true"># ls -l /usr/bin/passwd</span>
+-rwsr-xr-x 1 root root 59640 Mar 23  2019 /usr/bin/passwd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>SGID</code>：用于目录，在该目录下新建的文件和目录，权限自动更改为该目录的属组，常用于共享文件</p>
+<p><code>SBIT</code>：用户目录，在该目录下新建的文件和目录，只有root和自己可以删除</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ls</span> -l /
+drwxrwxrwt  13 root root       4096 Sep  7 18:21 tmp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p></p>
 
             </div>
@@ -1086,7 +1123,7 @@ drwx------+  10 xx  staff      320 Mar  6  2020 Music
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1136,7 +1173,7 @@ drwx------+  10 xx  staff      320 Mar  6  2020 Music
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1345,7 +1382,7 @@ drwx------+  10 xx  staff      320 Mar  6  2020 Music
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">15.9k</span>
+            <span class="white-color">16.2k</span>
             
 
             <br>
