@@ -310,7 +310,7 @@ cp -a a b
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -465,14 +465,14 @@ cp -a a b
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    12 分
                 </div>
                 
                 
@@ -651,6 +651,188 @@ drwx------+  10 xx  staff      320 Mar  6  2020 Music
 <p><code>SBIT</code>：用户目录，在该目录下新建的文件和目录，只有root和自己可以删除</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ls</span> -l /
 drwxrwxrwt  13 root root       4096 Sep  7 18:21 tmp<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h3><h4 id="网络状态查看工具"><a href="#网络状态查看工具" class="headerlink" title="网络状态查看工具"></a>网络状态查看工具</h4><ol>
+<li><p>net-tools(centos 7 之前推荐的工具)</p>
+<ul>
+<li>ifconfig</li>
+<li>route</li>
+<li>netstat</li>
+</ul>
+<h5 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h5><ul>
+<li>eth0 第一块网卡（根据网卡接入方式不同，名称也会不同）</li>
+</ul>
+</li>
+<li><p>iproute2(centos 7 之后推荐的工具)</p>
+<ul>
+<li>ip</li>
+<li>ss</li>
+</ul>
+</li>
+</ol>
+<h4 id="修改网卡名称为eth0"><a href="#修改网卡名称为eth0" class="headerlink" title="修改网卡名称为eth0"></a>修改网卡名称为eth0</h4><p>网卡命名规则受<code>biosdevname</code>和<code>net.ifnames</code>两个参数影响</p>
+<ol>
+<li><p>编辑<code>etc/default/grub</code>文件，增加<code>biosdevname=0</code>和<code>net.ifnames=0</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash">GRUB_CMDLINE_LINUX<span class="token operator">=</span><span class="token string">"net.ifnames=0 biosdevname=0"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>更新grub</p>
+<pre class="line-numbers language-bash"><code class="language-bash">grub2-mkconfig -o /boot/grub2/grub.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>重启(reboot)</p>
+</li>
+</ol>
+<h4 id="查看网卡物理连接情况"><a href="#查看网卡物理连接情况" class="headerlink" title="查看网卡物理连接情况"></a>查看网卡物理连接情况</h4><pre class="line-numbers language-bash"><code class="language-bash">mii-tool eth0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="查看网关"><a href="#查看网关" class="headerlink" title="查看网关"></a>查看网关</h4><pre class="line-numbers language-bash"><code class="language-bash">route -n<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用<code>-n</code>参数不解析主机名</p>
+<h4 id="网络故障排除命令"><a href="#网络故障排除命令" class="headerlink" title="网络故障排除命令"></a>网络故障排除命令</h4><p><code>ping</code>：网络主机是否畅通</p>
+<p><code>traceroute</code>：如果网络通畅，但是还是访问不通，可以通过该命令查看路由信息</p>
+<p><code>mtr</code>：如果网络主机通畅，但是还是访问不通，可以查看是否有数据包丢失了</p>
+<p><code>nslookup</code>：查看域名对应的ip</p>
+<p><code>telnet</code>：如果主机没有问题，可以查看端口是否开放</p>
+<p><code>tcpdump</code>：如果主机和端口都ok，则需要抓包进行分析</p>
+<p><code>netstat</code>和<code>ss</code>：检测服务监听的地址是否正确</p>
+<h4 id="网络服务管理-centos"><a href="#网络服务管理-centos" class="headerlink" title="网络服务管理(centos)"></a>网络服务管理(centos)</h4><p>可以分为两种：<code>SysV</code>和<code>systemd</code></p>
+<p>网络配置文件：<code>ifcfg-eth0</code>，会随着网卡的不同文件名也会不同</p>
+<p>比如<code>/etc/sysconfig/network-scripts/ifcfg-ens3</code>，在这个里面可以配置dhcp，ip等信息</p>
+<h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h3><h4 id="调整优先级"><a href="#调整优先级" class="headerlink" title="调整优先级"></a>调整优先级</h4><p><code>nice</code>：范围从-20到19，值越小优先级越高，抢占的资源就越多</p>
+<p><code>renice</code>：重新设置优先级</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 在启动前设置某一个程序的优先级</span>
+<span class="token function">nice</span> -n 10 ./a.sh
+
+<span class="token comment" spellcheck="true"># 在程序启动后重新设置一个程序的优先级</span>
+<span class="token function">renice</span> -n 15 pid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="进程的作业控制"><a href="#进程的作业控制" class="headerlink" title="进程的作业控制"></a>进程的作业控制</h4><p><code>&amp;</code>：将任务放到后台执行</p>
+<pre class="line-numbers language-bash"><code class="language-bash">./a.bash <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>jobs</code>:查看后台任务</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">jobs</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>将前台任务停止并放到后台</p>
+<p><code>ctrl + z</code></p>
+<p>将后台任务放到前台执行</p>
+<p><code>fg jobsID</code></p>
+<p>将前台任务放到后台执行</p>
+<p><code>bg jobsID</code></p>
+<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><h4 id="查看信号"><a href="#查看信号" class="headerlink" title="查看信号"></a>查看信号</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@848e7f64efd8 /<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># kill -l</span>
+ 1<span class="token punctuation">)</span> SIGHUP     2<span class="token punctuation">)</span> SIGINT     3<span class="token punctuation">)</span> SIGQUIT     4<span class="token punctuation">)</span> SIGILL     5<span class="token punctuation">)</span> SIGTRAP
+ 6<span class="token punctuation">)</span> SIGABRT     7<span class="token punctuation">)</span> SIGBUS     8<span class="token punctuation">)</span> SIGFPE     9<span class="token punctuation">)</span> SIGKILL    10<span class="token punctuation">)</span> SIGUSR1
+11<span class="token punctuation">)</span> SIGSEGV    12<span class="token punctuation">)</span> SIGUSR2    13<span class="token punctuation">)</span> SIGPIPE    14<span class="token punctuation">)</span> SIGALRM    15<span class="token punctuation">)</span> SIGTERM
+16<span class="token punctuation">)</span> SIGSTKFLT    17<span class="token punctuation">)</span> SIGCHLD    18<span class="token punctuation">)</span> SIGCONT    19<span class="token punctuation">)</span> SIGSTOP    20<span class="token punctuation">)</span> SIGTSTP
+21<span class="token punctuation">)</span> SIGTTIN    22<span class="token punctuation">)</span> SIGTTOU    23<span class="token punctuation">)</span> SIGURG    24<span class="token punctuation">)</span> SIGXCPU    25<span class="token punctuation">)</span> SIGXFSZ
+26<span class="token punctuation">)</span> SIGVTALRM    27<span class="token punctuation">)</span> SIGPROF    28<span class="token punctuation">)</span> SIGWINCH    29<span class="token punctuation">)</span> SIGIO    30<span class="token punctuation">)</span> SIGPWR
+31<span class="token punctuation">)</span> SIGSYS    34<span class="token punctuation">)</span> SIGRTMIN    35<span class="token punctuation">)</span> SIGRTMIN+1    36<span class="token punctuation">)</span> SIGRTMIN+2    37<span class="token punctuation">)</span> SIGRTMIN+3
+38<span class="token punctuation">)</span> SIGRTMIN+4    39<span class="token punctuation">)</span> SIGRTMIN+5    40<span class="token punctuation">)</span> SIGRTMIN+6    41<span class="token punctuation">)</span> SIGRTMIN+7    42<span class="token punctuation">)</span> SIGRTMIN+8
+43<span class="token punctuation">)</span> SIGRTMIN+9    44<span class="token punctuation">)</span> SIGRTMIN+10    45<span class="token punctuation">)</span> SIGRTMIN+11    46<span class="token punctuation">)</span> SIGRTMIN+12    47<span class="token punctuation">)</span> SIGRTMIN+13
+48<span class="token punctuation">)</span> SIGRTMIN+14    49<span class="token punctuation">)</span> SIGRTMIN+15    50<span class="token punctuation">)</span> SIGRTMAX-14    51<span class="token punctuation">)</span> SIGRTMAX-13    52<span class="token punctuation">)</span> SIGRTMAX-12
+53<span class="token punctuation">)</span> SIGRTMAX-11    54<span class="token punctuation">)</span> SIGRTMAX-10    55<span class="token punctuation">)</span> SIGRTMAX-9    56<span class="token punctuation">)</span> SIGRTMAX-8    57<span class="token punctuation">)</span> SIGRTMAX-7
+58<span class="token punctuation">)</span> SIGRTMAX-6    59<span class="token punctuation">)</span> SIGRTMAX-5    60<span class="token punctuation">)</span> SIGRTMAX-4    61<span class="token punctuation">)</span> SIGRTMAX-3    62<span class="token punctuation">)</span> SIGRTMAX-2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="常用信号"><a href="#常用信号" class="headerlink" title="常用信号"></a>常用信号</h4><pre><code>ctrl + == SIGINT
+
+# 立即终止，不收阻塞，信号是SIGKILL
+kill -9 pid</code></pre><h4 id="守护进程（daemon）"><a href="#守护进程（daemon）" class="headerlink" title="守护进程（daemon）"></a>守护进程（daemon）</h4><p>让程序脱离当前终端执行：</p>
+<ol>
+<li><code>nohup</code></li>
+<li>守护进程</li>
+<li><code>screen</code>或者<code>tmux</code></li>
+</ol>
+<p><code>nohup</code>可以让一个命令脱离终端执行，但他不是守护进程</p>
+<p>随着系统启动而启动，不用用户手动的去执行</p>
+<p>每个进程的依赖的环境都在<code>/proc/pid</code>的文件夹中</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /proc/123
+
+<span class="token comment" spellcheck="true"># 进程执行的位置</span>
+<span class="token function">ls</span> -l cwd
+
+<span class="token comment" spellcheck="true"># out</span>
+ cwd -<span class="token operator">></span> /
+
+<span class="token comment" spellcheck="true"># 进程的输出</span>
+<span class="token function">ls</span> -l fd
+
+<span class="token comment" spellcheck="true"># out</span>
+lrwx------ 1 root root 64 Sep 14 05:15 0 -<span class="token operator">></span> /dev/pts/4
+lrwx------ 1 root root 64 Sep 14 05:15 1 -<span class="token operator">></span> /dev/pts/4
+lrwx------ 1 root root 64 Sep 14 05:15 2 -<span class="token operator">></span> /dev/pts/4
+lrwx------ 1 root root 64 Sep 14 12:32 255 -<span class="token operator">></span> /dev/pts/4
+
+<span class="token comment" spellcheck="true"># 0是标准输入</span>
+<span class="token comment" spellcheck="true"># 1,2是标准输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="服务管理工具-systemctl"><a href="#服务管理工具-systemctl" class="headerlink" title="服务管理工具-systemctl"></a>服务管理工具-systemctl</h4><p>常用操作：</p>
+<p><code>systemctl start|stop|restart|reload|enable|disable 服务名称</code></p>
+<h4 id="SELinux"><a href="#SELinux" class="headerlink" title="SELinux"></a>SELinux</h4><p>安全增强版本的Linux，以前的linux是利用用户和文件的权限来进行安全控制既DAC（自主访问控制）</p>
+<p>MAC（强制访问控制）：会给用户、进程和文件都打上标签，如果三者标签不一致则不允许执行</p>
+<p>SElinux是一个内核模块，也是Linux的一个安全子系统。SELinux可是设置DAC或者是MAC。需要注意的是开启SELinux会消耗服务器的性能，所以一般在生产环境下都是关闭的</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看SELinux状态</span>
+getenforce<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="内存和磁盘管理"><a href="#内存和磁盘管理" class="headerlink" title="内存和磁盘管理"></a>内存和磁盘管理</h3><h4 id="内存和磁盘使用率查看"><a href="#内存和磁盘使用率查看" class="headerlink" title="内存和磁盘使用率查看"></a>内存和磁盘使用率查看</h4><p>内存：</p>
+<ul>
+<li><p><code>free</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@hadoop3 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># free -m</span>
+              total        used        <span class="token function">free</span>      shared  buff/cache   available
+Mem:          64264       51686        2089         140       10488       11807
+Swap:             0           0           0
+<span class="token punctuation">[</span>root@hadoop3 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># free -g</span>
+              total        used        <span class="token function">free</span>      shared  buff/cache   available
+Mem:             62          50           2           0          10          11
+Swap:             0           0           0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p><code>top</code></p>
+</li>
+</ul>
+<p>磁盘：</p>
+<ul>
+<li><p><code>fdisk</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@hadoop3 ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># fdisk -l</span>
+
+Disk /dev/vda: 53.7 GB, 53687091200 bytes, 104857600 sectors
+Units <span class="token operator">=</span> sectors of 1 * 512 <span class="token operator">=</span> 512 bytes
+Sector size <span class="token punctuation">(</span>logical/physical<span class="token punctuation">)</span>: 512 bytes / 512 bytes
+I/O size <span class="token punctuation">(</span>minimum/optimal<span class="token punctuation">)</span>: 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x0009ac89
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        2048   104857566    52427759+  83  Linux
+
+Disk /dev/vdb: 214.7 GB, 214748364800 bytes, 419430400 sectors
+Units <span class="token operator">=</span> sectors of 1 * 512 <span class="token operator">=</span> 512 bytes
+Sector size <span class="token punctuation">(</span>logical/physical<span class="token punctuation">)</span>: 512 bytes / 512 bytes
+I/O size <span class="token punctuation">(</span>minimum/optimal<span class="token punctuation">)</span>: 512 bytes / 512 bytes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如上图所示，共有两个磁盘：/dev/vda、/dev/vdb</p>
+<p>其中/dev/vda是分区了，因为有/dev/vda1</p>
+</li>
+<li><p><code>df</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">df</span> -h
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        50G   16G   32G  34% /
+devtmpfs         32G     0   32G   0% /dev
+tmpfs            32G   24K   32G   1% /dev/shm
+tmpfs            32G  1.5M   32G   1% /run
+tmpfs            32G     0   32G   0% /sys/fs/cgroup
+/dev/vdb        197G   55G  134G  29% /data
+tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>常常用来查看磁盘是否满了</p>
+</li>
+<li><p><code>du</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@hadoop3 elasticsearch<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># du -h docker-compose.yaml</span>
+4.0K    docker-compose.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>du -h</code>和<code>ls -lh</code>区别是，<code>du</code>是实际占用的空间，而<code>ls -lh</code>是包含空洞空间的，其中磁盘有些位置是空的，只是声明了文件存储的位置，并没有实际存储数据</p>
+<h4 id="Linux文件系统管理"><a href="#Linux文件系统管理" class="headerlink" title="Linux文件系统管理"></a>Linux文件系统管理</h4><p>Linux常见的文件系统：</p>
+<ul>
+<li>ext4</li>
+<li>xfs</li>
+<li>NTFS（需要安全额外的软件）</li>
+</ul>
+</li>
+</ul>
+<p><strong>硬链接</strong></p>
+<p>多个文件其实都是链接到同一个数据块，修改一个文件，其余的文件都会同步变化。</p>
+<p>硬链接是不允许跨文件系统的。</p>
+<p>创建硬链接的方式：<code>ln afile bfile</code></p>
+<p><strong>软链接</strong></p>
+<p>克服了硬链接不能跨文件系统的问题。</p>
+<p>但是实现上是不同的，软链接是创建了完全不同的一个文件，当系统读取这个文件时会发现这个文件是个链接文件，所以就会读取它链接的那个原文件。</p>
+<p>对软链接文件设置权限并不会改变该文件的权限，而是改变的是原文件。</p>
+<p>创建软链接的方式：<code>ln -s afile bfile</code></p>
+<p>#### </p>
 <p></p>
 
             </div>
@@ -1123,7 +1305,7 @@ drwxrwxrwt  13 root root       4096 Sep  7 18:21 tmp<span aria-hidden="true" cla
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1173,7 +1355,7 @@ drwxrwxrwt  13 root root       4096 Sep  7 18:21 tmp<span aria-hidden="true" cla
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1382,7 +1564,7 @@ drwxrwxrwt  13 root root       4096 Sep  7 18:21 tmp<span aria-hidden="true" cla
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">16.2k</span>
+            <span class="white-color">17.8k</span>
             
 
             <br>
