@@ -310,7 +310,7 @@ cp -a a b
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -465,14 +465,14 @@ cp -a a b
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    13 分
                 </div>
                 
                 
@@ -832,6 +832,15 @@ tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class=
 <p>但是实现上是不同的，软链接是创建了完全不同的一个文件，当系统读取这个文件时会发现这个文件是个链接文件，所以就会读取它链接的那个原文件。</p>
 <p>对软链接文件设置权限并不会改变该文件的权限，而是改变的是原文件。</p>
 <p>创建软链接的方式：<code>ln -s afile bfile</code></p>
+<h4 id="硬盘分区与挂载"><a href="#硬盘分区与挂载" class="headerlink" title="硬盘分区与挂载"></a>硬盘分区与挂载</h4><p>硬盘分区：<code>fdisk /dev/vdb</code>，如果是2T以上的硬盘需要用<code>parted</code>命令</p>
+<p>格式化设置分区文件系统：<code>mkfs.文件系统 /dev/vdb</code></p>
+<p>分区挂载到目录下：<code>mount /dev/vdb /xx</code></p>
+<p>这样挂载只是将数据写到了内存中，如果想要重启后还是挂载到该目录，需要修改文件 /etc/fstab</p>
+<pre class="line-numbers language-bash"><code class="language-bash">root@max-master:~<span class="token comment" spellcheck="true"># cat /etc/fstab</span>
+UUID<span class="token operator">=</span>e1d5f0dc-9df2-421e-a87b-f761f5db8947 / ext4 defaults 0 0
+<span class="token comment" spellcheck="true">###/swap.img    none    swap    sw    0    0</span>
+max-master:gfs-configs    /var/cache/zoomeye-max    glusterfs    defaults,_netdev    0    0
+/dev/vdb1 /xx ext4 defaults 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>#### </p>
 <p></p>
 
@@ -1305,7 +1314,7 @@ tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class=
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1355,7 +1364,7 @@ tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class=
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1564,7 +1573,7 @@ tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class=
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17.8k</span>
+            <span class="white-color">17.9k</span>
             
 
             <br>
