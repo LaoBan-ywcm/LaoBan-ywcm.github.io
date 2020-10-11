@@ -310,7 +310,7 @@ cp -a a b
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -465,14 +465,14 @@ cp -a a b
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    4.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    17 分
                 </div>
                 
                 
@@ -815,13 +815,13 @@ tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class=
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@hadoop3 elasticsearch<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># du -h docker-compose.yaml</span>
 4.0K    docker-compose.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>du -h</code>和<code>ls -lh</code>区别是，<code>du</code>是实际占用的空间，而<code>ls -lh</code>是包含空洞空间的，其中磁盘有些位置是空的，只是声明了文件存储的位置，并没有实际存储数据</p>
+</li>
+</ul>
 <h4 id="Linux文件系统管理"><a href="#Linux文件系统管理" class="headerlink" title="Linux文件系统管理"></a>Linux文件系统管理</h4><p>Linux常见的文件系统：</p>
 <ul>
 <li>ext4</li>
 <li>xfs</li>
 <li>NTFS（需要安全额外的软件）</li>
-</ul>
-</li>
 </ul>
 <p><strong>硬链接</strong></p>
 <p>多个文件其实都是链接到同一个数据块，修改一个文件，其余的文件都会同步变化。</p>
@@ -841,7 +841,160 @@ UUID<span class="token operator">=</span>e1d5f0dc-9df2-421e-a87b-f761f5db8947 / 
 <span class="token comment" spellcheck="true">###/swap.img    none    swap    sw    0    0</span>
 max-master:gfs-configs    /var/cache/zoomeye-max    glusterfs    defaults,_netdev    0    0
 /dev/vdb1 /xx ext4 defaults 0 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>#### </p>
+<h3 id="Shell-编程"><a href="#Shell-编程" class="headerlink" title="Shell 编程"></a>Shell 编程</h3><h4 id="Shell-脚本的不同运行方式"><a href="#Shell-脚本的不同运行方式" class="headerlink" title="Shell 脚本的不同运行方式"></a>Shell 脚本的不同运行方式</h4><p>内建命令不需要创建子进程</p>
+<p>内建命令对当前shell生效</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">bash</span> 1.sh
+<span class="token comment" spellcheck="true"># 不用给1.sh赋予执行权限，bash脚本执行完后会回到当前目录</span>
+<span class="token comment" spellcheck="true"># 会产生新的子进程</span>
+
+./1.sh
+<span class="token comment" spellcheck="true"># 必须要可执行权限，bash脚本执行完后会回到当前目录</span>
+<span class="token comment" spellcheck="true"># 会产生新的子进程</span>
+
+<span class="token function">source</span> 1.sh 和 <span class="token keyword">.</span> 1.sh
+<span class="token comment" spellcheck="true"># 必须要可执行权限，bash脚本执行完后不会回到当前目录</span>
+<span class="token comment" spellcheck="true"># 不会创建新的子进程</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="管道与重定向"><a href="#管道与重定向" class="headerlink" title="管道与重定向"></a>管道与重定向</h4><p>管道和信号是一样的，也是进程通信的方式之一</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 输入重定向</span>
+<span class="token operator">&lt;</span>
+
+<span class="token comment" spellcheck="true"># 输出重定向</span>
+<span class="token operator">></span>
+
+<span class="token comment" spellcheck="true"># 追加模式</span>
+<span class="token operator">>></span>
+
+<span class="token comment" spellcheck="true"># 将a.txt文件内容赋值给变量ss</span>
+<span class="token function">read</span> ss <span class="token operator">&lt;</span> a.txt
+
+<span class="token comment" spellcheck="true"># 将ss变量内容写入到文件中</span>
+<span class="token keyword">echo</span> <span class="token variable">$ss</span> <span class="token operator">></span> a.txt
+
+<span class="token comment" spellcheck="true"># 将ss变量内容追加到文件中</span>
+<span class="token keyword">echo</span> <span class="token variable">$ss</span> <span class="token operator">>></span> a.txt
+
+<span class="token comment" spellcheck="true"># 将错误信息重定向到文件中</span>
+xxx 2<span class="token operator">></span> a.txt
+
+<span class="token comment" spellcheck="true"># 将输出信息全部重定向到文件中</span>
+xxx <span class="token operator">&amp;</span><span class="token operator">></span> a.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="变量的赋值"><a href="#变量的赋值" class="headerlink" title="变量的赋值"></a>变量的赋值</h4><p>shell中不区分变量类型</p>
+<p>变量复制等号两边不允许有空格</p>
+<p>将命令的值赋值给变量，使用<code>$()</code>和````</p>
+<pre class="line-numbers language-bash"><code class="language-bash">a<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span> -l /etc<span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="变量的作用范围"><a href="#变量的作用范围" class="headerlink" title="变量的作用范围"></a>变量的作用范围</h4><p>声明的变量只在当前的shell中生效，在子进程、父进程和<code>bash xx.sh</code>中都是不生效的，要想使得变量在<code>bash xx.sh</code>中生效，需要执行<code>source xx.sh</code>或者<code>. xx.sh</code>，因为这两种方式都不会创建新的子进程</p>
+<p>使用<code>export xx</code>，可以使该变量在子进程中可用</p>
+<p>使用<code>unset xx</code>，删除变量</p>
+<h4 id="环境变量、预定义变量和位置变量"><a href="#环境变量、预定义变量和位置变量" class="headerlink" title="环境变量、预定义变量和位置变量"></a>环境变量、预定义变量和位置变量</h4><ul>
+<li>环境变量：每个shell打开都可以获取到的变量<ul>
+<li><code>env</code>：查看环境变量</li>
+<li><code>set</code>：查看环境变量、预定义变量和位置变量</li>
+<li><code>PATH</code>：该变量定义了命令查找的路径，我们需要添加路径时可以<code>PATH=$PATH:xx</code>，该变量修改后可以在子进程和别的shell中生效，因为被export了</li>
+<li><code>PS1</code>：设置shell中提示</li>
+</ul>
+</li>
+<li>预定义变量<ul>
+<li><code>$?</code>：上一条命令是否执行成功，成功的话返回0</li>
+<li><code>$$</code>：返回当前shell的PID</li>
+<li><code>$0</code>：当前执行的程序</li>
+</ul>
+</li>
+<li>位置变量<ul>
+<li><code>$1</code>….<code>$n</code>：特别注意的是当大于等于10时，必须要写成<code>${10}...${xx}</code></li>
+<li>如果想要给位置变量设置默认值可以用<code>${1-xx}</code>，<code>xx</code>就是设置的默认值</li>
+</ul>
+</li>
+</ul>
+<h4 id="环境变量配置文件"><a href="#环境变量配置文件" class="headerlink" title="环境变量配置文件"></a>环境变量配置文件</h4><p>所有用户都可用的环境变量保存在：</p>
+<ul>
+<li>/etc/profile</li>
+<li>/etc/profile.d</li>
+<li>/etc/bashrc</li>
+</ul>
+<p>用户自定义的环境变量：</p>
+<ul>
+<li>~/.bashrc</li>
+<li>~/.bash_profile</li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ul>
+<li>定义数组<ul>
+<li><code>IPTS=(1 2 3 4)</code></li>
+</ul>
+</li>
+<li>显示所有元素<ul>
+<li><code>echo ${IPTS[@]}</code></li>
+</ul>
+</li>
+<li>显示长度<ul>
+<li><code>echo ${#IPTS[@]}</code></li>
+</ul>
+</li>
+<li>获取第一个元素<ul>
+<li><code>echo ${IPTS[0]}</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="转义与引用"><a href="#转义与引用" class="headerlink" title="转义与引用"></a>转义与引用</h4><p>注意：单引号`是不对特殊字符进行解释，双引号”会对特殊字符进行解释</p>
+<pre class="line-numbers language-bash"><code class="language-bash">➜ <span class="token keyword">echo</span> <span class="token string">'<span class="token variable">$a</span>'</span>
+<span class="token variable">$a</span>
+
+➜ <span class="token keyword">echo</span> <span class="token string">"<span class="token variable">$a</span>"</span>
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>反引号`可以获取命令执行的结果</p>
+<pre class="line-numbers language-bash"><code class="language-bash">➜ num1<span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> 4 + 5<span class="token variable">`</span></span>
+
+➜ <span class="token keyword">echo</span> <span class="token variable">$num1</span>
+9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li>复制运算符</li>
+<li>算数运算符<ul>
+<li><code>expr 4 + 5</code>：只能支持整数</li>
+<li><code>((4+5))</code>，((a=9))，((a++))：是let的简化方式</li>
+</ul>
+</li>
+</ul>
+<h4 id="特殊符号大全"><a href="#特殊符号大全" class="headerlink" title="特殊符号大全"></a>特殊符号大全</h4><ul>
+<li><p><code>$()</code>和反引号的作用一样，里面包含需要执行的命令</p>
+</li>
+<li><p><code>()</code>会创建一个新的shell</p>
+</li>
+<li><p><code>[]</code>是<code>test</code>命令的简写</p>
+<pre class="line-numbers language-bash"><code class="language-bash">➜ <span class="token punctuation">[</span><span class="token punctuation">[</span> 5 <span class="token operator">&lt;</span> 4 <span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+➜ <span class="token keyword">echo</span> <span class="token variable">$?</span>
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>{}输出范围和快速操作</p>
+<pre class="line-numbers language-bash"><code class="language-bash">➜ <span class="token keyword">echo</span> <span class="token punctuation">{</span>0<span class="token punctuation">..</span>9<span class="token punctuation">}</span>
+0 1 2 3 4 5 6 7 8 9
+
+<span class="token comment" spellcheck="true"># mv 1.sh 1.sh.bak</span>
+➜ <span class="token function">mv</span> 1.sh<span class="token punctuation">{</span>,.bak<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>;会确保上一条命令执行完在执行下一条</p>
+</li>
+<li><p>:类似于python中的pass</p>
+</li>
+</ul>
+<h4 id="test命令"><a href="#test命令" class="headerlink" title="test命令"></a>test命令</h4><ul>
+<li>退出程序命令<ul>
+<li>exit：会返回上一条命令的成功与否</li>
+<li>exit 10：返回值10，非0则是不正常退出</li>
+</ul>
+</li>
+<li>test命令可以用来检查文件或者比较值<ul>
+<li>test可以做一下测试<ul>
+<li>文件测试</li>
+<li>整数比较测试</li>
+<li>字符串测试</li>
+</ul>
+</li>
+<li>test测试语句可以简化为[]符号</li>
+<li>[]还有扩展写法[[]]支持&amp;&amp;、||等</li>
+</ul>
+</li>
+</ul>
 <p></p>
 
             </div>
@@ -1314,7 +1467,7 @@ max-master:gfs-configs    /var/cache/zoomeye-max    glusterfs    defaults,_netde
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1364,7 +1517,7 @@ max-master:gfs-configs    /var/cache/zoomeye-max    glusterfs    defaults,_netde
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1573,7 +1726,7 @@ max-master:gfs-configs    /var/cache/zoomeye-max    glusterfs    defaults,_netde
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">17.9k</span>
+            <span class="white-color">18.9k</span>
             
 
             <br>
