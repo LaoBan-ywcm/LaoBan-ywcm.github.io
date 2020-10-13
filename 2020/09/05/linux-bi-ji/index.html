@@ -11,7 +11,7 @@
     <meta name="description" content="Linux笔记
 基础命令
 创建多个嵌套目录
-mkdir -p a/b/c```
+mkdir -p a/b/c
 
 查看嵌套目录
 ls -R ./
@@ -20,7 +20,8 @@ ls -h会显示文件的大小
 复制文件保留元信息（复制文件默认会修改文件的元信息）
 cp -a a b
 
-通配符，只匹配一个字">
+通配符，只匹配一个字符
+l">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -310,7 +311,7 @@ cp -a a b
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -465,7 +466,7 @@ cp -a a b
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.2k
+                    4.3k
                 </div>
                 
 
@@ -486,7 +487,7 @@ cp -a a b
                 <p>Linux笔记</p>
 <h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><ul>
 <li><p>创建多个嵌套目录</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p a/b/c```<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p a/b/c<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>查看嵌套目录</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">ls</span> -R ./<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -524,7 +525,7 @@ cp -a a b
 </li>
 </ul>
 <h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><h5 id="进入插入模式："><a href="#进入插入模式：" class="headerlink" title="进入插入模式："></a>进入插入模式：</h5><p><code>-i</code>：当前位置进入插入模式</p>
-<p><code>-I</code>：跳转到行钱进入插入模式</p>
+<p><code>-I</code>：跳转到行前进入插入模式</p>
 <p><code>-a</code>：跳转到下一个字符进入插入模式</p>
 <p><code>-A</code>：跳转到行尾进入插入模式</p>
 <p><code>-o</code>：下一行进入插入模式</p>
@@ -609,7 +610,7 @@ user1:x:1002:
 drwx------+  10 xx  staff      320 Mar  6  2020 Music
 
 <span class="token comment" spellcheck="true"># 第一位，表示文件类型</span>
-<span class="token comment" spellcheck="true"># 后面接着的9位 rwx------ 表示权限，每三个字符为一组，分别表示：用户对该文件的权限、该组队文件的权限和其他用户的权限</span>
+<span class="token comment" spellcheck="true"># 后面接着的9位 rwx------ 表示权限，每三个字符为一组，分别表示：用户对该文件的权限、该组对文件的权限和其他用户的权限</span>
 <span class="token comment" spellcheck="true"># xx ：用户</span>
 <span class="token comment" spellcheck="true"># staff： 用户组</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p><code>-</code>：普通文件</p>
@@ -995,6 +996,52 @@ xxx <span class="token operator">&amp;</span><span class="token operator">></spa
 </ul>
 </li>
 </ul>
+<h4 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">"start"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token keyword">echo</span> <span class="token string">"<span class="token variable">$0</span> start..."</span>
+<span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">"stop"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+    <span class="token keyword">echo</span> <span class="token string">"<span class="token variable">$0</span> stop..."</span>
+<span class="token keyword">else</span>
+    <span class="token keyword">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> {start|stop}"</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="case"><a href="#case" class="headerlink" title="case"></a>case</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span> 
+    <span class="token string">"start"</span> <span class="token operator">|</span> <span class="token string">"START"</span><span class="token punctuation">)</span>
+        <span class="token keyword">echo</span> <span class="token string">"<span class="token variable">$0</span> start..."</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+    <span class="token string">"stop"</span><span class="token punctuation">)</span>
+        <span class="token keyword">echo</span> <span class="token string">"<span class="token variable">$0</span> stop..."</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+    *<span class="token punctuation">)</span>
+        <span class="token keyword">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> {start|stop}"</span>
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+esac<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">for</span> filename <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span> *.mp3<span class="token variable">)</span></span> <span class="token punctuation">;</span> <span class="token keyword">do</span>
+    <span class="token function">mv</span> <span class="token variable">$filename</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> $filename .mp3<span class="token variable">)</span></span>.mp4
+<span class="token keyword">done</span>
+
+<span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">))</span></span> <span class="token punctuation">;</span> <span class="token keyword">do</span>
+    <span class="token keyword">echo</span> <span class="token variable">$i</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+n<span class="token operator">=</span>1
+<span class="token comment" spellcheck="true"># [[ $n &lt; 10 ]] 不能用于条件判断</span>
+<span class="token keyword">while</span> <span class="token punctuation">[</span>  <span class="token variable">$n</span> -lt 10 <span class="token punctuation">]</span>
+<span class="token keyword">do</span>
+    <span class="token keyword">echo</span> <span class="token variable">$n</span>
+    <span class="token variable"><span class="token punctuation">((</span>n<span class="token operator">++</span><span class="token punctuation">))</span></span>
+
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token keyword">for</span> filename <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span> *.mp4<span class="token variable">)</span></span> <span class="token punctuation">;</span> <span class="token keyword">do</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> -x <span class="token variable">$filename</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token keyword">echo</span> <span class="token variable">$filename</span> <span class="token punctuation">;</span> <span class="token keyword">break</span>
+    <span class="token keyword">fi</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p></p>
 
             </div>
@@ -1467,7 +1514,7 @@ xxx <span class="token operator">&amp;</span><span class="token operator">></spa
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1517,7 +1564,7 @@ xxx <span class="token operator">&amp;</span><span class="token operator">></spa
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1726,7 +1773,7 @@ xxx <span class="token operator">&amp;</span><span class="token operator">></spa
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">18.9k</span>
+            <span class="white-color">19k</span>
             
 
             <br>
