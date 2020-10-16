@@ -273,11 +273,38 @@
   </entry>
   
   <entry>
+    <title>ERC20代币批量转账实现和解析(二)</title>
+    <link href="https://qiuqideblog.com/2019/01/02/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-er/"/>
+    <id>https://qiuqideblog.com/2019/01/02/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-er/</id>
+    <published>2019-01-02T01:34:34.000Z</published>
+    <updated>2020-10-16T01:39:29.309Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;接上篇&lt;a href=&quot;https://juejin.im/post/6844903748452483086&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ERC20代币批量转账实现和解析&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;批量转账的原理&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://qiuqideblog.com/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://qiuqideblog.com/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ERC20代币批量转账实现和解析(一)</title>
     <link href="https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/"/>
     <id>https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/</id>
     <published>2018-12-27T01:20:41.000Z</published>
-    <updated>2020-10-16T01:29:55.464Z</updated>
+    <updated>2020-10-16T01:31:23.431Z</updated>
     
     <summary type="html">
     

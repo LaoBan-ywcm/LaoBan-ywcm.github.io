@@ -568,7 +568,7 @@ web3：包含了以上对象，还包含一些单位换算的方法</code></pre>
 <p>可以利用下面的命令转换单位</p>
 <p><img src="./167f01539958ff40.png" alt></p>
 <p>这里只做简单的介绍，其余的命令大家有感兴趣的可以自行查找</p>
-<h2 id="在ETH私有链上发布ERC20代币"><a href="#在ETH私有链上发布ERC20代币" class="headerlink" title="在ETH私有链上发布ERC20代币"></a>在ETH私有链上发布ERC20代币</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
+<h2 id="合约标准"><a href="#合约标准" class="headerlink" title="合约标准"></a>合约标准</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
 <p>ERC20使通证智能合约的行为非常类似于传统的加密货币，例如在不同账户之间发送和接收、查看通证总供应量或者查看某个地址可用的通证余额，就像比特币或以太币一样。这类似于用以太坊钱包 发送和接收以太币、查看流通中的以太币总量、查看特定钱包的货币余额等。</p>
 <p>ERC20规定了一些标准的接口</p>
 <pre><code>contract ERC20Interface {
@@ -595,7 +595,7 @@ balanceOf(): 查看对应账号的代币余额。
 transfer(): 实现代币交易，用于给用户发送代币（从我们的账户里）
 transferFrom(): 实现代币用户之间的交易
 allowance(): 控制代币的交易，如可交易账号及资产
-approve(): 允许用户可花费的代币数</code></pre><h2 id="在ETH私有链上发布ERC20代币-1"><a href="#在ETH私有链上发布ERC20代币-1" class="headerlink" title="在ETH私有链上发布ERC20代币"></a>在ETH私有链上发布ERC20代币</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
+approve(): 允许用户可花费的代币数</code></pre><h2 id="在ETH私有链上发布ERC20代币"><a href="#在ETH私有链上发布ERC20代币" class="headerlink" title="在ETH私有链上发布ERC20代币"></a>在ETH私有链上发布ERC20代币</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
 <p>ERC20使通证智能合约的行为非常类似于传统的加密货币，例如在不同账户之间发送和接收、查看通证总供应量或者查看某个地址可用的通证余额，就像比特币或以太币一样。这类似于用以太坊钱包 发送和接收以太币、查看流通中的以太币总量、查看特定钱包的货币余额等。</p>
 <p>ERC20规定了一些标准的接口</p>
 <pre><code>contract ERC20Interface {
@@ -1188,31 +1188,31 @@ contract TokenERC20 {
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/27/python-mutable/">
+                <a href="/2019/01/02/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-er/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Python可变对象和不可变对象">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ERC20代币批量转账实现和解析(二)">
                         
-                        <span class="card-title">Python可变对象和不可变对象</span>
+                        <span class="card-title">ERC20代币批量转账实现和解析(二)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            可变对象与不可变对象中的坑和作用
+                            实现代币批量转账
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-27
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-02
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/编程学习/" class="post-category" target="_blank">
-                                    编程学习
+                            <a href="/categories/区块链/" class="post-category" target="_blank">
+                                    区块链
                                 </a>
                             
                             
@@ -1222,8 +1222,8 @@ contract TokenERC20 {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/区块链/" target="_blank">
+                        <span class="chip bg-color">区块链</span>
                     </a>
                     
                 </div>
@@ -1447,7 +1447,7 @@ contract TokenERC20 {
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">22.3k</span>
+            <span class="white-color">23.5k</span>
             
 
             <br>
