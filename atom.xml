@@ -272,4 +272,32 @@
     
   </entry>
   
+  <entry>
+    <title>ERC20代币批量转账实现和解析(一)</title>
+    <link href="https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/"/>
+    <id>https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/</id>
+    <published>2018-12-27T01:20:41.000Z</published>
+    <updated>2020-10-16T01:29:55.464Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;如果你对区块链和ERC20代币没有概念，请先阅读入门知识&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://learnblockchain.cn/2017/11/20/whatiseth/&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="区块链" scheme="https://qiuqideblog.com/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="https://qiuqideblog.com/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
 </feed>

@@ -7,3 +7,4 @@ https://qiuqideblog.com/2020/07/01/fanyi-git-tag/
 https://qiuqideblog.com/2020/06/29/python-object-3/
 https://qiuqideblog.com/2020/06/27/restfule-api/
 https://qiuqideblog.com/2020/06/27/python-mutable/
+https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/
