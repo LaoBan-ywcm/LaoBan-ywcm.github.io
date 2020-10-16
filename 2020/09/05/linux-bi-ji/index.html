@@ -311,7 +311,7 @@ l">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -466,14 +466,14 @@ l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.6k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    21 分
                 </div>
                 
                 
@@ -1105,6 +1105,66 @@ flock -xn <span class="token string">"/tmp/f.lock"</span> -c <span class="token 
 
 <span class="token comment" spellcheck="true"># 另外一个地方执行该脚本时就会直接退出</span>
 flock -xn <span class="token string">"/tmp/f.lock"</span> -c <span class="token string">"/tmp/1.sh"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h3><h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p>grep 后面可以接正则元字符</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">grep</span> sdf.*$<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="find演示"><a href="#find演示" class="headerlink" title="find演示"></a>find演示</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">find</span> /etc -name pa*
+
+<span class="token function">find</span> /etc -regex .*wd$
+
+<span class="token function">find</span> *.txt -exec <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="Sed-替换"><a href="#Sed-替换" class="headerlink" title="Sed 替换"></a>Sed 替换</h4><p>sed默认只替换每行的第一个</p>
+<p>sed的基本工作方式：</p>
+<ul>
+<li>将文件按行读取到内存中</li>
+<li>使用sed的每个脚本对该行进行操作</li>
+<li>处理完成后输出改行</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sed</span> <span class="token string">'a/lod/new/'</span> filename
+
+<span class="token comment" spellcheck="true"># 如果要替换\，可以使用别的分隔符</span>
+<span class="token function">sed</span> <span class="token string">'s!/!abc!'</span> filename
+
+<span class="token comment" spellcheck="true"># 执行多个命令</span>
+<span class="token function">sed</span> -e <span class="token string">'s/a/aa/'</span> -e <span class="token string">'s/aa/bb/'</span> afil
+<span class="token function">sed</span> <span class="token string">'s/a/aa/;s/aa/bb/'</span> afile
+
+<span class="token comment" spellcheck="true"># 将替换后的内容写入到原始文件</span>
+<span class="token function">sed</span> -i <span class="token string">'s/a/aa/;s/aa/bb/'</span> afile
+
+<span class="token comment" spellcheck="true"># 支持元字符</span>
+<span class="token function">head</span> -5 /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/s*bin//'</span>
+
+<span class="token comment" spellcheck="true"># 支持回调，源文件内容：axyzb</span>
+<span class="token comment" spellcheck="true"># 扩展元字符使用 -r 参数</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed -r 's/(a.*b)/\1:\1/' cfile</span>
+axyzb:axyzb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="sed替换指令加强版"><a href="#sed替换指令加强版" class="headerlink" title="sed替换指令加强版"></a>sed替换指令加强版</h4><p>标志位</p>
+<p>s/old/new/标志位</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 全局替换</span>
+s/old/new/g
+
+<span class="token comment" spellcheck="true"># 替换前两次</span>
+s/old/new/2
+
+<span class="token comment" spellcheck="true"># 只输出替换成功的行, -n 不输出行， p 输出替换成功的行</span>
+<span class="token function">sed</span> -n <span class="token string">'s/root/123/p'</span>
+
+<span class="token comment" spellcheck="true"># 将替换成功的行写入别的文件</span>
+<span class="token function">sed</span> -n <span class="token string">'s/root/123/w a.txt'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>寻址</p>
+<p>/正则表达式/s/old/new/g</p>
+<p>行号s/old/new/g</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 从1-6行进行替换</span>
+<span class="token function">head</span> -6 /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'1,6s/games/!!!!!!!!/'</span>
+
+<span class="token comment" spellcheck="true"># 匹配root行，进行替换</span>
+<span class="token function">head</span> -6 /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'/root/s/bash/!!!!!!!!/'</span>
+
+<span class="token comment" spellcheck="true"># 多条命令</span>
+<span class="token function">sed</span> /正则/<span class="token punctuation">{</span>s/old/new/<span class="token punctuation">;</span>s/old/new/<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>脚本文件</p>
+<p>文件里写正常的sed命令</p>
+<pre class="line-numbers language-bahs"><code class="language-bahs">sed -f sedscript filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p></p>
 
             </div>
@@ -1577,7 +1637,7 @@ flock -xn <span class="token string">"/tmp/f.lock"</span> -c <span class="token 
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1627,7 +1687,7 @@ flock -xn <span class="token string">"/tmp/f.lock"</span> -c <span class="token 
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1836,7 +1896,7 @@ flock -xn <span class="token string">"/tmp/f.lock"</span> -c <span class="token 
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">19.4k</span>
+            <span class="white-color">19.7k</span>
             
 
             <br>
