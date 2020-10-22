@@ -311,7 +311,7 @@ l">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -466,14 +466,14 @@ l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    6.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    21 分
+                    26 分
                 </div>
                 
                 
@@ -1165,6 +1165,167 @@ s/old/new/2
 <p>脚本文件</p>
 <p>文件里写正常的sed命令</p>
 <pre class="line-numbers language-bahs"><code class="language-bahs">sed -f sedscript filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="sed的其他常用命令"><a href="#sed的其他常用命令" class="headerlink" title="sed的其他常用命令"></a>sed的其他常用命令</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 删除行，删除操作会改变模式空间，就和管道的作用一样，后面的命令会以删除后的文件内容为准</span>
+<span class="token function">sed</span> <span class="token string">'/ab/d'</span> bfile
+<span class="token function">sed</span> <span class="token string">'/ab/d;='</span> bfile
+
+<span class="token comment" spellcheck="true"># 在上一行插入</span>
+<span class="token function">sed</span> <span class="token string">'/ab/i hello'</span> bfile
+
+<span class="token comment" spellcheck="true"># 在下一行插入</span>
+<span class="token function">sed</span> <span class="token string">'/ab/a hello'</span> bfile
+
+<span class="token comment" spellcheck="true"># 替换行</span>
+<span class="token function">sed</span> <span class="token string">'/ab/c hello'</span> bfile
+
+<span class="token comment" spellcheck="true"># 合并两个文件</span>
+<span class="token function">sed</span> <span class="token string">'/ab/r cfile'</span> bfile
+
+<span class="token comment" spellcheck="true"># 下一行命令 n</span>
+<span class="token comment" spellcheck="true"># 打印行号 =</span>
+
+<span class="token comment" spellcheck="true"># 打印匹配行，这个替换中的p不同，通常和-n参数配合只打印匹配到的行</span>
+<span class="token function">sed</span> -n <span class="token string">'/ab/p'</span> bfile
+
+<span class="token comment" spellcheck="true"># 退出命令</span>
+<span class="token function">sed</span> 10q filename <span class="token comment" spellcheck="true"># 不会把文件全部读入</span>
+<span class="token function">sed</span> -n 1,10p filename<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="sed多行模式"><a href="#sed多行模式" class="headerlink" title="sed多行模式"></a>sed多行模式</h4><p><code>N</code>：将下一行加入到模式空间中</p>
+<p><code>D</code>：删除模式空间中的第一个字符到第一个换行符</p>
+<p><code>P</code>：打印模式空间中第一个字符到第一个换行符</p>
+<pre class="line-numbers language-bash"><code class="language-bash">root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># cat dfile</span>
+hel
+lo
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed 'N;s/hel\nlo/!!!/' dfile</span>
+<span class="token operator">!</span><span class="token operator">!</span><span class="token operator">!</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed 'N;s/hel.lo/!!!/' dfile</span>
+<span class="token operator">!</span><span class="token operator">!</span><span class="token operator">!</span>
+
+<span class="token comment" spellcheck="true"># 多行操作</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># cat b.txt</span>
+hell
+o <span class="token function">bash</span> hel
+lo <span class="token function">bash</span>
+<span class="token comment" spellcheck="true"># 两行连起来操作</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed 'N;s/\n//;s/hello bash/hello sed\n/;P;D' b.txt</span>
+hello <span class="token function">sed</span>
+ hello <span class="token function">sed</span>
+<span class="token comment" spellcheck="true"># 三行连起来操作</span>
+<span class="token function">sed</span> <span class="token string">'N;N;s/\n//;s/hello bash/hello sed\n/;P;D'</span> b.txt <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="sed保持空间"><a href="#sed保持空间" class="headerlink" title="sed保持空间"></a>sed保持空间</h4><p><img src="./image-20201019133011333.png" alt="image-20201019133011333"></p>
+<p><code>h</code>和<code>H</code>将模式空间内容存放到保持空间</p>
+<p><code>g</code>和<code>G</code>将保持空间内容取出到模式空间</p>
+<p><code>x</code>交换模式空间和保持空间内容</p>
+<blockquote>
+<p>在保持空间中不能对数据进行操作，只能取到模式空间中才可以</p>
+<p>小写是覆盖模式，大写是追加模式</p>
+</blockquote>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 倒序输出，可以使用tac命令</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># cat efile</span>
+1
+2
+3
+4
+5
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed -n '1h;G;x;$p' efile</span>
+4
+3
+2
+1
+1
+
+<span class="token comment" spellcheck="true"># 解决第一行重复输出的问题，是因为第一行放入到保持空间后又拿了出来，修改为当第一次执行时不从保持空间取出来</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed -n '1h;1!G;x;$p' efile</span>
+4
+3
+2
+1
+
+<span class="token comment" spellcheck="true"># 解决最后一行没有输出的问题</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed -n '1h;1!G;$!x;$p' efile</span>
+5
+4
+3
+2
+1
+
+<span class="token comment" spellcheck="true"># 另外的解决方法</span>
+root@4ebe31ff7a18:/tmp<span class="token comment" spellcheck="true"># sed -n '1!G;h;$p' efile</span>
+5
+4
+3
+2
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="认识AWK"><a href="#认识AWK" class="headerlink" title="认识AWK"></a>认识AWK</h4><ul>
+<li><code>awk</code>更像是脚本语言</li>
+<li><code>awk</code>用于比较规范的文本处理，用于统计数量并输出指定字段</li>
+<li><code>sed</code>将不规范的文本，处理为比较规范的文本</li>
+</ul>
+<h4 id="AWK的字段"><a href="#AWK的字段" class="headerlink" title="AWK的字段"></a>AWK的字段</h4><ul>
+<li>每行称作AWK的记录</li>
+<li>使用空格、制表符分隔开的单词成为字段</li>
+<li>可以自己制定分隔的字段</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">awk</span> -F <span class="token string">"''"</span> <span class="token string">'/^menu/{ print x++, <span class="token variable">$2</span> }'</span> /boot/grub2/grub.cfg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><code>-F</code>：指定分隔符</li>
+<li><code>x++</code>：打印行号</li>
+<li><code>^menu</code>：匹配行</li>
+</ul>
+<h4 id="AWK表达式"><a href="#AWK表达式" class="headerlink" title="AWK表达式"></a>AWK表达式</h4><p>系统变量</p>
+<ul>
+<li><code>FS</code>表示输入的内容用什么分隔，<code>OFS</code>表示输出用什么符号分隔</li>
+<li><code>RS</code>行分隔符</li>
+<li><code>NR</code>打印行号，如果文件变化了<code>NR</code>是不会重新排号，<code>FNR</code>则会重新排号</li>
+<li><code>NF</code>字段的数量</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 下面两行意义相同，BEGIN表示在输入内容之前的操作</span>
+<span class="token function">head</span> -n 6 /etc/passwd <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN{FS=":"}{print <span class="token variable">$1</span>}'</span>
+<span class="token function">head</span> -n 6 /etc/passwd <span class="token operator">|</span> <span class="token function">awk</span> -F <span class="token string">':'</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span>
+
+<span class="token comment" spellcheck="true"># 设置输出分隔符</span>
+<span class="token function">head</span> -n 6 /etc/passwd <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'BEGIN{FS=":";OFS="-"}{print <span class="token variable">$1</span>,<span class="token variable">$2</span>}
+
+# 改变内容行的分隔符，改为通过:来换行，<span class="token variable">$0</span>是输出一行
+head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span>RS<span class="token operator">=</span><span class="token string">":"</span><span class="token punctuation">}</span><span class="token punctuation">{</span>print <span class="token variable">$0</span><span class="token punctuation">}</span><span class="token string">'
+
+# 打印行号
+root@709230c0b366:~# awk '</span><span class="token punctuation">{</span>print NR, <span class="token variable">$0</span><span class="token punctuation">}</span><span class="token string">' /etc/hosts /etc/hosts
+1 127.0.0.1    localhost
+2 ::1    localhost ip6-localhost ip6-loopback
+3 fe00::0    ip6-localnet
+4 ff00::0    ip6-mcastprefix
+5 ff02::1    ip6-allnodes
+6 ff02::2    ip6-allrouters
+7 172.17.0.4    709230c0b366
+8 127.0.0.1    localhost
+9 ::1    localhost ip6-localhost ip6-loopback
+10 fe00::0    ip6-localnet
+11 ff00::0    ip6-mcastprefix
+12 ff02::1    ip6-allnodes
+13 ff02::2    ip6-allrouters
+14 172.17.0.4    709230c0b366
+root@709230c0b366:~# awk '</span><span class="token punctuation">{</span>print FNR, <span class="token variable">$0</span><span class="token punctuation">}</span><span class="token string">' /etc/hosts /etc/hosts
+1 127.0.0.1    localhost
+2 ::1    localhost ip6-localhost ip6-loopback
+3 fe00::0    ip6-localnet
+4 ff00::0    ip6-mcastprefix
+5 ff02::1    ip6-allnodes
+6 ff02::2    ip6-allrouters
+7 172.17.0.4    709230c0b366
+1 127.0.0.1    localhost
+2 ::1    localhost ip6-localhost ip6-loopback
+3 fe00::0    ip6-localnet
+4 ff00::0    ip6-mcastprefix
+5 ff02::1    ip6-allnodes
+6 ff02::2    ip6-allrouters
+7 172.17.0.4    709230c0b366
+
+# 打印有多少个字段
+head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span>FS<span class="token operator">=</span><span class="token string">":"</span><span class="token punctuation">}</span><span class="token punctuation">{</span>print NF<span class="token punctuation">}</span><span class="token string">'
+
+# 打印最后一个字段的值
+head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span>FS<span class="token operator">=</span><span class="token string">":"</span><span class="token punctuation">}</span><span class="token punctuation">{</span>print <span class="token variable">$NF</span><span class="token punctuation">}</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p></p>
 
             </div>
@@ -1637,7 +1798,7 @@ s/old/new/2
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1687,7 +1848,7 @@ s/old/new/2
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -1896,7 +2057,7 @@ s/old/new/2
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">23.5k</span>
+            <span class="white-color">24.5k</span>
             
 
             <br>
