@@ -311,7 +311,7 @@ l">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -466,14 +466,14 @@ l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.1k
+                    6.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    28 分
                 </div>
                 
                 
@@ -1121,7 +1121,7 @@ flock -xn <span class="token string">"/tmp/f.lock"</span> -c <span class="token 
 </ul>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">sed</span> <span class="token string">'a/lod/new/'</span> filename
 
-<span class="token comment" spellcheck="true"># 如果要替换\，可以使用别的分隔符</span>
+<span class="token comment" spellcheck="true"># 如果要替换/，可以使用别的分隔符</span>
 <span class="token function">sed</span> <span class="token string">'s!/!abc!'</span> filename
 
 <span class="token comment" spellcheck="true"># 执行多个命令</span>
@@ -1326,6 +1326,96 @@ head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span
 
 # 打印最后一个字段的值
 head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span>FS<span class="token operator">=</span><span class="token string">":"</span><span class="token punctuation">}</span><span class="token punctuation">{</span>print <span class="token variable">$NF</span><span class="token punctuation">}</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="AWK的判断和循环"><a href="#AWK的判断和循环" class="headerlink" title="AWK的判断和循环"></a>AWK的判断和循环</h4><pre class="line-numbers language-bash"><code class="language-bash">root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># cat a.txt</span>
+user1 34 54 23 12
+user2 94 34 73 22
+user3 99 45 12 49
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk '{ if($2>80) {print $1,$2} }' a.txt</span>
+user2 94
+user3 99
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk '{ for(c=2;c&lt;=NF;c++) print $c }' a.txt</span>
+34
+54
+23
+12
+94
+34
+73
+22
+99
+45
+12
+49
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk '{ for(c=2;c&lt;=NF;c++) sum+=$c; print sum}' a.txt</span>
+123
+346
+551<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="AWK数组"><a href="#AWK数组" class="headerlink" title="AWK数组"></a>AWK数组</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># END表示数据读入完毕</span>
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk '{ sum=0; for(c=2;c&lt;=NF;c++) sum+=$c; average[$1]=sum/(NF-1) }END{ for( user in average ) print user,average[user] }' a.txt</span>
+user1 30.75
+user2 55.75
+user3 51.25
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># cat a.txt</span>
+user1 34 54 23 12
+user2 94 34 73 22
+user3 99 45 12 49
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk '{ sum=0; for(c=2;c&lt;=NF;c++) sum+=$c; average[$1]=sum/(NF-1) }END{ for( user in average ) print user,average[user] }' a.txt</span>
+user1 30.75
+user2 55.75
+user3 51.25
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk '{ sum=0; for(c=2;c&lt;=NF;c++) sum+=$c; average[$1]=sum/(NF-1) }END{ for( user in average ) sum2+=average[user]; print sum2/NR }' a.txt</span>
+45.9167<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="AWK数组的应用"><a href="#AWK数组的应用" class="headerlink" title="AWK数组的应用"></a>AWK数组的应用</h4><pre class="line-numbers language-bash"><code class="language-bash">root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># cat a.txt</span>
+user1 34 54 23 12
+user2 94 34 73 22
+user3 99 45 12 49
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># cat result.awk</span>
+<span class="token punctuation">{</span>
+<span class="token function">sum</span> <span class="token operator">=</span> 0
+for<span class="token punctuation">(</span>c <span class="token operator">=</span> 2<span class="token punctuation">;</span> c <span class="token operator">&lt;=</span> NF<span class="token punctuation">;</span> c++<span class="token punctuation">)</span>
+    <span class="token function">sum</span> +<span class="token operator">=</span> <span class="token variable">$c</span>
+
+average<span class="token punctuation">[</span><span class="token variable">$1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">sum</span> / <span class="token punctuation">(</span>NF - 1<span class="token punctuation">)</span>
+print <span class="token variable">$1</span>, average<span class="token punctuation">[</span><span class="token variable">$1</span><span class="token punctuation">]</span>
+
+<span class="token punctuation">}</span>
+END<span class="token punctuation">{</span>
+for<span class="token punctuation">(</span>user <span class="token keyword">in</span> average<span class="token punctuation">)</span>
+    sum_all +<span class="token operator">=</span> average<span class="token punctuation">[</span>user<span class="token punctuation">]</span>
+
+avg_all <span class="token operator">=</span> sum_all / NR
+
+for<span class="token punctuation">(</span>user <span class="token keyword">in</span> average<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>average<span class="token punctuation">[</span>user<span class="token punctuation">]</span> <span class="token operator">></span> avg_all<span class="token punctuation">)</span>
+        above++
+    <span class="token keyword">else</span>
+        below++
+
+print <span class="token string">"above"</span>, above
+print <span class="token string">"below"</span>, below
+
+<span class="token punctuation">}</span>
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk -f result.awk a.txt</span>
+user1 30.75
+user2 55.75
+user3 51.25
+above 2
+below 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="AWK函数"><a href="#AWK函数" class="headerlink" title="AWK函数"></a>AWK函数</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 整数</span>
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'BEGIN{pi=3.114; print int(pi)}'</span>
+3
+
+<span class="token comment" spellcheck="true"># 随机数</span>
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'BEGIN{srand(); print rand()}'</span>
+0.739691
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'BEGIN{srand(); print rand()}'</span>
+0.00276686
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'BEGIN{srand(); print rand()}'</span>
+0.134305
+
+<span class="token comment" spellcheck="true"># 自定义函数</span>
+root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'function double(str) {return str str} BEGIN{print double("hello")}'</span>
+hellohello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p></p>
 
             </div>
@@ -1798,7 +1888,7 @@ head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1848,7 +1938,7 @@ head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -2057,7 +2147,7 @@ head -n 6 /etc/passwd | awk '</span>BEGIN<span class="token punctuation">{</span
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">24.5k</span>
+            <span class="white-color">24.9k</span>
             
 
             <br>
