@@ -311,7 +311,7 @@ l">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -466,14 +466,14 @@ l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.5k
+                    8.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    28 分
+                    38 分
                 </div>
                 
                 
@@ -1416,6 +1416,285 @@ root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'BEGIN
 <span class="token comment" spellcheck="true"># 自定义函数</span>
 root@7dc8bb7d5702:/tmp<span class="token comment" spellcheck="true"># awk 'function double(str) {return str str} BEGIN{print double("hello")}'</span>
 hellohello<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="服务管理"><a href="#服务管理" class="headerlink" title="服务管理"></a>服务管理</h3><h4 id="防火墙概述"><a href="#防火墙概述" class="headerlink" title="防火墙概述"></a>防火墙概述</h4><ul>
+<li>软件防火墙，主要用来限制ip，过滤一些ip等<ul>
+<li>包过滤防火墙，比如控制ip，iptables就是包过滤防火墙</li>
+<li>应用层防火墙，比如根据系统用户来控制</li>
+</ul>
+</li>
+<li>硬件防火墙，用来放dos攻击等，也兼顾一些软件防火墙的功能</li>
+</ul>
+<p>Centos 6默认使用的防火墙是iptables,Centos 7 是firewallD，但这两者底层都是内核中的netfilter来进行实际的控制</p>
+<h4 id="iptables的表和链"><a href="#iptables的表和链" class="headerlink" title="iptables的表和链"></a>iptables的表和链</h4><ul>
+<li>规则表<pre><code>* filter，用来过滤
+* nat，地址空间转换
+* mangle
+* Raw</code></pre></li>
+<li>规则链<pre><code>* INPUT
+* OUTPUT
+* FORWARD
+* PREROUTING，路由前
+* POSTROUTING，路由后</code></pre></li>
+</ul>
+<h4 id="iptables-filter表"><a href="#iptables-filter表" class="headerlink" title="iptables filter表"></a>iptables filter表</h4><ul>
+<li>iptales -t filter 命令 规则链 规则</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># -v 显示更详细信息</span>
+<span class="token comment" spellcheck="true"># -n 不进行反向域名解析</span>
+<span class="token comment" spellcheck="true"># -L 显示iptables信息</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># iptables -t filter -vnL</span>
+Chain INPUT <span class="token punctuation">(</span>policy ACCEPT 380 packets, 28982 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+    0     0 ACCEPT     all  --  *      *       10.0.0.1             0.0.0.0/0
+
+Chain FORWARD <span class="token punctuation">(</span>policy ACCEPT 0 packets, 0 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+Chain OUTPUT <span class="token punctuation">(</span>policy ACCEPT 373 packets, 53029 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+<span class="token comment" spellcheck="true"># 增加iptables规则</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># iptables -t filter -A INPUT -s 10.0.0.1 -j ACCEPT</span>
+
+<span class="token comment" spellcheck="true"># 查看nat规则</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># iptables -t nat -vnL</span>
+Chain PREROUTING <span class="token punctuation">(</span>policy ACCEPT 0 packets, 0 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+Chain INPUT <span class="token punctuation">(</span>policy ACCEPT 0 packets, 0 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+Chain OUTPUT <span class="token punctuation">(</span>policy ACCEPT 0 packets, 0 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+Chain POSTROUTING <span class="token punctuation">(</span>policy ACCEPT 0 packets, 0 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="iptables过滤规则的使用"><a href="#iptables过滤规则的使用" class="headerlink" title="iptables过滤规则的使用"></a>iptables过滤规则的使用</h4><p>规则是有顺序的，会按照顺序匹配，顺序在前的会生效</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># -I 会在最前面插入，-A 会在尾部追加</span>
+iptables -I INPUT -s 10.0.0.3 -j DROP
+
+<span class="token comment" spellcheck="true"># 下面默认规则都是ACCEPT，如果没有匹配到我们指定的规则，最后就会匹配默认规则</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># iptables -nvL</span>
+Chain INPUT <span class="token punctuation">(</span>policy ACCEPT 16 packets, 1704 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+    0     0 DROP       all  --  *      *       10.0.0.3             0.0.0.0/0
+    0     0 ACCEPT     all  --  *      *       10.0.0.1             0.0.0.0/0
+    0     0 ACCEPT     all  --  *      *       10.0.0.2             0.0.0.0/0
+
+Chain FORWARD <span class="token punctuation">(</span>policy ACCEPT 0 packets, 0 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+Chain OUTPUT <span class="token punctuation">(</span>policy ACCEPT 14 packets, 2986 bytes<span class="token punctuation">)</span>
+ pkts bytes target     prot opt <span class="token keyword">in</span>     out     <span class="token function">source</span>               destination
+
+ <span class="token comment" spellcheck="true"># 修改默认规则，input 为拒绝所有ipl连接</span>
+ iptables -P INPUT DROP
+
+ <span class="token comment" spellcheck="true"># 清空所有自定义规则，不会修改默认规则</span>
+ iptables -F
+
+ <span class="token comment" spellcheck="true"># 清空某个规则</span>
+ iptables -D 序列号
+
+ <span class="token comment" spellcheck="true"># 多个规则</span>
+iptables -t filter -A INPUT -i eth0 -s 10.0.0.2 -p tcp --dport 80 -j ACCEPT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="iptables-nat表使用"><a href="#iptables-nat表使用" class="headerlink" title="iptables nat表使用"></a>iptables nat表使用</h4><p>iptables -t nat 命令 规则链 规则</p>
+<ul>
+<li>PREROUTING 目的地址转换</li>
+<li>POSTROUTING 源地址转换</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 修改目的地址，转发到10.0.0.1上</span>
+iptables -t nat -A PREROUTING -i eth0 -d 114.115.116.117 -p tcp -dport 80 -j DNAT --to-destination 10.0.0.1
+
+<span class="token comment" spellcheck="true"># 修改源地址，将内网ip都改为出口IP地址</span>
+iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o eth1 -j SNAT --to-source 111.112.113.114<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>iptables 自定义的规则默认是存在内存中的，需要持久化</p>
+<p>可以直接在/etc/sysconfig/iptables中写数据，也可以下载工具将内存中的数据写到文件中<code>yum install iptables-services</code></p>
+<h4 id="firewallD"><a href="#firewallD" class="headerlink" title="firewallD"></a>firewallD</h4><p>firewallD的特点</p>
+<ul>
+<li>支持区域“zone”的概念，类似于iptables中的规则链</li>
+<li>firewall-cmd</li>
+</ul>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动firewalld，iptables和firewalld只能运行一个</span>
+<span class="token punctuation">[</span>xx@VM-0-16-centos ~<span class="token punctuation">]</span>$ systemctl status firewalld.service
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/firewalld.service<span class="token punctuation">;</span> disabled<span class="token punctuation">;</span> vendor preset: enabled<span class="token punctuation">)</span>
+   Active: inactive <span class="token punctuation">(</span>dead<span class="token punctuation">)</span>
+     Docs: man:firewalld<span class="token punctuation">(</span>1<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>xx@VM-0-16-centos ~<span class="token punctuation">]</span>$ systemctl start firewalld.service
+<span class="token operator">==</span><span class="token operator">==</span> AUTHENTICATING FOR org.freedesktop.systemd1.manage-units <span class="token operator">==</span><span class="token operator">=</span>
+Authentication is required to manage system services or units.
+Authenticating as: root
+Password:
+<span class="token operator">==</span><span class="token operator">==</span> AUTHENTICATION COMPLETE <span class="token operator">==</span><span class="token operator">=</span>
+<span class="token punctuation">[</span>xx@VM-0-16-centos ~<span class="token punctuation">]</span>$ systemctl status firewalld.service
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded <span class="token punctuation">(</span>/usr/lib/systemd/system/firewalld.service<span class="token punctuation">;</span> disabled<span class="token punctuation">;</span> vendor preset: enabled<span class="token punctuation">)</span>
+   Active: active <span class="token punctuation">(</span>running<span class="token punctuation">)</span> since Mon 2020-11-02 12:19:38 CST<span class="token punctuation">;</span> 4s ago
+     Docs: man:firewalld<span class="token punctuation">(</span>1<span class="token punctuation">)</span>
+ Main PID: 8308 <span class="token punctuation">(</span>firewalld<span class="token punctuation">)</span>
+   CGroup: /system.slice/firewalld.service
+           └─8308 /usr/bin/python2 -Es /usr/sbin/firewalld --nofork --nopid
+<span class="token punctuation">[</span>xx@VM-0-16-centos ~<span class="token punctuation">]</span>$ iptables -nvL
+iptables v1.4.21: can<span class="token string">'t initialize iptables table `filter'</span><span class="token keyword">:</span> Permission denied <span class="token punctuation">(</span>you must be root<span class="token punctuation">)</span>
+Perhaps iptables or your kernel needs to be upgraded.
+
+<span class="token comment" spellcheck="true"># 用firewall-cmd命令</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --state</span>
+running
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --list-all</span>
+public  <span class="token comment" spellcheck="true"># public是默认的区域，既zone</span>
+  target: default
+  icmp-block-inversion: no
+  interfaces: <span class="token comment" spellcheck="true"># 网卡</span>
+  sources:  <span class="token comment" spellcheck="true"># 运行访问的ip</span>
+  services: dhcpv6-client <span class="token function">ssh</span> <span class="token comment" spellcheck="true"># 运行访问的服务，如果服务用的是默认端口，则可以替代端口，否则不行</span>
+  ports: <span class="token comment" spellcheck="true"># 运行访问的端口</span>
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+<span class="token comment" spellcheck="true"># 单独查看每个参数</span>
+  <span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --zone=public --list-services</span>
+dhcpv6-client <span class="token function">ssh</span>
+
+<span class="token comment" spellcheck="true"># 查看有哪些区域</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --get-zones</span>
+block dmz drop external home internal public trusted work
+
+<span class="token comment" spellcheck="true"># 查看默认使用的区域</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --get-default-zone</span>
+public
+
+<span class="token comment" spellcheck="true"># 查看激活的区域</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --get-active-zone</span>
+
+<span class="token comment" spellcheck="true"># 添加规则</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --add-service=https</span>
+success
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --add-port=81/tcp</span>
+success
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --list-all</span>
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: dhcpv6-client https <span class="token function">ssh</span>
+  ports: 81/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+<span class="token comment" spellcheck="true"># 持久化到磁盘中, --permanent,用了该命令用--list-all是看不到，需要重新加载</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --add-port=82/tcp --permanent</span>
+success
+<span class="token comment" spellcheck="true"># reload会删除临时的规则</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --reload</span>
+success
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --list-all</span>
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: dhcpv6-client <span class="token function">ssh</span>
+  ports: 82/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+<span class="token comment" spellcheck="true"># 删除规则</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --remove-service=https</span>
+success
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># firewall-cmd --list-all</span>
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: dhcpv6-client <span class="token function">ssh</span>
+  ports: 82/tcp
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="SSH介绍及Telnet明文漏洞"><a href="#SSH介绍及Telnet明文漏洞" class="headerlink" title="SSH介绍及Telnet明文漏洞"></a>SSH介绍及Telnet明文漏洞</h4><p>telenet是明文传输</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 将公钥拷贝到服务器上</span>
+ssh-copy-id -i /root/.ssh/id_ras.pub root@/xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="FTP服务器vsftpd介绍与软件包安装"><a href="#FTP服务器vsftpd介绍与软件包安装" class="headerlink" title="FTP服务器vsftpd介绍与软件包安装"></a>FTP服务器vsftpd介绍与软件包安装</h4><p>FTP协议分为两条连接，不同的信息要用不同连接传输</p>
+<pre><code>* 命令链路
+* 数据链路</code></pre><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装</span>
+yum <span class="token function">install</span> vsftpd <span class="token function">ftp</span>
+
+<span class="token comment" spellcheck="true"># 启动</span>
+systemctl start vsftpd.service
+
+<span class="token comment" spellcheck="true"># 开机自启动</span>
+systemctl <span class="token function">enable</span> vsftpd.service
+
+<span class="token comment" spellcheck="true"># 访问，使用ftp账户，则是匿名模式，默认的目录是宿主机的/var/ftp目录。也可以用系统用户，目录则是用户根目录</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos ~<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ftp localhost</span>
+Trying ::1<span class="token punctuation">..</span>.
+Connected to localhost <span class="token punctuation">(</span>::1<span class="token punctuation">)</span>.
+220 <span class="token punctuation">(</span>vsFTPd 3.0.2<span class="token punctuation">)</span>
+Name <span class="token punctuation">(</span>localhost:root<span class="token punctuation">)</span>: <span class="token function">ftp</span>
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system <span class="token function">type</span> is UNIX.
+Using binary mode to transfer files.
+ftp<span class="token operator">></span> <span class="token function">ls</span>
+229 Entering Extended Passive Mode <span class="token punctuation">(</span><span class="token operator">||</span><span class="token operator">|</span>31008<span class="token operator">|</span><span class="token punctuation">)</span>.
+150 Here comes the directory listing.
+drwxr-xr-x    2 0        0            4096 Apr 01  2020 pub
+226 Directory send OK.
+
+<span class="token comment" spellcheck="true"># 要开启ftp服务让别的主机访问，需要开放端口，最简单的用firewall-cmd --add-service ftp</span>
+
+<span class="token comment" spellcheck="true"># 下载和上传</span>
+➜ <span class="token function">ftp</span> 139.155.182.202
+Connected to 139.155.182.202.
+220 <span class="token punctuation">(</span>vsFTPd 3.0.2<span class="token punctuation">)</span>
+Name <span class="token punctuation">(</span>139.155.182.202:qq<span class="token punctuation">)</span>: xx
+331 Please specify the password.
+Password:
+230 Login successful.
+ftp<span class="token operator">></span> <span class="token operator">!</span>ls <span class="token comment" spellcheck="true"># ！可以执行本机命令</span>
+a.txt        get_product.py    ipv4        main.go        utils
+aa.txt        go.mod        ipv6        result.txt    writefile.py
+bfile        go.sum        knowledge.py    <span class="token function">test</span>
+ftp<span class="token operator">></span> put a.txt <span class="token comment" spellcheck="true"># 上传文件，既在远程主机上写入文件</span>
+200 PORT <span class="token function">command</span> successful. Consider using PASV.
+150 Ok to send data.
+226 Transfer complete.
+7500000 bytes sent <span class="token keyword">in</span> 0.926 seconds <span class="token punctuation">(</span>7.72 Mbytes/s<span class="token punctuation">)</span>
+ftp<span class="token operator">></span> <span class="token function">ls</span>
+200 PORT <span class="token function">command</span> successful. Consider using PASV.
+150 Here comes the directory listing.
+-rw-r--r--    1 1000     1000      7500000 Nov 02 14:21 a.txt
+drwxrwxr-x    2 1000     1000         4096 Nov 02 14:19 <span class="token function">test</span>
+226 Directory send OK.
+ftp<span class="token operator">></span> get aaaa.txt <span class="token comment" spellcheck="true"># 下载文件，既在本地主机上写入文件</span>
+200 PORT <span class="token function">command</span> successful. Consider using PASV.
+150 Opening BINARY mode data connection <span class="token keyword">for</span> aaaa.txt <span class="token punctuation">(</span>7 bytes<span class="token punctuation">)</span>.
+WARNING<span class="token operator">!</span> 2 bare linefeeds received <span class="token keyword">in</span> ASCII mode
+File may not have transferred correctly.
+226 Transfer complete.
+7 bytes received <span class="token keyword">in</span> 0.000211 seconds <span class="token punctuation">(</span>32.4 kbytes/s<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p></p>
 
             </div>
@@ -1888,7 +2167,7 @@ hellohello<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1938,7 +2217,7 @@ hellohello<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -2147,7 +2426,7 @@ hellohello<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">24.9k</span>
+            <span class="white-color">26.8k</span>
             
 
             <br>

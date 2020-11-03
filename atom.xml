@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiuqideblog.com/"/>
-  <updated>2020-10-28T02:47:33.353Z</updated>
+  <updated>2020-11-03T01:36:05.970Z</updated>
   <id>https://qiuqideblog.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://qiuqideblog.com/2020/09/05/linux-bi-ji/"/>
     <id>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</id>
     <published>2020-09-05T08:47:41.000Z</published>
-    <updated>2020-10-28T02:47:33.353Z</updated>
+    <updated>2020-11-03T01:36:05.970Z</updated>
     
     <summary type="html">
     
@@ -50,7 +50,7 @@
     <link href="https://qiuqideblog.com/2020/09/03/mongo-replice/"/>
     <id>https://qiuqideblog.com/2020/09/03/mongo-replice/</id>
     <published>2020-09-03T07:22:51.000Z</published>
-    <updated>2020-09-07T01:40:43.630Z</updated>
+    <updated>2020-10-29T01:40:46.066Z</updated>
     
     <summary type="html">
     
@@ -153,9 +153,9 @@
     
       <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -212,9 +212,9 @@
     
       <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

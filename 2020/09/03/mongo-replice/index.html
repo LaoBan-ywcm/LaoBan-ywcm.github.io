@@ -299,7 +299,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -491,14 +491,14 @@
 <h3 id="复制集的组成"><a href="#复制集的组成" class="headerlink" title="复制集的组成"></a>复制集的组成</h3><p>一个典型的复制集群至少要有三个以上的节点组成：</p>
 <p><img src="./1.jpg" alt></p>
 <p>主节点：负责写入数据和选举投票</p>
-<p>从节点：复制主节点上的数据和选取投票</p>
+<p>从节点：复制主节点上的数据和选举投票</p>
 <blockquote>
 <p>MongoDB不在建议使用投票节点</p>
 </blockquote>
 <h3 id="复制集中数据是如何复制的"><a href="#复制集中数据是如何复制的" class="headerlink" title="复制集中数据是如何复制的"></a>复制集中数据是如何复制的</h3><p>在mongo中对数据的操作到达主节点的时候都会被记录下来，这些记录就是<code>oplog</code>。从节点通过在主节点上打开一个tailable游标不断获取主节点上新的<code>oplog</code>，并在自己的节点上进行回放，以此来保持和主节点的数据同步</p>
 <p><img src="./2.jpg" alt></p>
 <h3 id="通过选取完成故障恢复"><a href="#通过选取完成故障恢复" class="headerlink" title="通过选取完成故障恢复"></a>通过选取完成故障恢复</h3><p><img src="./3.jpg" alt></p>
-<p>关于MongoDB的复制集我们要知道一下几点：</p>
+<p>关于MongoDB的复制集我们要知道以下几点：</p>
 <ol>
 <li>具有投票权的节点两两之间互相发送心跳</li>
 <li>当5次未收到心跳包时判断为节点失联</li>
@@ -1324,7 +1324,7 @@ source: qaf.local:28019
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -1373,7 +1373,7 @@ source: qaf.local:28019
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="rsync 学习">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="rsync 学习">
                         
                         <span class="card-title">rsync 学习</span>
                     </div>
@@ -1578,7 +1578,7 @@ source: qaf.local:28019
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">24.9k</span>
+            <span class="white-color">26.8k</span>
             
 
             <br>
