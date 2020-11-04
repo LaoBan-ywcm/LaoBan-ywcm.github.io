@@ -311,7 +311,7 @@ l">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -466,14 +466,14 @@ l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.3k
+                    8.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    38 分
+                    39 分
                 </div>
                 
                 
@@ -1695,6 +1695,22 @@ File may not have transferred correctly.
 226 Transfer complete.
 7 bytes received <span class="token keyword">in</span> 0.000211 seconds <span class="token punctuation">(</span>32.4 kbytes/s<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="samba和NFS服务"><a href="#samba和NFS服务" class="headerlink" title="samba和NFS服务"></a>samba和NFS服务</h4><p>samba服务主要针对于windows系统</p>
+<p>NFS主要针对的的是linux系统</p>
+<h4 id="Nginx基本配置文件"><a href="#Nginx基本配置文件" class="headerlink" title="Nginx基本配置文件"></a>Nginx基本配置文件</h4><p>OpenResty® 是一个基于 Nginx 与 Lua 的高性能 Web 平台，其内部集成了大量精良的 Lua 库、第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态 Web 应用、Web 服务和动态网关。</p>
+<p>OpenResty® 通过汇聚各种设计精良的 Nginx 模块（主要由 OpenResty 团队自主开发），从而将 Nginx  有效地变成一个强大的通用 Web 应用平台。这样，Web 开发人员和系统工程师可以使用 Lua 脚本语言调动 Nginx 支持的各种 C 以及  Lua 模块，快速构造出足以胜任 10K 乃至 1000K 以上单机并发连接的高性能 Web 应用系统。</p>
+<p>OpenResty® 的目标是让你的Web服务直接跑在 Nginx 服务内部，充分利用 Nginx 的非阻塞 I/O 模型，不仅仅对  HTTP 客户端请求,甚至于对远程后端诸如 MySQL、PostgreSQL、Memcached 以及 Redis  等都进行一致的高性能响应。来自<a href="http://openresty.org/cn/" target="_blank" rel="noopener">OpenResty®官网</a></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 下载</span>
+yum-config-manager --add-repo https://openresty.org/package/centos/openresty.repo
+yum <span class="token function">install</span> openresty
+
+<span class="token comment" spellcheck="true"># 配置文件</span>
+/usr/local/openresty/nginx/conf/nginx.conf
+
+<span class="token comment" spellcheck="true"># 启动</span>
+<span class="token function">service</span> openresty start<span class="token operator">|</span>stop<span class="token operator">|</span>restart<span class="token operator">|</span>reload<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="LNMP"><a href="#LNMP" class="headerlink" title="LNMP"></a>LNMP</h4><p>LAMP: linux + Apache + MySQL + PHP</p>
+<p>LNMP: linux + Nginx + MySQL + PHP </p>
 <p></p>
 
             </div>
@@ -2167,7 +2183,7 @@ File may not have transferred correctly.
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux 学习笔记">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux 学习笔记">
                         
                         <span class="card-title">Linux 学习笔记</span>
                     </div>
@@ -2217,7 +2233,7 @@ File may not have transferred correctly.
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MongoDB复制集群搭建">
                         
                         <span class="card-title">MongoDB复制集群搭建</span>
                     </div>
@@ -2426,7 +2442,7 @@ File may not have transferred correctly.
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">26.8k</span>
+            <span class="white-color">27.1k</span>
             
 
             <br>
