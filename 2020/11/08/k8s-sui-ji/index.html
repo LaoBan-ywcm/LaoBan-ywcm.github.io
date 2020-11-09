@@ -4,17 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ERC20代币批量转账实现和解析(一), python golang k8s 算法 mongo elasticsearch">
+    <meta name="keywords" content="k8s随记录, python golang k8s 算法 mongo elasticsearch">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="如果你对区块链和ERC20代币没有概念，请先阅读入门知识
-
-以太坊是什么
-区块链技术-智能合约-以太坊
-
-批量转账，指的是在一笔 ETH 交易中转多笔代币到不同的账户，一般用于 ERC20 代币项目启动时对用户进行空投。
-批量空投的好处主要">
+    <meta name="description" content="k8s随记提到k8s时，就不得不提到docker，其实k8s和docker并不是绑定到一起的，k8s还可以使用其他容器技术，比如Podman。
+docker内部用到的技术其实很早就出现了，也应用到了很多的场景当中，尤其在PaaS中用到的特别">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ERC20代币批量转账实现和解析(一) | 鱼丸粗面的博客</title>
+    <title>k8s随记录 | 鱼丸粗面的博客</title>
     <link rel="icon" type="image/jpeg" href="/laoban.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -304,13 +299,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ERC20代币批量转账实现和解析(一)
+                        k8s随记录
                     </div>
                 </div>
             </div>
@@ -420,24 +415,11 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        
-                        <a href="/tags/区块链/" target="_blank">
-                            <span class="chip bg-color">区块链</span>
-                        </a>
-                        
+                        <span class="chip bg-color">无标签</span>
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/区块链/" class="post-category" target="_blank">
-                            区块链
-                        </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -445,7 +427,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-12-27
+                    2020-11-08
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -459,14 +441,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    352
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    1 分
                 </div>
                 
                 
@@ -477,251 +459,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>如果你对区块链和ERC20代币没有概念，请先阅读入门知识</p>
-<ol>
-<li><a href="https://learnblockchain.cn/2017/11/20/whatiseth/" target="_blank" rel="noopener">以太坊是什么</a></li>
-<li><a href="https://ethfans.org/posts/block-chain-technology-smart-contracts-and-ethereum" target="_blank" rel="noopener">区块链技术-智能合约-以太坊</a></li>
-</ol>
-<p>批量转账，指的是在一笔 ETH 交易中转多笔代币到不同的账户，一般用于 ERC20 代币项目启动时对用户进行空投。</p>
-<p>批量空投的好处主要有两个，一是省 GAS 费，但事实上省得不多；二是省时间，这是最主要目的。以太坊是以交易为粒度打包，如果转账只能单对单，即使一次发起多笔单对单的交易，等待这些交易被打包的时间也非常漫长，而且还有笔数上限限制。将多笔转账放到同一个交易中，被打包确认的速度就会非常快。一般 ERC20 代币项目启动时都会大撒币，空投地址动辄都是几万几十万，批量空投接口对效率会有上百倍的提升。</p>
-<p>文章主要内容</p>
-<ol>
-<li>在本机部署ETH私有链</li>
-<li>在ETH私有链上发布ERC20代币</li>
-<li>三种批量转账方式的原理</li>
-<li>三种批量转账方式的实现</li>
-<li>如何解析批量转账</li>
-</ol>
-<blockquote>
-<p>由于文章较长，所以这里分为两篇，本篇主要讲前两个部署环境的部分，熟悉部署的同学可以跳过本章</p>
-</blockquote>
-<h2 id="在本机部署ETH私有链"><a href="#在本机部署ETH私有链" class="headerlink" title="在本机部署ETH私有链"></a>在本机部署ETH私有链</h2><p>本机默认是在Mac OS X上进行安装，别的系统的安装可以在github上查看<a href="https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum" target="_blank" rel="noopener">Ethereum Installation Instructions</a></p>
-<h3 id="geth安装"><a href="#geth安装" class="headerlink" title="geth安装"></a>geth安装</h3><p>推荐使用Homebrew进行安装，简单快捷</p>
-<blockquote>
-<p>brew 是 Mac 下的包管理工具，和Ubuntu里的apt-get类似</p>
-</blockquote>
-<pre><code>brew tap ethereum/ethereum
+                <h3 id="k8s随记"><a href="#k8s随记" class="headerlink" title="k8s随记"></a>k8s随记</h3><p>提到k8s时，就不得不提到docker，其实k8s和docker并不是绑定到一起的，k8s还可以使用其他容器技术，比如Podman。</p>
+<p>docker内部用到的技术其实很早就出现了，也应用到了很多的场景当中，尤其在PaaS中用到的特别多。</p>
+<p>docker容器采用了Namespace和Cgroups实现环境隔离，docker下的每一个容器都是docker daemon下的子进程</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看容器内部进程</span>
+z@master:~$ <span class="token function">sudo</span> docker <span class="token function">top</span> 7cf736989611
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                35890               35772               0                   Nov05               ?                   00:00:33            /root/xx
 
-brew install ethereum</code></pre><h3 id="创建私有链"><a href="#创建私有链" class="headerlink" title="创建私有链"></a>创建私有链</h3><p>首先新建一个文件目录，例如<code>ethprivate</code></p>
-<p>要搭建私有链必须有一个创世区块，创世区块的信息写在一个json文件中，例如genesis.json文件，在<code>ethprivate/genesis.json</code>中写入下面的内容</p>
-<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"config"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"chainID"</span><span class="token operator">:</span> <span class="token number">1024</span><span class="token punctuation">,</span>
-    <span class="token property">"homesteadBlock"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token property">"eip155Block"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token property">"eip158Block"</span><span class="token operator">:</span> <span class="token number">0</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"alloc"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"coinbase"</span><span class="token operator">:</span> <span class="token string">"0x0000000000000000000000000000000000000000"</span><span class="token punctuation">,</span>
-  <span class="token property">"difficulty"</span><span class="token operator">:</span> <span class="token string">"0x400"</span><span class="token punctuation">,</span>
-  <span class="token property">"extraData"</span><span class="token operator">:</span> <span class="token string">"0x"</span><span class="token punctuation">,</span>
-  <span class="token property">"gasLimit"</span><span class="token operator">:</span> <span class="token string">"0x84c060"</span><span class="token punctuation">,</span>
-  <span class="token property">"nonce"</span><span class="token operator">:</span> <span class="token string">"0xdeadbeefdeadbeef"</span><span class="token punctuation">,</span>
-  <span class="token property">"mixhash"</span><span class="token operator">:</span> <span class="token string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span><span class="token punctuation">,</span>
-  <span class="token property">"parentHash"</span><span class="token operator">:</span> <span class="token string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span><span class="token punctuation">,</span>
-  <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token string">"0x00"</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p>这里将gasLimit设置大一点，防止后面部署合约的时候报<code>Error: exceeds block gas limit undefined</code>的错误信息，这是因为合约所需的gas超过了区块的最大gas</p>
-</blockquote>
-<p>创建好创世区块后，我们需要利用该创世区块去初始化区块链，需要新建一个<code>data0</code>目录存放区块信息</p>
-<p>接着在主目录下，执行初始化区块链的命令</p>
-<pre><code>geth --datadir data0 init genesis.json</code></pre><p>看到如下信息则表明初始化成功</p>
-<p><img src="./167f01019e73ace1.png" alt></p>
-<h3 id="启动私有链"><a href="#启动私有链" class="headerlink" title="启动私有链"></a>启动私有链</h3><pre><code>geth --datadir &#39;data0&#39; --identity &#39;my_block&#39; --port &#39;30304&#39; console 2&gt;&gt;eth_output.log</code></pre><p>参数含义</p>
-<pre><code>–identity：指定节点 ID；
-–rpc：表示开启 HTTP-RPC 服务；
-–rpcport：指定 HTTP-RPC 服务监听端口号（默认为 8545）；
-–datadir：指定区块链数据的存储位置；
-–port：指定和其他节点连接所用的端口号（默认为 30303）；
-–networkid： 指定私有链网络号；
-–nodiscover：关闭节点发现机制，防止加入有同样初始配置的陌生节点。</code></pre><p>看到下面的信息表示私有链成功启动</p>
-<p><img src="./167f01127c85c035.png" alt></p>
-<h3 id="创建账户"><a href="#创建账户" class="headerlink" title="创建账户"></a>创建账户</h3><p>现在刚启动还没有任何账户</p>
-<p><img src="./167f012330806b6e.png" alt></p>
-<p>我们利用<code>personal</code>创建账户</p>
-<pre><code>personal.newAccount()</code></pre><p><img src="./167f012c9ee11b9f.png" alt></p>
-<blockquote>
-<p>Passphrase 就是密码，连续输入两次密码便可以创建一个账户</p>
-</blockquote>
-<p>除了<code>personal</code>，geth命令行中还包含了另外的对象</p>
-<pre><code>eth：包含一些跟操作区块链相关的方法
-net：包含以下查看p2p网络状态的方法
-admin：包含一些与管理节点相关的方法
-miner：包含启动&amp;停止挖矿的一些方法
-personal：主要包含一些管理账户的方法
-txpool：包含一些查看交易内存池的方法
-web3：包含了以上对象，还包含一些单位换算的方法</code></pre><p>按照这中方式可以多创建几个账户，在后面使用</p>
-<h3 id="挖矿"><a href="#挖矿" class="headerlink" title="挖矿"></a>挖矿</h3><p>我们刚开始还没有进行挖矿，所以<code>eth.accounts[0]</code>中的余额为0</p>
-<pre><code>eth.getBalance(eth.accounts[0])</code></pre><p><img src="./167f0138351b2ac0.png" alt></p>
-<blockquote>
-<p>挖矿所得的ETH会默认存在<code>eth.accounts[0]</code>的账户当中</p>
-</blockquote>
-<p>通过<code>miner.start()</code>来启动挖矿，利用<code>miner.stop()</code>停止挖矿</p>
-<p><img src="./167f014193d7c98a.png" alt></p>
-<blockquote>
-<p><code>miner.start()</code>会返回<code>null</code>，推荐使用<code>tail -f eth_output.log</code>查看日志，这样就可以看到挖矿的信息</p>
-</blockquote>
-<p><img src="./167f0147e0208eb4.png" alt><br>现在我们查看账户的余额就不在是0了</p>
-<p><img src="./167f014d7ecf3475.png" alt></p>
-<p>每挖到一个区块会奖励5个以太币，日志中可以看到到目前为止挖到了5个区块，那么就应该是20个以太币，可是查看的余额却不是这样，这是因为这里默认的单位是Wei，有关单位可以去移步<a href="https://zhuanlan.zhihu.com/p/28994731" target="_blank" rel="noopener">以太币(Ether)单位</a></p>
-<p>可以利用下面的命令转换单位</p>
-<p><img src="./167f01539958ff40.png" alt></p>
-<p>这里只做简单的介绍，其余的命令大家有感兴趣的可以自行查找</p>
-<h2 id="合约标准"><a href="#合约标准" class="headerlink" title="合约标准"></a>合约标准</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
-<p>ERC20使通证智能合约的行为非常类似于传统的加密货币，例如在不同账户之间发送和接收、查看通证总供应量或者查看某个地址可用的通证余额，就像比特币或以太币一样。这类似于用以太坊钱包 发送和接收以太币、查看流通中的以太币总量、查看特定钱包的货币余额等。</p>
-<p>ERC20规定了一些标准的接口</p>
-<pre><code>contract ERC20Interface {
-
-    string public constant name = &quot;Token Name&quot;;
-    string public constant symbol = &quot;SYM&quot;;
-    uint8 public constant decimals = 18;  // 18 is the most common number of decimal places
-
-    function totalSupply() public constant returns (uint);
-    function balanceOf(address tokenOwner) public constant returns (uint balance);
-    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
-    function transfer(address to, uint tokens) public returns (bool success);
-    function approve(address spender, uint tokens) public returns (bool success);
-    function transferFrom(address from, address to, uint tokens) public returns (bool success);
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-}</code></pre><p>简单的介绍一下，更加详细的介绍可以在<a href="https://github.com/ethereum/EIPs/issues/20" target="_blank" rel="noopener">github</a>查看</p>
-<pre><code>name ： 代币名称
-symbol： 代币符号
-decimals： 代币小数点位数，代币的最小单位
-totalSupply() : 发行代币总量。
-balanceOf(): 查看对应账号的代币余额。
-transfer(): 实现代币交易，用于给用户发送代币（从我们的账户里）
-transferFrom(): 实现代币用户之间的交易
-allowance(): 控制代币的交易，如可交易账号及资产
-approve(): 允许用户可花费的代币数</code></pre><h2 id="在ETH私有链上发布ERC20代币"><a href="#在ETH私有链上发布ERC20代币" class="headerlink" title="在ETH私有链上发布ERC20代币"></a>在ETH私有链上发布ERC20代币</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
-<p>ERC20使通证智能合约的行为非常类似于传统的加密货币，例如在不同账户之间发送和接收、查看通证总供应量或者查看某个地址可用的通证余额，就像比特币或以太币一样。这类似于用以太坊钱包 发送和接收以太币、查看流通中的以太币总量、查看特定钱包的货币余额等。</p>
-<p>ERC20规定了一些标准的接口</p>
-<pre><code>contract ERC20Interface {
-
-    string public constant name = &quot;Token Name&quot;;
-    string public constant symbol = &quot;SYM&quot;;
-    uint8 public constant decimals = 18;  // 18 is the most common number of decimal places
-
-    function totalSupply() public constant returns (uint);
-    function balanceOf(address tokenOwner) public constant returns (uint balance);
-    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
-    function transfer(address to, uint tokens) public returns (bool success);
-    function approve(address spender, uint tokens) public returns (bool success);
-    function transferFrom(address from, address to, uint tokens) public returns (bool success);
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-}</code></pre><p>简单的介绍一下，更加详细的介绍可以在<a href="https://github.com/ethereum/EIPs/issues/20" target="_blank" rel="noopener">github</a>查看</p>
-<pre><code>name ： 代币名称
-symbol： 代币符号
-decimals： 代币小数点位数，代币的最小单位
-totalSupply() : 发行代币总量。
-balanceOf(): 查看对应账号的代币余额。
-transfer(): 实现代币交易，用于给用户发送代币（从我们的账户里）
-transferFrom(): 实现代币用户之间的交易
-allowance(): 控制代币的交易，如可交易账号及资产
-approve(): 允许用户可花费的代币数</code></pre><h3 id="编写合约代码"><a href="#编写合约代码" class="headerlink" title="编写合约代码"></a>编写合约代码</h3><p>先编写一个符合ERC20标准的代码</p>
-<pre><code>pragma solidity ^0.4.16;
-
-interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }
-
-contract TokenERC20 {
-    string public name;
-    string public symbol;
-    uint8 public decimals = 18;  // 18 是建议的默认值
-    uint256 public totalSupply;
-
-    mapping (address =&gt; uint256) public balanceOf;  // 
-    mapping (address =&gt; mapping (address =&gt; uint256)) public allowance;
-
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
-    event Burn(address indexed from, uint256 value);
-
-
-    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public {
-        totalSupply = initialSupply * 10 ** uint256(decimals);
-        balanceOf[msg.sender] = totalSupply;
-        name = tokenName;
-        symbol = tokenSymbol;
-    }
-
-
-    function _transfer(address _from, address _to, uint _value) internal {
-        require(_to != 0x0);
-        require(balanceOf[_from] &gt;= _value);
-        require(balanceOf[_to] + _value &gt; balanceOf[_to]);
-        uint previousBalances = balanceOf[_from] + balanceOf[_to];
-        balanceOf[_from] -= _value;
-        balanceOf[_to] += _value;
-        Transfer(_from, _to, _value);
-        assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
-    }
-
-    function transfer(address _to, uint256 _value) public {
-        _transfer(msg.sender, _to, _value);
-    }
-
-    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
-        require(_value &lt;= allowance[_from][msg.sender]);     // Check allowance
-        allowance[_from][msg.sender] -= _value;
-        _transfer(_from, _to, _value);
-        return true;
-    }
-
-    function approve(address _spender, uint256 _value) public
-        returns (bool success) {
-        allowance[msg.sender][_spender] = _value;
-        return true;
-    }
-
-    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) {
-        tokenRecipient spender = tokenRecipient(_spender);
-        if (approve(_spender, _value)) {
-            spender.receiveApproval(msg.sender, _value, this, _extraData);
-            return true;
-        }
-    }
-
-    function burn(uint256 _value) public returns (bool success) {
-        require(balanceOf[msg.sender] &gt;= _value);
-        balanceOf[msg.sender] -= _value;
-        totalSupply -= _value;
-        Burn(msg.sender, _value);
-        return true;
-    }
-
-    function burnFrom(address _from, uint256 _value) public returns (bool success) {
-        require(balanceOf[_from] &gt;= _value);
-        require(_value &lt;= allowance[_from][msg.sender]);
-        balanceOf[_from] -= _value;
-        allowance[_from][msg.sender] -= _value;
-        totalSupply -= _value;
-        Burn(_from, _value);
-        return true;
-    }
-}</code></pre><p>然后把这段代码拷贝到<a href="http://remix.ethereum.org/#optimize=false&version=soljson-v0.4.25+commit.59dbf8f1.js" target="_blank" rel="noopener">Solidity</a>，点击旁边的Details获取部署代码</p>
-<p><img src="./167f01705994d26b.png" alt></p>
-<p>然后在弹出层中复制WEB3DEPLOY中的代码到编辑器中</p>
-<p><img src="./167f01767fa2c531.png" alt></p>
-<p>修改代码如图中所示</p>
-<p><img src="./167f017c752a3787.png" alt></p>
-<p>然后将代码复制到geth命令行中，按回车。然后执行<code>miner.start()</code>，如果出现以下信息则表明代币部署成功</p>
-<p><img src="./167f0182236e5734.png" alt></p>
-<blockquote>
-<p>如果出现<code>Error: authentication needed: password or unlock undefined</code>错误，是因为账户没有被解锁，执行<code>personal.unlockAccount(eth.accounts[0])</code>然后输入密码解锁账户</p>
-</blockquote>
-<p>接着我们在命令行中输入<code>tokenerc20</code>则可以看到返回的接口信息</p>
-<p><img src="./167f01899ff07a80.png" alt></p>
-<blockquote>
-<p>address，表示合约地址</p>
-</blockquote>
-<p>可以利用<code>balanceOf</code>函数查看地址的代币余额</p>
-<p><img src="./167f018f235589e1.png" alt></p>
-<p>至此，合约部署完毕</p>
-<p>下一篇文章说说ERC20空投合约的三种实现方式</p>
+<span class="token comment" spellcheck="true"># 查看35772的父进程</span>
+z@master:~$ <span class="token function">ps</span> -le <span class="token operator">|</span> <span class="token function">grep</span> 35772
+4 S     0  35772   2165  0  80   0 -  2491 -      ?        00:01:07 docker-containe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>容器内新启动的进程也是docker daemon下的子进程</p>
+<p>docker之所以流行是因为如下几个原因：</p>
+<ul>
+<li>他发明了“镜像”的概念，解决了PaaS中要为不同用户不同服务打压缩包繁琐的过程</li>
+<li>把一个完全纯后端的概念，通过非常好的封装能够让广大的开发者容易上手，比如前端工程师可以经过简单的学习就能独立部署自己的项目</li>
+</ul>
+<p>k8s是一个容器编排系统，那么什么是容器编排系统呢？我所理解的就是通过一种便捷的方式能够让许多有关联，有依赖的容器能够协同的工作。</p>
 
             </div>
             <hr />
@@ -880,9 +635,9 @@ contract TokenERC20 {
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《ERC20代币批量转账实现和解析(一)》
+                    《k8s随记录》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/11/08/k8s-sui-ji/" property="cc:attributionName"
                rel="cc:attributionURL">
                 KaKa
             </a> 采用
@@ -1184,49 +939,37 @@ contract TokenERC20 {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/01/02/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-er/">
+                <a href="/2020/11/08/k8s-sui-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="ERC20代币批量转账实现和解析(二)">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="k8s随记录">
                         
-                        <span class="card-title">ERC20代币批量转账实现和解析(二)</span>
+                        <span class="card-title">k8s随记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            实现代币批量转账
+                            k8s随记提到k8s时，就不得不提到docker，其实k8s和docker并不是绑定到一起的，k8s还可以使用其他容器技术，比如Podman。
+docker内部用到的技术其实很早就出现了，也应用到了很多的场景当中，尤其在PaaS中用到的特别
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-08
+                            </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/区块链/" class="post-category" target="_blank">
-                                    区块链
-                                </a>
-                            
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/区块链/" target="_blank">
-                        <span class="chip bg-color">区块链</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -1234,48 +977,33 @@ contract TokenERC20 {
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/">
+                <a href="/2020/11/04/go-yu-yan-shi-zhan-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ERC20代币批量转账实现和解析(一)">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="《Go语言实战》笔记">
                         
-                        <span class="card-title">ERC20代币批量转账实现和解析(一)</span>
+                        <span class="card-title">《Go语言实战》笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            实现代币批量转账
+                            第一章 关于Go语言的介绍1.1 用 Go 解决现代编程难题1.1.2 并发需要注意的是，如果在通道中传递的是指向数据的指针，而且读和写是在不同的goroutine完成的，则会出现问题，需要加锁进行控制
+在Golang中对于并发问题的控制，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/区块链/" class="post-category" target="_blank">
-                                    区块链
-                                </a>
-                            
-                            
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/区块链/" target="_blank">
-                        <span class="chip bg-color">区块链</span>
-                    </a>
-                    
                 </div>
                 
             </div>
