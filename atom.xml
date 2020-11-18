@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://qiuqideblog.com/"/>
-  <updated>2020-11-09T01:37:27.710Z</updated>
+  <updated>2020-11-18T03:06:45.100Z</updated>
   <id>https://qiuqideblog.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>k8s随记录</title>
-    <link href="https://qiuqideblog.com/2020/11/08/k8s-sui-ji/"/>
-    <id>https://qiuqideblog.com/2020/11/08/k8s-sui-ji/</id>
+    <title>docker中的Namespace和Cgroups</title>
+    <link href="https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/"/>
+    <id>https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</id>
     <published>2020-11-08T13:42:32.000Z</published>
-    <updated>2020-11-09T01:37:27.710Z</updated>
+    <updated>2020-11-18T03:06:45.100Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;h3 id=&quot;k8s随记&quot;&gt;&lt;a href=&quot;#k8s随记&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;docker中的Namespace和Cgroups&quot;&gt;&lt;a href=&quot;#docker中的Namespace和Cgroups&quot; class=&quot;headerlink&quot;
         
       
     
@@ -43,7 +43,7 @@
     <link href="https://qiuqideblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/"/>
     <id>https://qiuqideblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/</id>
     <published>2020-11-04T07:21:07.000Z</published>
-    <updated>2020-11-08T01:02:14.651Z</updated>
+    <updated>2020-11-17T15:44:34.349Z</updated>
     
     <summary type="html">
     

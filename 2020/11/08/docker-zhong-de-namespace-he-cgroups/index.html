@@ -4,15 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Python实现无重复数字, python golang k8s 算法 mongo elasticsearch">
+    <meta name="keywords" content="docker中的Namespace和Cgroups, python golang k8s 算法 mongo elasticsearch">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="yCy2azpds5XSuGZvis6OuA-XIGF5GuGpYRAaGfD6o48">
     <meta name="360-site-verification" content="b7c11a830ef90fd1464ad6206bb7b6e7">
-    <meta name="description" content="Python实现无重复数字当我们想要取的一些不重复的数字时，通常我们会想到random.sample方法
-import random
+    <meta name="description" content="docker中的Namespace和Cgroupsdocker内部用到的技术其实很早就出现了，也应用到了很多的场景当中，尤其在PaaS中用到的特别多。
+docker之所以流行是因为如下几个原因：
 
-print(random.sample(range(0, 10), 4))
-# [5, 1, 0, 2]">
+他发明了“镜像”的概念，解决了PaaS中要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@ print(random.sample(range(0, 10), 4))
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Python实现无重复数字 | 鱼丸粗面的博客</title>
+    <title>docker中的Namespace和Cgroups | 鱼丸粗面的博客</title>
     <link rel="icon" type="image/jpeg" href="/laoban.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -302,13 +301,13 @@ print(random.sample(range(0, 10), 4))
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Python实现无重复数字
+                        docker中的Namespace和Cgroups
                     </div>
                 </div>
             </div>
@@ -418,32 +417,11 @@ print(random.sample(range(0, 10), 4))
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        
-                        <a href="/tags/Python/" target="_blank">
-                            <span class="chip bg-color">Python</span>
-                        </a>
-                        
-                        <a href="/tags/算法/" target="_blank">
-                            <span class="chip bg-color">算法</span>
-                        </a>
-                        
+                        <span class="chip bg-color">无标签</span>
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                        <a href="/categories/Python/" class="post-category" target="_blank">
-                            Python
-                        </a>
-                        
-                        <a href="/categories/Python/编程学习/" class="post-category" target="_blank">
-                            编程学习
-                        </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -451,7 +429,7 @@ print(random.sample(range(0, 10), 4))
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-13
+                    2020-11-08
                 </div>
 
                 <div class="post-author info-break-policy">
@@ -465,14 +443,14 @@ print(random.sample(range(0, 10), 4))
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    478
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
                 
@@ -483,107 +461,49 @@ print(random.sample(range(0, 10), 4))
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Python实现无重复数字"><a href="#Python实现无重复数字" class="headerlink" title="Python实现无重复数字"></a>Python实现无重复数字</h1><p>当我们想要取的一些不重复的数字时，通常我们会想到<code>random.sample</code>方法</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
+                <h3 id="docker中的Namespace和Cgroups"><a href="#docker中的Namespace和Cgroups" class="headerlink" title="docker中的Namespace和Cgroups"></a>docker中的Namespace和Cgroups</h3><p>docker内部用到的技术其实很早就出现了，也应用到了很多的场景当中，尤其在PaaS中用到的特别多。</p>
+<p>docker之所以流行是因为如下几个原因：</p>
+<ul>
+<li>他发明了“镜像”的概念，解决了PaaS中要为不同用户不同服务打压缩包繁琐的过程</li>
+<li>把一个完全纯后端的概念，通过非常好的封装能够让广大的开发者容易上手，比如前端工程师可以经过简单的学习就能独立部署自己的项目</li>
+</ul>
+<p>docker容器采用了Namespace和Cgroups实现环境隔离。</p>
+<p>Namespace技术实际上修改了应用进程看待整个计算机的视图，既它的“视线”被操作系统做了限制，只能看到某些指定的内容。对于宿主机来说，这些被“隔离”了的进程和其他进程并没有太大区别。这也是和虚拟机根本区别的地方，它并没有单独划分出硬件，在划分的硬件上再启动一个系统。而只是对进程进行了“隔离”。具体的Namespace都有：<code>Mount</code>、<code>UTS</code>、<code>IPC</code>、<code>Network</code>和<code>User</code>docker。</p>
+<p>其实每一个容器都是docker daemon下的子进程</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查看容器内部进程</span>
+z@master:~$ <span class="token function">sudo</span> docker <span class="token function">top</span> 7cf736989611
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+root                35890               35772               0                   Nov05               ?                   00:00:33            /root/xx
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># [5, 1, 0, 2]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但是这样只能保证每次运行这行代码时的数字是不重复的，如果要多次运行上面的代码就会有重复的数字出现。</p>
-<p>最先想到的方法就是将每次取到数字都放在一个set内，每次产生新的随机数字时，先判断它是否在这个set内</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
-<span class="token keyword">import</span> functools
-<span class="token keyword">import</span> time
-
-
-<span class="token keyword">def</span> <span class="token function">scale_time</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        start_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        result <span class="token operator">=</span> fn<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
-        end_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{end_time - start_time}"</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> result
-
-    <span class="token keyword">return</span> wrapper
-
-
-@scale_time
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    result_set <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">while</span> len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">9999</span><span class="token punctuation">:</span>
-        _data <span class="token operator">=</span> random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-        result_set <span class="token operator">=</span> result_set <span class="token operator">|</span> set<span class="token punctuation">(</span>_data<span class="token punctuation">)</span>
-
-
-test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 6.2531819343566895</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>从上面代码可以看到，这种方式效率是比较低的，越到后面，产生不重复随机数的概率就会越来越低，就需要重试更多的次数</p>
-<p>有没有优化的方式呢？那就是下面要讲的，利用列表来取不重复的随机数，每次取出来的随机数都能保证和之前取出来的不重复</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
-<span class="token keyword">import</span> functools
-<span class="token keyword">import</span> time
-
-
-<span class="token keyword">def</span> <span class="token function">scale_time</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        start_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        result <span class="token operator">=</span> fn<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
-        end_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{end_time - start_time}"</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> result
-
-    <span class="token keyword">return</span> wrapper
-
-
-@scale_time
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    result_set <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">while</span> len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">9999</span><span class="token punctuation">:</span>
-        _data <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-        result_set<span class="token punctuation">.</span>add<span class="token punctuation">(</span>data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        data<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>_data<span class="token punctuation">)</span>
-
-test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 0.027987957000732422</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>上面的代码会pop原来数组的值，如果要继续优化，可以不pop，而是修改元素的位置</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> random
-<span class="token keyword">import</span> functools
-<span class="token keyword">import</span> time
-
-
-<span class="token keyword">def</span> <span class="token function">scale_time</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    functools<span class="token punctuation">.</span>wraps<span class="token punctuation">(</span>fn<span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        start_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        result <span class="token operator">=</span> fn<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kw<span class="token punctuation">)</span>
-        end_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">"{end_time - start_time}"</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> result
-
-    <span class="token keyword">return</span> wrapper
-
-
-@scale_time
-<span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    result_set <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    data <span class="token operator">=</span> list<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    _index <span class="token operator">=</span> len<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">while</span> len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">9999</span><span class="token punctuation">:</span>
-        _data <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> _index<span class="token punctuation">)</span>
-        result_set<span class="token punctuation">.</span>add<span class="token punctuation">(</span>data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        _index <span class="token operator">-=</span> <span class="token number">1</span>
-        data<span class="token punctuation">[</span><span class="token operator">-</span>len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span>_data<span class="token punctuation">]</span><span class="token punctuation">,</span> data<span class="token punctuation">[</span><span class="token operator">-</span>len<span class="token punctuation">(</span>result_set<span class="token punctuation">)</span><span class="token punctuation">]</span>
-
-test<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true"># 0.02704787254333496</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true"># 查看35772的父进程</span>
+z@master:~$ <span class="token function">ps</span> -le <span class="token operator">|</span> <span class="token function">grep</span> 35772
+4 S     0  35772   2165  0  80   0 -  2491 -      ?        00:01:07 docker-containe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>容器内新启动的进程也是docker daemon下的子进程</p>
+<p><strong>所以说，容器，其实是一种特殊的进程</strong></p>
+<p><img src="./d1bb34cda8744514ba4c233435bf4e96.jpg" alt="img"></p>
+<p>上面的图是虚拟机和docker对比不太准确的一个图，<code>Docker Engine</code>是不能和<code>Hypervisor</code>放到同一级的，并不会像Hypervisor一样将虚拟机的指令转换成宿主机的指令，在<code>Docker</code>中，是宿主机直接管理进程的</p>
+<p>因为没有Hypervisor和Guest OS，容器相较于虚拟机有更高的性能，更小的资源消耗。当然有利也有弊，基于Namespace隔离就会隔离不彻底，容器就是宿主机上的一种进程，那么容器之间就是共享宿主机操作系统内核的。这就意味着在windows上不能运行Linux容器，或者在低版本的Linux宿主机上运行高版本的Linux是行不通的。第二个就是有些资源是不能被Namespace隔离的，比如：时间。</p>
+<p>容器在通过Namespace技术隔离后，还有另外一个重要的技术就是Cgroups，<strong>Cgroups的全称是Linux Control Group 。它最重要的作用，就是限制一个进程组能够使用的资源，包括CPU、内存、磁盘、网络带宽等</strong></p>
+<p>Cgroups也有它自己的不足，比如<code>/proc</code>文件系统，<code>/proc</code>文件下存储的是当前内核运行状态的一系列特殊文件，用户可以通过访问这些文件查看系统以及它正在运行的进程的信息，这也是<code>top</code>指令最主要的数据来源。</p>
+<p>但是，你如果在容器里执行<code>top</code>指令，就会发现他显示的是宿主机的数据，而不是当前容器的数据，原因是，<code>/proc</code>文件系统并不了解Cgroups的存在，不知道Cgroups对这个容器做了什么样的限制</p>
+<p>下面说一下Mount Namespace，我们在每个容器内部都只能看到该容器的文件系统而不是宿主机的文件系统就是得益于该技术，而Mount Namespace技术就是基于<code>chroot</code>开发出来的。<code>chroot</code>命令用于设置一个进程的根目录。而这个挂载在容器根目录上、用来为容器提供隔离后执行环境的文件系统，就是所谓的“容器镜像”，有个更加专业的名字：<code>rootfs（根文件系统）</code>。</p>
+<p>需要注意的是<code>rootfs</code>只是规定了操作系统的文件、目录和结构等，只是一个框架，并不包含内核，容器用的是宿主机的内核。正是由于<code>rootfs</code>才有了容器中最为重要的<strong>一致性</strong>，在打镜像的时候会将整个操作系统的文件系统进行打包，这样就避免了需要在不同环境上运行程序的各种适配问题。</p>
+<p>docker在<code>rootfs</code>的基础上创新了“层”的概念，通过联合文件系统（Union File System）实现。</p>
+<p>想一下如果没有层的概念，我们要对一个基础镜像修改时，每个人都得执行下制作整个镜像的过程，而且制作后的镜像他们完全没有关联。</p>
+<p>如果有了层的概念，我们只需要在基础镜像上进行修改，每个人都用同一个基础镜像，制作后的的镜像都是基于同一个基础镜像。</p>
+<p>docker中的层可以分为三层：</p>
+<p><img src="./8a7b5cfabaab2d877a1d4566961edd5f.png" alt="img"></p>
+<ol>
+<li><p><strong>只读层</strong></p>
+<p>包含了操作系统最基础的一部分</p>
+</li>
+<li><p><strong>init层</strong></p>
+<p>专门用来存放/etc/hosts、/etc/resolv.conf等信息。这一层的作用就是可以让用户修改一些和本容器强相关的配置，比如hostname、指定的域名解析等。这些修改都只针对该容器，不同容器会有不同配置。而这些修改是不会被<code>docker commit</code>制作到镜像当中</p>
+</li>
+<li><p><strong>可读写层</strong></p>
+<p>在这个层可以对操作系统中的文件进行修改，而进行的修改，比如删除、修改等。都是将只读层的文件拷贝出来，重新写一个文件。删除操作也是，并不会实际删除文件，比如删除<code>test</code>文件，在读写层会新写一个<code>.wh.test</code>文件，标识该<code>test</code>文件已经被删除</p>
+</li>
+</ol>
 
             </div>
             <hr />
@@ -742,9 +662,9 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Python实现无重复数字》
+                    《docker中的Namespace和Cgroups》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/07/13/python-random/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/11/08/docker-zhong-de-namespace-he-cgroups/" property="cc:attributionName"
                rel="cc:attributionURL">
                 KaKa
             </a> 采用
@@ -1046,49 +966,39 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/09/02/rsync/">
+                <a href="/2020/11/08/docker-zhong-de-namespace-he-cgroups/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="rsync 学习">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="docker中的Namespace和Cgroups">
                         
-                        <span class="card-title">rsync 学习</span>
+                        <span class="card-title">docker中的Namespace和Cgroups</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记录rsync的一些常用用法
+                            docker中的Namespace和Cgroupsdocker内部用到的技术其实很早就出现了，也应用到了很多的场景当中，尤其在PaaS中用到的特别多。
+docker之所以流行是因为如下几个原因：
+
+他发明了“镜像”的概念，解决了PaaS中要
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-08
+                            </span>
                         <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/笔记/" class="post-category" target="_blank">
-                                    笔记
-                                </a>
-                            
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/笔记/" target="_blank">
-                        <span class="chip bg-color">笔记</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -1099,52 +1009,30 @@ test<span class="token punctuation">(</span><span class="token punctuation">)</s
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/02/python-object-4/">
+                <a href="/2020/11/04/go-yu-yan-shi-zhan-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="《Python3 面向对象编程》笔记 - 第4章 异常捕获">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="《Go语言实战》笔记">
                         
-                        <span class="card-title">《Python3 面向对象编程》笔记 - 第4章 异常捕获</span>
+                        <span class="card-title">《Go语言实战》笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            异常的捕获、自定义、使用场景、使用方法
+                            第一章 关于Go语言的介绍1.1 用 Go 解决现代编程难题1.1.2 并发需要注意的是，如果在通道中传递的是指向数据的指针，而且读和写是在不同的goroutine完成的，则会出现问题，需要加锁进行控制
+在Golang中对于并发问题的控制，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-02
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/笔记/" class="post-category" target="_blank">
-                                    笔记
-                                </a>
-                            
-                            
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Python/" target="_blank">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/tags/笔记/" target="_blank">
-                        <span class="chip bg-color">笔记</span>
-                    </a>
-                    
-                    <a href="/tags/面向对象/" target="_blank">
-                        <span class="chip bg-color">面向对象</span>
-                    </a>
-                    
                 </div>
                 
             </div>
