@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</loc>
+    
+    <lastmod>2020-11-25T02:03:38.420Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</loc>
     
-    <lastmod>2020-11-18T03:06:45.100Z</lastmod>
+    <lastmod>2020-11-21T13:38:31.180Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>https://qiuqideblog.com/2020/11/04/http-bi-ji/</loc>
     
     <lastmod>2020-11-04T06:39:11.453Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</loc>
-    
-    <lastmod>2020-11-04T05:18:21.702Z</lastmod>
     
   </url>
   

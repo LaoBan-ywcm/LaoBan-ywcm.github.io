@@ -466,14 +466,14 @@ l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.6k
+                    9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    39 分
+                    41 分
                 </div>
                 
                 
@@ -828,11 +828,45 @@ tmpfs           6.3G     0  6.3G   0% /run/user/0<span aria-hidden="true" class=
 <p>多个文件其实都是链接到同一个数据块，修改一个文件，其余的文件都会同步变化。</p>
 <p>硬链接是不允许跨文件系统的。</p>
 <p>创建硬链接的方式：<code>ln afile bfile</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat base</span>
+aaaa
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ln base yin</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls -li</span>
+<span class="token comment" spellcheck="true"># inode号是相同的，他们指向同一个inode块</span>
+131106 -rw-r--r-- 2 root root 5 Nov 25 09:56 base
+131106 -rw-r--r-- 2 root root 5 Nov 25 09:56 yin
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rm base</span>
+rm: remove regular <span class="token function">file</span> ‘base’? y
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat yin</span>
+aaaa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>软链接</strong></p>
 <p>克服了硬链接不能跨文件系统的问题。</p>
 <p>但是实现上是不同的，软链接是创建了完全不同的一个文件，当系统读取这个文件时会发现这个文件是个链接文件，所以就会读取它链接的那个原文件。</p>
 <p>对软链接文件设置权限并不会改变该文件的权限，而是改变的是原文件。</p>
 <p>创建软链接的方式：<code>ln -s afile bfile</code></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat base</span>
+aaaa
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ln -s base ruan</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls -li</span>
+<span class="token comment" spellcheck="true"># inode号不同</span>
+131103 -rw-r--r-- 1 root root 5 Nov 25 09:59 base
+131104 lrwxrwxrwx 1 root root 4 Nov 25 10:00 ruan -<span class="token operator">></span> base
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat ruan</span>
+aaaa
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># rm base</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls -li</span>
+total 0
+131104 lrwxrwxrwx 1 root root 4 Nov 25 10:00 ruan -<span class="token operator">></span> base
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat ruan</span>
+<span class="token comment" spellcheck="true"># 当删除了原始文件，因为软连接是指向的原始文件，并没有指向inode号，所以访问不到原始文件</span>
+cat: ruan: No such <span class="token function">file</span> or directory
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># echo dddd >> ruan</span>
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># ls -li</span>
+<span class="token comment" spellcheck="true"># 向软连接里写内容，就相当于在原始文件里写内容，所以原始文件就重新出现了</span>
+131103 -rw-r--r-- 1 root root 5 Nov 25 10:00 base
+131104 lrwxrwxrwx 1 root root 4 Nov 25 10:00 ruan -<span class="token operator">></span> base
+<span class="token punctuation">[</span>root@VM-0-16-centos test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># cat base</span>
+dddd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="硬盘分区与挂载"><a href="#硬盘分区与挂载" class="headerlink" title="硬盘分区与挂载"></a>硬盘分区与挂载</h4><p>硬盘分区：<code>fdisk /dev/vdb</code>，如果是2T以上的硬盘需要用<code>parted</code>命令</p>
 <p>格式化设置分区文件系统：<code>mkfs.文件系统 /dev/vdb</code></p>
 <p>分区挂载到目录下：<code>mount /dev/vdb /xx</code></p>
@@ -2444,7 +2478,7 @@ yum <span class="token function">install</span> openresty
 
             
             &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-            <span class="white-color">38.5k</span>
+            <span class="white-color">38.9k</span>
             
 
             <br>
