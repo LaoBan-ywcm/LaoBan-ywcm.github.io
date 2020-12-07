@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</loc>
+    <loc>https://qiuqideblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/</loc>
     
-    <lastmod>2020-11-25T02:03:38.420Z</lastmod>
+    <lastmod>2020-12-07T14:10:32.796Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</loc>
     
-    <lastmod>2020-11-21T13:38:31.180Z</lastmod>
+    <lastmod>2020-11-25T05:44:19.273Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</loc>
+    
+    <lastmod>2020-11-25T03:32:37.751Z</lastmod>
     
   </url>
   
