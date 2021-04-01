@@ -1,1 +1,3 @@
 https://qiuqideblog.com/2020/11/25/docker-overlayfs/
+https://qiuqideblog.com/2020/09/03/mongo-replice/
+https://qiuqideblog.com/2020/09/02/rsync/
