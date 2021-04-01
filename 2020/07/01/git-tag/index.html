@@ -1,0 +1,323 @@
+<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>《Git tags Explained》翻译 | 五月八</title><meta name="keywords" content="Git,翻译"><meta name="author" content="KaKa"><meta name="copyright" content="KaKa"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="原文链接 Git tags 简明教程 Git对于开发者来说是个非常必要的工具，它能非常方便的维护多人共享的代码库 Git-scm简单的定义：  Git是一个开源的分布式版本控制系统，设计用来快速有效的管理各种小项目和大项目  如果你还不知道Git，我推荐你首先学习一些基础知识  https:&#x2F;&#x2F;try.github.io&#x2F; https:&#x2F;&#x2F;www.vogella.com&#x2F;tutorials&#x2F;Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Git tags Explained》翻译">
+<meta property="og:url" content="https://qiuqideblog.com/2020/07/01/git-tag/index.html">
+<meta property="og:site_name" content="五月八">
+<meta property="og:description" content="原文链接 Git tags 简明教程 Git对于开发者来说是个非常必要的工具，它能非常方便的维护多人共享的代码库 Git-scm简单的定义：  Git是一个开源的分布式版本控制系统，设计用来快速有效的管理各种小项目和大项目  如果你还不知道Git，我推荐你首先学习一些基础知识  https:&#x2F;&#x2F;try.github.io&#x2F; https:&#x2F;&#x2F;www.vogella.com&#x2F;tutorials&#x2F;Git">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png">
+<meta property="article:published_time" content="2020-07-01T05:38:39.000Z">
+<meta property="article:modified_time" content="2021-04-01T11:48:19.787Z">
+<meta property="article:author" content="KaKa">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="翻译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png"><link rel="shortcut icon" href="/img/me.jpeg"><link rel="canonical" href="https://qiuqideblog.com/2020/07/01/git-tag/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: KaKa","link":"链接: ","source":"来源: 五月八","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-01 19:48:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《Git tags Explained》翻译</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-01T05:38:39.000Z" title="发表于 2020-07-01 13:38:39">2020-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:48:19.787Z" title="更新于 2021-04-01 19:48:19">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91/">文章翻译</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《Git tags Explained》翻译"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/07/01/git-tag/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://mohitkhare.me/blog/git-tags-explained/">原文链接</a></p>
+<h2 id="Git-tags-简明教程"><a href="#Git-tags-简明教程" class="headerlink" title="Git tags 简明教程"></a>Git tags 简明教程</h2><p><img src="/images/git-tag/git-tags.png" alt="git-tags"></p>
+<p><code>Git</code>对于开发者来说是个非常必要的工具，它能非常方便的维护多人共享的代码库</p>
+<p><code>Git-scm</code>简单的定义：</p>
+<blockquote>
+<p><code>Git</code>是一个开源的分布式版本控制系统，设计用来快速有效的管理各种小项目和大项目</p>
+</blockquote>
+<p>如果你还不知道<code>Git</code>，我推荐你首先学习一些基础知识</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://try.github.io/">https://try.github.io/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.vogella.com/tutorials/Git/article.html">https://www.vogella.com/tutorials/Git/article.html</a></li>
+</ul>
+<p>在这篇文章中，我们将学习到什么是<code>git tag</code>，为什么要使用它和什么时候以及怎么使用它。这因该足够让你在你的项目使用它了</p>
+<p>让我们开始吧</p>
+<h3 id="什么是git-tag"><a href="#什么是git-tag" class="headerlink" title="什么是git tag"></a>什么是<code>git tag</code></h3><p><code>git tag</code>实际上是指向了Git history 中的一个commit，它可以标记git history中某个的commit，以后可以方便的找到它</p>
+<p>你可以将 tag 看做是一个不变的分支</p>
+<p>Tag 代表某个特定分支在一定时刻的版本。所以，tag 本质上是开发者在程序中做的一个标记</p>
+<h3 id="为什么和什么时候使用git-tag"><a href="#为什么和什么时候使用git-tag" class="headerlink" title="为什么和什么时候使用git tag"></a>为什么和什么时候使用<code>git tag</code></h3><p>你肯定看到过<code>v1.0.0</code>这样的标记。它表示一个产品的版本号。通常，当产品有重大的更新并且需要推送给用户时，就会创建一个tag。</p>
+<p>tag 通常用户标记一个里程碑，例如可以发布给用户或者企业的新功能或一些bug修复</p>
+<p>你肯定不希望每次修复Bug都要推送给客户，Tag 可以确保用户使用的是某个特定时刻的版本，而不需要每次代码的新提交都推送给客户。</p>
+<h3 id="怎么使用git-tag"><a href="#怎么使用git-tag" class="headerlink" title="怎么使用git tag"></a>怎么使用<code>git tag</code></h3><p>现在你已经知道了tag的应用场景，下面就开始看看怎么使用它</p>
+<h4 id="创建tag"><a href="#创建tag" class="headerlink" title="创建tag"></a>创建<code>tag</code></h4><pre><code class="bash">git tag &lt;tag_name&gt;
+// Eg. git tag v1.0.1
+</code></pre>
+<p>这条命令会将最新的commit打上tag，<code>tag_name</code>就是你要起得tag 名字，通常是类似v1.0.1这种。当然你也可以命名任何你喜欢的名字</p>
+<p>通常 tag name 是：</p>
+<pre><code class="bash">v&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;
+</code></pre>
+<ul>
+<li>major:重大修改</li>
+<li>minor: 版本与先前版本兼容</li>
+<li>patch: bug 修复</li>
+</ul>
+<p>创建了tag之后，可以push到远端代码库</p>
+<pre><code class="bash">git push --tags
+</code></pre>
+<p>也可以为tag添加描述信息</p>
+<pre><code class="bash">git tag -a &lt;tag_name&gt; -m &quot;message&quot;
+</code></pre>
+<p><code>-a</code>是什么意思呢？下面来看看</p>
+<h4 id="tag类型"><a href="#tag类型" class="headerlink" title="tag类型"></a><code>tag</code>类型</h4><p>一共有两种<code>tag</code>类型：</p>
+<ul>
+<li>附注标签（Annonated）</li>
+<li>轻量标签（Lightweight）</li>
+</ul>
+<h5 id="附注标签"><a href="#附注标签" class="headerlink" title="附注标签"></a>附注标签</h5><p>附注标签存储一个额外的信息，比如作者、发行说明、tag 信息存储为Git仓库中完整的数据，这些数据对于一个公开的项目是非常重要的</p>
+<p><code>-a</code>表示该tag是附注标签</p>
+<pre><code class="bash">git tag -a v1.0.1 -m &quot;First release&quot;
+</code></pre>
+<h5 id="轻量标签"><a href="#轻量标签" class="headerlink" title="轻量标签"></a>轻量标签</h5><p>轻量标签时最简单的打tag的方式，它只存储tag name和关联的commit的hash值，不包含额外的信息，就类似于一个书签</p>
+<pre><code class="bash">git tag v2.1-lw
+</code></pre>
+<p><code>lw</code>表示轻量级标签，在tag name中加<code>lw</code>是为了更好的可读性</p>
+<h4 id="为一个特殊的commit打tag"><a href="#为一个特殊的commit打tag" class="headerlink" title="为一个特殊的commit打tag"></a>为一个特殊的commit打tag</h4><pre><code class="bash">git tag &lt;tag_name&gt; &lt;commit_sha&gt;
+</code></pre>
+<p>上面的命令可以让你为一些老的commit打tag</p>
+<h4 id="查看所有tag"><a href="#查看所有tag" class="headerlink" title="查看所有tag"></a>查看所有<code>tag</code></h4><pre><code class="bash">git tag
+</code></pre>
+<p>这条命令将会展示所有存在的tag</p>
+<p>输出可能是这样：</p>
+<pre><code class="bash">1.0.0
+1.0.1
+1.0.2
+1.0.3
+2.0.0
+2.1.0
+</code></pre>
+<p>你可以使用<code>-l</code>或者<code>--list</code>选项利用正则表达式进行过滤</p>
+<pre><code class="bash">git tag -l &quot;1.0*&quot;
+</code></pre>
+<p>结果：</p>
+<pre><code class="bash">1.0.0
+1.0.1
+1.0.2
+</code></pre>
+<h4 id="查看tag信息"><a href="#查看tag信息" class="headerlink" title="查看tag信息"></a>查看<code>tag</code>信息</h4><pre><code class="bash">git show &lt;tag_name&gt;
+// Eg. git show v1.0.1
+</code></pre>
+<p>将会展示作者、tag 信息、commit信息等其他信息</p>
+<h4 id="删除tag"><a href="#删除tag" class="headerlink" title="删除tag"></a>删除<code>tag</code></h4><pre><code class="bash">git tag -d &lt;tag_name&gt;
+</code></pre>
+<h4 id="推送tag"><a href="#推送tag" class="headerlink" title="推送tag"></a>推送<code>tag</code></h4><pre><code class="bash">git push origin &lt;branch&gt; --tags
+</code></pre>
+<p>将会把本地<code>tag</code>推送到远程仓库</p>
+<h4 id="拉取tag"><a href="#拉取tag" class="headerlink" title="拉取tag"></a>拉取<code>tag</code></h4><pre><code class="bash">git fetch --tags
+</code></pre>
+<p>将会把远程仓库<code>tag</code>拉取到本地</p>
+<h4 id="切换tag"><a href="#切换tag" class="headerlink" title="切换tag"></a>切换<code>tag</code></h4><pre><code class="bash">git checkout &lt;tag_name&gt;
+// Eg. git checkout v1.0.1
+</code></pre>
+<p>你可以用这条命名，将代码回退到打某个<code>tag</code>的时候</p>
+<p>你现在已经掌握了<code>Git tag</code>，开始在你的项目中应用起来吧😁</p>
+<p>更多学习资源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2">Excellent book to learn git</a></li>
+<li><a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/165725/git-branching-and-tagging-best-practices">Best git tag practices</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-tag">On tagging by atlassian</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">KaKa</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qiuqideblog.com/2020/07/01/git-tag/">https://qiuqideblog.com/2020/07/01/git-tag/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qiuqideblog.com" target="_blank">五月八</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Git/">Git</a><a class="post-meta__tags" href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a></div><div class="post_share"><div class="social-share" data-image="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/06/29/python-object-3/"><img class="prev-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/9.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《Python3 面向对象编程》笔记 - 第3章 对象相似时</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/02/python-object-4/"><img class="next-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/10.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《Python3 面向对象编程》笔记 - 第4章 异常捕获</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/me.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">KaKa</div><div class="author-info__description">天津理工大学 | 信息安全 | 后端开发</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LaoBan-ywcm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LaoBan-ywcm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:qiuqiandfqr@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-tags-%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">Git tags 简明教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFgit-tag"><span class="toc-number">1.1.</span> <span class="toc-text">什么是git tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%92%8C%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8git-tag"><span class="toc-number">1.2.</span> <span class="toc-text">为什么和什么时候使用git tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8git-tag"><span class="toc-number">1.3.</span> <span class="toc-text">怎么使用git tag</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAtag"><span class="toc-number">1.3.1.</span> <span class="toc-text">创建tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tag%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">tag类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%99%84%E6%B3%A8%E6%A0%87%E7%AD%BE"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">附注标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%BB%E9%87%8F%E6%A0%87%E7%AD%BE"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">轻量标签</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%B8%80%E4%B8%AA%E7%89%B9%E6%AE%8A%E7%9A%84commit%E6%89%93tag"><span class="toc-number">1.3.3.</span> <span class="toc-text">为一个特殊的commit打tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89tag"><span class="toc-number">1.3.4.</span> <span class="toc-text">查看所有tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Btag%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.5.</span> <span class="toc-text">查看tag信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4tag"><span class="toc-number">1.3.6.</span> <span class="toc-text">删除tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E9%80%81tag"><span class="toc-number">1.3.7.</span> <span class="toc-text">推送tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E5%8F%96tag"><span class="toc-number">1.3.8.</span> <span class="toc-text">拉取tag</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2tag"><span class="toc-number">1.3.9.</span> <span class="toc-text">切换tag</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker镜像原理-overlayfs"/></a><div class="content"><a class="title" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs">Docker镜像原理-overlayfs</a><time datetime="2020-11-25T05:39:17.000Z" title="发表于 2020-11-25 13:39:17">2020-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker中的Namespace和Cgroups"/></a><div class="content"><a class="title" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups">docker中的Namespace和Cgroups</a><time datetime="2020-11-08T13:42:32.000Z" title="发表于 2020-11-08 21:42:32">2020-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/go-note/" title="《Go语言实战》笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《Go语言实战》笔记"/></a><div class="content"><a class="title" href="/2020/11/04/go-note/" title="《Go语言实战》笔记">《Go语言实战》笔记</a><time datetime="2020-11-04T07:21:07.000Z" title="发表于 2020-11-04 15:21:07">2020-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/HTTP-note/" title="HTTP笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/15.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTTP笔记"/></a><div class="content"><a class="title" href="/2020/11/04/HTTP-note/" title="HTTP笔记">HTTP笔记</a><time datetime="2020-11-04T06:30:24.000Z" title="发表于 2020-11-04 14:30:24">2020-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/09/05/Linux-note/" title="Linux 学习笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/14.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 学习笔记"/></a><div class="content"><a class="title" href="/2020/09/05/Linux-note/" title="Linux 学习笔记">Linux 学习笔记</a><time datetime="2020-09-05T08:47:41.000Z" title="发表于 2020-09-05 16:47:41">2020-09-05</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png')"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By KaKa</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'e074635bd1392d511cd0',
+      clientSecret: 'd37ffce334fa0951b60ee5a012a13e0843ad8daf',
+      repo: 'blog_comments',
+      owner: 'LaoBan-ywcm',
+      admin: ['LaoBan-ywcm'],
+      id: '6837de7161ea5d3a9bb89588e8995519',
+      language: 'zh-CN',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

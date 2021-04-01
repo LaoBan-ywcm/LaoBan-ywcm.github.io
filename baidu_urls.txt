@@ -1,3 +1,15 @@
 https://qiuqideblog.com/2020/11/25/docker-overlayfs/
+https://qiuqideblog.com/2020/11/08/docker-namespace-cgroup/
+https://qiuqideblog.com/2020/11/04/go-note/
+https://qiuqideblog.com/2020/11/04/HTTP-note/
+https://qiuqideblog.com/2020/09/05/Linux-note/
 https://qiuqideblog.com/2020/09/03/mongo-replice/
 https://qiuqideblog.com/2020/09/02/rsync/
+https://qiuqideblog.com/2020/07/13/python-random/
+https://qiuqideblog.com/2020/07/02/python-object-4/
+https://qiuqideblog.com/2020/07/01/git-tag/
+https://qiuqideblog.com/2020/06/29/python-object-3/
+https://qiuqideblog.com/2020/06/27/restful-api/
+https://qiuqideblog.com/2020/06/27/python-mutable/
+https://qiuqideblog.com/2019/01/02/ERC20-dirdop2/
+https://qiuqideblog.com/2018/12/27/ERC20-dirdop1/
