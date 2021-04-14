@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png">
 <meta property="article:published_time" content="2020-11-25T05:39:17.000Z">
-<meta property="article:modified_time" content="2021-04-01T15:46:50.324Z">
+<meta property="article:modified_time" content="2021-04-14T02:01:42.436Z">
 <meta property="article:author" content="五月八">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2021-04-01 23:46:50'
+  postUpdate: '2021-04-14 10:01:42'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -144,7 +144,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Docker镜像原理-overlayfs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-25T05:39:17.000Z" title="发表于 2020-11-25 13:39:17">2020-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:46:50.324Z" title="更新于 2021-04-01 23:46:50">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/docker/">docker</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Docker镜像原理-overlayfs"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/11/25/docker-overlayfs/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="Docker镜像原理-OverlayFS"><a href="#Docker镜像原理-OverlayFS" class="headerlink" title="Docker镜像原理-OverlayFS"></a>Docker镜像原理-OverlayFS</h3><p>Docker之所以流行的一个原因就是它发明了“层”的概念，一个镜像是由很多个层组成的。试想如果没有层，当我们要修改一个基础镜像时，就要重新打包一个基础镜像，打包之后的镜像和修改之前的镜像之间就没有了联系。当时间长了之后，会有越来越多这样的镜像，他们之间毫无联系。而当有了层的概念后，我们修改镜像时只需要在最上层对数据进行修改，屏蔽底层的原数据。这样修改后的镜像都是以基础镜像为基础的。</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Docker镜像原理-overlayfs</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-25T05:39:17.000Z" title="发表于 2020-11-25 13:39:17">2020-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-14T02:01:42.436Z" title="更新于 2021-04-14 10:01:42">2021-04-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/docker/">docker</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Docker镜像原理-overlayfs"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/11/25/docker-overlayfs/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="Docker镜像原理-OverlayFS"><a href="#Docker镜像原理-OverlayFS" class="headerlink" title="Docker镜像原理-OverlayFS"></a>Docker镜像原理-OverlayFS</h3><p>Docker之所以流行的一个原因就是它发明了“层”的概念，一个镜像是由很多个层组成的。试想如果没有层，当我们要修改一个基础镜像时，就要重新打包一个基础镜像，打包之后的镜像和修改之前的镜像之间就没有了联系。当时间长了之后，会有越来越多这样的镜像，他们之间毫无联系。而当有了层的概念后，我们修改镜像时只需要在最上层对数据进行修改，屏蔽底层的原数据。这样修改后的镜像都是以基础镜像为基础的。</p>
 <p>实现这种层会使用一种叫做联合文件系统，比如：<code>OverlayFS</code>、<code>AUFS</code>和<code>zfs</code>等，<code>OverlayFS</code>要更快、更简单。docker现在是推荐使用<code>OverlayFS</code>，对应的驱动推荐<code>overlay2</code>。每个驱动都有相应的宿主机文件系统要求：</p>
 <table>
 <thead>
@@ -203,7 +203,7 @@ Server:
 </code></pre>
 <ul>
 <li><code>lowerdir</code>：指定挂载的lower层目录，可以挂载多个，通过<code>:</code>分隔，在这里例子中优先级：<code>lower1 &gt; lower2 &gt; lower3</code></li>
-<li><code>lowerdir</code>：指定挂载的upper层目录，在该层负责对lower层目录的读写复制</li>
+<li><code>upperdir</code>：指定挂载的upper层目录，在该层负责对lower层目录的读写复制</li>
 <li><code>workdir</code>：指定文件系统的工作基础目录，在使用过程中对用户不可见</li>
 </ul>
 <p>下面实际操作下</p>
@@ -252,13 +252,13 @@ overlay on /tmp/oo/merged type overlay (rw,relatime,lowerdir=low1:low2,upperdir=
 <h5 id="OverlayFS的特性和限制"><a href="#OverlayFS的特性和限制" class="headerlink" title="OverlayFS的特性和限制"></a><code>OverlayFS</code>的特性和限制</h5><ul>
 <li>可以不指定upperdir和workdir，同时保证lowder&gt;=2，此时为只读挂载（实现只读挂载的唯一方式）。</li>
 <li>upperdir和workdir必须是可写的，而且不能是父子关系</li>
-<li>pperdir所在的文件不能是<code>gfs</code>、<code>nfs</code>这种远程文件系统，而lowdir因为是只读的，所以没有这种限制</li>
+<li>upperdir所在的文件不能是<code>gfs</code>、<code>nfs</code>这种远程文件系统，而lowdir因为是只读的，所以没有这种限制</li>
 <li>用户指定的lowdir最多可支持500层</li>
 </ul>
 <h5 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h5><p><strong>删除只存在于upperdir的文件</strong></p>
 <p>这种情况比较简单，因为在upperdir中是可写的，所以直接删除</p>
 <p><strong>删除的文件存在于lowerdir层，upperdir中不存在覆盖文件</strong></p>
-<p>由于lowerdir是可读的，所以采用了without文件，就是当删除时，会创建一个月删除文件同名的without文件，在merge层执行<code>ls</code>时会自动过滤掉与without同名的lowerdir文件，利用障眼法进行了“删除”，实际上lowerdir中的文件并没有删除。without文件并非一个普通文件，它的主次设备号都为0，可以通过<code>mknod xx c 0 0</code>手动创建一个without文件</p>
+<p>由于lowerdir是可读的，所以采用了without文件，当删除时，会在upperdir创建一个与删除文件同名的without文件，在merge层执行<code>ls</code>时会自动过滤掉与without同名的lowerdir文件，利用障眼法进行了“删除”，实际上lowerdir中的文件并没有删除。without文件并非一个普通文件，它的主次设备号都为0，可以通过<code>mknod xx c 0 0</code>手动创建一个without文件</p>
 <pre><code class="bash">[root@VM-0-16-centos oo]# rm merged/a
 [root@VM-0-16-centos oo]# cd upper/; ls -l
 total 0
@@ -389,8 +389,8 @@ function loadGitalk () {
       clientID: 'e074635bd1392d511cd0',
       clientSecret: 'd37ffce334fa0951b60ee5a012a13e0843ad8daf',
       repo: 'blog_comments',
-      owner: 'LaoBan-ywcm',
-      admin: ['LaoBan-ywcm'],
+      owner: '五月八',
+      admin: ['五月八'],
       id: 'af6b5116e4e3ed2d751e4c4f916654ba',
       language: 'zh-CN',
       perPage: 10,
