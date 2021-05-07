@@ -19,7 +19,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -146,7 +146,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/9.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《Python3 面向对象编程》笔记 - 第3章 对象相似时</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-29T14:20:09.000Z" title="发表于 2020-06-29 22:20:09">2020-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:49:25.088Z" title="更新于 2021-04-01 19:49:25">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《Python3 面向对象编程》笔记 - 第3章 对象相似时"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/06/29/python-object-3/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Python3-面向对象编程笔记"><a href="#Python3-面向对象编程笔记" class="headerlink" title="Python3 面向对象编程笔记"></a>Python3 面向对象编程笔记</h1><h2 id="第3章-对象相似时"><a href="#第3章-对象相似时" class="headerlink" title="第3章 对象相似时"></a>第3章 对象相似时</h2><p>在编程的世界中，重复的代码被认为是邪恶的。这一章主要学习继承。既将共有的逻辑抽象到超类并在子类中控制具体的细节。这一章主要学习：</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/9.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《Python3 面向对象编程》笔记 - 第3章 对象相似时</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-29T14:20:09.000Z" title="发表于 2020-06-29 22:20:09">2020-06-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:49:25.088Z" title="更新于 2021-04-01 19:49:25">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《Python3 面向对象编程》笔记 - 第3章 对象相似时"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/06/29/python-object-3/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Python3-面向对象编程笔记"><a href="#Python3-面向对象编程笔记" class="headerlink" title="Python3 面向对象编程笔记"></a>Python3 面向对象编程笔记</h1><h2 id="第3章-对象相似时"><a href="#第3章-对象相似时" class="headerlink" title="第3章 对象相似时"></a>第3章 对象相似时</h2><p>在编程的世界中，重复的代码被认为是邪恶的。这一章主要学习继承。既将共有的逻辑抽象到超类并在子类中控制具体的细节。这一章主要学习：</p>
 <ol>
 <li>基本的基础</li>
 <li>从内置类型基础</li>
@@ -155,150 +155,36 @@
 </ol>
 <h3 id="基本的基础"><a href="#基本的基础" class="headerlink" title="基本的基础"></a>基本的基础</h3><p>严格来说，在Python中，我们都是用到了基础。所有的Python类都可以看做是继承了<code>object</code>类的子类</p>
 <p>我们声明一个类时可以显示的声明基础的类是什么，如果隐藏了父类，那么默认就是继承的<code>object</code>类</p>
-<pre><code class="python">class MyTest:
-    pass
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyTest</span>:</span><br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyTest2</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
 
-
-class MyTest2(object):
-    pass
-</code></pre>
 <p>这两种其实都是一样的。</p>
 <p>在实践中使用继承关系，最简单的就是为已经存在的类添加功能，先写一个实例</p>
-<pre><code class="python">class Contact:
-    # * 类变量
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br>test1 = Contact(<span class="hljs-string">&quot;name1&quot;</span>, <span class="hljs-string">&quot;name@qq.com&quot;</span>)<br>test2 = Contact(<span class="hljs-string">&quot;name2&quot;</span>, <span class="hljs-string">&quot;name2@qq.com&quot;</span>)<br><br><span class="hljs-built_in">print</span>(test2.all_contacts[<span class="hljs-number">0</span>])<br><span class="hljs-comment"># [ &lt; __main__.Contact object at 0x103b3afd0 &gt; , &lt; __main__.Contact object at 0x103b42048 &gt; ]</span><br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-test1 = Contact(&quot;name1&quot;, &quot;name@qq.com&quot;)
-test2 = Contact(&quot;name2&quot;, &quot;name2@qq.com&quot;)
-
-print(test2.all_contacts[0])
-# [ &lt; __main__.Contact object at 0x103b3afd0 &gt; , &lt; __main__.Contact object at 0x103b42048 &gt; ]
-</code></pre>
 <p>在上面的代码中有个概念<strong>类变量</strong>，代码中的<code>all_contacts</code>就是类变量，他可以被该类的所有实例共享。在子类中可以通过<code>self.all_contacts</code>获取该类变量，如果在这一对象中找不到该变量名，将会从类中找到。如果你用了<code>self.all_contacts</code>设定了这一变量。实际上只是设定了该对象的这以变量，并不会影响类变量，还是可以通过<code>Contacts.all_contacts</code>访问到</p>
 <p>上面的例子是一个联系人的类，其中有名字和邮箱。我们需要从这些联系人中下订单，需要新加一个类</p>
-<pre><code class="python">class Contact:
-    # * 类变量
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Supplier</span>(<span class="hljs-params">Contact</span>):</span><br>    <span class="hljs-comment"># 这里会自动调用父类的__init__方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">order</span>(<span class="hljs-params">self, order</span>):</span><br>        <span class="hljs-built_in">print</span>(<br>            <span class="hljs-string">f&quot;If this were a real system we would send <span class="hljs-subst">&#123;order&#125;</span> to <span class="hljs-subst">&#123;self.name&#125;</span>&quot;</span>)<br><br><br>c = Contact(<span class="hljs-string">&quot;Some Body&quot;</span>, <span class="hljs-string">&quot;somebody@example.net&quot;</span>)<br>s = Supplier(<span class="hljs-string">&quot;sup Plier&quot;</span>, <span class="hljs-string">&quot;supplier@example.net&quot;</span>)<br><br><span class="hljs-built_in">print</span>(c.all_contacts)<br><span class="hljs-comment"># [&lt;__main__.Contact object at 0x1073f9f60&gt;, &lt;__main__.Supplier object at 0x1073f9fd0&gt;]</span><br><span class="hljs-comment"># c.order(&quot;I need pliers&quot;) 会报错</span><br>s.order(<span class="hljs-string">&quot;I need pliers&quot;</span>)<br><span class="hljs-comment"># If this were a real system we would send I need pliers to sup Plier</span><br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-class Supplier(Contact):
-    # 这里会自动调用父类的__init__方法
-    def order(self, order):
-        print(
-            f&quot;If this were a real system we would send &#123;order&#125; to &#123;self.name&#125;&quot;)
-
-
-c = Contact(&quot;Some Body&quot;, &quot;somebody@example.net&quot;)
-s = Supplier(&quot;sup Plier&quot;, &quot;supplier@example.net&quot;)
-
-print(c.all_contacts)
-# [&lt;__main__.Contact object at 0x1073f9f60&gt;, &lt;__main__.Supplier object at 0x1073f9fd0&gt;]
-# c.order(&quot;I need pliers&quot;) 会报错
-s.order(&quot;I need pliers&quot;)
-# If this were a real system we would send I need pliers to sup Plier
-</code></pre>
 <p>这里<code>Supplier</code>能够做<code>Contact</code>能做的所有事（加入<code>all_contacts</code>），而且还有自己的方法。</p>
 <h3 id="扩展内置对象"><a href="#扩展内置对象" class="headerlink" title="扩展内置对象"></a>扩展内置对象</h3><p>继承关系中有一种有趣的应用就是为内置类型添加新的功能，比如前面的例子中保存了联系人，如果想查找联系人就可以添加一个新的类</p>
-<pre><code class="python">class ContactList(list):
-    def search(self, name):
-        matching_contacts = []
-        for contact in self:
-            if name in contact.name:
-                matching_contacts.append(contact)
-        return matching_contacts
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContactList</span>(<span class="hljs-params"><span class="hljs-built_in">list</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">search</span>(<span class="hljs-params">self, name</span>):</span><br>        matching_contacts = []<br>        <span class="hljs-keyword">for</span> contact <span class="hljs-keyword">in</span> self:<br>            <span class="hljs-keyword">if</span> name <span class="hljs-keyword">in</span> contact.name:<br>                matching_contacts.append(contact)<br>        <span class="hljs-keyword">return</span> matching_contacts<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = ContactList()<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Supplier</span>(<span class="hljs-params">Contact</span>):</span><br>    <span class="hljs-comment"># 这里会自动调用父类的__init__方法</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">order</span>(<span class="hljs-params">self, order</span>):</span><br>        <span class="hljs-built_in">print</span>(<br>            <span class="hljs-string">f&quot;If this were a real system we would send <span class="hljs-subst">&#123;order&#125;</span> to <span class="hljs-subst">&#123;self.name&#125;</span>&quot;</span>)<br><br><br>c = Contact(<span class="hljs-string">&quot;Some Body&quot;</span>, <span class="hljs-string">&quot;somebody@example.net&quot;</span>)<br>s = Supplier(<span class="hljs-string">&quot;sup Plier&quot;</span>, <span class="hljs-string">&quot;supplier@example.net&quot;</span>)<br>s2 = Supplier(<span class="hljs-string">&quot;sup Body&quot;</span>, <span class="hljs-string">&quot;supplier2@example.net&quot;</span>)<br><br><span class="hljs-built_in">print</span>([contact.name <span class="hljs-keyword">for</span> contact <span class="hljs-keyword">in</span> Contact.all_contacts.search(<span class="hljs-string">&quot;Body&quot;</span>)])<br><span class="hljs-comment"># [&#x27;Some Body&#x27;, &#x27;sup Body&#x27;]</span><br></code></pre></td></tr></table></figure>
 
-
-class Contact:
-    # * 类变量
-    all_contacts = ContactList()
-
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-class Supplier(Contact):
-    # 这里会自动调用父类的__init__方法
-    def order(self, order):
-        print(
-            f&quot;If this were a real system we would send &#123;order&#125; to &#123;self.name&#125;&quot;)
-
-
-c = Contact(&quot;Some Body&quot;, &quot;somebody@example.net&quot;)
-s = Supplier(&quot;sup Plier&quot;, &quot;supplier@example.net&quot;)
-s2 = Supplier(&quot;sup Body&quot;, &quot;supplier2@example.net&quot;)
-
-print([contact.name for contact in Contact.all_contacts.search(&quot;Body&quot;)])
-# [&#39;Some Body&#39;, &#39;sup Body&#39;]
-</code></pre>
 <p>大多数的内置对象都可以通过这种方式进行扩展。通常会扩展的内置类型有：<code>object</code>、<code>list</code>、<code>set</code>、<code>dict</code>、<code>file</code>、<code>str</code></p>
 <p>比如扩展<code>dict</code>类型</p>
-<pre><code class="python">class TestDict(dict):
-    def longest_key(self):
-        longest = None
-        for key in self:
-            if not longest or len(longest) &lt; len(key):
-                longest = key
-        return longest
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestDict</span>(<span class="hljs-params"><span class="hljs-built_in">dict</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">longest_key</span>(<span class="hljs-params">self</span>):</span><br>        longest = <span class="hljs-literal">None</span><br>        <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> self:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> longest <span class="hljs-keyword">or</span> <span class="hljs-built_in">len</span>(longest) &lt; <span class="hljs-built_in">len</span>(key):<br>                longest = key<br>        <span class="hljs-keyword">return</span> longest<br><br><br>longest_keys = TestDict()<br>longest_keys[<span class="hljs-string">&quot;hello&quot;</span>] = <span class="hljs-number">1</span><br>longest_keys[<span class="hljs-string">&quot;hello world&quot;</span>] = <span class="hljs-number">1</span><br>longest_keys[<span class="hljs-string">&quot;xx&quot;</span>] = <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(longest_keys.longest_key())<br><span class="hljs-comment"># hello world</span><br></code></pre></td></tr></table></figure>
 
 
-longest_keys = TestDict()
-longest_keys[&quot;hello&quot;] = 1
-longest_keys[&quot;hello world&quot;] = 1
-longest_keys[&quot;xx&quot;] = 1
 
-print(longest_keys.longest_key())
-# hello world
-</code></pre>
 <h3 id="重写和super"><a href="#重写和super" class="headerlink" title="重写和super"></a>重写和super</h3><p>继承关系很适合向已经存在的类中添加新的行为，如果需要修改某些行为，就要重写父类的某些方法。当一个子类重写了父类的一个方法，在调用该方法时会调用子类的方法。而不是父类的方法</p>
-<pre><code class="python">class Contact:
-    # * 类变量
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Friend</span>(<span class="hljs-params">Contact</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email, phone</span>):</span><br>        self.name = name<br>        self.email = email<br>        self.phone = phone<br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-class Friend(Contact):
-    def __init__(self, name, email, phone):
-        self.name = name
-        self.email = email
-        self.phone = phone
-</code></pre>
 <p>在上面的例子中，我们重写了<code>__init__</code>方法。但是会有重复的代码，而且我们还必须手动加入<code>Contact.all_contacts</code>中。</p>
 <blockquote>
 <p>任何方法都可以被重写</p>
 </blockquote>
 <p>我们真正需要做的是执行Contact类上的<code>__init__</code>方法。</p>
-<pre><code class="python">class Contact:
-    # * 类变量
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Friend</span>(<span class="hljs-params">Contact</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email, phone</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(name, email)<br>        self.phone = phone<br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-class Friend(Contact):
-    def __init__(self, name, email, phone):
-        super().__init__(name, email)
-        self.phone = phone
-</code></pre>
 <p>我们调用了<code>super()</code>函数获取父类对象的实例，然后调用他的<code>__init__</code>方法</p>
 <blockquote>
 <p>可以在任何方法内调用<code>super()</code>获取父类对象实例</p>
@@ -313,67 +199,15 @@ class Friend(Contact):
 <li>即使子类没有继承该类，也可以正常运行。只不过没有该方法</li>
 </ol>
 <p>比如在联系人当中，我们要给某个人发邮件，发邮件这个功能可以利用混入的方式实现多重继承</p>
-<pre><code class="python">class Contact:
-    # * 类变量
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MailSender</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">send_mail</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;send email to <span class="hljs-subst">&#123;self.email&#125;</span>&quot;</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmailableContact</span>(<span class="hljs-params">Contact, MailSender</span>):</span><br>    <span class="hljs-keyword">pass</span><br><br><br>e = EmailableContact(<span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;test@example.com&quot;</span>)<br><br><span class="hljs-built_in">print</span>(e.all_contacts)<br><span class="hljs-comment"># [&lt;__main__.EmailableContact object at 0x109cdde48&gt;]</span><br><br>e.send_mail()<br><span class="hljs-comment"># send email to test@example.com</span><br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-class MailSender:
-    def send_mail(self):
-        print(f&quot;send email to &#123;self.email&#125;&quot;)
-
-
-class EmailableContact(Contact, MailSender):
-    pass
-
-
-e = EmailableContact(&quot;test&quot;, &quot;test@example.com&quot;)
-
-print(e.all_contacts)
-# [&lt;__main__.EmailableContact object at 0x109cdde48&gt;]
-
-e.send_mail()
-# send email to test@example.com
-</code></pre>
 <p>多重继承在混合不同类的方法时不会有问题，但是当调用父类的方法时就会变得很混乱</p>
 <p>为了讨论更复杂的情况，我们在<code>Friend</code>类中加入家庭住址。应该更好的方法是利用组合的方式，创建一个<code>Address</code>类，在<code>Friend</code>中的地址指向<code>Address</code>类的实例。但是在这里采用继承的方式。</p>
-<pre><code class="python">class AddressHolder:
-    def __init__(self, street, city, state, code):
-        self.street = street
-        self.city = city
-        self.state = state
-        self.code = code
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddressHolder</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, street, city, state, code</span>):</span><br>        self.street = street<br>        self.city = city<br>        self.state = state<br>        self.code = code<br></code></pre></td></tr></table></figure>
+
 <h3 id="钻石型继承问题"><a href="#钻石型继承问题" class="headerlink" title="钻石型继承问题"></a>钻石型继承问题</h3><p>首先可以用多重继承的方式为已有的<code>Friend</code>类添加父类，但是现在有了两个父类，需要初始化两个父类。先从一个简单的方法开始</p>
-<pre><code class="python">class Contact:
-    # * 类变量
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    <span class="hljs-comment"># * 类变量</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email</span>):</span><br>        self.name = name<br>        self.email = email<br>        Contact.all_contacts.append(self)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddressHolder</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, street, city, state, code</span>):</span><br>        self.street = street<br>        self.city = city<br>        self.state = state<br>        self.code = code<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Friend</span>(<span class="hljs-params">Contact, AddressHolder</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name, email, phone, street, city, state, code</span>):</span><br>        Contact.__init__(name, email)<br>        AddressHolder.__init__(street, city, state, code)<br>        self.phone = phone<br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name, email):
-        self.name = name
-        self.email = email
-        Contact.all_contacts.append(self)
-
-
-class AddressHolder:
-    def __init__(self, street, city, state, code):
-        self.street = street
-        self.city = city
-        self.state = state
-        self.code = code
-
-
-class Friend(Contact, AddressHolder):
-    def __init__(self, name, email, phone, street, city, state, code):
-        Contact.__init__(name, email)
-        AddressHolder.__init__(street, city, state, code)
-        self.phone = phone
-</code></pre>
 <p>上面的例子是可以正常运行的，但是会有两个问题</p>
 <ol>
 <li>如果忘记了初始化父类，就会出现问题</li>
@@ -384,111 +218,15 @@ class Friend(Contact, AddressHolder):
 
 <p>从图中可以看出分别在初始化<code>Contact</code>和<code>AddressHolder</code>时都初始化了<code>object</code>，既<code>object</code>被初始化了两次。</p>
 <p>为了更加清楚的阐述这个问题，让我们看另外一个虚构的例子。</p>
-<pre><code class="python">class BaseClass:
-    num_base_call = 0
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseClass</span>:</span><br>    num_base_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Base Class&quot;</span>)<br>        self.num_base_call += <span class="hljs-number">1</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LeftSubclass</span>(<span class="hljs-params">BaseClass</span>):</span><br>    num_left_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        BaseClass.call_me(self)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Left Subclass&quot;</span>)<br>        self.num_left_call += <span class="hljs-number">1</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RightSubclass</span>(<span class="hljs-params">BaseClass</span>):</span><br>    num_right_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        BaseClass.call_me(self)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Right Subclass&quot;</span>)<br>        self.num_right_call += <span class="hljs-number">1</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Subclass</span>(<span class="hljs-params">LeftSubclass, RightSubclass</span>):</span><br>    num_sub_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        LeftSubclass.call_me(self)<br>        RightSubclass.call_me(self)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Subclass&quot;</span>)<br>        self.num_sub_call += <span class="hljs-number">1</span><br><br><br>s = Subclass()<br>s.call_me()<br><span class="hljs-comment"># Calling method on Base Class</span><br><span class="hljs-comment"># Calling method on Left Subclass</span><br><span class="hljs-comment"># Calling method on Base Class</span><br><span class="hljs-comment"># Calling method on Right Subclass</span><br><span class="hljs-comment"># Calling method on Subclass</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;num_sub_call: <span class="hljs-subst">&#123;s.num_sub_call&#125;</span>\nnum_left_call: <span class="hljs-subst">&#123;s.num_left_call&#125;</span>\n\</span><br><span class="hljs-string">num_right_call: <span class="hljs-subst">&#123;s.num_right_call&#125;</span>\nnum_base_call: <span class="hljs-subst">&#123;s.num_base_call&#125;</span>\n&quot;</span>)<br><span class="hljs-comment"># num_sub_call: 1</span><br><span class="hljs-comment"># num_left_call: 1</span><br><span class="hljs-comment"># num_right_call: 1</span><br><span class="hljs-comment"># num_base_call: 2</span><br></code></pre></td></tr></table></figure>
 
-    def call_me(self):
-        print(&quot;Calling method on Base Class&quot;)
-        self.num_base_call += 1
-
-
-class LeftSubclass(BaseClass):
-    num_left_call = 0
-
-    def call_me(self):
-        BaseClass.call_me(self)
-        print(&quot;Calling method on Left Subclass&quot;)
-        self.num_left_call += 1
-
-
-class RightSubclass(BaseClass):
-    num_right_call = 0
-
-    def call_me(self):
-        BaseClass.call_me(self)
-        print(&quot;Calling method on Right Subclass&quot;)
-        self.num_right_call += 1
-
-
-class Subclass(LeftSubclass, RightSubclass):
-    num_sub_call = 0
-
-    def call_me(self):
-        LeftSubclass.call_me(self)
-        RightSubclass.call_me(self)
-        print(&quot;Calling method on Subclass&quot;)
-        self.num_sub_call += 1
-
-
-s = Subclass()
-s.call_me()
-# Calling method on Base Class
-# Calling method on Left Subclass
-# Calling method on Base Class
-# Calling method on Right Subclass
-# Calling method on Subclass
-
-print(f&quot;num_sub_call: &#123;s.num_sub_call&#125;\nnum_left_call: &#123;s.num_left_call&#125;\n\
-num_right_call: &#123;s.num_right_call&#125;\nnum_base_call: &#123;s.num_base_call&#125;\n&quot;)
-# num_sub_call: 1
-# num_left_call: 1
-# num_right_call: 1
-# num_base_call: 2
-</code></pre>
 <p>下面是整个流程图：</p>
 <p><img src="/images/python-object-3/%E9%92%BB%E7%9F%B3%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98.png" alt="钻石继承问题2"></p>
 <p>整个调用流程看起来像是钻石，因此也叫做钻石继承问题</p>
 <p>从输出可以看到<code>BaseClass</code>的<code>call_me</code>方法被调用了两次。关于多重继承需要记住，我们只想调用类层级中的“下一个”方法，而不是“父类”方法。实际上下一个方法可能不属于该类的父类或者更早的祖先。super关键字再次拯救了我们</p>
 <p>修改后的代码：</p>
-<pre><code class="python">class BaseClass:
-    num_base_call = 0
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BaseClass</span>:</span><br>    num_base_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Base Class&quot;</span>)<br>        self.num_base_call += <span class="hljs-number">1</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LeftSubclass</span>(<span class="hljs-params">BaseClass</span>):</span><br>    num_left_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().call_me()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Left Subclass&quot;</span>)<br>        self.num_left_call += <span class="hljs-number">1</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RightSubclass</span>(<span class="hljs-params">BaseClass</span>):</span><br>    num_right_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().call_me()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Right Subclass&quot;</span>)<br>        self.num_right_call += <span class="hljs-number">1</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Subclass</span>(<span class="hljs-params">LeftSubclass, RightSubclass</span>):</span><br>    num_sub_call = <span class="hljs-number">0</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">call_me</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().call_me()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Calling method on Subclass&quot;</span>)<br>        self.num_sub_call += <span class="hljs-number">1</span><br><br><br>s = Subclass()<br>s.call_me()<br><span class="hljs-comment"># Calling method on Base Class</span><br><span class="hljs-comment"># Calling method on Right Subclass</span><br><span class="hljs-comment"># Calling method on Left Subclass</span><br><span class="hljs-comment"># Calling method on Subclass</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;num_sub_call: <span class="hljs-subst">&#123;s.num_sub_call&#125;</span>\nnum_left_call: <span class="hljs-subst">&#123;s.num_left_call&#125;</span>\n\</span><br><span class="hljs-string">num_right_call: <span class="hljs-subst">&#123;s.num_right_call&#125;</span>\nnum_base_call: <span class="hljs-subst">&#123;s.num_base_call&#125;</span>\n&quot;</span>)<br><span class="hljs-comment"># num_sub_call: 1</span><br><span class="hljs-comment"># num_left_call: 1</span><br><span class="hljs-comment"># num_right_call: 1</span><br><span class="hljs-comment"># num_base_call: 1</span><br></code></pre></td></tr></table></figure>
 
-    def call_me(self):
-        print(&quot;Calling method on Base Class&quot;)
-        self.num_base_call += 1
-
-
-class LeftSubclass(BaseClass):
-    num_left_call = 0
-
-    def call_me(self):
-        super().call_me()
-        print(&quot;Calling method on Left Subclass&quot;)
-        self.num_left_call += 1
-
-
-class RightSubclass(BaseClass):
-    num_right_call = 0
-
-    def call_me(self):
-        super().call_me()
-        print(&quot;Calling method on Right Subclass&quot;)
-        self.num_right_call += 1
-
-
-class Subclass(LeftSubclass, RightSubclass):
-    num_sub_call = 0
-
-    def call_me(self):
-        super().call_me()
-        print(&quot;Calling method on Subclass&quot;)
-        self.num_sub_call += 1
-
-
-s = Subclass()
-s.call_me()
-# Calling method on Base Class
-# Calling method on Right Subclass
-# Calling method on Left Subclass
-# Calling method on Subclass
-
-print(f&quot;num_sub_call: &#123;s.num_sub_call&#125;\nnum_left_call: &#123;s.num_left_call&#125;\n\
-num_right_call: &#123;s.num_right_call&#125;\nnum_base_call: &#123;s.num_base_call&#125;\n&quot;)
-# num_sub_call: 1
-# num_left_call: 1
-# num_right_call: 1
-# num_base_call: 1
-</code></pre>
 <p>从输出结果可以看到<code>BaseClass</code>的<code>call_me</code>方法只被调用了一次。</p>
 <p>从流程中看到，<code>Subclass</code>的<code>call_me</code>方法调用<code>super().calll_me()</code>，指向了<code>LeftSubclass.call_me()</code>，然后<code>LeftSubclass.call_me()</code>调用了<code>super().call_me()</code>，但是这里<code>super()</code>指向的是<code>RightSubclass.call_me()</code>，而不是他父类<code>BaseClass.call_me()</code>。然后<code>RightSubclass</code>在调用<code>BaseClass</code></p>
 <p>特别注意的就是<code>LeftSubclass</code>中的<code>super()</code>指向的并不是他的父类，这样就实现了调用下一个方法而不是父类的方法。通过使用<code>super</code>可以确保类层级中的每一个方法都被调用一次</p>
@@ -499,29 +237,8 @@ num_right_call: &#123;s.num_right_call&#125;\nnum_base_call: &#123;s.num_base_ca
 </ol>
 <h3 id="不同集合的参数"><a href="#不同集合的参数" class="headerlink" title="不同集合的参数"></a>不同集合的参数</h3><p>之前遇到继承的例子里，父类都是不需要参数初始化的。如果在多重继承下有这样的场景，每个父类都需要不同的参数初始化，那该怎样做呢？可惜的是，解决这个问题的唯一办法就是从头开始计划，我们不得不将基类的参数列表设计成接受任意关键字参数，而且这些参数对于所有子类的实现都是可选的。最后，我们必须确保能够接受不需要的参数并将其传递给自己的<code>super</code>方法，以防他们在后续继承顺序的方法中会用到</p>
 <p>修改后的代码如下：</p>
-<pre><code class="python">class Contact:
-    all_contacts = []
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Contact</span>:</span><br>    all_contacts = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name=<span class="hljs-string">&quot;&quot;</span>, email=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.name = name<br>        self.email = email<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddressHolder</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, street=<span class="hljs-string">&quot;&quot;</span>, city=<span class="hljs-string">&quot;&quot;</span>, state=<span class="hljs-string">&quot;&quot;</span>, code=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.street = street<br>        self.city = city<br>        self.state = state<br>        self.code = code<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Friend</span>(<span class="hljs-params">Contact, AddressHolder</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, phone=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.phone = phone<br></code></pre></td></tr></table></figure>
 
-    def __init__(self, name=&quot;&quot;, email=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.name = name
-        self.email = email
-
-
-class AddressHolder:
-    def __init__(self, street=&quot;&quot;, city=&quot;&quot;, state=&quot;&quot;, code=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.street = street
-        self.city = city
-        self.state = state
-        self.code = code
-
-
-class Friend(Contact, AddressHolder):
-    def __init__(self, phone=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.phone = phone
-</code></pre>
 <p>这样就能够初始化不同参数的父类了</p>
 <p>但是，如果子类和父类都需要同一个参数呢？比如Friend和Contact都需要phone参数呢？总共有下面几种方法：</p>
 <ol>
@@ -534,522 +251,41 @@ class Friend(Contact, AddressHolder):
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>多态：由于所用子类不同而产生不同的行为，而不需要明确知道用的是哪个子类。</p>
 <p>在很多情况下，多态是使用继承关系最重要的一个原因之一</p>
 <p>举个例子：</p>
-<pre><code class="python">class Animal(object):
-    def run(self):
-        print(&#39;Animal is running...&#39;)
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Animal is running...&#x27;</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>(<span class="hljs-params">Animal</span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Dog is running...&#x27;</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">Animal</span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Cat is running...&#x27;</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_twice</span>(<span class="hljs-params">animal</span>):</span><br>    animal.run()<br><br><br>run_twice(Animal())<br><span class="hljs-comment"># Animal is running...</span><br>run_twice(Dog())<br><span class="hljs-comment"># Dog is running...</span><br>run_twice(Cat())<br><span class="hljs-comment"># Cat is running...</span><br></code></pre></td></tr></table></figure>
 
-
-class Dog(Animal):
-
-    def run(self):
-        print(&#39;Dog is running...&#39;)
-
-
-class Cat(Animal):
-
-    def run(self):
-        print(&#39;Cat is running...&#39;)
-
-
-def run_twice(animal):
-    animal.run()
-
-
-run_twice(Animal())
-# Animal is running...
-run_twice(Dog())
-# Dog is running...
-run_twice(Cat())
-# Cat is running...
-</code></pre>
 <p><code>run_twice</code>函数只管调用传递进来的<code>run</code>方法，而不关心具体是Animal的哪个子类，因为所有的子类都会有<code>run</code>方法，最基本的就是Animal的<code>run</code>方法。可以随便为Animal增加子类，但是<code>run_twice</code>不用改动。这就是多态真正的威力：调用方只管调用，不管细节</p>
 <p>在静态语言中，<code>run_twice</code>的参数必须是Animal或者他的子类，但是在python中有鸭子类型，既：一个对象如果“看起来像是鸭子，走路像鸭子”，那么他就是鸭子。所以<code>run_twice</code>可以接受不是Animal子类的类，只要他有<code>run</code>方法即可。例如：</p>
-<pre><code class="python">class Animal(object):
-    def run(self):
-        print(&#39;Animal is running...&#39;)
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Animal is running...&#x27;</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>(<span class="hljs-params">Animal</span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Dog is running...&#x27;</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span>(<span class="hljs-params">Animal</span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Cat is running...&#x27;</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>:</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Test is running...&quot;</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_twice</span>(<span class="hljs-params">animal</span>):</span><br>    animal.run()<br><br><br>run_twice(Animal())<br><span class="hljs-comment"># Animal is running...</span><br>run_twice(Dog())<br><span class="hljs-comment"># Dog is running...</span><br>run_twice(Cat())<br><span class="hljs-comment"># Cat is running...</span><br>run_twice(Test())<br><span class="hljs-comment"># Test is running...</span><br></code></pre></td></tr></table></figure>
 
-
-class Dog(Animal):
-
-    def run(self):
-        print(&#39;Dog is running...&#39;)
-
-
-class Cat(Animal):
-
-    def run(self):
-        print(&#39;Cat is running...&#39;)
-
-
-class Test:
-
-    def run(self):
-        print(&quot;Test is running...&quot;)
-
-
-def run_twice(animal):
-    animal.run()
-
-
-run_twice(Animal())
-# Animal is running...
-run_twice(Dog())
-# Dog is running...
-run_twice(Cat())
-# Cat is running...
-run_twice(Test())
-# Test is running...
-</code></pre>
 <p><code>run_twice(Test())</code>也是可以正常调用的。</p>
 <p>鸭子类型主要的一个作用：不需要提供所需对象的完整接口，而只需满足实际被访问的接口。</p>
 <p>可能在有些场景下，会调用一些官方库的方法，但他对参数是有要求的，比如必须实现某个方法等。利用鸭子类型，我们就可以只实现参数要求的那个方法，而不必实现参数对象所有的方法才去调用这个官方库方法。</p>
 <h3 id="抽象基类"><a href="#抽象基类" class="headerlink" title="抽象基类"></a>抽象基类</h3><p>虽然鸭子类型很有用，但是要想事先知道这个类是否满足全部的需要并不是一件容易的事。因此，Python引入了抽象基类的概念，抽象基类（Abstract base class），或者是ABCs，定义一组必须被类的鸭子实例实现的方法和属性</p>
 <h4 id="使用抽象基类"><a href="#使用抽象基类" class="headerlink" title="使用抽象基类"></a>使用抽象基类</h4><p>先来看一个例子：</p>
-<pre><code class="python">In [1]: from rich import print
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">1</span>]: <span class="hljs-keyword">from</span> rich <span class="hljs-keyword">import</span> <span class="hljs-built_in">print</span><br><br>In [<span class="hljs-number">2</span>]: <span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Container<br><br>In [<span class="hljs-number">3</span>]: <span class="hljs-built_in">help</span>(Container)<br><br>In [<span class="hljs-number">4</span>]: <span class="hljs-built_in">print</span>(Container.__abstractmethods__)<br><span class="hljs-built_in">frozenset</span>(&#123;<span class="hljs-string">&#x27;__contains__&#x27;</span>&#125;)<br></code></pre></td></tr></table></figure>
 
-In [2]: from collections import Container
-
-In [3]: help(Container)
-
-In [4]: print(Container.__abstractmethods__)
-frozenset(&#123;&#39;__contains__&#39;&#125;)
-</code></pre>
 <p>Container类只需要实现一个抽象方法<code>__contains__</code>。</p>
 <p><code>List</code>,<code>str</code>和<code>dict</code>都实现了这个方法，用以表明给的值是否存在于这一数据结构中，我们自定义一个类：</p>
-<pre><code class="python">from collections import Container
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Container<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OddContainer</span>:</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__contains__</span>(<span class="hljs-params">self, x</span>):</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(x, <span class="hljs-built_in">int</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> x % <span class="hljs-number">2</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestContainer</span>:</span><br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">isinstance</span>(OddContainer(), Container))<br><span class="hljs-comment"># True</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">issubclass</span>(OddContainer, Container))<br><span class="hljs-comment"># True</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">isinstance</span>(TestContainer(), Container))<br><span class="hljs-comment"># Flase</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">issubclass</span>(TestContainer, Container))<br><span class="hljs-comment"># False</span><br></code></pre></td></tr></table></figure>
 
-
-class OddContainer:
-
-    def __contains__(self, x):
-        if not isinstance(x, int) or not x % 2:
-            return False
-        return True
-
-
-class TestContainer:
-    pass
-
-
-print(isinstance(OddContainer(), Container))
-# True
-
-print(issubclass(OddContainer, Container))
-# True
-
-print(isinstance(TestContainer(), Container))
-# Flase
-
-print(issubclass(TestContainer, Container))
-# False
-</code></pre>
 <p>由于Container类规定了鸭子类型实例必须要实现<code>__contains__</code>方法，所以OddContainer可以被认为是Container的子类，而TestContainer不可以</p>
 <p>这就是鸭子类型币传统的多态更棒的原因，我们可以不用继承关系（或者更坏的情况）就能创建一个“是一个”的关系。</p>
 <p>有趣的是Container的子类都可以使用in关键字。实际上in只是<code>__contains__</code>的语法糖。</p>
 <h4 id="创建抽象基类"><a href="#创建抽象基类" class="headerlink" title="创建抽象基类"></a>创建抽象基类</h4><p>Container类其实就是一个抽象基类，下面自己创建一个抽象基类</p>
-<pre><code class="python">import abc
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> abc<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MediaLoader</span>(<span class="hljs-params">metaclass=abc.ABCMeta</span>):</span><br><br>    <span class="hljs-comment"># * 子类必须实现该方法 </span><br><span class="hljs-meta">    @abc.abstractclassmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">pass</span><br><br>    <span class="hljs-comment"># * 子类必须提供这一属性</span><br><span class="hljs-meta">    @abc.abstractproperty</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ext</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">pass</span><br><br>    <span class="hljs-comment"># * 该方法可用类直接调用，而不必用到实例</span><br><span class="hljs-meta">    @classmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__subclasshook__</span>(<span class="hljs-params">cls, C</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;MediaLoader __subclasshook&quot;</span>)<br>        <span class="hljs-keyword">if</span> cls <span class="hljs-keyword">is</span> MediaLoader:<br>            attrs = <span class="hljs-built_in">set</span>(<span class="hljs-built_in">dir</span>(C))<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">set</span>(cls.__abstractmethods__) &lt;= attrs:<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Wav</span>(<span class="hljs-params">MediaLoader</span>):</span><br>    <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ogg</span>(<span class="hljs-params">MediaLoader</span>):</span><br><br>    ext = <span class="hljs-string">&quot;.ogg&quot;</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">pass</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestABCs</span>:</span><br>    ext = <span class="hljs-string">&quot;.testABCs&quot;</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">play</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-comment"># x = Wav()</span><br><span class="hljs-comment"># Traceback(most recent call last):</span><br><span class="hljs-comment">#   File &quot;test.py&quot;, line 26, in &lt; module &gt;</span><br><span class="hljs-comment">#   x = Wav()</span><br><span class="hljs-comment"># TypeError: Can&#x27;t instantiate abstract class Wav with abstract methods ext, play</span><br><br><br>o = Ogg()<br><span class="hljs-built_in">print</span>(o.ext)<br><span class="hljs-comment"># .ogg</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">isinstance</span>(Ogg(), MediaLoader))<br><span class="hljs-comment"># MediaLoader __subclasshook</span><br><span class="hljs-comment"># True</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">isinstance</span>(TestABCs(), MediaLoader))<br><span class="hljs-comment"># MediaLoader __subclasshook</span><br><span class="hljs-comment"># True</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">issubclass</span>(Ogg, MediaLoader))<br><span class="hljs-comment"># True</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">issubclass</span>(TestABCs, MediaLoader))<br><span class="hljs-comment"># True</span><br></code></pre></td></tr></table></figure>
 
-
-class MediaLoader(metaclass=abc.ABCMeta):
-
-    # * 子类必须实现该方法 
-    @abc.abstractclassmethod
-    def play(self):
-        pass
-
-    # * 子类必须提供这一属性
-    @abc.abstractproperty
-    def ext(self):
-        pass
-
-    # * 该方法可用类直接调用，而不必用到实例
-    @classmethod
-    def __subclasshook__(cls, C):
-        print(&quot;MediaLoader __subclasshook&quot;)
-        if cls is MediaLoader:
-            attrs = set(dir(C))
-            if set(cls.__abstractmethods__) &lt;= attrs:
-                return True
-        return False
-
-
-class Wav(MediaLoader):
-    pass
-
-
-class Ogg(MediaLoader):
-
-    ext = &quot;.ogg&quot;
-
-    def play(self):
-        pass
-
-
-class TestABCs:
-    ext = &quot;.testABCs&quot;
-
-    def play(self):
-        pass
-
-# x = Wav()
-# Traceback(most recent call last):
-#   File &quot;test.py&quot;, line 26, in &lt; module &gt;
-#   x = Wav()
-# TypeError: Can&#39;t instantiate abstract class Wav with abstract methods ext, play
-
-
-o = Ogg()
-print(o.ext)
-# .ogg
-
-print(isinstance(Ogg(), MediaLoader))
-# MediaLoader __subclasshook
-# True
-
-print(isinstance(TestABCs(), MediaLoader))
-# MediaLoader __subclasshook
-# True
-
-print(issubclass(Ogg, MediaLoader))
-# True
-
-print(issubclass(TestABCs, MediaLoader))
-# True
-</code></pre>
 <p>如果继承了抽象基类，但是不实现规定的方法和属性，则会报错</p>
 <h3 id="案例学习"><a href="#案例学习" class="headerlink" title="案例学习"></a>案例学习</h3><p>下面将简单实现一个房屋租赁系统</p>
 <p>继承关系：</p>
 <p><img src="/images/python-object-3/%E7%AC%AC3%E7%AB%A0-%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0.png" alt="第3章-案例学习"></p>
-<pre><code class="python">def get_valid_input(input_string, valid_options):
-    input_string = f&quot;&#123;input_string&#125; &#123;&#39;, &#39;.join(valid_options)&#125;\n&quot;
-    response = input(input_string)
-    while response not in valid_options:
-        response = input(input_string)
-    return response
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_valid_input</span>(<span class="hljs-params">input_string, valid_options</span>):</span><br>    input_string = <span class="hljs-string">f&quot;<span class="hljs-subst">&#123;input_string&#125;</span> <span class="hljs-subst">&#123;<span class="hljs-string">&#x27;, &#x27;</span>.join(valid_options)&#125;</span>\n&quot;</span><br>    response = <span class="hljs-built_in">input</span>(input_string)<br>    <span class="hljs-keyword">while</span> response <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> valid_options:<br>        response = <span class="hljs-built_in">input</span>(input_string)<br>    <span class="hljs-keyword">return</span> response<br><br><br><span class="hljs-comment"># 房屋和公寓的父类，提供一些共有的参数</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Property</span>:</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, square_feet=<span class="hljs-string">&quot;&quot;</span>, beds=<span class="hljs-string">&quot;&quot;</span>, baths=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-comment"># 防止它不是在继承链的最后一层调用</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.square_feet = square_feet<br>        self.num_bedrooms = beds<br>        self.num_baths = baths<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;PROPERTY DETAILS&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;=&quot;</span> * <span class="hljs-number">10</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;square footage: <span class="hljs-subst">&#123;self.square_feet&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;bedrooms: <span class="hljs-subst">&#123;self.num_bedrooms&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;bathrooms: <span class="hljs-subst">&#123;self.num_bedrooms&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>()<br><br>    <span class="hljs-comment"># * 静态方法，可直接通过类调用，也可以通过实例调用</span><br>    <span class="hljs-comment"># * 静态方法与实例无关，所以没有self参数，同样不能使用super关键字</span><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dict</span>(<br>            square_feet=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Enter the square feet: &quot;</span>),<br>            beds=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Enter number of bedrooms: &quot;</span>),<br>            baths=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Enter number of baths: &quot;</span>)<br>        )<br><br><br><span class="hljs-comment"># 公寓</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Apartment</span>(<span class="hljs-params">Property</span>):</span><br><br>    <span class="hljs-comment"># 洗衣机</span><br>    valid_laundries = (<span class="hljs-string">&quot;coin&quot;</span>, <span class="hljs-string">&quot;ensuite&quot;</span>, <span class="hljs-string">&quot;none&quot;</span>)<br>    <span class="hljs-comment"># 阳台</span><br>    valid_balconies = (<span class="hljs-string">&quot;yes&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>, <span class="hljs-string">&quot;solarium&quot;</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, balcony=<span class="hljs-string">&quot;&quot;</span>, laundry=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.balcony = balcony<br>        self.laundry = laundry<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().display()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;APARTMENT DETAILS&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;laundry: <span class="hljs-subst">&#123;self.laundry&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;has balcony: <span class="hljs-subst">&#123;self.balcony&#125;</span>&quot;</span>)<br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        parent_init = Property.prompt_init()<br><br>        laundry = get_valid_input(<br>            <span class="hljs-string">&quot;What laundry facilities does the property have? &quot;</span>, Apartment.valid_laundries)<br><br>        balcony = get_valid_input(<br>            <span class="hljs-string">&quot;Does the property have a balcony? &quot;</span>, Apartment.valid_balconies)<br><br>        parent_init.update(&#123;<br>            <span class="hljs-string">&quot;laundry&quot;</span>: laundry,<br>            <span class="hljs-string">&quot;balcony&quot;</span>: balcony<br>        &#125;)<br><br>        <span class="hljs-keyword">return</span> parent_init<br><br><br><span class="hljs-comment"># 房屋</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">House</span>(<span class="hljs-params">Property</span>):</span><br><br>    <span class="hljs-comment"># 车库</span><br>    valid_garage = (<span class="hljs-string">&quot;attached&quot;</span>, <span class="hljs-string">&quot;detached&quot;</span>, <span class="hljs-string">&quot;none&quot;</span>)<br>    <span class="hljs-comment"># 围栏</span><br>    valid_fenced = (<span class="hljs-string">&quot;yes&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, num_stories=<span class="hljs-string">&quot;&quot;</span>, garage=<span class="hljs-string">&quot;&quot;</span>, fenced=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.garage = garage<br>        self.fenced = fenced<br>        self.num_stories = num_stories<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().display()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;HOUSE DETAILS&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;# of stories: <span class="hljs-subst">&#123;self.num_stories&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;garage: <span class="hljs-subst">&#123;self.garage&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;fenced yard: <span class="hljs-subst">&#123;self.fenced&#125;</span>&quot;</span>)<br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        parent_init = Property.prompt_init()<br><br>        fenced = get_valid_input(<br>            <span class="hljs-string">&quot;Is the yard fenced? &quot;</span>, House.valid_fenced)<br><br>        garage = get_valid_input(<br>            <span class="hljs-string">&quot;Is there a garage? &quot;</span>, House.valid_garage)<br><br>        num_stories = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;How many stories? &quot;</span>)<br><br>        parent_init.update(&#123;<br>            <span class="hljs-string">&quot;fenced&quot;</span>: fenced,<br>            <span class="hljs-string">&quot;garage&quot;</span>: garage,<br>            <span class="hljs-string">&quot;num_stories&quot;</span>: num_stories<br>        &#125;)<br><br>        <span class="hljs-keyword">return</span> parent_init<br><br><br><span class="hljs-comment"># 购买</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Purchase</span>:</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, price=<span class="hljs-string">&quot;&quot;</span>, taxes=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.price = price<br>        self.taxes = taxes<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().display()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;PURCHASE DETAILS&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;selling price: <span class="hljs-subst">&#123;self.price&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;estimated taxes: <span class="hljs-subst">&#123;self.taxes&#125;</span>&quot;</span>)<br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dict</span>(<br>            price=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;What is the selling price? &quot;</span>),<br>            taxes=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;What are the estimated taxes? &quot;</span>)<br>        )<br><br><br><span class="hljs-comment"># 租房</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Rental</span>:</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, furnished=<span class="hljs-string">&quot;&quot;</span>, utilities=<span class="hljs-string">&quot;&quot;</span>, rent=<span class="hljs-string">&quot;&quot;</span>, **kwargs</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__(**kwargs)<br>        self.furnished = furnished<br>        self.utilities = utilities<br>        self.rent = rent<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().display()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;RENTAL DETAILS&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;rent: <span class="hljs-subst">&#123;self.rent&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;estimated utilities: <span class="hljs-subst">&#123;self.utilities&#125;</span>&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;furnished: <span class="hljs-subst">&#123;self.furnished&#125;</span>&quot;</span>)<br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dict</span>(<br>            rent=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;What is the monthly rent? &quot;</span>),<br>            utilities=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;What are the estimated utilities? &quot;</span>),<br>            furnished=get_valid_input(<br>                <span class="hljs-string">&quot;Is the property furnished? &quot;</span>, (<span class="hljs-string">&quot;yes&quot;</span>, <span class="hljs-string">&quot;no&quot;</span>))<br>        )<br><br><br><span class="hljs-comment"># 租房子</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HouseRental</span>(<span class="hljs-params">Rental, House</span>):</span><br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        init = House.prompt_init()<br>        init.update(Rental.prompt_init())<br>        <span class="hljs-keyword">return</span> init<br><br><br>init = HouseRental.prompt_init()<br>house = HouseRental(**init)<br>house.display()<br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Enter the square feet: 1</span><br><span class="hljs-string">Enter number of bedrooms: 2</span><br><span class="hljs-string">Enter number of baths: 3</span><br><span class="hljs-string">Is the yard fenced?  yes, no</span><br><span class="hljs-string">yes</span><br><span class="hljs-string">Is there a garage?  attached, detached, none</span><br><span class="hljs-string">attached</span><br><span class="hljs-string">How many stories? 3</span><br><span class="hljs-string">What is the monthly rent? 12</span><br><span class="hljs-string">What are the estimated utilities? 100</span><br><span class="hljs-string">Is the property furnished?  yes, no</span><br><span class="hljs-string">yes</span><br><span class="hljs-string"></span><br><span class="hljs-string">PROPERTY DETAILS</span><br><span class="hljs-string">==========</span><br><span class="hljs-string">square footage: 1</span><br><span class="hljs-string">bedrooms: 2</span><br><span class="hljs-string">bathrooms: 2</span><br><span class="hljs-string"></span><br><span class="hljs-string">HOUSE DETAILS</span><br><span class="hljs-string"># of stories: 3</span><br><span class="hljs-string">garage: attached</span><br><span class="hljs-string">fenced yard: yes</span><br><span class="hljs-string"></span><br><span class="hljs-string">RENTAL DETAILS</span><br><span class="hljs-string">rent: 12</span><br><span class="hljs-string">estimated utilities: 100</span><br><span class="hljs-string">furnished: yes</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
 
-
-# 房屋和公寓的父类，提供一些共有的参数
-class Property:
-
-    def __init__(self, square_feet=&quot;&quot;, beds=&quot;&quot;, baths=&quot;&quot;, **kwargs):
-        # 防止它不是在继承链的最后一层调用
-        super().__init__(**kwargs)
-        self.square_feet = square_feet
-        self.num_bedrooms = beds
-        self.num_baths = baths
-
-    def display(self):
-        print(&quot;PROPERTY DETAILS&quot;)
-        print(&quot;=&quot; * 10)
-        print(f&quot;square footage: &#123;self.square_feet&#125;&quot;)
-        print(f&quot;bedrooms: &#123;self.num_bedrooms&#125;&quot;)
-        print(f&quot;bathrooms: &#123;self.num_bedrooms&#125;&quot;)
-        print()
-
-    # * 静态方法，可直接通过类调用，也可以通过实例调用
-    # * 静态方法与实例无关，所以没有self参数，同样不能使用super关键字
-    @staticmethod
-    def prompt_init():
-        return dict(
-            square_feet=input(&quot;Enter the square feet: &quot;),
-            beds=input(&quot;Enter number of bedrooms: &quot;),
-            baths=input(&quot;Enter number of baths: &quot;)
-        )
-
-
-# 公寓
-class Apartment(Property):
-
-    # 洗衣机
-    valid_laundries = (&quot;coin&quot;, &quot;ensuite&quot;, &quot;none&quot;)
-    # 阳台
-    valid_balconies = (&quot;yes&quot;, &quot;no&quot;, &quot;solarium&quot;)
-
-    def __init__(self, balcony=&quot;&quot;, laundry=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.balcony = balcony
-        self.laundry = laundry
-
-    def display(self):
-        super().display()
-        print(&quot;APARTMENT DETAILS&quot;)
-        print(f&quot;laundry: &#123;self.laundry&#125;&quot;)
-        print(f&quot;has balcony: &#123;self.balcony&#125;&quot;)
-
-    @staticmethod
-    def prompt_init():
-        parent_init = Property.prompt_init()
-
-        laundry = get_valid_input(
-            &quot;What laundry facilities does the property have? &quot;, Apartment.valid_laundries)
-
-        balcony = get_valid_input(
-            &quot;Does the property have a balcony? &quot;, Apartment.valid_balconies)
-
-        parent_init.update(&#123;
-            &quot;laundry&quot;: laundry,
-            &quot;balcony&quot;: balcony
-        &#125;)
-
-        return parent_init
-
-
-# 房屋
-class House(Property):
-
-    # 车库
-    valid_garage = (&quot;attached&quot;, &quot;detached&quot;, &quot;none&quot;)
-    # 围栏
-    valid_fenced = (&quot;yes&quot;, &quot;no&quot;)
-
-    def __init__(self, num_stories=&quot;&quot;, garage=&quot;&quot;, fenced=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.garage = garage
-        self.fenced = fenced
-        self.num_stories = num_stories
-
-    def display(self):
-        super().display()
-        print(&quot;HOUSE DETAILS&quot;)
-        print(f&quot;# of stories: &#123;self.num_stories&#125;&quot;)
-        print(f&quot;garage: &#123;self.garage&#125;&quot;)
-        print(f&quot;fenced yard: &#123;self.fenced&#125;&quot;)
-
-    @staticmethod
-    def prompt_init():
-        parent_init = Property.prompt_init()
-
-        fenced = get_valid_input(
-            &quot;Is the yard fenced? &quot;, House.valid_fenced)
-
-        garage = get_valid_input(
-            &quot;Is there a garage? &quot;, House.valid_garage)
-
-        num_stories = input(&quot;How many stories? &quot;)
-
-        parent_init.update(&#123;
-            &quot;fenced&quot;: fenced,
-            &quot;garage&quot;: garage,
-            &quot;num_stories&quot;: num_stories
-        &#125;)
-
-        return parent_init
-
-
-# 购买
-class Purchase:
-
-    def __init__(self, price=&quot;&quot;, taxes=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.price = price
-        self.taxes = taxes
-
-    def display(self):
-        super().display()
-        print(&quot;PURCHASE DETAILS&quot;)
-        print(f&quot;selling price: &#123;self.price&#125;&quot;)
-        print(f&quot;estimated taxes: &#123;self.taxes&#125;&quot;)
-
-    @staticmethod
-    def prompt_init():
-        return dict(
-            price=input(&quot;What is the selling price? &quot;),
-            taxes=input(&quot;What are the estimated taxes? &quot;)
-        )
-
-
-# 租房
-class Rental:
-
-    def __init__(self, furnished=&quot;&quot;, utilities=&quot;&quot;, rent=&quot;&quot;, **kwargs):
-        super().__init__(**kwargs)
-        self.furnished = furnished
-        self.utilities = utilities
-        self.rent = rent
-
-    def display(self):
-        super().display()
-        print(&quot;RENTAL DETAILS&quot;)
-        print(f&quot;rent: &#123;self.rent&#125;&quot;)
-        print(f&quot;estimated utilities: &#123;self.utilities&#125;&quot;)
-        print(f&quot;furnished: &#123;self.furnished&#125;&quot;)
-
-    @staticmethod
-    def prompt_init():
-        return dict(
-            rent=input(&quot;What is the monthly rent? &quot;),
-            utilities=input(&quot;What are the estimated utilities? &quot;),
-            furnished=get_valid_input(
-                &quot;Is the property furnished? &quot;, (&quot;yes&quot;, &quot;no&quot;))
-        )
-
-
-# 租房子
-class HouseRental(Rental, House):
-
-    @staticmethod
-    def prompt_init():
-        init = House.prompt_init()
-        init.update(Rental.prompt_init())
-        return init
-
-
-init = HouseRental.prompt_init()
-house = HouseRental(**init)
-house.display()
-&#39;&#39;&#39;
-Enter the square feet: 1
-Enter number of bedrooms: 2
-Enter number of baths: 3
-Is the yard fenced?  yes, no
-yes
-Is there a garage?  attached, detached, none
-attached
-How many stories? 3
-What is the monthly rent? 12
-What are the estimated utilities? 100
-Is the property furnished?  yes, no
-yes
-
-PROPERTY DETAILS
-==========
-square footage: 1
-bedrooms: 2
-bathrooms: 2
-
-HOUSE DETAILS
-# of stories: 3
-garage: attached
-fenced yard: yes
-
-RENTAL DETAILS
-rent: 12
-estimated utilities: 100
-furnished: yes
-&#39;&#39;&#39;
-</code></pre>
 <blockquote>
 <p>注意：在前面的例子中如果我们将HouseRental继承顺序改为<code>(House, Rental)</code>，将不会触发<code>Rental.display()</code>方法。因为当调用<code>House.display</code>方式时，会调用<code>Property.display</code>方法。但是<code>Property.display()</code>中没有调用<code>super</code>，所以调用不了<code>Rental.display</code>方法。如果在Property中调用<code>super().display()</code>方法则不行，因为<code>object</code>对象没有<code>display</code>方法。可行的方式是Rental也继承Property，就成了之前讲到的钻石继承问题了。<code>super()</code>能轻松的解决。</p>
 </blockquote>
 <p>继续编写剩余代码：</p>
-<pre><code class="python"># 租公寓
-class ApartmentRental(Rental, Apartment):
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 租公寓</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApartmentRental</span>(<span class="hljs-params">Rental, Apartment</span>):</span><br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        init = Apartment.prompt_init()<br>        init.update(Rental.prompt_init())<br>        <span class="hljs-keyword">return</span> init<br><br><br><span class="hljs-comment"># 买公寓</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApartmentPurchase</span>(<span class="hljs-params">Purchase, Apartment</span>):</span><br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        init = Purchase.prompt_init()<br>        init.update(Rental.prompt_init())<br>        <span class="hljs-keyword">return</span> init<br><br><br><span class="hljs-comment"># 买房子</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HousePurchase</span>(<span class="hljs-params">Purchase, House</span>):</span><br><br><span class="hljs-meta">    @staticmethod</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prompt_init</span>():</span><br>        init = House.prompt_init()<br>        init.update(Purchase.prompt_init())<br>        <span class="hljs-keyword">return</span> init<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Agent</span>:</span><br><br>    type_map = &#123;<br>        (<span class="hljs-string">&quot;house&quot;</span>, <span class="hljs-string">&quot;rental&quot;</span>): HouseRental,<br>        (<span class="hljs-string">&quot;house&quot;</span>, <span class="hljs-string">&quot;purchase&quot;</span>): HousePurchase,<br>        (<span class="hljs-string">&quot;apartment&quot;</span>, <span class="hljs-string">&quot;rental&quot;</span>): ApartmentRental,<br>        (<span class="hljs-string">&quot;apartment&quot;</span>, <span class="hljs-string">&quot;purchase&quot;</span>): ApartmentPurchase<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span><br>        self.property_list = []<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">display_properties</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">property</span> <span class="hljs-keyword">in</span> self.property_list:<br>            <span class="hljs-built_in">property</span>.display()<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_property</span>(<span class="hljs-params">self</span>):</span><br>        property_type = get_valid_input(<br>            <span class="hljs-string">&quot;What type of property? &quot;</span>, ((<span class="hljs-string">&quot;house&quot;</span>, <span class="hljs-string">&quot;apartment&quot;</span>))).lower()<br>        payment_type = get_valid_input(<br>            <span class="hljs-string">&quot;What payment type? &quot;</span>, (<span class="hljs-string">&quot;purchase&quot;</span>, <span class="hljs-string">&quot;rental&quot;</span>)).lower()<br>        PropertyClass = self.type_map[(property_type, payment_type)]<br>        init_args = PropertyClass.prompt_init()<br>        self.property_list.append(PropertyClass(**init_args))<br><br><br>agent = Agent()<br>agent.add_property()<br>agent.add_property()<br>agent.display_properties()<br><span class="hljs-comment"># What type of property?  house, apartment</span><br><span class="hljs-comment"># house</span><br><span class="hljs-comment"># What payment type?  purchase, rental</span><br><span class="hljs-comment"># purchase</span><br><span class="hljs-comment"># Enter the square feet: 1</span><br><span class="hljs-comment"># Enter number of bedrooms: 2</span><br><span class="hljs-comment"># Enter number of baths: 3</span><br><span class="hljs-comment"># Is the yard fenced?  yes, no</span><br><span class="hljs-comment"># yes</span><br><span class="hljs-comment"># Is there a garage?  attached, detached, none</span><br><span class="hljs-comment"># none</span><br><span class="hljs-comment"># How many stories? 4</span><br><span class="hljs-comment"># What is the selling price? 12</span><br><span class="hljs-comment"># What are the estimated taxes? 23</span><br><span class="hljs-comment"># What type of property?  house, apartment</span><br><span class="hljs-comment"># house</span><br><span class="hljs-comment"># What payment type?  purchase, rental</span><br><span class="hljs-comment"># rental</span><br><span class="hljs-comment"># Enter the square feet: 2</span><br><span class="hljs-comment"># Enter number of bedrooms: 3</span><br><span class="hljs-comment"># Enter number of baths: 4</span><br><span class="hljs-comment"># Is the yard fenced?  yes, no</span><br><span class="hljs-comment"># no</span><br><span class="hljs-comment"># Is there a garage?  attached, detached, none</span><br><span class="hljs-comment"># none</span><br><span class="hljs-comment"># How many stories? 6</span><br><span class="hljs-comment"># What is the monthly rent? 12</span><br><span class="hljs-comment"># What are the estimated utilities? 4</span><br><span class="hljs-comment"># Is the property furnished?  yes, no</span><br><span class="hljs-comment"># no</span><br><span class="hljs-comment"># PROPERTY DETAILS</span><br><span class="hljs-comment"># == == == == ==</span><br><span class="hljs-comment"># square footage: 1</span><br><span class="hljs-comment"># bedrooms: 2</span><br><span class="hljs-comment"># bathrooms: 2</span><br><br><span class="hljs-comment"># HOUSE DETAILS</span><br><span class="hljs-comment"># # of stories: 4</span><br><span class="hljs-comment"># garage: none</span><br><span class="hljs-comment"># fenced yard: yes</span><br><span class="hljs-comment"># PURCHASE DETAILS</span><br><span class="hljs-comment"># selling price: 12</span><br><span class="hljs-comment"># estimated taxes: 23</span><br><span class="hljs-comment"># PROPERTY DETAILS</span><br><span class="hljs-comment"># == == == == ==</span><br><span class="hljs-comment"># square footage: 2</span><br><span class="hljs-comment"># bedrooms: 3</span><br><span class="hljs-comment"># bathrooms: 3</span><br><br><span class="hljs-comment"># HOUSE DETAILS</span><br><span class="hljs-comment"># # of stories: 6</span><br><span class="hljs-comment"># garage: none</span><br><span class="hljs-comment"># fenced yard: no</span><br><span class="hljs-comment"># RENTAL DETAILS</span><br><span class="hljs-comment"># rent: 12</span><br><span class="hljs-comment"># estimated utilities: 4</span><br><span class="hljs-comment"># furnished: no</span><br></code></pre></td></tr></table></figure>
 
-    @staticmethod
-    def prompt_init():
-        init = Apartment.prompt_init()
-        init.update(Rental.prompt_init())
-        return init
-
-
-# 买公寓
-class ApartmentPurchase(Purchase, Apartment):
-
-    @staticmethod
-    def prompt_init():
-        init = Purchase.prompt_init()
-        init.update(Rental.prompt_init())
-        return init
-
-
-# 买房子
-class HousePurchase(Purchase, House):
-
-    @staticmethod
-    def prompt_init():
-        init = House.prompt_init()
-        init.update(Purchase.prompt_init())
-        return init
-
-
-class Agent:
-
-    type_map = &#123;
-        (&quot;house&quot;, &quot;rental&quot;): HouseRental,
-        (&quot;house&quot;, &quot;purchase&quot;): HousePurchase,
-        (&quot;apartment&quot;, &quot;rental&quot;): ApartmentRental,
-        (&quot;apartment&quot;, &quot;purchase&quot;): ApartmentPurchase
-    &#125;
-
-    def __init__(self):
-        self.property_list = []
-
-    def display_properties(self):
-        for property in self.property_list:
-            property.display()
-
-    def add_property(self):
-        property_type = get_valid_input(
-            &quot;What type of property? &quot;, ((&quot;house&quot;, &quot;apartment&quot;))).lower()
-        payment_type = get_valid_input(
-            &quot;What payment type? &quot;, (&quot;purchase&quot;, &quot;rental&quot;)).lower()
-        PropertyClass = self.type_map[(property_type, payment_type)]
-        init_args = PropertyClass.prompt_init()
-        self.property_list.append(PropertyClass(**init_args))
-
-
-agent = Agent()
-agent.add_property()
-agent.add_property()
-agent.display_properties()
-# What type of property?  house, apartment
-# house
-# What payment type?  purchase, rental
-# purchase
-# Enter the square feet: 1
-# Enter number of bedrooms: 2
-# Enter number of baths: 3
-# Is the yard fenced?  yes, no
-# yes
-# Is there a garage?  attached, detached, none
-# none
-# How many stories? 4
-# What is the selling price? 12
-# What are the estimated taxes? 23
-# What type of property?  house, apartment
-# house
-# What payment type?  purchase, rental
-# rental
-# Enter the square feet: 2
-# Enter number of bedrooms: 3
-# Enter number of baths: 4
-# Is the yard fenced?  yes, no
-# no
-# Is there a garage?  attached, detached, none
-# none
-# How many stories? 6
-# What is the monthly rent? 12
-# What are the estimated utilities? 4
-# Is the property furnished?  yes, no
-# no
-# PROPERTY DETAILS
-# == == == == ==
-# square footage: 1
-# bedrooms: 2
-# bathrooms: 2
-
-# HOUSE DETAILS
-# # of stories: 4
-# garage: none
-# fenced yard: yes
-# PURCHASE DETAILS
-# selling price: 12
-# estimated taxes: 23
-# PROPERTY DETAILS
-# == == == == ==
-# square footage: 2
-# bedrooms: 3
-# bathrooms: 3
-
-# HOUSE DETAILS
-# # of stories: 6
-# garage: none
-# fenced yard: no
-# RENTAL DETAILS
-# rent: 12
-# estimated utilities: 4
-# furnished: no
-</code></pre>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">五月八</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qiuqideblog.com/2020/06/29/python-object-3/">https://qiuqideblog.com/2020/06/29/python-object-3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qiuqideblog.com" target="_blank">五月八</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post_share"><div class="social-share" data-image="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/9.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/06/27/restful-api/"><img class="prev-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/12.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">RESTful API</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/01/git-tag/"><img class="next-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《Git tags Explained》翻译</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/07/02/python-object-4/" title="《Python3 面向对象编程》笔记 - 第4章 异常捕获"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/10.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-02</div><div class="title">《Python3 面向对象编程》笔记 - 第4章 异常捕获</div></div></a></div><div><a href="/2020/06/27/python-mutable/" title="Python可变对象和不可变对象"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/8.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-27</div><div class="title">Python可变对象和不可变对象</div></div></a></div><div><a href="/2020/07/13/python-random/" title="Python实现无重复数字"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/11.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-13</div><div class="title">Python实现无重复数字</div></div></a></div><div><a href="/2020/09/02/rsync/" title="rsync 学习"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/rsync.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-09-02</div><div class="title">rsync 学习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/me.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">五月八</div><div class="author-info__description">天津理工大学 | 信息安全 | 后端开发</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LaoBan-ywcm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LaoBan-ywcm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:qiuqiandfqr@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python3-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Python3 面向对象编程笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E7%9B%B8%E4%BC%BC%E6%97%B6"><span class="toc-number">1.1.</span> <span class="toc-text">第3章 对象相似时</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本的基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.2.</span> <span class="toc-text">扩展内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%86%99%E5%92%8Csuper"><span class="toc-number">1.1.3.</span> <span class="toc-text">重写和super</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF"><span class="toc-number">1.1.4.</span> <span class="toc-text">多重继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%BB%E7%9F%B3%E5%9E%8B%E7%BB%A7%E6%89%BF%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.5.</span> <span class="toc-text">钻石型继承问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E9%9B%86%E5%90%88%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.6.</span> <span class="toc-text">不同集合的参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">1.1.7.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="toc-number">1.1.8.</span> <span class="toc-text">抽象基类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="toc-number">1.1.8.1.</span> <span class="toc-text">使用抽象基类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%8A%BD%E8%B1%A1%E5%9F%BA%E7%B1%BB"><span class="toc-number">1.1.8.2.</span> <span class="toc-text">创建抽象基类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.1.9.</span> <span class="toc-text">案例学习</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/13/go-error/" title="Golang的错误处理"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/16.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Golang的错误处理"/></a><div class="content"><a class="title" href="/2021/04/13/go-error/" title="Golang的错误处理">Golang的错误处理</a><time datetime="2021-04-13T12:39:17.000Z" title="发表于 2021-04-13 20:39:17">2021-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker镜像原理-overlayfs"/></a><div class="content"><a class="title" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs">Docker镜像原理-overlayfs</a><time datetime="2020-11-25T05:39:17.000Z" title="发表于 2020-11-25 13:39:17">2020-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker中的Namespace和Cgroups"/></a><div class="content"><a class="title" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups">docker中的Namespace和Cgroups</a><time datetime="2020-11-08T13:42:32.000Z" title="发表于 2020-11-08 21:42:32">2020-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/go-note/" title="《Go语言实战》笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《Go语言实战》笔记"/></a><div class="content"><a class="title" href="/2020/11/04/go-note/" title="《Go语言实战》笔记">《Go语言实战》笔记</a><time datetime="2020-11-04T07:21:07.000Z" title="发表于 2020-11-04 15:21:07">2020-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/HTTP-note/" title="HTTP笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/15.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTTP笔记"/></a><div class="content"><a class="title" href="/2020/11/04/HTTP-note/" title="HTTP笔记">HTTP笔记</a><time datetime="2020-11-04T06:30:24.000Z" title="发表于 2020-11-04 14:30:24">2020-11-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/9.png')"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By 五月八</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()
   else {

@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -144,7 +144,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/13.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ERC20代币批量转账实现和解析(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-12-27T01:20:41.000Z" title="发表于 2018-12-27 09:20:41">2018-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:47:38.004Z" title="更新于 2021-04-01 23:47:38">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ERC20代币批量转账实现和解析(一)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2018/12/27/ERC20-dirdop1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>如果你对区块链和ERC20代币没有概念，请先阅读入门知识</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/13.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ERC20代币批量转账实现和解析(一)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-12-27T01:20:41.000Z" title="发表于 2018-12-27 09:20:41">2018-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:47:38.004Z" title="更新于 2021-04-01 23:47:38">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ERC20代币批量转账实现和解析(一)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2018/12/27/ERC20-dirdop1/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>如果你对区块链和ERC20代币没有概念，请先阅读入门知识</p>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://learnblockchain.cn/2017/11/20/whatiseth/">以太坊是什么</a></li>
 <li><a target="_blank" rel="noopener" href="https://ethfans.org/posts/block-chain-technology-smart-contracts-and-ethereum">区块链技术-智能合约-以太坊</a></li>
@@ -167,74 +167,42 @@
 <blockquote>
 <p>brew 是 Mac 下的包管理工具，和Ubuntu里的apt-get类似</p>
 </blockquote>
-<pre><code>brew tap ethereum/ethereum
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">brew tap ethereum&#x2F;ethereum<br><br>brew install ethereum<br></code></pre></td></tr></table></figure>
 
-brew install ethereum
-</code></pre>
 <h3 id="创建私有链"><a href="#创建私有链" class="headerlink" title="创建私有链"></a>创建私有链</h3><p>首先新建一个文件目录，例如<code>ethprivate</code></p>
 <p>要搭建私有链必须有一个创世区块，创世区块的信息写在一个json文件中，例如genesis.json文件，在<code>ethprivate/genesis.json</code>中写入下面的内容</p>
-<pre><code class="json">&#123;
-  &quot;config&quot;: &#123;
-    &quot;chainID&quot;: 1024,
-    &quot;homesteadBlock&quot;: 0,
-    &quot;eip155Block&quot;: 0,
-    &quot;eip158Block&quot;: 0
-  &#125;,
-  &quot;alloc&quot;: &#123;&#125;,
-  &quot;coinbase&quot;: &quot;0x0000000000000000000000000000000000000000&quot;,
-  &quot;difficulty&quot;: &quot;0x400&quot;,
-  &quot;extraData&quot;: &quot;0x&quot;,
-  &quot;gasLimit&quot;: &quot;0x84c060&quot;,
-  &quot;nonce&quot;: &quot;0xdeadbeefdeadbeef&quot;,
-  &quot;mixhash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
-  &quot;parentHash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
-  &quot;timestamp&quot;: &quot;0x00&quot;
-&#125;
-</code></pre>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;config&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;chainID&quot;</span>: <span class="hljs-number">1024</span>,<br>    <span class="hljs-attr">&quot;homesteadBlock&quot;</span>: <span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;eip155Block&quot;</span>: <span class="hljs-number">0</span>,<br>    <span class="hljs-attr">&quot;eip158Block&quot;</span>: <span class="hljs-number">0</span><br>  &#125;,<br>  <span class="hljs-attr">&quot;alloc&quot;</span>: &#123;&#125;,<br>  <span class="hljs-attr">&quot;coinbase&quot;</span>: <span class="hljs-string">&quot;0x0000000000000000000000000000000000000000&quot;</span>,<br>  <span class="hljs-attr">&quot;difficulty&quot;</span>: <span class="hljs-string">&quot;0x400&quot;</span>,<br>  <span class="hljs-attr">&quot;extraData&quot;</span>: <span class="hljs-string">&quot;0x&quot;</span>,<br>  <span class="hljs-attr">&quot;gasLimit&quot;</span>: <span class="hljs-string">&quot;0x84c060&quot;</span>,<br>  <span class="hljs-attr">&quot;nonce&quot;</span>: <span class="hljs-string">&quot;0xdeadbeefdeadbeef&quot;</span>,<br>  <span class="hljs-attr">&quot;mixhash&quot;</span>: <span class="hljs-string">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>,<br>  <span class="hljs-attr">&quot;parentHash&quot;</span>: <span class="hljs-string">&quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;</span>,<br>  <span class="hljs-attr">&quot;timestamp&quot;</span>: <span class="hljs-string">&quot;0x00&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>这里将gasLimit设置大一点，防止后面部署合约的时候报<code>Error: exceeds block gas limit undefined</code>的错误信息，这是因为合约所需的gas超过了区块的最大gas</p>
 </blockquote>
 <p>创建好创世区块后，我们需要利用该创世区块去初始化区块链，需要新建一个<code>data0</code>目录存放区块信息</p>
 <p>接着在主目录下，执行初始化区块链的命令</p>
-<pre><code>geth --datadir data0 init genesis.json
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">geth --datadir data0 init genesis.json<br></code></pre></td></tr></table></figure>
+
 <p>看到如下信息则表明初始化成功</p>
 <p><img src="/images/ERC20-dirdop1/167f01019e73ace1.png"></p>
-<h3 id="启动私有链"><a href="#启动私有链" class="headerlink" title="启动私有链"></a>启动私有链</h3><pre><code>geth --datadir &#39;data0&#39; --identity &#39;my_block&#39; --port &#39;30304&#39; console 2&gt;&gt;eth_output.log
-</code></pre>
+<h3 id="启动私有链"><a href="#启动私有链" class="headerlink" title="启动私有链"></a>启动私有链</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">geth --datadir &#39;data0&#39; --identity &#39;my_block&#39; --port &#39;30304&#39; console 2&gt;&gt;eth_output.log<br></code></pre></td></tr></table></figure>
 <p>参数含义</p>
-<pre><code>–identity：指定节点 ID；
-–rpc：表示开启 HTTP-RPC 服务；
-–rpcport：指定 HTTP-RPC 服务监听端口号（默认为 8545）；
-–datadir：指定区块链数据的存储位置；
-–port：指定和其他节点连接所用的端口号（默认为 30303）；
-–networkid： 指定私有链网络号；
-–nodiscover：关闭节点发现机制，防止加入有同样初始配置的陌生节点。
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">–identity：指定节点 ID；<br>–rpc：表示开启 HTTP-RPC 服务；<br>–rpcport：指定 HTTP-RPC 服务监听端口号（默认为 8545）；<br>–datadir：指定区块链数据的存储位置；<br>–port：指定和其他节点连接所用的端口号（默认为 30303）；<br>–networkid： 指定私有链网络号；<br>–nodiscover：关闭节点发现机制，防止加入有同样初始配置的陌生节点。<br></code></pre></td></tr></table></figure>
+
 <p>看到下面的信息表示私有链成功启动</p>
 <p><img src="/images/ERC20-dirdop1/167f01127c85c035.png"></p>
 <h3 id="创建账户"><a href="#创建账户" class="headerlink" title="创建账户"></a>创建账户</h3><p>现在刚启动还没有任何账户</p>
 <p><img src="/images/ERC20-dirdop1/167f012330806b6e.png"></p>
 <p>我们利用<code>personal</code>创建账户</p>
-<pre><code>personal.newAccount()
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">personal.newAccount()<br></code></pre></td></tr></table></figure>
+
 <p><img src="/images/ERC20-dirdop1/167f012c9ee11b9f.png"></p>
 <blockquote>
 <p>Passphrase 就是密码，连续输入两次密码便可以创建一个账户</p>
 </blockquote>
 <p>除了<code>personal</code>，geth命令行中还包含了另外的对象</p>
-<pre><code>eth：包含一些跟操作区块链相关的方法
-net：包含以下查看p2p网络状态的方法
-admin：包含一些与管理节点相关的方法
-miner：包含启动&amp;停止挖矿的一些方法
-personal：主要包含一些管理账户的方法
-txpool：包含一些查看交易内存池的方法
-web3：包含了以上对象，还包含一些单位换算的方法
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">eth：包含一些跟操作区块链相关的方法<br>net：包含以下查看p2p网络状态的方法<br>admin：包含一些与管理节点相关的方法<br>miner：包含启动&amp;停止挖矿的一些方法<br>personal：主要包含一些管理账户的方法<br>txpool：包含一些查看交易内存池的方法<br>web3：包含了以上对象，还包含一些单位换算的方法<br></code></pre></td></tr></table></figure>
+
+
 <p>按照这中方式可以多创建几个账户，在后面使用</p>
 <h3 id="挖矿"><a href="#挖矿" class="headerlink" title="挖矿"></a>挖矿</h3><p>我们刚开始还没有进行挖矿，所以<code>eth.accounts[0]</code>中的余额为0</p>
-<pre><code>eth.getBalance(eth.accounts[0])
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">eth.getBalance(eth.accounts[0])<br></code></pre></td></tr></table></figure>
 <p><img src="/images/ERC20-dirdop1/167f0138351b2ac0.png"></p>
 <blockquote>
 <p>挖矿所得的ETH会默认存在<code>eth.accounts[0]</code>的账户当中</p>
@@ -253,23 +221,8 @@ web3：包含了以上对象，还包含一些单位换算的方法
 <h2 id="合约标准"><a href="#合约标准" class="headerlink" title="合约标准"></a>合约标准</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
 <p>ERC20使通证智能合约的行为非常类似于传统的加密货币，例如在不同账户之间发送和接收、查看通证总供应量或者查看某个地址可用的通证余额，就像比特币或以太币一样。这类似于用以太坊钱包 发送和接收以太币、查看流通中的以太币总量、查看特定钱包的货币余额等。</p>
 <p>ERC20规定了一些标准的接口</p>
-<pre><code>contract ERC20Interface &#123;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plain">contract ERC20Interface &#123;<br><br>    string public constant name &#x3D; &quot;Token Name&quot;;<br>    string public constant symbol &#x3D; &quot;SYM&quot;;<br>    uint8 public constant decimals &#x3D; 18;  &#x2F;&#x2F; 18 is the most common number of decimal places<br><br>    function totalSupply() public constant returns (uint);<br>    function balanceOf(address tokenOwner) public constant returns (uint balance);<br>    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);<br>    function transfer(address to, uint tokens) public returns (bool success);<br>    function approve(address spender, uint tokens) public returns (bool success);<br>    function transferFrom(address from, address to, uint tokens) public returns (bool success);<br><br>    event Transfer(address indexed from, address indexed to, uint tokens);<br>    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-    string public constant name = &quot;Token Name&quot;;
-    string public constant symbol = &quot;SYM&quot;;
-    uint8 public constant decimals = 18;  // 18 is the most common number of decimal places
-
-    function totalSupply() public constant returns (uint);
-    function balanceOf(address tokenOwner) public constant returns (uint balance);
-    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
-    function transfer(address to, uint tokens) public returns (bool success);
-    function approve(address spender, uint tokens) public returns (bool success);
-    function transferFrom(address from, address to, uint tokens) public returns (bool success);
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-&#125;
-</code></pre>
 <p>简单的介绍一下，更加详细的介绍可以在<a target="_blank" rel="noopener" href="https://github.com/ethereum/EIPs/issues/20">github</a>查看</p>
 <pre><code>name ： 代币名称
 symbol： 代币符号
@@ -284,23 +237,8 @@ approve(): 允许用户可花费的代币数
 <h2 id="在ETH私有链上发布ERC20代币"><a href="#在ETH私有链上发布ERC20代币" class="headerlink" title="在ETH私有链上发布ERC20代币"></a>在ETH私有链上发布ERC20代币</h2><p>ERC20是Fabian Vogelsteller在2015年末提出的以太坊改进建议，它是许多流行的合约都在遵循的标准。 </p>
 <p>ERC20使通证智能合约的行为非常类似于传统的加密货币，例如在不同账户之间发送和接收、查看通证总供应量或者查看某个地址可用的通证余额，就像比特币或以太币一样。这类似于用以太坊钱包 发送和接收以太币、查看流通中的以太币总量、查看特定钱包的货币余额等。</p>
 <p>ERC20规定了一些标准的接口</p>
-<pre><code>contract ERC20Interface &#123;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plain">contract ERC20Interface &#123;<br><br>    string public constant name &#x3D; &quot;Token Name&quot;;<br>    string public constant symbol &#x3D; &quot;SYM&quot;;<br>    uint8 public constant decimals &#x3D; 18;  &#x2F;&#x2F; 18 is the most common number of decimal places<br><br>    function totalSupply() public constant returns (uint);<br>    function balanceOf(address tokenOwner) public constant returns (uint balance);<br>    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);<br>    function transfer(address to, uint tokens) public returns (bool success);<br>    function approve(address spender, uint tokens) public returns (bool success);<br>    function transferFrom(address from, address to, uint tokens) public returns (bool success);<br><br>    event Transfer(address indexed from, address indexed to, uint tokens);<br>    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-    string public constant name = &quot;Token Name&quot;;
-    string public constant symbol = &quot;SYM&quot;;
-    uint8 public constant decimals = 18;  // 18 is the most common number of decimal places
-
-    function totalSupply() public constant returns (uint);
-    function balanceOf(address tokenOwner) public constant returns (uint balance);
-    function allowance(address tokenOwner, address spender) public constant returns (uint remaining);
-    function transfer(address to, uint tokens) public returns (bool success);
-    function approve(address spender, uint tokens) public returns (bool success);
-    function transferFrom(address from, address to, uint tokens) public returns (bool success);
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-&#125;
-</code></pre>
 <p>简单的介绍一下，更加详细的介绍可以在<a target="_blank" rel="noopener" href="https://github.com/ethereum/EIPs/issues/20">github</a>查看</p>
 <pre><code>name ： 代币名称
 symbol： 代币符号
@@ -313,87 +251,8 @@ allowance(): 控制代币的交易，如可交易账号及资产
 approve(): 允许用户可花费的代币数
 </code></pre>
 <h3 id="编写合约代码"><a href="#编写合约代码" class="headerlink" title="编写合约代码"></a>编写合约代码</h3><p>先编写一个符合ERC20标准的代码</p>
-<pre><code>pragma solidity ^0.4.16;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs plain">pragma solidity ^0.4.16;<br><br>interface tokenRecipient &#123; function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; &#125;<br><br>contract TokenERC20 &#123;<br>    string public name;<br>    string public symbol;<br>    uint8 public decimals &#x3D; 18;  &#x2F;&#x2F; 18 是建议的默认值<br>    uint256 public totalSupply;<br><br>    mapping (address &#x3D;&gt; uint256) public balanceOf;  &#x2F;&#x2F; <br>    mapping (address &#x3D;&gt; mapping (address &#x3D;&gt; uint256)) public allowance;<br><br>    event Transfer(address indexed from, address indexed to, uint256 value);<br><br>    event Burn(address indexed from, uint256 value);<br><br><br>    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public &#123;<br>        totalSupply &#x3D; initialSupply * 10 ** uint256(decimals);<br>        balanceOf[msg.sender] &#x3D; totalSupply;<br>        name &#x3D; tokenName;<br>        symbol &#x3D; tokenSymbol;<br>    &#125;<br><br><br>    function _transfer(address _from, address _to, uint _value) internal &#123;<br>        require(_to !&#x3D; 0x0);<br>        require(balanceOf[_from] &gt;&#x3D; _value);<br>        require(balanceOf[_to] + _value &gt; balanceOf[_to]);<br>        uint previousBalances &#x3D; balanceOf[_from] + balanceOf[_to];<br>        balanceOf[_from] -&#x3D; _value;<br>        balanceOf[_to] +&#x3D; _value;<br>        Transfer(_from, _to, _value);<br>        assert(balanceOf[_from] + balanceOf[_to] &#x3D;&#x3D; previousBalances);<br>    &#125;<br><br>    function transfer(address _to, uint256 _value) public &#123;<br>        _transfer(msg.sender, _to, _value);<br>    &#125;<br><br>    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) &#123;<br>        require(_value &lt;&#x3D; allowance[_from][msg.sender]);     &#x2F;&#x2F; Check allowance<br>        allowance[_from][msg.sender] -&#x3D; _value;<br>        _transfer(_from, _to, _value);<br>        return true;<br>    &#125;<br><br>    function approve(address _spender, uint256 _value) public<br>        returns (bool success) &#123;<br>        allowance[msg.sender][_spender] &#x3D; _value;<br>        return true;<br>    &#125;<br><br>    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) &#123;<br>        tokenRecipient spender &#x3D; tokenRecipient(_spender);<br>        if (approve(_spender, _value)) &#123;<br>            spender.receiveApproval(msg.sender, _value, this, _extraData);<br>            return true;<br>        &#125;<br>    &#125;<br><br>    function burn(uint256 _value) public returns (bool success) &#123;<br>        require(balanceOf[msg.sender] &gt;&#x3D; _value);<br>        balanceOf[msg.sender] -&#x3D; _value;<br>        totalSupply -&#x3D; _value;<br>        Burn(msg.sender, _value);<br>        return true;<br>    &#125;<br><br>    function burnFrom(address _from, uint256 _value) public returns (bool success) &#123;<br>        require(balanceOf[_from] &gt;&#x3D; _value);<br>        require(_value &lt;&#x3D; allowance[_from][msg.sender]);<br>        balanceOf[_from] -&#x3D; _value;<br>        allowance[_from][msg.sender] -&#x3D; _value;<br>        totalSupply -&#x3D; _value;<br>        Burn(_from, _value);<br>        return true;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-interface tokenRecipient &#123; function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; &#125;
-
-contract TokenERC20 &#123;
-    string public name;
-    string public symbol;
-    uint8 public decimals = 18;  // 18 是建议的默认值
-    uint256 public totalSupply;
-
-    mapping (address =&gt; uint256) public balanceOf;  // 
-    mapping (address =&gt; mapping (address =&gt; uint256)) public allowance;
-
-    event Transfer(address indexed from, address indexed to, uint256 value);
-
-    event Burn(address indexed from, uint256 value);
-
-
-    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public &#123;
-        totalSupply = initialSupply * 10 ** uint256(decimals);
-        balanceOf[msg.sender] = totalSupply;
-        name = tokenName;
-        symbol = tokenSymbol;
-    &#125;
-
-
-    function _transfer(address _from, address _to, uint _value) internal &#123;
-        require(_to != 0x0);
-        require(balanceOf[_from] &gt;= _value);
-        require(balanceOf[_to] + _value &gt; balanceOf[_to]);
-        uint previousBalances = balanceOf[_from] + balanceOf[_to];
-        balanceOf[_from] -= _value;
-        balanceOf[_to] += _value;
-        Transfer(_from, _to, _value);
-        assert(balanceOf[_from] + balanceOf[_to] == previousBalances);
-    &#125;
-
-    function transfer(address _to, uint256 _value) public &#123;
-        _transfer(msg.sender, _to, _value);
-    &#125;
-
-    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) &#123;
-        require(_value &lt;= allowance[_from][msg.sender]);     // Check allowance
-        allowance[_from][msg.sender] -= _value;
-        _transfer(_from, _to, _value);
-        return true;
-    &#125;
-
-    function approve(address _spender, uint256 _value) public
-        returns (bool success) &#123;
-        allowance[msg.sender][_spender] = _value;
-        return true;
-    &#125;
-
-    function approveAndCall(address _spender, uint256 _value, bytes _extraData) public returns (bool success) &#123;
-        tokenRecipient spender = tokenRecipient(_spender);
-        if (approve(_spender, _value)) &#123;
-            spender.receiveApproval(msg.sender, _value, this, _extraData);
-            return true;
-        &#125;
-    &#125;
-
-    function burn(uint256 _value) public returns (bool success) &#123;
-        require(balanceOf[msg.sender] &gt;= _value);
-        balanceOf[msg.sender] -= _value;
-        totalSupply -= _value;
-        Burn(msg.sender, _value);
-        return true;
-    &#125;
-
-    function burnFrom(address _from, uint256 _value) public returns (bool success) &#123;
-        require(balanceOf[_from] &gt;= _value);
-        require(_value &lt;= allowance[_from][msg.sender]);
-        balanceOf[_from] -= _value;
-        allowance[_from][msg.sender] -= _value;
-        totalSupply -= _value;
-        Burn(_from, _value);
-        return true;
-    &#125;
-&#125;
-</code></pre>
 <p>然后把这段代码拷贝到<a target="_blank" rel="noopener" href="http://remix.ethereum.org/#optimize=false&version=soljson-v0.4.25+commit.59dbf8f1.js">Solidity</a>，点击旁边的Details获取部署代码</p>
 <p><img src="/images/ERC20-dirdop1/167f01705994d26b.png"></p>
 <p>然后在弹出层中复制WEB3DEPLOY中的代码到编辑器中</p>

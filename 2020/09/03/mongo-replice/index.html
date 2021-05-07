@@ -18,7 +18,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -145,7 +145,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/mongo.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MongoDB复制集群搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-03T07:22:51.000Z" title="发表于 2020-09-03 15:22:51">2020-09-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:47:44.247Z" title="更新于 2021-04-01 23:47:44">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MongoDB复制集群搭建"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/09/03/mongo-replice/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="MongoDB复制集原理及搭建"><a href="#MongoDB复制集原理及搭建" class="headerlink" title="MongoDB复制集原理及搭建"></a>MongoDB复制集原理及搭建</h2><p>在学习之前先要了解一下，MongoDB的复制集有哪些好处，为什么我们要用到复制集</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/mongo.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MongoDB复制集群搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-03T07:22:51.000Z" title="发表于 2020-09-03 15:22:51">2020-09-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:47:44.247Z" title="更新于 2021-04-01 23:47:44">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MongoDB复制集群搭建"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/09/03/mongo-replice/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="MongoDB复制集原理及搭建"><a href="#MongoDB复制集原理及搭建" class="headerlink" title="MongoDB复制集原理及搭建"></a>MongoDB复制集原理及搭建</h2><p>在学习之前先要了解一下，MongoDB的复制集有哪些好处，为什么我们要用到复制集</p>
 <p>复制集群的主要意义是在于实现服务的高可用能够提供不间断的数据支持，MongoDB本身是支持这种特性的。不需要第三方的插件。要实现复制集的高可用，就必须要依赖以下两个功能：</p>
 <ol>
 <li>能够在数据写入时快速的将数据同步到另外的节点</li>
@@ -199,320 +199,40 @@
 </ul>
 <h3 id="搭建复制集Demo"><a href="#搭建复制集Demo" class="headerlink" title="搭建复制集Demo"></a>搭建复制集Demo</h3><p>下面在Mac上模拟一个具有三个节点的复制集demo</p>
 <p>先创建三个目录，分别存放三个mongo进程需要的文件</p>
-<pre><code class="bash">#  qaf in ~/data [22:31:23]
-$ mkdir -p ~/data/db&#123;1,2,3&#125;
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#  qaf in ~/data [22:31:23]</span><br>$ mkdir -p ~/data/db&#123;1,2,3&#125;<br><br><span class="hljs-comment">#  qaf in ~/data [22:31:32]</span><br>$ ls<br>db1 db2 db3<br></code></pre></td></tr></table></figure>
 
-#  qaf in ~/data [22:31:32]
-$ ls
-db1 db2 db3
-</code></pre>
 <p>编写配置文件<code>mongod.conf</code>，修改其中的参数，分别放到db1/db2/db3中</p>
-<pre><code class="text">systemLog:
-  destination: file
-  path: /data/db1/mongod.log
-  logAppend: true
-storage:
-  dbPath: /data/db1
-net:
-  bindIp: 0.0.0.0 
-  port: 28017 
-replication:
-  replSetName: rs0  # 复制集名
-processManagement:
-  fork: true     # 在后台运行
-</code></pre>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs text">systemLog:<br>  destination: file<br>  path: /data/db1/mongod.log<br>  logAppend: true<br>storage:<br>  dbPath: /data/db1<br>net:<br>  bindIp: 0.0.0.0 <br>  port: 28017 <br>replication:<br>  replSetName: rs0  # 复制集名<br>processManagement:<br>  fork: true     # 在后台运行<br></code></pre></td></tr></table></figure>
+
 <p>启动三个mongo进程</p>
-<pre><code class="bash">$ mongod -f db1/mongod.conf
-2020-03-16T23:24:03.120+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols &#39;none&#39;
-about to fork child process, waiting until server is ready for connections.
-forked process: 93736
-child process started successfully, parent exiting
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ mongod -f db1/mongod.conf<br>2020-03-16T23:24:03.120+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols <span class="hljs-string">&#x27;none&#x27;</span><br>about to fork child process, waiting until server is ready <span class="hljs-keyword">for</span> connections.<br>forked process: 93736<br>child process started successfully, parent exiting<br><br><span class="hljs-comment">#  qaf in ~/data [23:24:04]</span><br>$ mongod -f db2/mongod.conf<br>2020-03-16T23:24:09.914+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols <span class="hljs-string">&#x27;none&#x27;</span><br>about to fork child process, waiting until server is ready <span class="hljs-keyword">for</span> connections.<br>forked process: 93767<br>child process started successfully, parent exiting<br><br><span class="hljs-comment">#  qaf in ~/data [23:24:10]</span><br>$ mongod -f db3/mongod.conf<br>2020-03-16T23:24:15.917+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols <span class="hljs-string">&#x27;none&#x27;</span><br>about to fork child process, waiting until server is ready <span class="hljs-keyword">for</span> connections.<br>forked process: 93801<br>child process started successfully, parent exiting<br><br><span class="hljs-comment">#  qaf in ~/data [23:24:16]</span><br>$ ps -ef | grep mongod<br>  501 93736     1   0 11:24PM ??         0:01.06 mongod -f db1/mongod.conf<br>  501 93767     1   0 11:24PM ??         0:00.79 mongod -f db2/mongod.conf<br>  501 93801     1   0 11:24PM ??         0:00.76 mongod -f db3/mongod.conf<br>  501 93852 88919   0 11:25PM ttys005    0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn mongod<br></code></pre></td></tr></table></figure>
 
-#  qaf in ~/data [23:24:04]
-$ mongod -f db2/mongod.conf
-2020-03-16T23:24:09.914+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols &#39;none&#39;
-about to fork child process, waiting until server is ready for connections.
-forked process: 93767
-child process started successfully, parent exiting
-
-#  qaf in ~/data [23:24:10]
-$ mongod -f db3/mongod.conf
-2020-03-16T23:24:15.917+0800 I CONTROL  [main] Automatically disabling TLS 1.0, to force-enable TLS 1.0 specify --sslDisabledProtocols &#39;none&#39;
-about to fork child process, waiting until server is ready for connections.
-forked process: 93801
-child process started successfully, parent exiting
-
-#  qaf in ~/data [23:24:16]
-$ ps -ef | grep mongod
-  501 93736     1   0 11:24PM ??         0:01.06 mongod -f db1/mongod.conf
-  501 93767     1   0 11:24PM ??         0:00.79 mongod -f db2/mongod.conf
-  501 93801     1   0 11:24PM ??         0:00.76 mongod -f db3/mongod.conf
-  501 93852 88919   0 11:25PM ttys005    0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn mongod
-</code></pre>
 <p>现在相当于是有了三个运行mongo的节点，但是他们都是独立的并没有形成一个集群，下面就配置一下，然他们成为一个复制集</p>
 <p>初始化</p>
-<pre><code class="bash">&gt; rs.initiate()
-&#123;
-    &quot;info2&quot; : &quot;no configuration specified. Using a default configuration for the set&quot;,
-    &quot;me&quot; : &quot;qaf.local:28017&quot;,
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1584372633, 1),
-    &quot;$clusterTime&quot; : &#123;
-        &quot;clusterTime&quot; : Timestamp(1584372633, 1),
-        &quot;signature&quot; : &#123;
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt; rs.initiate()<br>&#123;<br>	<span class="hljs-string">&quot;info2&quot;</span> : <span class="hljs-string">&quot;no configuration specified. Using a default configuration for the set&quot;</span>,<br>	<span class="hljs-string">&quot;me&quot;</span> : <span class="hljs-string">&quot;qaf.local:28017&quot;</span>,<br>	<span class="hljs-string">&quot;ok&quot;</span> : 1,<br>	<span class="hljs-string">&quot;operationTime&quot;</span> : Timestamp(1584372633, 1),<br>	<span class="hljs-string">&quot;<span class="hljs-variable">$clusterTime</span>&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;clusterTime&quot;</span> : Timestamp(1584372633, 1),<br>		<span class="hljs-string">&quot;signature&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;hash&quot;</span> : BinData(0,<span class="hljs-string">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span>),<br>			<span class="hljs-string">&quot;keyId&quot;</span> : NumberLong(0)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>初始化之后会看到命令行提示符已经变成了 rs0,这是集群的名字，SECONDARY 后按回车会看到 PRIMARY，表示这个节点已经从从节点变为了主节点</p>
-<pre><code class="bash">rs0:SECONDARY&gt;
-rs0:PRIMARY&gt;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:SECONDARY&gt;<br>rs0:PRIMARY&gt;<br></code></pre></td></tr></table></figure>
+
 <p>通过status命令可以看到整个复制集群的信息，members 中显示只有一个节点</p>
-<pre><code class="bash">rs0:PRIMARY&gt; rs.status()
-&#123;
-    &quot;set&quot; : &quot;rs0&quot;,
-    &quot;date&quot; : ISODate(&quot;2020-03-16T15:36:31.844Z&quot;),
-    &quot;myState&quot; : 1,
-    &quot;term&quot; : NumberLong(1),
-    &quot;syncingTo&quot; : &quot;&quot;,
-    &quot;syncSourceHost&quot; : &quot;&quot;,
-    &quot;syncSourceId&quot; : -1,
-    &quot;heartbeatIntervalMillis&quot; : NumberLong(2000),
-    &quot;optimes&quot; : &#123;
-        &quot;lastCommittedOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584372985, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;,
-        &quot;readConcernMajorityOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584372985, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;,
-        &quot;appliedOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584372985, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;,
-        &quot;durableOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584372985, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;
-    &#125;,
-    &quot;lastStableCheckpointTimestamp&quot; : Timestamp(1584372935, 1),
-    &quot;members&quot; : [
-        &#123;
-            &quot;_id&quot; : 0,
-            &quot;name&quot; : &quot;qaf.local:28017&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 1,
-            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
-            &quot;uptime&quot; : 748,
-            &quot;optime&quot; : &#123;
-                &quot;ts&quot; : Timestamp(1584372985, 1),
-                &quot;t&quot; : NumberLong(1)
-            &#125;,
-            &quot;optimeDate&quot; : ISODate(&quot;2020-03-16T15:36:25Z&quot;),
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;electionTime&quot; : Timestamp(1584372633, 2),
-            &quot;electionDate&quot; : ISODate(&quot;2020-03-16T15:30:33Z&quot;),
-            &quot;configVersion&quot; : 1,
-            &quot;self&quot; : true,
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;
-        &#125;
-    ],
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1584372985, 1),
-    &quot;$clusterTime&quot; : &#123;
-        &quot;clusterTime&quot; : Timestamp(1584372985, 1),
-        &quot;signature&quot; : &#123;
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:PRIMARY&gt; rs.status()<br>&#123;<br>	<span class="hljs-string">&quot;set&quot;</span> : <span class="hljs-string">&quot;rs0&quot;</span>,<br>	<span class="hljs-string">&quot;date&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:36:31.844Z&quot;</span>),<br>	<span class="hljs-string">&quot;myState&quot;</span> : 1,<br>	<span class="hljs-string">&quot;term&quot;</span> : NumberLong(1),<br>	<span class="hljs-string">&quot;syncingTo&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>	<span class="hljs-string">&quot;syncSourceHost&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>	<span class="hljs-string">&quot;syncSourceId&quot;</span> : -1,<br>	<span class="hljs-string">&quot;heartbeatIntervalMillis&quot;</span> : NumberLong(2000),<br>	<span class="hljs-string">&quot;optimes&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;lastCommittedOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584372985, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;,<br>		<span class="hljs-string">&quot;readConcernMajorityOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584372985, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;,<br>		<span class="hljs-string">&quot;appliedOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584372985, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;,<br>		<span class="hljs-string">&quot;durableOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584372985, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;<br>	&#125;,<br>	<span class="hljs-string">&quot;lastStableCheckpointTimestamp&quot;</span> : Timestamp(1584372935, 1),<br>	<span class="hljs-string">&quot;members&quot;</span> : [<br>		&#123;<br>			<span class="hljs-string">&quot;_id&quot;</span> : 0,<br>			<span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;qaf.local:28017&quot;</span>,<br>			<span class="hljs-string">&quot;health&quot;</span> : 1,<br>			<span class="hljs-string">&quot;state&quot;</span> : 1,<br>			<span class="hljs-string">&quot;stateStr&quot;</span> : <span class="hljs-string">&quot;PRIMARY&quot;</span>,<br>			<span class="hljs-string">&quot;uptime&quot;</span> : 748,<br>			<span class="hljs-string">&quot;optime&quot;</span> : &#123;<br>				<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584372985, 1),<br>				<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>			&#125;,<br>			<span class="hljs-string">&quot;optimeDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:36:25Z&quot;</span>),<br>			<span class="hljs-string">&quot;syncingTo&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceHost&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceId&quot;</span> : -1,<br>			<span class="hljs-string">&quot;infoMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;electionTime&quot;</span> : Timestamp(1584372633, 2),<br>			<span class="hljs-string">&quot;electionDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:30:33Z&quot;</span>),<br>			<span class="hljs-string">&quot;configVersion&quot;</span> : 1,<br>			<span class="hljs-string">&quot;self&quot;</span> : <span class="hljs-literal">true</span>,<br>			<span class="hljs-string">&quot;lastHeartbeatMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span><br>		&#125;<br>	],<br>	<span class="hljs-string">&quot;ok&quot;</span> : 1,<br>	<span class="hljs-string">&quot;operationTime&quot;</span> : Timestamp(1584372985, 1),<br>	<span class="hljs-string">&quot;<span class="hljs-variable">$clusterTime</span>&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;clusterTime&quot;</span> : Timestamp(1584372985, 1),<br>		<span class="hljs-string">&quot;signature&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;hash&quot;</span> : BinData(0,<span class="hljs-string">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span>),<br>			<span class="hljs-string">&quot;keyId&quot;</span> : NumberLong(0)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>通过以下命令，添加其余的两个节点，其中<code>qaf.local</code>是主机名，可以通过<code>hostname</code>获得</p>
-<pre><code class="bash">rs0:PRIMARY&gt; rs.add(&quot;qaf.local:28018&quot;)
-&#123;
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1584373330, 1),
-    &quot;$clusterTime&quot; : &#123;
-        &quot;clusterTime&quot; : Timestamp(1584373330, 1),
-        &quot;signature&quot; : &#123;
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
-        &#125;
-    &#125;
-&#125;
-rs0:PRIMARY&gt; rs.add(&quot;qaf.local:28019&quot;)
-&#123;
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1584373335, 1),
-    &quot;$clusterTime&quot; : &#123;
-        &quot;clusterTime&quot; : Timestamp(1584373335, 1),
-        &quot;signature&quot; : &#123;
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:PRIMARY&gt; rs.add(<span class="hljs-string">&quot;qaf.local:28018&quot;</span>)<br>&#123;<br>	<span class="hljs-string">&quot;ok&quot;</span> : 1,<br>	<span class="hljs-string">&quot;operationTime&quot;</span> : Timestamp(1584373330, 1),<br>	<span class="hljs-string">&quot;<span class="hljs-variable">$clusterTime</span>&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;clusterTime&quot;</span> : Timestamp(1584373330, 1),<br>		<span class="hljs-string">&quot;signature&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;hash&quot;</span> : BinData(0,<span class="hljs-string">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span>),<br>			<span class="hljs-string">&quot;keyId&quot;</span> : NumberLong(0)<br>		&#125;<br>	&#125;<br>&#125;<br>rs0:PRIMARY&gt; rs.add(<span class="hljs-string">&quot;qaf.local:28019&quot;</span>)<br>&#123;<br>	<span class="hljs-string">&quot;ok&quot;</span> : 1,<br>	<span class="hljs-string">&quot;operationTime&quot;</span> : Timestamp(1584373335, 1),<br>	<span class="hljs-string">&quot;<span class="hljs-variable">$clusterTime</span>&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;clusterTime&quot;</span> : Timestamp(1584373335, 1),<br>		<span class="hljs-string">&quot;signature&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;hash&quot;</span> : BinData(0,<span class="hljs-string">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span>),<br>			<span class="hljs-string">&quot;keyId&quot;</span> : NumberLong(0)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>在查看当前集群状态，就可以看到其余两个节点也加入进来了</p>
-<pre><code class="bash">rs0:PRIMARY&gt; rs.status()
-&#123;
-    &quot;set&quot; : &quot;rs0&quot;,
-    &quot;date&quot; : ISODate(&quot;2020-03-16T15:43:39.164Z&quot;),
-    &quot;myState&quot; : 1,
-    &quot;term&quot; : NumberLong(1),
-    &quot;syncingTo&quot; : &quot;&quot;,
-    &quot;syncSourceHost&quot; : &quot;&quot;,
-    &quot;syncSourceId&quot; : -1,
-    &quot;heartbeatIntervalMillis&quot; : NumberLong(2000),
-    &quot;optimes&quot; : &#123;
-        &quot;lastCommittedOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584373416, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;,
-        &quot;readConcernMajorityOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584373416, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;,
-        &quot;appliedOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584373416, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;,
-        &quot;durableOpTime&quot; : &#123;
-            &quot;ts&quot; : Timestamp(1584373416, 1),
-            &quot;t&quot; : NumberLong(1)
-        &#125;
-    &#125;,
-    &quot;lastStableCheckpointTimestamp&quot; : Timestamp(1584373416, 1),
-    &quot;members&quot; : [
-        &#123;
-            &quot;_id&quot; : 0,
-            &quot;name&quot; : &quot;qaf.local:28017&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 1,
-            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
-            &quot;uptime&quot; : 1176,
-            &quot;optime&quot; : &#123;
-                &quot;ts&quot; : Timestamp(1584373416, 1),
-                &quot;t&quot; : NumberLong(1)
-            &#125;,
-            &quot;optimeDate&quot; : ISODate(&quot;2020-03-16T15:43:36Z&quot;),
-            &quot;syncingTo&quot; : &quot;&quot;,
-            &quot;syncSourceHost&quot; : &quot;&quot;,
-            &quot;syncSourceId&quot; : -1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;electionTime&quot; : Timestamp(1584372633, 2),
-            &quot;electionDate&quot; : ISODate(&quot;2020-03-16T15:30:33Z&quot;),
-            &quot;configVersion&quot; : 3,
-            &quot;self&quot; : true,
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;
-        &#125;,
-        &#123;
-            &quot;_id&quot; : 1,
-            &quot;name&quot; : &quot;qaf.local:28018&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 2,
-            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
-            &quot;uptime&quot; : 88,
-            &quot;optime&quot; : &#123;
-                &quot;ts&quot; : Timestamp(1584373416, 1),
-                &quot;t&quot; : NumberLong(1)
-            &#125;,
-            &quot;optimeDurable&quot; : &#123;
-                &quot;ts&quot; : Timestamp(1584373416, 1),
-                &quot;t&quot; : NumberLong(1)
-            &#125;,
-            &quot;optimeDate&quot; : ISODate(&quot;2020-03-16T15:43:36Z&quot;),
-            &quot;optimeDurableDate&quot; : ISODate(&quot;2020-03-16T15:43:36Z&quot;),
-            &quot;lastHeartbeat&quot; : ISODate(&quot;2020-03-16T15:43:38.104Z&quot;),
-            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2020-03-16T15:43:38.135Z&quot;),
-            &quot;pingMs&quot; : NumberLong(0),
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;,
-            &quot;syncingTo&quot; : &quot;qaf.local:28017&quot;,
-            &quot;syncSourceHost&quot; : &quot;qaf.local:28017&quot;,
-            &quot;syncSourceId&quot; : 0,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;configVersion&quot; : 3
-        &#125;,
-        &#123;
-            &quot;_id&quot; : 2,
-            &quot;name&quot; : &quot;qaf.local:28019&quot;,
-            &quot;health&quot; : 1,
-            &quot;state&quot; : 2,
-            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
-            &quot;uptime&quot; : 83,
-            &quot;optime&quot; : &#123;
-                &quot;ts&quot; : Timestamp(1584373416, 1),
-                &quot;t&quot; : NumberLong(1)
-            &#125;,
-            &quot;optimeDurable&quot; : &#123;
-                &quot;ts&quot; : Timestamp(1584373416, 1),
-                &quot;t&quot; : NumberLong(1)
-            &#125;,
-            &quot;optimeDate&quot; : ISODate(&quot;2020-03-16T15:43:36Z&quot;),
-            &quot;optimeDurableDate&quot; : ISODate(&quot;2020-03-16T15:43:36Z&quot;),
-            &quot;lastHeartbeat&quot; : ISODate(&quot;2020-03-16T15:43:38.104Z&quot;),
-            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2020-03-16T15:43:38.882Z&quot;),
-            &quot;pingMs&quot; : NumberLong(0),
-            &quot;lastHeartbeatMessage&quot; : &quot;&quot;,
-            &quot;syncingTo&quot; : &quot;qaf.local:28018&quot;,
-            &quot;syncSourceHost&quot; : &quot;qaf.local:28018&quot;,
-            &quot;syncSourceId&quot; : 1,
-            &quot;infoMessage&quot; : &quot;&quot;,
-            &quot;configVersion&quot; : 3
-        &#125;
-    ],
-    &quot;ok&quot; : 1,
-    &quot;operationTime&quot; : Timestamp(1584373416, 1),
-    &quot;$clusterTime&quot; : &#123;
-        &quot;clusterTime&quot; : Timestamp(1584373416, 1),
-        &quot;signature&quot; : &#123;
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:PRIMARY&gt; rs.status()<br>&#123;<br>	<span class="hljs-string">&quot;set&quot;</span> : <span class="hljs-string">&quot;rs0&quot;</span>,<br>	<span class="hljs-string">&quot;date&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:39.164Z&quot;</span>),<br>	<span class="hljs-string">&quot;myState&quot;</span> : 1,<br>	<span class="hljs-string">&quot;term&quot;</span> : NumberLong(1),<br>	<span class="hljs-string">&quot;syncingTo&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>	<span class="hljs-string">&quot;syncSourceHost&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>	<span class="hljs-string">&quot;syncSourceId&quot;</span> : -1,<br>	<span class="hljs-string">&quot;heartbeatIntervalMillis&quot;</span> : NumberLong(2000),<br>	<span class="hljs-string">&quot;optimes&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;lastCommittedOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;,<br>		<span class="hljs-string">&quot;readConcernMajorityOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;,<br>		<span class="hljs-string">&quot;appliedOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;,<br>		<span class="hljs-string">&quot;durableOpTime&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>			<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>		&#125;<br>	&#125;,<br>	<span class="hljs-string">&quot;lastStableCheckpointTimestamp&quot;</span> : Timestamp(1584373416, 1),<br>	<span class="hljs-string">&quot;members&quot;</span> : [<br>		&#123;<br>			<span class="hljs-string">&quot;_id&quot;</span> : 0,<br>			<span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;qaf.local:28017&quot;</span>,<br>			<span class="hljs-string">&quot;health&quot;</span> : 1,<br>			<span class="hljs-string">&quot;state&quot;</span> : 1,<br>			<span class="hljs-string">&quot;stateStr&quot;</span> : <span class="hljs-string">&quot;PRIMARY&quot;</span>,<br>			<span class="hljs-string">&quot;uptime&quot;</span> : 1176,<br>			<span class="hljs-string">&quot;optime&quot;</span> : &#123;<br>				<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>				<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>			&#125;,<br>			<span class="hljs-string">&quot;optimeDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:36Z&quot;</span>),<br>			<span class="hljs-string">&quot;syncingTo&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceHost&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceId&quot;</span> : -1,<br>			<span class="hljs-string">&quot;infoMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;electionTime&quot;</span> : Timestamp(1584372633, 2),<br>			<span class="hljs-string">&quot;electionDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:30:33Z&quot;</span>),<br>			<span class="hljs-string">&quot;configVersion&quot;</span> : 3,<br>			<span class="hljs-string">&quot;self&quot;</span> : <span class="hljs-literal">true</span>,<br>			<span class="hljs-string">&quot;lastHeartbeatMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span><br>		&#125;,<br>		&#123;<br>			<span class="hljs-string">&quot;_id&quot;</span> : 1,<br>			<span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;qaf.local:28018&quot;</span>,<br>			<span class="hljs-string">&quot;health&quot;</span> : 1,<br>			<span class="hljs-string">&quot;state&quot;</span> : 2,<br>			<span class="hljs-string">&quot;stateStr&quot;</span> : <span class="hljs-string">&quot;SECONDARY&quot;</span>,<br>			<span class="hljs-string">&quot;uptime&quot;</span> : 88,<br>			<span class="hljs-string">&quot;optime&quot;</span> : &#123;<br>				<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>				<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>			&#125;,<br>			<span class="hljs-string">&quot;optimeDurable&quot;</span> : &#123;<br>				<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>				<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>			&#125;,<br>			<span class="hljs-string">&quot;optimeDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:36Z&quot;</span>),<br>			<span class="hljs-string">&quot;optimeDurableDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:36Z&quot;</span>),<br>			<span class="hljs-string">&quot;lastHeartbeat&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:38.104Z&quot;</span>),<br>			<span class="hljs-string">&quot;lastHeartbeatRecv&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:38.135Z&quot;</span>),<br>			<span class="hljs-string">&quot;pingMs&quot;</span> : NumberLong(0),<br>			<span class="hljs-string">&quot;lastHeartbeatMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;syncingTo&quot;</span> : <span class="hljs-string">&quot;qaf.local:28017&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceHost&quot;</span> : <span class="hljs-string">&quot;qaf.local:28017&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceId&quot;</span> : 0,<br>			<span class="hljs-string">&quot;infoMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;configVersion&quot;</span> : 3<br>		&#125;,<br>		&#123;<br>			<span class="hljs-string">&quot;_id&quot;</span> : 2,<br>			<span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;qaf.local:28019&quot;</span>,<br>			<span class="hljs-string">&quot;health&quot;</span> : 1,<br>			<span class="hljs-string">&quot;state&quot;</span> : 2,<br>			<span class="hljs-string">&quot;stateStr&quot;</span> : <span class="hljs-string">&quot;SECONDARY&quot;</span>,<br>			<span class="hljs-string">&quot;uptime&quot;</span> : 83,<br>			<span class="hljs-string">&quot;optime&quot;</span> : &#123;<br>				<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>				<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>			&#125;,<br>			<span class="hljs-string">&quot;optimeDurable&quot;</span> : &#123;<br>				<span class="hljs-string">&quot;ts&quot;</span> : Timestamp(1584373416, 1),<br>				<span class="hljs-string">&quot;t&quot;</span> : NumberLong(1)<br>			&#125;,<br>			<span class="hljs-string">&quot;optimeDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:36Z&quot;</span>),<br>			<span class="hljs-string">&quot;optimeDurableDate&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:36Z&quot;</span>),<br>			<span class="hljs-string">&quot;lastHeartbeat&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:38.104Z&quot;</span>),<br>			<span class="hljs-string">&quot;lastHeartbeatRecv&quot;</span> : ISODate(<span class="hljs-string">&quot;2020-03-16T15:43:38.882Z&quot;</span>),<br>			<span class="hljs-string">&quot;pingMs&quot;</span> : NumberLong(0),<br>			<span class="hljs-string">&quot;lastHeartbeatMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;syncingTo&quot;</span> : <span class="hljs-string">&quot;qaf.local:28018&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceHost&quot;</span> : <span class="hljs-string">&quot;qaf.local:28018&quot;</span>,<br>			<span class="hljs-string">&quot;syncSourceId&quot;</span> : 1,<br>			<span class="hljs-string">&quot;infoMessage&quot;</span> : <span class="hljs-string">&quot;&quot;</span>,<br>			<span class="hljs-string">&quot;configVersion&quot;</span> : 3<br>		&#125;<br>	],<br>	<span class="hljs-string">&quot;ok&quot;</span> : 1,<br>	<span class="hljs-string">&quot;operationTime&quot;</span> : Timestamp(1584373416, 1),<br>	<span class="hljs-string">&quot;<span class="hljs-variable">$clusterTime</span>&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;clusterTime&quot;</span> : Timestamp(1584373416, 1),<br>		<span class="hljs-string">&quot;signature&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;hash&quot;</span> : BinData(0,<span class="hljs-string">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span>),<br>			<span class="hljs-string">&quot;keyId&quot;</span> : NumberLong(0)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>下面通过在master节点上写数据，在从节点上读数据来验证下集群的功能</p>
 <p>首先在master节点上写入一条数据</p>
-<pre><code class="bash">rs0:PRIMARY&gt; use test
-switched to db test
-rs0:PRIMARY&gt; db.user.insertOne(&#123;&quot;user&quot;:&quot;LiMi&quot;&#125;)
-&#123;
-    &quot;acknowledged&quot; : true,
-    &quot;insertedId&quot; : ObjectId(&quot;5e6f9f85fe71466240a3ee45&quot;)
-&#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:PRIMARY&gt; use <span class="hljs-built_in">test</span><br>switched to db <span class="hljs-built_in">test</span><br>rs0:PRIMARY&gt; db.user.insertOne(&#123;<span class="hljs-string">&quot;user&quot;</span>:<span class="hljs-string">&quot;LiMi&quot;</span>&#125;)<br>&#123;<br>	<span class="hljs-string">&quot;acknowledged&quot;</span> : <span class="hljs-literal">true</span>,<br>	<span class="hljs-string">&quot;insertedId&quot;</span> : ObjectId(<span class="hljs-string">&quot;5e6f9f85fe71466240a3ee45&quot;</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>然后在从节点上读数据</p>
-<pre><code class="bash"># mongo --port 28019
-rs0:SECONDARY&gt; db.test.find()
-Error: error: &#123;
-    &quot;operationTime&quot; : Timestamp(1584373686, 1),
-    &quot;ok&quot; : 0,
-    &quot;errmsg&quot; : &quot;not master and slaveOk=false&quot;,
-    &quot;code&quot; : 13435,
-    &quot;codeName&quot; : &quot;NotMasterNoSlaveOk&quot;,
-    &quot;$clusterTime&quot; : &#123;
-        &quot;clusterTime&quot; : Timestamp(1584373686, 1),
-        &quot;signature&quot; : &#123;
-            &quot;hash&quot; : BinData(0,&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;),
-            &quot;keyId&quot; : NumberLong(0)
-        &#125;
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># mongo --port 28019</span><br>rs0:SECONDARY&gt; db.test.find()<br>Error: error: &#123;<br>	<span class="hljs-string">&quot;operationTime&quot;</span> : Timestamp(1584373686, 1),<br>	<span class="hljs-string">&quot;ok&quot;</span> : 0,<br>	<span class="hljs-string">&quot;errmsg&quot;</span> : <span class="hljs-string">&quot;not master and slaveOk=false&quot;</span>,<br>	<span class="hljs-string">&quot;code&quot;</span> : 13435,<br>	<span class="hljs-string">&quot;codeName&quot;</span> : <span class="hljs-string">&quot;NotMasterNoSlaveOk&quot;</span>,<br>	<span class="hljs-string">&quot;<span class="hljs-variable">$clusterTime</span>&quot;</span> : &#123;<br>		<span class="hljs-string">&quot;clusterTime&quot;</span> : Timestamp(1584373686, 1),<br>		<span class="hljs-string">&quot;signature&quot;</span> : &#123;<br>			<span class="hljs-string">&quot;hash&quot;</span> : BinData(0,<span class="hljs-string">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAA=&quot;</span>),<br>			<span class="hljs-string">&quot;keyId&quot;</span> : NumberLong(0)<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>会发现报错了。这是因为从节点默认是不能读取数据的，我们设置从节点可以读取数据</p>
-<pre><code class="bash">rs0:SECONDARY&gt; rs.slaveOk()
-rs0:SECONDARY&gt; db.user.find()
-&#123; &quot;_id&quot; : ObjectId(&quot;5e6fa04bfe71466240a3ee46&quot;), &quot;user&quot; : &quot;LiMi&quot; &#125;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:SECONDARY&gt; rs.slaveOk()<br>rs0:SECONDARY&gt; db.user.find()<br>&#123; <span class="hljs-string">&quot;_id&quot;</span> : ObjectId(<span class="hljs-string">&quot;5e6fa04bfe71466240a3ee46&quot;</span>), <span class="hljs-string">&quot;user&quot;</span> : <span class="hljs-string">&quot;LiMi&quot;</span> &#125;<br></code></pre></td></tr></table></figure>
+
 <p>从节点会从主节点产生的<code>oplog</code>中进行回放，把数据同步到从节点。所以也能从从节点中读取数据了</p>
 <h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p><code>oplog</code>是一个capped collection，是有大小上限的，如果超过了上限，就会删除旧的数据，增加新的数据</p>
 <blockquote>
@@ -520,22 +240,10 @@ rs0:SECONDARY&gt; db.user.find()
 </blockquote>
 <p><code>oplog</code>是幂等性的，既一条记录不管被重放多少次，数据库中的数据是不会变的</p>
 <p>查看<code>oplog</code>的信息</p>
-<pre><code class="bash">rs0:PRIMARY&gt; rs.printReplicationInfo()
-configured oplog size:   192MB
-log length start to end: 80450secs (22.35hrs)
-oplog first event time:  Mon Mar 16 2020 23:30:33 GMT+0800 (CST)
-oplog last event time:   Tue Mar 17 2020 21:51:23 GMT+0800 (CST)
-now:                     Tue Mar 17 2020 21:51:27 GMT+0800 (CST)
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:PRIMARY&gt; rs.printReplicationInfo()<br>configured oplog size:   192MB<br><span class="hljs-built_in">log</span> length start to end: 80450secs (22.35hrs)<br>oplog first event time:  Mon Mar 16 2020 23:30:33 GMT+0800 (CST)<br>oplog last event time:   Tue Mar 17 2020 21:51:23 GMT+0800 (CST)<br>now:                     Tue Mar 17 2020 21:51:27 GMT+0800 (CST)<br></code></pre></td></tr></table></figure>
+
 <p>查看<code>oplog</code>回放的情况</p>
-<pre><code class="bash">rs0:PRIMARY&gt; db.printSlaveReplicationInfo()
-source: qaf.local:28018
-    syncedTo: Tue Mar 17 2020 21:52:33 GMT+0800 (CST)
-    0 secs (0 hrs) behind the primary
-source: qaf.local:28019
-    syncedTo: Tue Mar 17 2020 21:52:33 GMT+0800 (CST)
-    0 secs (0 hrs) behind the primary
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">rs0:PRIMARY&gt; db.printSlaveReplicationInfo()<br><span class="hljs-built_in">source</span>: qaf.local:28018<br>	syncedTo: Tue Mar 17 2020 21:52:33 GMT+0800 (CST)<br>	0 secs (0 hrs) behind the primary<br><span class="hljs-built_in">source</span>: qaf.local:28019<br>	syncedTo: Tue Mar 17 2020 21:52:33 GMT+0800 (CST)<br>	0 secs (0 hrs) behind the primary<br></code></pre></td></tr></table></figure>
 <p>参考：<a target="_blank" rel="noopener" href="https://time.geekbang.org/course/intro/100040001">https://time.geekbang.org/course/intro/100040001</a></p>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">五月八</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qiuqideblog.com/2020/09/03/mongo-replice/">https://qiuqideblog.com/2020/09/03/mongo-replice/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qiuqideblog.com" target="_blank">五月八</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="post-meta__tags" href="/tags/MongoDB/">MongoDB</a></div><div class="post_share"><div class="social-share" data-image="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/mongo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/09/02/rsync/"><img class="prev-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/rsync.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">rsync 学习</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/05/Linux-note/"><img class="next-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/14.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux 学习笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/me.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">五月八</div><div class="author-info__description">天津理工大学 | 信息安全 | 后端开发</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LaoBan-ywcm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LaoBan-ywcm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:qiuqiandfqr@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB%E5%A4%8D%E5%88%B6%E9%9B%86%E5%8E%9F%E7%90%86%E5%8F%8A%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">MongoDB复制集原理及搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E9%9B%86%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">复制集的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E9%9B%86%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">复制集的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E9%9B%86%E4%B8%AD%E6%95%B0%E6%8D%AE%E6%98%AF%E5%A6%82%E4%BD%95%E5%A4%8D%E5%88%B6%E7%9A%84"><span class="toc-number">1.3.</span> <span class="toc-text">复制集中数据是如何复制的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%80%89%E5%8F%96%E5%AE%8C%E6%88%90%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D"><span class="toc-number">1.4.</span> <span class="toc-text">通过选取完成故障恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E9%80%89%E4%B8%BE%E7%9A%84%E4%B8%BB%E8%A6%81%E5%9B%A0%E7%B4%A0"><span class="toc-number">1.5.</span> <span class="toc-text">影响选举的主要因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%80%89%E9%A1%B9"><span class="toc-number">1.6.</span> <span class="toc-text">常见选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.7.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%A4%8D%E5%88%B6%E9%9B%86Demo"><span class="toc-number">1.8.</span> <span class="toc-text">搭建复制集Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">1.9.</span> <span class="toc-text">补充</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/13/go-error/" title="Golang的错误处理"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/16.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Golang的错误处理"/></a><div class="content"><a class="title" href="/2021/04/13/go-error/" title="Golang的错误处理">Golang的错误处理</a><time datetime="2021-04-13T12:39:17.000Z" title="发表于 2021-04-13 20:39:17">2021-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker镜像原理-overlayfs"/></a><div class="content"><a class="title" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs">Docker镜像原理-overlayfs</a><time datetime="2020-11-25T05:39:17.000Z" title="发表于 2020-11-25 13:39:17">2020-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker中的Namespace和Cgroups"/></a><div class="content"><a class="title" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups">docker中的Namespace和Cgroups</a><time datetime="2020-11-08T13:42:32.000Z" title="发表于 2020-11-08 21:42:32">2020-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/go-note/" title="《Go语言实战》笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《Go语言实战》笔记"/></a><div class="content"><a class="title" href="/2020/11/04/go-note/" title="《Go语言实战》笔记">《Go语言实战》笔记</a><time datetime="2020-11-04T07:21:07.000Z" title="发表于 2020-11-04 15:21:07">2020-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/HTTP-note/" title="HTTP笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/15.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTTP笔记"/></a><div class="content"><a class="title" href="/2020/11/04/HTTP-note/" title="HTTP笔记">HTTP笔记</a><time datetime="2020-11-04T06:30:24.000Z" title="发表于 2020-11-04 14:30:24">2020-11-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/mongo.png')"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By 五月八</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()

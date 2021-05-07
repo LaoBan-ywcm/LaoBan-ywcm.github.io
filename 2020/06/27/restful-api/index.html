@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -144,7 +144,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/12.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RESTful API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-27T15:45:19.000Z" title="发表于 2020-06-27 23:45:19">2020-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:50:04.065Z" title="更新于 2021-04-01 19:50:04">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">工作问题解决</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RESTful API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/06/27/restful-api/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​    最近在项目中单独负责一个组件的开发，这个组件的输出是通过api的方式输出。虽然接口不多，也就15个api左右，但是越往后写就越感觉不太对劲。在和同时联调沟通的时候也发现了很多的问题。一直都想要好好总结下，趁着今天下班早有时间就反思一下吧。</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/12.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RESTful API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-27T15:45:19.000Z" title="发表于 2020-06-27 23:45:19">2020-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:50:04.065Z" title="更新于 2021-04-01 19:50:04">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">工作问题解决</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RESTful API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/06/27/restful-api/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="REST-API"><a href="#REST-API" class="headerlink" title="REST API"></a>REST API</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>​    最近在项目中单独负责一个组件的开发，这个组件的输出是通过api的方式输出。虽然接口不多，也就15个api左右，但是越往后写就越感觉不太对劲。在和同时联调沟通的时候也发现了很多的问题。一直都想要好好总结下，趁着今天下班早有时间就反思一下吧。</p>
 <p>​    我总结了目前我发现的这个项目的一些问题</p>
 <ol>
 <li>API风格混乱</li>
@@ -203,52 +203,19 @@
 </li>
 </ol>
 <p>一些例子</p>
-<pre><code>```bash
-GET /zoos：列出所有动物园
-POST /zoos：新建一个动物园
-GET /zoos/ID：获取某个指定动物园的信息
-PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）
-PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）
-DELETE /zoos/ID：删除某个动物园
-GET /zoos/ID/animals：列出某个指定动物园的所有动物
-DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物
-```
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">GET /zoos：列出所有动物园<br>POST /zoos：新建一个动物园<br>GET /zoos/ID：获取某个指定动物园的信息<br>PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）<br>PATCH /zoos/ID：更新某个指定动物园的信息（提供该动物园的部分信息）<br>DELETE /zoos/ID：删除某个动物园<br>GET /zoos/ID/animals：列出某个指定动物园的所有动物<br>DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物<br></code></pre></td></tr></table></figure>
 </code></pre>
 <ol start="4">
 <li><p>过滤信息</p>
 <p>一些例子</p>
-<pre><code class="bash">?limit=10：指定返回记录的数量
-?offset=10：指定返回记录的开始位置。
-?page=2&amp;per_page=100：指定第几页，以及每页的记录数。
-?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。
-?animal_type_id=1：指定筛选条件
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">?<span class="hljs-built_in">limit</span>=10：指定返回记录的数量<br>?offset=10：指定返回记录的开始位置。<br>?page=2&amp;per_page=100：指定第几页，以及每页的记录数。<br>?sortby=name&amp;order=asc：指定返回结果按照哪个属性排序，以及排序顺序。<br>?animal_type_id=1：指定筛选条件<br></code></pre></td></tr></table></figure>
+
 <p>其中 GET /zoo/ID/animals 与 GET /animals?zoo=ID都是REST的风格。一直都以为只有第一种才是</p>
 </li>
 <li><p>状态码</p>
-<pre><code class="bash">200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
-201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。
-202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）
-204 NO CONTENT - [DELETE]：用户删除数据成功。
-400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。
-401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。
-403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。
-404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。
-406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。
-410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。
-422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。
-500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
-</code></pre>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。<br>201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。<br>202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）<br>204 NO CONTENT - [DELETE]：用户删除数据成功。<br>400 INVALID REQUEST - [POST/PUT/PATCH]：用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的。<br>401 Unauthorized - [*]：表示用户没有权限（令牌、用户名、密码错误）。<br>403 Forbidden - [*] 表示用户得到授权（与401错误相对），但是访问是被禁止的。<br>404 NOT FOUND - [*]：用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的。<br>406 Not Acceptable - [GET]：用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。<br>410 Gone -[GET]：用户请求的资源被永久删除，且不会再得到的。<br>422 Unprocesable entity - [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。<br>500 INTERNAL SERVER ERROR - [*]：服务器发生错误，用户将无法判断发出的请求是否成功。<br></code></pre></td></tr></table></figure></li>
 <li><p>返回结果</p>
-<pre><code class="bash">GET /collection：返回资源对象的列表（数组）
-GET /collection/resource：返回单个资源对象
-POST /collection：返回新生成的资源对象
-PUT /collection/resource：返回完整的资源对象
-PATCH /collection/resource：返回完整的资源对象
-DELETE /collection/resource：返回一个空文档
-</code></pre>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">GET /collection：返回资源对象的列表（数组）<br>GET /collection/resource：返回单个资源对象<br>POST /collection：返回新生成的资源对象<br>PUT /collection/resource：返回完整的资源对象<br>PATCH /collection/resource：返回完整的资源对象<br>DELETE /collection/resource：返回一个空文档<br></code></pre></td></tr></table></figure></li>
 <li><p>Hypermedia API</p>
 <p>个人认为这个在公司这种项目中是可以省略的，毕竟公司项目中的API都是面向特定的用户，而且有安全限制，不会把所有的API都暴露出去。</p>
 </li>

@@ -18,7 +18,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -145,7 +145,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《Git tags Explained》翻译</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-01T05:38:39.000Z" title="发表于 2020-07-01 13:38:39">2020-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:48:19.787Z" title="更新于 2021-04-01 19:48:19">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91/">文章翻译</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《Git tags Explained》翻译"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/07/01/git-tag/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://mohitkhare.me/blog/git-tags-explained/">原文链接</a></p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/4.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">《Git tags Explained》翻译</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-01T05:38:39.000Z" title="发表于 2020-07-01 13:38:39">2020-07-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:48:19.787Z" title="更新于 2021-04-01 19:48:19">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91/">文章翻译</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="《Git tags Explained》翻译"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/07/01/git-tag/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener" href="https://mohitkhare.me/blog/git-tags-explained/">原文链接</a></p>
 <h2 id="Git-tags-简明教程"><a href="#Git-tags-简明教程" class="headerlink" title="Git tags 简明教程"></a>Git tags 简明教程</h2><p><img src="/images/git-tag/git-tags.png" alt="git-tags"></p>
 <p><code>Git</code>对于开发者来说是个非常必要的工具，它能非常方便的维护多人共享的代码库</p>
 <p><code>Git-scm</code>简单的定义：</p>
@@ -166,24 +166,23 @@
 <p>tag 通常用户标记一个里程碑，例如可以发布给用户或者企业的新功能或一些bug修复</p>
 <p>你肯定不希望每次修复Bug都要推送给客户，Tag 可以确保用户使用的是某个特定时刻的版本，而不需要每次代码的新提交都推送给客户。</p>
 <h3 id="怎么使用git-tag"><a href="#怎么使用git-tag" class="headerlink" title="怎么使用git tag"></a>怎么使用<code>git tag</code></h3><p>现在你已经知道了tag的应用场景，下面就开始看看怎么使用它</p>
-<h4 id="创建tag"><a href="#创建tag" class="headerlink" title="创建tag"></a>创建<code>tag</code></h4><pre><code class="bash">git tag &lt;tag_name&gt;
-// Eg. git tag v1.0.1
-</code></pre>
+<h4 id="创建tag"><a href="#创建tag" class="headerlink" title="创建tag"></a>创建<code>tag</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag &lt;tag_name&gt;<br>// Eg. git tag v1.0.1<br></code></pre></td></tr></table></figure>
+
 <p>这条命令会将最新的commit打上tag，<code>tag_name</code>就是你要起得tag 名字，通常是类似v1.0.1这种。当然你也可以命名任何你喜欢的名字</p>
 <p>通常 tag name 是：</p>
-<pre><code class="bash">v&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">v&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>major:重大修改</li>
 <li>minor: 版本与先前版本兼容</li>
 <li>patch: bug 修复</li>
 </ul>
 <p>创建了tag之后，可以push到远端代码库</p>
-<pre><code class="bash">git push --tags
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push --tags<br></code></pre></td></tr></table></figure>
+
 <p>也可以为tag添加描述信息</p>
-<pre><code class="bash">git tag -a &lt;tag_name&gt; -m &quot;message&quot;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -a &lt;tag_name&gt; -m <span class="hljs-string">&quot;message&quot;</span><br></code></pre></td></tr></table></figure>
+
 <p><code>-a</code>是什么意思呢？下面来看看</p>
 <h4 id="tag类型"><a href="#tag类型" class="headerlink" title="tag类型"></a><code>tag</code>类型</h4><p>一共有两种<code>tag</code>类型：</p>
 <ul>
@@ -192,49 +191,42 @@
 </ul>
 <h5 id="附注标签"><a href="#附注标签" class="headerlink" title="附注标签"></a>附注标签</h5><p>附注标签存储一个额外的信息，比如作者、发行说明、tag 信息存储为Git仓库中完整的数据，这些数据对于一个公开的项目是非常重要的</p>
 <p><code>-a</code>表示该tag是附注标签</p>
-<pre><code class="bash">git tag -a v1.0.1 -m &quot;First release&quot;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -a v1.0.1 -m <span class="hljs-string">&quot;First release&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h5 id="轻量标签"><a href="#轻量标签" class="headerlink" title="轻量标签"></a>轻量标签</h5><p>轻量标签时最简单的打tag的方式，它只存储tag name和关联的commit的hash值，不包含额外的信息，就类似于一个书签</p>
-<pre><code class="bash">git tag v2.1-lw
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag v2.1-lw<br></code></pre></td></tr></table></figure>
+
 <p><code>lw</code>表示轻量级标签，在tag name中加<code>lw</code>是为了更好的可读性</p>
-<h4 id="为一个特殊的commit打tag"><a href="#为一个特殊的commit打tag" class="headerlink" title="为一个特殊的commit打tag"></a>为一个特殊的commit打tag</h4><pre><code class="bash">git tag &lt;tag_name&gt; &lt;commit_sha&gt;
-</code></pre>
+<h4 id="为一个特殊的commit打tag"><a href="#为一个特殊的commit打tag" class="headerlink" title="为一个特殊的commit打tag"></a>为一个特殊的commit打tag</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag &lt;tag_name&gt; &lt;commit_sha&gt;<br></code></pre></td></tr></table></figure>
+
 <p>上面的命令可以让你为一些老的commit打tag</p>
-<h4 id="查看所有tag"><a href="#查看所有tag" class="headerlink" title="查看所有tag"></a>查看所有<code>tag</code></h4><pre><code class="bash">git tag
-</code></pre>
+<h4 id="查看所有tag"><a href="#查看所有tag" class="headerlink" title="查看所有tag"></a>查看所有<code>tag</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag<br></code></pre></td></tr></table></figure>
+
 <p>这条命令将会展示所有存在的tag</p>
 <p>输出可能是这样：</p>
-<pre><code class="bash">1.0.0
-1.0.1
-1.0.2
-1.0.3
-2.0.0
-2.1.0
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.0.0<br>1.0.1<br>1.0.2<br>1.0.3<br>2.0.0<br>2.1.0<br></code></pre></td></tr></table></figure>
+
 <p>你可以使用<code>-l</code>或者<code>--list</code>选项利用正则表达式进行过滤</p>
-<pre><code class="bash">git tag -l &quot;1.0*&quot;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -l <span class="hljs-string">&quot;1.0*&quot;</span><br></code></pre></td></tr></table></figure>
+
 <p>结果：</p>
-<pre><code class="bash">1.0.0
-1.0.1
-1.0.2
-</code></pre>
-<h4 id="查看tag信息"><a href="#查看tag信息" class="headerlink" title="查看tag信息"></a>查看<code>tag</code>信息</h4><pre><code class="bash">git show &lt;tag_name&gt;
-// Eg. git show v1.0.1
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">1.0.0<br>1.0.1<br>1.0.2<br></code></pre></td></tr></table></figure>
+
+<h4 id="查看tag信息"><a href="#查看tag信息" class="headerlink" title="查看tag信息"></a>查看<code>tag</code>信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git show &lt;tag_name&gt;<br>// Eg. git show v1.0.1<br></code></pre></td></tr></table></figure>
+
 <p>将会展示作者、tag 信息、commit信息等其他信息</p>
-<h4 id="删除tag"><a href="#删除tag" class="headerlink" title="删除tag"></a>删除<code>tag</code></h4><pre><code class="bash">git tag -d &lt;tag_name&gt;
-</code></pre>
-<h4 id="推送tag"><a href="#推送tag" class="headerlink" title="推送tag"></a>推送<code>tag</code></h4><pre><code class="bash">git push origin &lt;branch&gt; --tags
-</code></pre>
+<h4 id="删除tag"><a href="#删除tag" class="headerlink" title="删除tag"></a>删除<code>tag</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git tag -d &lt;tag_name&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="推送tag"><a href="#推送tag" class="headerlink" title="推送tag"></a>推送<code>tag</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push origin &lt;branch&gt; --tags<br></code></pre></td></tr></table></figure>
+
 <p>将会把本地<code>tag</code>推送到远程仓库</p>
-<h4 id="拉取tag"><a href="#拉取tag" class="headerlink" title="拉取tag"></a>拉取<code>tag</code></h4><pre><code class="bash">git fetch --tags
-</code></pre>
+<h4 id="拉取tag"><a href="#拉取tag" class="headerlink" title="拉取tag"></a>拉取<code>tag</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git fetch --tags<br></code></pre></td></tr></table></figure>
+
 <p>将会把远程仓库<code>tag</code>拉取到本地</p>
-<h4 id="切换tag"><a href="#切换tag" class="headerlink" title="切换tag"></a>切换<code>tag</code></h4><pre><code class="bash">git checkout &lt;tag_name&gt;
-// Eg. git checkout v1.0.1
-</code></pre>
+<h4 id="切换tag"><a href="#切换tag" class="headerlink" title="切换tag"></a>切换<code>tag</code></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git checkout &lt;tag_name&gt;<br>// Eg. git checkout v1.0.1<br></code></pre></td></tr></table></figure>
+
 <p>你可以用这条命名，将代码回退到打某个<code>tag</code>的时候</p>
 <p>你现在已经掌握了<code>Git tag</code>，开始在你的项目中应用起来吧😁</p>
 <p>更多学习资源：</p>

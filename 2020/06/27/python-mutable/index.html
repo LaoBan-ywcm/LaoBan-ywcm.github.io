@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -144,7 +144,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/8.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python可变对象和不可变对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-27T15:02:15.000Z" title="发表于 2020-06-27 23:02:15">2020-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:46:11.375Z" title="更新于 2021-04-01 23:46:11">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/">编程学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python可变对象和不可变对象"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/06/27/python-mutable/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在Python中所有的一切都是对象，都是继承同一个对象<code>object</code>。</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/8.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Python可变对象和不可变对象</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-06-27T15:02:15.000Z" title="发表于 2020-06-27 23:02:15">2020-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:46:11.375Z" title="更新于 2021-04-01 23:46:11">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/">编程学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Python可变对象和不可变对象"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/06/27/python-mutable/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>在Python中所有的一切都是对象，都是继承同一个对象<code>object</code>。</p>
 <blockquote>
 <p><code>object</code>是所有对象的基类，<code>type</code>也是继承<code>object</code></p>
 </blockquote>
@@ -159,179 +159,53 @@
 <li>不可变对象：<code>tuple</code>,<code>int</code>,<code>float</code>,<code>string</code>,<code>bool</code></li>
 </ul>
 <p><strong>这里说的可变和不可变都是基于内存地址中的数据来区分的</strong>，看个例子</p>
-<pre><code class="python">In [9]: a = [1,2,3]
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">9</span>]: a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><br>In [<span class="hljs-number">10</span>]: b = a<br><br>In [<span class="hljs-number">11</span>]: b.append(<span class="hljs-number">4</span>)<br><br>In [<span class="hljs-number">12</span>]: a<br>Out[<span class="hljs-number">12</span>]: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
 
-In [10]: b = a
-
-In [11]: b.append(4)
-
-In [12]: a
-Out[12]: [1, 2, 3, 4]
-</code></pre>
 <p>在这里a和b都指向了同一个内存地址，因为是<code>list</code>，所以b能够修改内存地址当中的数据，所以打印a时就会输出内存地址当中修改后的数据。</p>
 <p>下面看看不可变对象的例子</p>
-<pre><code class="python">In [15]: a = (1,2,3)
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">15</span>]: a = (<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)<br><br>In [<span class="hljs-number">16</span>]: b = a<br><br>In [<span class="hljs-number">17</span>]: b[<span class="hljs-number">0</span>] = <span class="hljs-number">4</span><br>---------------------------------------------------------------------------<br>TypeError       Traceback (most recent call last)<br>&lt;ipython-<span class="hljs-built_in">input</span>-<span class="hljs-number">17</span>-62bbbc50f611&gt; <span class="hljs-keyword">in</span> &lt;module&gt;()<br>----&gt; 1 b[0] = 4<br><br>TypeError: <span class="hljs-string">&#x27;tuple&#x27;</span> <span class="hljs-built_in">object</span> does <span class="hljs-keyword">not</span> support item assignment<br></code></pre></td></tr></table></figure>
 
-In [16]: b = a
-
-In [17]: b[0] = 4
----------------------------------------------------------------------------
-TypeError       Traceback (most recent call last)
-&lt;ipython-input-17-62bbbc50f611&gt; in &lt;module&gt;()
-----&gt; 1 b[0] = 4
-
-TypeError: &#39;tuple&#39; object does not support item assignment
-</code></pre>
 <p>因为<code>tuple</code>是不可变对象，既内存中记录的数据是不可以修改的，所以当我们修改数据时就出现了错误。</p>
 <p>可能会有人疑问，不可变对象也是可以改变内存地址内容的，比如</p>
-<pre><code class="python">In [18]: a = &quot;test&quot;
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">18</span>]: a = <span class="hljs-string">&quot;test&quot;</span><br><br>In [<span class="hljs-number">19</span>]: b = a<br><br>In [<span class="hljs-number">20</span>]: a = <span class="hljs-string">&quot;hello&quot;</span><br></code></pre></td></tr></table></figure>
 
-In [19]: b = a
-
-In [20]: a = &quot;hello&quot;
-</code></pre>
 <p><strong>其实这并不是修改了内存地址中的数据，而是将a重新指向了另外一个内存地址，如果我们在打印输出b，就会发现b还是”test”。</strong></p>
 <p>从内存地址中更容易理解</p>
 <blockquote>
 <p><code>id()</code>方法可以查看内存地址，其实是不是内存地址，而是逻辑地址</p>
 </blockquote>
 <p>可变对象：</p>
-<pre><code class="python">In [21]: a = [1,2,3]
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">21</span>]: a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><br>In [<span class="hljs-number">22</span>]: <span class="hljs-built_in">id</span>(a)<br>Out[<span class="hljs-number">22</span>]: <span class="hljs-number">4370511024</span><br><br>In [<span class="hljs-number">23</span>]: b = a<br><br>In [<span class="hljs-number">24</span>]: b.append(<span class="hljs-number">4</span>)<br><br>In [<span class="hljs-number">25</span>]: a<br>Out[<span class="hljs-number">25</span>]: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br><br>In [<span class="hljs-number">26</span>]: <span class="hljs-built_in">id</span>(a)<br>Out[<span class="hljs-number">26</span>]: <span class="hljs-number">4370511024</span><br><br>In [<span class="hljs-number">27</span>]: <span class="hljs-built_in">id</span>(b)<br>Out[<span class="hljs-number">27</span>]: <span class="hljs-number">4370511024</span><br></code></pre></td></tr></table></figure>
 
-In [22]: id(a)
-Out[22]: 4370511024
-
-In [23]: b = a
-
-In [24]: b.append(4)
-
-In [25]: a
-Out[25]: [1, 2, 3, 4]
-
-In [26]: id(a)
-Out[26]: 4370511024
-
-In [27]: id(b)
-Out[27]: 4370511024
-</code></pre>
 <p>可以看到a和b指向的内存地址并没有发生变化</p>
 <p>不可变对象：</p>
-<pre><code class="python">In [28]: a = &quot;test&quot;
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">In [<span class="hljs-number">28</span>]: a = <span class="hljs-string">&quot;test&quot;</span><br><br>In [<span class="hljs-number">29</span>]: <span class="hljs-built_in">id</span>(a)<br>Out[<span class="hljs-number">29</span>]: <span class="hljs-number">4343187248</span><br><br>In [<span class="hljs-number">30</span>]: b = a<br><br>In [<span class="hljs-number">31</span>]: b = <span class="hljs-string">&quot;hello&quot;</span><br><br>In [<span class="hljs-number">32</span>]: <span class="hljs-built_in">id</span>(a)<br>Out[<span class="hljs-number">32</span>]: <span class="hljs-number">4343187248</span><br><br>In [<span class="hljs-number">33</span>]: <span class="hljs-built_in">id</span>(b)<br>Out[<span class="hljs-number">33</span>]: <span class="hljs-number">4372234608</span><br></code></pre></td></tr></table></figure>
 
-In [29]: id(a)
-Out[29]: 4343187248
-
-In [30]: b = a
-
-In [31]: b = &quot;hello&quot;
-
-In [32]: id(a)
-Out[32]: 4343187248
-
-In [33]: id(b)
-Out[33]: 4372234608
-</code></pre>
 <p>可以看到其实是b指向的内存地址变化了，并不是内存地址当中的数据发生变化了</p>
 <h3 id="可变对象和不可变对象的应用"><a href="#可变对象和不可变对象的应用" class="headerlink" title="可变对象和不可变对象的应用"></a>可变对象和不可变对象的应用</h3><p><strong>我们在实际工作中应该避免使用可变对象作为函数参数传入，除非你明确的知道会发生什么。</strong></p>
 <p>这么做的原因是因为在Python当中是传递参数都是引用传递而不是值传递。关于引用传递可以简单的用下面的例子证明：</p>
-<pre><code class="python">def test(args: int):
-    print(args, id(args))
-    args += 10
-    print(args, id(args))
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>(<span class="hljs-params">args: <span class="hljs-built_in">int</span></span>):</span><br>    <span class="hljs-built_in">print</span>(args, <span class="hljs-built_in">id</span>(args))<br>    args += <span class="hljs-number">10</span><br>    <span class="hljs-built_in">print</span>(args, <span class="hljs-built_in">id</span>(args))<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    args = <span class="hljs-number">1</span><br>    <span class="hljs-built_in">print</span>(args, <span class="hljs-built_in">id</span>(args))<br>    test(args)<br>    <span class="hljs-built_in">print</span>(args, <span class="hljs-built_in">id</span>(args))<br></code></pre></td></tr></table></figure>
 
-
-if __name__ == &quot;__main__&quot;:
-    args = 1
-    print(args, id(args))
-    test(args)
-    print(args, id(args))
-</code></pre>
 <p>结果：</p>
-<pre><code class="bash">1 4517510832
-1 4517510832
-11 4517511152
-1 4517510832
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">1 4517510832<br>1 4517510832<br>11 4517511152<br>1 4517510832<br></code></pre></td></tr></table></figure>
+
 <p>可以看到在<code>test</code>函数中，<code>args</code>和在函数外的<code>args</code>的内存地址都是相同的，所以证明了Python中是传递参数是引用传递。但是最后并没有改变函数外<code>args</code>的值，是因为<code>int</code>类型是不可变对象。如果是可变对象就会改变值。</p>
 <h4 id="可变对象作为函数参数的正向作用"><a href="#可变对象作为函数参数的正向作用" class="headerlink" title="可变对象作为函数参数的正向作用"></a>可变对象作为函数参数的正向作用</h4><p>在有些情况下，可变对象作为函数参数还是非常有用的。</p>
 <p>比如要实现一个生产者-消费者模式</p>
-<pre><code class="python">import time
-from queue import Queue
-from concurrent.futures import ThreadPoolExecutor
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue<br><span class="hljs-keyword">from</span> concurrent.futures <span class="hljs-keyword">import</span> ThreadPoolExecutor<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, queue</span>):</span><br>        self.queue = queue<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>            self.queue.put(i)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;producet put a message <span class="hljs-subst">&#123;i&#125;</span>&quot;</span>)<br>            time.sleep(<span class="hljs-number">1</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, queue</span>):</span><br>        self.queue = queue<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>            data = self.queue.get()<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;consumer get a message <span class="hljs-subst">&#123;data&#125;</span>&quot;</span>)<br>            time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    queue = Queue()<br>    producer = Producer(queue)<br>    consumer = Consumer(queue)<br>    thread = ThreadPoolExecutor(max_workers=<span class="hljs-number">2</span>)<br>    thread.submit(producer.run)<br>    thread.submit(consumer.run)<br><br></code></pre></td></tr></table></figure>
 
-
-class Producer:
-    def __init__(self, queue):
-        self.queue = queue
-
-    def run(self):
-        for i in range(10):
-            self.queue.put(i)
-            print(f&quot;producet put a message &#123;i&#125;&quot;)
-            time.sleep(1)
-
-
-class Consumer:
-    def __init__(self, queue):
-        self.queue = queue
-
-    def run(self):
-        for i in range(10):
-            data = self.queue.get()
-            print(f&quot;consumer get a message &#123;data&#125;&quot;)
-            time.sleep(0.5)
-
-
-if __name__ == &quot;__main__&quot;:
-    queue = Queue()
-    producer = Producer(queue)
-    consumer = Consumer(queue)
-    thread = ThreadPoolExecutor(max_workers=2)
-    thread.submit(producer.run)
-    thread.submit(consumer.run)
-</code></pre>
 <p>结果：</p>
-<pre><code class="bash">producet put a message 0
-consumer get a message 0
-producet put a message 1
-consumer get a message 1
-producet put a message 2
-consumer get a message 2
-producet put a message 3
-consumer get a message 3
-producet put a message 4
-consumer get a message 4
-producet put a message 5
-consumer get a message 5
-producet put a message 6
-consumer get a message 6
-producet put a message 7
-consumer get a message 7
-producet put a message 8
-consumer get a message 8
-producet put a message 9
-consumer get a message 9
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash">producet put a message 0<br>consumer get a message 0<br>producet put a message 1<br>consumer get a message 1<br>producet put a message 2<br>consumer get a message 2<br>producet put a message 3<br>consumer get a message 3<br>producet put a message 4<br>consumer get a message 4<br>producet put a message 5<br>consumer get a message 5<br>producet put a message 6<br>consumer get a message 6<br>producet put a message 7<br>consumer get a message 7<br>producet put a message 8<br>consumer get a message 8<br>producet put a message 9<br>consumer get a message 9<br></code></pre></td></tr></table></figure>
+
 <p>通过可变对象，能够方便的在两个函数中进行通信，不必每次改变数据都去通知对方。</p>
 <h4 id="可变对象作为函数参数的负向作用"><a href="#可变对象作为函数参数的负向作用" class="headerlink" title="可变对象作为函数参数的负向作用"></a>可变对象作为函数参数的负向作用</h4><p>看下面的例子：</p>
-<pre><code class="python">def test(a=[]):
-    a.append(&quot;world&quot;)
-    return a
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>(<span class="hljs-params">a=[]</span>):</span><br>    a.append(<span class="hljs-string">&quot;world&quot;</span>)<br>    <span class="hljs-keyword">return</span> a<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    a = [<span class="hljs-string">&quot;hello&quot;</span>]<br>    <span class="hljs-built_in">print</span>(test())<br>    <span class="hljs-built_in">print</span>(test())<br>    <span class="hljs-built_in">print</span>(test())<br>    <span class="hljs-built_in">print</span>(test([]))<br></code></pre></td></tr></table></figure>
 
-
-if __name__ == &quot;__main__&quot;:
-    a = [&quot;hello&quot;]
-    print(test())
-    print(test())
-    print(test())
-    print(test([]))
-</code></pre>
 <p>结果：</p>
-<pre><code class="bash">[&#39;world&#39;]
-[&#39;world&#39;, &#39;world&#39;]
-[&#39;world&#39;, &#39;world&#39;, &#39;world&#39;]
-[&#39;world&#39;]
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[<span class="hljs-string">&#x27;world&#x27;</span>]<br>[<span class="hljs-string">&#x27;world&#x27;</span>, <span class="hljs-string">&#x27;world&#x27;</span>]<br>[<span class="hljs-string">&#x27;world&#x27;</span>, <span class="hljs-string">&#x27;world&#x27;</span>, <span class="hljs-string">&#x27;world&#x27;</span>]<br>[<span class="hljs-string">&#x27;world&#x27;</span>]<br></code></pre></td></tr></table></figure>
+
+
+
 <p>会出现这个问题的原因主要有两个</p>
 <ul>
 <li><strong>默认参数的值只会在函数定义的时候赋值一次</strong></li>
@@ -339,30 +213,18 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 <p>当不给test函数传递参数时，a变量就会修改<code>test(a=[])</code>中的[]的内存地址，而且因为<strong>默认参数的值只会在函数定义的时候赋值一次</strong>，所以后面再次不给test函数传递参数时，a变量还是会指向<code>test(a=[])</code>中的[]的内存地址，所以就出现了上面的结果</p>
 <h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>需要将默认值改为不可变对象</p>
-<pre><code class="python">def test(a=None):
-    if not a:
-        a = []
-    a.append(&quot;world&quot;)
-    return a
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>(<span class="hljs-params">a=<span class="hljs-literal">None</span></span>):</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> a:<br>        a = []<br>    a.append(<span class="hljs-string">&quot;world&quot;</span>)<br>    <span class="hljs-keyword">return</span> a<br></code></pre></td></tr></table></figure>
+
 <p>但是改成这样还是有个问题，就是有时候函数传递进来的是比如说false、空字符串等。会把这些输入当做没有输入</p>
 <p>优化：</p>
-<pre><code class="python">def test(a=None):
-    if a is None:
-        a = []
-    a.append(&quot;world&quot;)
-    return a
-</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>(<span class="hljs-params">a=<span class="hljs-literal">None</span></span>):</span><br>    <span class="hljs-keyword">if</span> a <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>        a = []<br>    a.append(<span class="hljs-string">&quot;world&quot;</span>)<br>    <span class="hljs-keyword">return</span> a<br></code></pre></td></tr></table></figure>
+
+
+
 <p>如果你的目标是检测函数调用时是否传递了默认值，而不是提供默认值那么会有一个更好的方式</p>
 <p>改进：将<code>None</code>替换为一个独一无二的，用户不可能传入的类型，<code>object</code>是个好的选择</p>
-<pre><code class="python">_no_value = object()
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">_no_value = <span class="hljs-built_in">object</span>()<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test</span>(<span class="hljs-params">a=_no_value</span>):</span><br>    <span class="hljs-keyword">if</span> a <span class="hljs-keyword">is</span> _no_value:<br>        a = []<br>    a.append(<span class="hljs-string">&quot;world&quot;</span>)<br>    <span class="hljs-keyword">return</span> a<br></code></pre></td></tr></table></figure>
 
-def test(a=_no_value):
-    if a is _no_value:
-        a = []
-    a.append(&quot;world&quot;)
-    return a
-</code></pre>
 <p>这样即使函数的参数是<code>None</code>，也会判断为传递进来了参数</p>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">五月八</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qiuqideblog.com/2020/06/27/python-mutable/">https://qiuqideblog.com/2020/06/27/python-mutable/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qiuqideblog.com" target="_blank">五月八</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post_share"><div class="social-share" data-image="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/8.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2019/01/02/ERC20-dirdop2/"><img class="prev-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ERC20代币批量转账实现和解析(二)</div></div></a></div><div class="next-post pull-right"><a href="/2020/06/27/restful-api/"><img class="next-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/12.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RESTful API</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/07/02/python-object-4/" title="《Python3 面向对象编程》笔记 - 第4章 异常捕获"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/10.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-02</div><div class="title">《Python3 面向对象编程》笔记 - 第4章 异常捕获</div></div></a></div><div><a href="/2020/07/13/python-random/" title="Python实现无重复数字"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/11.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-13</div><div class="title">Python实现无重复数字</div></div></a></div><div><a href="/2020/06/29/python-object-3/" title="《Python3 面向对象编程》笔记 - 第3章 对象相似时"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/9.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-06-29</div><div class="title">《Python3 面向对象编程》笔记 - 第3章 对象相似时</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/me.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">五月八</div><div class="author-info__description">天津理工大学 | 信息安全 | 后端开发</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LaoBan-ywcm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LaoBan-ywcm" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:qiuqiandfqr@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">可变和不可变对象的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">可变对象和不可变对象的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E6%AD%A3%E5%90%91%E4%BD%9C%E7%94%A8"><span class="toc-number">2.1.</span> <span class="toc-text">可变对象作为函数参数的正向作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E4%BD%9C%E4%B8%BA%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E8%B4%9F%E5%90%91%E4%BD%9C%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">可变对象作为函数参数的负向作用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">解决办法</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/13/go-error/" title="Golang的错误处理"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/16.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Golang的错误处理"/></a><div class="content"><a class="title" href="/2021/04/13/go-error/" title="Golang的错误处理">Golang的错误处理</a><time datetime="2021-04-13T12:39:17.000Z" title="发表于 2021-04-13 20:39:17">2021-04-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/index.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker镜像原理-overlayfs"/></a><div class="content"><a class="title" href="/2020/11/25/docker-overlayfs/" title="Docker镜像原理-overlayfs">Docker镜像原理-overlayfs</a><time datetime="2020-11-25T05:39:17.000Z" title="发表于 2020-11-25 13:39:17">2020-11-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker中的Namespace和Cgroups"/></a><div class="content"><a class="title" href="/2020/11/08/docker-namespace-cgroup/" title="docker中的Namespace和Cgroups">docker中的Namespace和Cgroups</a><time datetime="2020-11-08T13:42:32.000Z" title="发表于 2020-11-08 21:42:32">2020-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/go-note/" title="《Go语言实战》笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《Go语言实战》笔记"/></a><div class="content"><a class="title" href="/2020/11/04/go-note/" title="《Go语言实战》笔记">《Go语言实战》笔记</a><time datetime="2020-11-04T07:21:07.000Z" title="发表于 2020-11-04 15:21:07">2020-11-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/04/HTTP-note/" title="HTTP笔记"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/15.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTTP笔记"/></a><div class="content"><a class="title" href="/2020/11/04/HTTP-note/" title="HTTP笔记">HTTP笔记</a><time datetime="2020-11-04T06:30:24.000Z" title="发表于 2020-11-04 14:30:24">2020-11-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/8.png')"><div id="footer-wrap"><div class="copyright">&copy;2017 - 2021 By 五月八</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script>function panguFn () {
   if (typeof pangu === 'object') pangu.autoSpacingPage()

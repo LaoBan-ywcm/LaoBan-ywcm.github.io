@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ERC20代币批量转账实现和解析(二) | 五月八</title><meta name="keywords" content="区块链,代币,批量转账"><meta name="author" content="五月八"><meta name="copyright" content="五月八"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="接上篇ERC20代币批量转账实现和解析 批量转账的原理我们将讲解三种空投的实现方式，前两中都是在重新部署一个空投合约，第三种则是在代币代码部署之前就写好空投代码 有不少的代币已经在以太坊上线部署，一旦上线之后是不能修改代码的，所以这些代币要想实现空投就必须重新部署一个空投合约。利用空投合约进行转账。这种方式主要用到了ERC20标准中的两个函数 approve: 此函数的调用方授权给定的地址可以从其">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ERC20代币批量转账实现和解析(二) | 五月八</title><meta name="keywords" content="区块链,代币,批量转账"><meta name="author" content="五月八"><meta name="copyright" content="五月八"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="接上篇ERC20代币批量转账实现和解析 批量转账的原理我们将讲解三种空投的实现方式，前两中都是在重新部署一个空投合约，第三种则是在代币代码部署之前就写好空投代码 有不少的代币已经在以太坊上线部署，一旦上线之后是不能修改代码的，所以这些代币要想实现空投就必须重新部署一个空投合约。利用空投合约进行转账。这种方式主要用到了ERC20标准中的两个函数 12approve: 此函数的调用方授权给定的地址可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ERC20代币批量转账实现和解析(二)">
 <meta property="og:url" content="https://qiuqideblog.com/2019/01/02/ERC20-dirdop2/index.html">
 <meta property="og:site_name" content="五月八">
-<meta property="og:description" content="接上篇ERC20代币批量转账实现和解析 批量转账的原理我们将讲解三种空投的实现方式，前两中都是在重新部署一个空投合约，第三种则是在代币代码部署之前就写好空投代码 有不少的代币已经在以太坊上线部署，一旦上线之后是不能修改代码的，所以这些代币要想实现空投就必须重新部署一个空投合约。利用空投合约进行转账。这种方式主要用到了ERC20标准中的两个函数 approve: 此函数的调用方授权给定的地址可以从其">
+<meta property="og:description" content="接上篇ERC20代币批量转账实现和解析 批量转账的原理我们将讲解三种空投的实现方式，前两中都是在重新部署一个空投合约，第三种则是在代币代码部署之前就写好空投代码 有不少的代币已经在以太坊上线部署，一旦上线之后是不能修改代码的，所以这些代币要想实现空投就必须重新部署一个空投合约。利用空投合约进行转账。这种方式主要用到了ERC20标准中的两个函数 12approve: 此函数的调用方授权给定的地址可以">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/3.png">
 <meta property="article:published_time" content="2019-01-02T01:34:34.000Z">
@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -144,31 +144,14 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ERC20代币批量转账实现和解析(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-01-02T01:34:34.000Z" title="发表于 2019-01-02 09:34:34">2019-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:47:15.199Z" title="更新于 2021-04-01 23:47:15">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ERC20代币批量转账实现和解析(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2019/01/02/ERC20-dirdop2/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>接上篇<a target="_blank" rel="noopener" href="https://juejin.im/post/6844903748452483086">ERC20代币批量转账实现和解析</a></p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/3.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ERC20代币批量转账实现和解析(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-01-02T01:34:34.000Z" title="发表于 2019-01-02 09:34:34">2019-01-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T15:47:15.199Z" title="更新于 2021-04-01 23:47:15">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ERC20代币批量转账实现和解析(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2019/01/02/ERC20-dirdop2/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>接上篇<a target="_blank" rel="noopener" href="https://juejin.im/post/6844903748452483086">ERC20代币批量转账实现和解析</a></p>
 <h2 id="批量转账的原理"><a href="#批量转账的原理" class="headerlink" title="批量转账的原理"></a>批量转账的原理</h2><p>我们将讲解三种空投的实现方式，前两中都是在重新部署一个空投合约，第三种则是在代币代码部署之前就写好空投代码</p>
 <p>有不少的代币已经在以太坊上线部署，一旦上线之后是不能修改代码的，所以这些代币要想实现空投就必须重新部署一个空投合约。利用空投合约进行转账。这种方式主要用到了ERC20标准中的两个函数</p>
-<pre><code>approve: 此函数的调用方授权给定的地址可以从其地址中提款。
-transferFrom: 该函数允许智能合约自动执行转账流程并代表所有者发送给定数量的通证。
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">approve: 此函数的调用方授权给定的地址可以从其地址中提款。<br>transferFrom: 该函数允许智能合约自动执行转账流程并代表所有者发送给定数量的通证。<br></code></pre></td></tr></table></figure>
 <h3 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h3><p>我们可以利用<code>approve</code>函数给空投合约地址给与权限，让他可以调用一个地址中的代币，然后循环调用空投合约中的<code>transferFrom</code>进行批量转账</p>
 <p>先写一个简单的空投合约代码</p>
-<pre><code>pragma solidity ^0.4.0;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs plain">pragma solidity ^0.4.0;<br><br>contract Airdrop &#123;<br><br>    function batch(address tokenAddr, address []toAddr, uint256 []value) returns (bool)&#123;<br><br>        require(toAddr.length &#x3D;&#x3D; value.length &amp;&amp; toAddr.length &gt;&#x3D; 1);<br><br>        bytes4 fID&#x3D; bytes4(keccak256(&quot;transferFrom(address,address,uint256)&quot;));<br><br>        for(uint256 i &#x3D; 0 ; i &lt; toAddr.length; i++)&#123;<br><br>            if(!tokenAddr.call(fID, msg.sender, toAddr[i], value[i])) &#123; revert(); &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-contract Airdrop &#123;
-
-    function batch(address tokenAddr, address []toAddr, uint256 []value) returns (bool)&#123;
-
-        require(toAddr.length == value.length &amp;&amp; toAddr.length &gt;= 1);
-
-        bytes4 fID= bytes4(keccak256(&quot;transferFrom(address,address,uint256)&quot;));
-
-        for(uint256 i = 0 ; i &lt; toAddr.length; i++)&#123;
-
-            if(!tokenAddr.call(fID, msg.sender, toAddr[i], value[i])) &#123; revert(); &#125;
-        &#125;
-    &#125;
-&#125;
-</code></pre>
 <p>定义了<code>batch</code>函数进行空投，会接受三个参数：</p>
 <ol>
 <li>合约地址</li>
@@ -187,64 +170,23 @@ contract Airdrop &#123;
 </blockquote>
 <p>对地址进行解锁，并利用<code>approve</code>赋予权限，在挖矿之后继续查看，发现空投合约可以调用<code>eth.accounts[0]</code>这个地址当中的20个代币</p>
 <p>给予权限之后，我们就开始空投！</p>
-<pre><code> airdrop.batch.sendTransaction(&#39;0x6cbde372b5d3ceeee74fd56a6681eea2c3a4e94c&#39;,[&#39;0xd1d4e4a5ea685295b22d9fbe68b0cc6a8736ecf9&#39;,&#39;0xa90cf1c04ad3e96f081b599db2a7c12251ada066&#39;,&#39;0xc7e452aa3230d3699852687f7deb3c160d6ebab0&#39;,&#39;0x3e9197eb3faa278d455a35d4e9f0bc529dd5732f&#39;,&#39;0xb2dd757d40ea4b10df06e9c91e62109b82e0420b&#39;],[1,2,3,2,1],&#123;gas:300000&#125;)
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">airdrop.batch.sendTransaction(&#39;0x6cbde372b5d3ceeee74fd56a6681eea2c3a4e94c&#39;,[&#39;0xd1d4e4a5ea685295b22d9fbe68b0cc6a8736ecf9&#39;,&#39;0xa90cf1c04ad3e96f081b599db2a7c12251ada066&#39;,&#39;0xc7e452aa3230d3699852687f7deb3c160d6ebab0&#39;,&#39;0x3e9197eb3faa278d455a35d4e9f0bc529dd5732f&#39;,&#39;0xb2dd757d40ea4b10df06e9c91e62109b82e0420b&#39;],[1,2,3,2,1],&#123;gas:300000&#125;)<br></code></pre></td></tr></table></figure>
+
 <p>会有人发现上面的命令不是直接执行<code>batch</code>方法，而是调用了<code>sendTransactoin</code>，这是因为我在命令行下，默认的gas很低，但是这笔交易的数据很多，所以会因为gas用光而失败，不直接调用<code>batch</code>是为了最后的参数<code>gas:300000</code>把gas设置的高一点。当然你直接调用<code>batch</code>方法也是可以的，但是不要最后的<code>&#123;gas:300000&#125;</code></p>
 <p><img src="/images/ERC20-dirdop2/1680f1af8adf5a9e.png" alt="airdrop_done"></p>
 <p>从上面可以看到批量转账完成</p>
 <h3 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h3><p>第一种方式需要我们利用<code>approve</code>给合约地址给予一定的权限，但是如果我们把合约地址当成一个账户地址，给他转一些代币，那么空投合约就可以用自己地址当中的币进行转账了。</p>
 <p>先写一个可以实现这种方式的合约代码</p>
-<pre><code>pragma solidity ^0.4.18;
- 
-contract Ownable &#123;
-  address public owner;
- 
-  function Ownable() public &#123;
-    owner = msg.sender;
-  &#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs plain">pragma solidity ^0.4.18;<br> <br>contract Ownable &#123;<br>  address public owner;<br> <br>  function Ownable() public &#123;<br>    owner &#x3D; msg.sender;<br>  &#125;<br><br>  modifier onlyOwner() &#123;<br>    require(msg.sender &#x3D;&#x3D; owner);<br>    _;<br>  &#125;<br>&#125;<br><br>interface Token &#123;<br>  function balanceOf(address _owner) public constant returns (uint256 );<br>  function transfer(address _to, uint256 _value) public ;<br>  event Transfer(address indexed _from, address indexed _to, uint256 _value);<br>&#125;<br><br>contract Airdropper is Ownable &#123;<br>    <br>    function AirTransfer(address[] _recipients, uint[] _values, address _tokenAddress) onlyOwner public returns (bool) &#123;<br>        require(_recipients.length &gt; 0);<br><br>        Token token &#x3D; Token(_tokenAddress);<br>        <br>        for(uint j &#x3D; 0; j &lt; _recipients.length; j++)&#123;<br>            token.transfer(_recipients[j], _values[j]);<br>        &#125;<br> <br>        return true;<br>    &#125;<br> <br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-  modifier onlyOwner() &#123;
-    require(msg.sender == owner);
-    _;
-  &#125;
-&#125;
-
-interface Token &#123;
-  function balanceOf(address _owner) public constant returns (uint256 );
-  function transfer(address _to, uint256 _value) public ;
-  event Transfer(address indexed _from, address indexed _to, uint256 _value);
-&#125;
-
-contract Airdropper is Ownable &#123;
-    
-    function AirTransfer(address[] _recipients, uint[] _values, address _tokenAddress) onlyOwner public returns (bool) &#123;
-        require(_recipients.length &gt; 0);
-
-        Token token = Token(_tokenAddress);
-        
-        for(uint j = 0; j &lt; _recipients.length; j++)&#123;
-            token.transfer(_recipients[j], _values[j]);
-        &#125;
- 
-        return true;
-    &#125;
- 
-
-&#125;
-</code></pre>
 <p>从代码中可以看到我们是利用合约地址当中的代币进行交易的，按照之前部署代币的步骤我们进行部署</p>
 <p><img src="/images/ERC20-dirdop2/1680f1baf2d109ea.png" alt="airdropper"></p>
 <p>部署成功之后，向空投合约转一些代币，然后调用空投合约的方法进行空投，实施的步骤和第一种方式大同小异，就不在赘述了，具体看下图</p>
 <p><img src="/images/ERC20-dirdop2/1680f1c1ae8a1d8d.png" alt="airdropper_done"></p>
 <h3 id="第三种方式"><a href="#第三种方式" class="headerlink" title="第三种方式"></a>第三种方式</h3><p>前面两种方式都是在合约外部在重新部署一个合约用于空投，第三种方式则是在合约中就实现空投，实现的思路其实和之前的方法一样，只不过是集合到了合约当中</p>
 <p>将下面的代码加到合约当中</p>
-<pre><code>function batch(address []toAddr, uint256 []value) returns (bool)&#123;
-    require(toAddr.length == value.length &amp;&amp; toAddr.length &gt;= 1);
-    for(uint256 i = 0 ; i &lt; toAddr.length; i++)&#123;
-        transfer(toAddr[i], value[i]);
-    &#125;
-&#125;
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">function batch(address []toAddr, uint256 []value) returns (bool)&#123;<br>    require(toAddr.length &#x3D;&#x3D; value.length &amp;&amp; toAddr.length &gt;&#x3D; 1);<br>    for(uint256 i &#x3D; 0 ; i &lt; toAddr.length; i++)&#123;<br>        transfer(toAddr[i], value[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p>按照之前的步骤部署到geth私有链中，查看合约</p>
 <p><img src="/images/ERC20-dirdop2/1680f1cba01d2699.png" alt="3airdrop"></p>
 <p>可以发现，现在的合约当中已经有了<code>batch</code>方法了，然后进行交易就可以了</p>

@@ -1,0 +1,148 @@
+/**
+ * Lucario Theme originally by Raphael Amorim [@raphamorim]
+ * https://github.com/raphamorim/lucario
+ *
+ * Ported for PrismJS by Christopher Kapic [@christopher-kapic]
+ */
+
+ /* 新添加的內容
+  ------------------------------------- 
+  --hl-color: #f8f8f2 代碼框字體顔色 【必須】 (把下面 pre[class*="language-"]的 color 複製到這裏來)
+  --hl-bg: none 代碼框背景色 【必須】 (把下面 pre[class*="language-"]的 background複製到這裏來)
+  --hltools-bg: #321a0f       代碼框頂部工具欄背景色 【可選】(如果你關掉了 copy、lang 和 shrink,可不用配置這個）
+  --hltools-color: #fff       代碼框頂部工具欄字體顔色 【可選】(如果你關掉了 copy、lang 和 shrink,可不用配置這個）
+  --hlnumber-bg: #221a0f      代碼框行數背景色 【可選】(如果已經關掉 line_number,可以不用配置這個)
+  --hlnumber-color: #fff      代碼框行數字體顔色 【可選】 (如果已經關掉 line_number,可以不用配置這個)
+  --hlscrollbar-bg: #d3af86   代碼框滾動條顔色 【可選】（默認為主題主顔色）
+  --hlexpand-bg: #d3af86      代碼框底部展開背景色 【可選】(如果已經關掉 highlight_height_limit,可以不用配置這個)
+*/
+:root {
+    --hl-color: #f8f8f2;
+    --hl-bg: #263E52;
+    --hltools-bg: #321a0f;
+    --hltools-color: #fff;
+    --hlnumber-bg: #221a0f;
+    --hlnumber-color: #fff;
+    --hlscrollbar-bg: #d3af86;
+    --hlexpand-bg: #d3af86
+}
+
+
+/* 
+
+ 
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #f8f8f2;
+    background: none;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+    border-radius: 0.3em;
+}
+
+:not(pre)>code[class*="language-"],
+pre[class*="language-"] {
+    background: #263E52;
+}
+
+/* Inline code */
+:not(pre)>code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+} */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #5c98cd;
+}
+
+.token.punctuation {
+    color: #f8f8f2;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #F05E5D;
+}
+
+.token.boolean,
+.token.number {
+    color: #BC94F9;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #FCFCD6;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+    color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+    color: #66D8EF;
+}
+
+.token.keyword {
+    color: #6EB26E;
+}
+
+.token.regex,
+.token.important {
+    color: #F05E5D;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}

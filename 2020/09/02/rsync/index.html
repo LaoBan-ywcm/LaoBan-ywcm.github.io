@@ -17,7 +17,7 @@
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
   translate: undefined,
   noticeOutdate: undefined,
-  highlight: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
   copy: {
     success: '复制成功',
     error: '复制错误',
@@ -144,7 +144,7 @@
     if (fontSizeVal !== undefined) {
       document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
     }
-    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/rsync.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">rsync 学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-02T01:31:37.000Z" title="发表于 2020-09-02 09:31:37">2020-09-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:50:07.025Z" title="更新于 2021-04-01 19:50:07">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">835</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="rsync 学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/09/02/rsync/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="rsync-的一些常用用法"><a href="#rsync-的一些常用用法" class="headerlink" title="rsync 的一些常用用法"></a>rsync 的一些常用用法</h2><p>rsync是Linux里常用的一个用于文件同步的命令。</p>
+    })(window)</script><meta name="baidu-site-verification" content="code-5kSq0xhoFK" /><link rel="stylesheet" href="/self/onedork.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/me.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/rsync.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">五月八</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">rsync 学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-02T01:31:37.000Z" title="发表于 2020-09-02 09:31:37">2020-09-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-01T11:50:07.025Z" title="更新于 2021-04-01 19:50:07">2021-04-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">831</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="rsync 学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/09/02/rsync/#post-comment"><span class="gitalk-comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="rsync-的一些常用用法"><a href="#rsync-的一些常用用法" class="headerlink" title="rsync 的一些常用用法"></a>rsync 的一些常用用法</h2><p>rsync是Linux里常用的一个用于文件同步的命令。</p>
 <p>可以替代<code>mv</code>和<code>cp</code>命令，也可以和远端主机同步文件（rsync的全称是 remote sync）。最主要的特性就是每次只会传输文件变动的部分，而不是每次都全量同步。</p>
 <h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><h4 id="a-参数"><a href="#a-参数" class="headerlink" title="-a 参数"></a>-a 参数</h4><p><code>-a</code>参数有两个功能：</p>
 <ul>
@@ -152,47 +152,36 @@
 <li>会拷贝文件的元信息，比如文件大小，修改时间等</li>
 </ul>
 <p>rsync默认是通过文件大小和修改时间判断文件是否进行过修改</p>
-<pre><code class="bash">rsync -a source destination
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -a <span class="hljs-built_in">source</span> destination<br><br>rsync -a <span class="hljs-built_in">source</span>/ destination<br></code></pre></td></tr></table></figure>
 
-rsync -a source/ destination
-</code></pre>
 <p>上面这两个命令的不同之处是在于，第二条命令会把source下面的文件拷贝到destionation中，而不是将source目录拷贝到destination中</p>
-<h4 id="n-参数"><a href="#n-参数" class="headerlink" title="-n 参数"></a>-n 参数</h4><pre><code class="bash">rsync -anv source destination
-</code></pre>
+<h4 id="n-参数"><a href="#n-参数" class="headerlink" title="-n 参数"></a>-n 参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -anv <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure>
+
 <p><code>-n</code> 并不会真正的执行命令，而是模拟执行的结果</p>
 <p><code>-v</code>会把模拟执行的结果输出到终端</p>
-<h4 id="–delete-参数"><a href="#–delete-参数" class="headerlink" title="–delete 参数"></a>–delete 参数</h4><pre><code class="bash">rsync -av --delete source destination
-</code></pre>
+<h4 id="–delete-参数"><a href="#–delete-参数" class="headerlink" title="–delete 参数"></a>–delete 参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --delete <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure>
+
 <p>默认情况下，rsync只确保将源目录中的所有内容拷贝到目标目录中，并不会要求两个目录的文件完全相同。</p>
 <p><code>--delete</code>参数会确保两个目录中的内容相同，如果目标目录中有多余的文件则会删除</p>
 <h4 id="–exclude-参数"><a href="#–exclude-参数" class="headerlink" title="–exclude 参数"></a>–exclude 参数</h4><p><code>--exclude</code>支持同步文件时排除某些文件</p>
 <ol>
 <li><p>不同步<code>txt</code>文件</p>
-<pre><code class="bash">rsync -av --exclude=&quot;*.txt&quot; source destination
-</code></pre>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --exclude=<span class="hljs-string">&quot;*.txt&quot;</span> <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>rsync默认会同步<code>.</code>开头的文件，下面的命令可以排除以<code>.</code>开头的文件</p>
-<pre><code class="bash">rsync -av --exclude=&quot;.*&quot; source destination
-</code></pre>
-</li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --exclude=<span class="hljs-string">&quot;.*&quot;</span> <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure></li>
 <li><p>多个文件需要排除</p>
-<pre><code class="bash">rsync -av --exclude=&quot;.*&quot; --exclude=&quot;*.txt&quot; source destination
-
-rsync -av --exclude=&#123;&#39;.*&#39;, &#39;*.txt&#39;&#125; source destination
-</code></pre>
-</li>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --exclude=<span class="hljs-string">&quot;.*&quot;</span> --exclude=<span class="hljs-string">&quot;*.txt&quot;</span> <span class="hljs-built_in">source</span> destination<br><br>rsync -av --exclude=&#123;<span class="hljs-string">&#x27;.*&#x27;</span>, <span class="hljs-string">&#x27;*.txt&#x27;</span>&#125; <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure></li>
 <li><p>如果需要排除某个目录下的所有文件，而保留目录</p>
-<pre><code class="bash">rsync -av --exclude=&quot;dir1/*&quot; source destination
-</code></pre>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --exclude=<span class="hljs-string">&quot;dir1/*&quot;</span> <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="–include-参数"><a href="#–include-参数" class="headerlink" title="–include 参数"></a>–include 参数</h4><p><code>--include</code>指定必须要同步的文件</p>
 <p>通常和<code>--exclude</code>参数同时使用</p>
-<pre><code class="bash">rsync -av --include=&quot;*.txt&quot; --exclude=&quot;*&quot; source destination
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --include=<span class="hljs-string">&quot;*.txt&quot;</span> --exclude=<span class="hljs-string">&quot;*&quot;</span> <span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure>
+
 <h4 id="–link-dest-参数"><a href="#–link-dest-参数" class="headerlink" title="–link-dest 参数"></a>–link-dest 参数</h4><p><code>--link-dest</code>用来指定同步文件时的基准目录</p>
-<pre><code class="bash">rsync -av --delete --link-dest=../path source/ destination
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av --delete --link-dest=../path <span class="hljs-built_in">source</span>/ destination<br></code></pre></td></tr></table></figure>
+
 <p>如果基准目录相对路径，并且和source、destination目录是同一级的，需要在目录名前加上<code>../</code></p>
 <p>source目录中的文件会和path中的文件进行比较，只会把更新了的文件拷贝到destination目录中，那些没有更新的文件则会和path中的文件生成硬链接</p>
 <h4 id="–append-参数"><a href="#–append-参数" class="headerlink" title="–append 参数"></a>–append 参数</h4><p><code>--append</code>参数接着文件上次中断的地方继续传输</p>
@@ -202,12 +191,8 @@ rsync -av --exclude=&#123;&#39;.*&#39;, &#39;*.txt&#39;&#125; source destination
 <h4 id="P-参数"><a href="#P-参数" class="headerlink" title="-P 参数"></a>-P 参数</h4><p>是<code>--partial</code>和<code>--progress</code>的结合</p>
 <p>rsync在中途传输失败时，默认会删除已经传输完成的文件。<code>--partial</code>则不会删除文件，下次同步时会再次恢复中断的传输</p>
 <h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><ol>
-<li><h4 id="SSH协议"><a href="#SSH协议" class="headerlink" title="SSH协议"></a>SSH协议</h4><pre><code class="bash">rsync -av source username@remote_host:destination
+<li><h4 id="SSH协议"><a href="#SSH协议" class="headerlink" title="SSH协议"></a>SSH协议</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">rsync -av <span class="hljs-built_in">source</span> username@remote_host:destination<br><br>rsync -av username@remote_host:<span class="hljs-built_in">source</span> destination<br><br>rsync -av -e <span class="hljs-string">&quot;ssh -o 2222&quot;</span> username@remote_host:<span class="hljs-built_in">source</span> destination<br></code></pre></td></tr></table></figure>
 
-rsync -av username@remote_host:source destination
-
-rsync -av -e &quot;ssh -o 2222&quot; username@remote_host:source destination
-</code></pre>
 <p>如果ssh需要有附加的命令需要用<code>-e</code>参数</p>
 </li>
 </ol>
