@@ -1,49 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://qiuqideblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/</loc>
-    <lastmod>2020-12-07</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</loc>
-    <lastmod>2020-11-25</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</loc>
-    <lastmod>2020-11-25</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/</loc>
-    <lastmod>2020-11-17</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/11/04/http-bi-ji/</loc>
-    <lastmod>2020-11-04</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/09/03/mongo-replice/</loc>
-    <lastmod>2020-10-29</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2019/01/02/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-er/</loc>
-    <lastmod>2020-10-16</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/</loc>
-    <lastmod>2020-10-16</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/07/01/fanyi-git-tag/</loc>
-    <lastmod>2020-09-03</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/09/02/rsync/</loc>
-    <lastmod>2020-09-03</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/06/27/restfule-api/</loc>
-    <lastmod>2020-09-02</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/07/13/python-random/</loc>
-    <lastmod>2020-07-13</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/06/29/python-object-3/</loc>
-    <lastmod>2020-07-04</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/07/02/python-object-4/</loc>
-    <lastmod>2020-07-01</lastmod>
-  </url>  <url>
-    <loc>https://qiuqideblog.com/2020/06/27/python-mutable/</loc>
-    <lastmod>2020-07-01</lastmod>
+    <loc>https://qiuqideblog.com/2021/08/31/qie-er-nuo-bei-li-yi/</loc>
+    <lastmod>2022-06-01</lastmod>
   </url>
-</urlset>
+  <url>
+    <loc>https://qiuqideblog.com/2021/06/29/li-jie-oauth-2-0-san/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2021/05/31/li-jie-oauth-2-0-er/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2021/05/25/li-jie-oauth-2-0-yi/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2021/06/15/elasticsearch-zhong-wen-fen-ci/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2021/05/19/go-rune/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2021/05/17/go-byte/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2021/04/13/go-error/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/</loc>
+    <lastmod>2022-06-01</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/09/02/rsync/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/06/27/restfule-api/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/07/02/python-object-4/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/06/29/python-object-3/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/06/27/python-mutable/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/09/03/mongo-replice/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/11/04/http-bi-ji/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/07/01/fanyi-git-tag/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2018/12/27/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-yi/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2019/01/02/erc20-dai-bi-pi-liang-zhuan-zhang-shi-xian-he-jie-xi-er/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/</loc>
+    <lastmod>2022-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://qiuqideblog.com/2020/07/13/python-random/</loc>
+    <lastmod>2022-05-12</lastmod>
+  </url>
+</urlset> 

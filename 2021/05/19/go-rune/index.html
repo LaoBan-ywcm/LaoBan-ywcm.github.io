@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Golang rune类型 | 鱼丸粗面的博客</title><meta name="keywords" content="Golang,rune"><meta name="author" content="KaKa"><meta name="copyright" content="KaKa"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Golang rune类型在说rune类型之前，先穿插一些编码的基础知识 ASCII、Unicode和UTF-8ASCIIASCII码诞生之初是用来转换英语和二进制的，因为在计算机内部，所有的信息都是二进制的。 一个字节(byte)有八位(bit)，可以表示的数字范围00000000 - 11111111，共有2^8中可能性，既256。 ASCII规定了128个字符的编码，比如A字母，对应的ASC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang rune类型">
+<meta property="og:url" content="https://qiuqideblog.com/2021/05/19/go-rune/index.html">
+<meta property="og:site_name" content="鱼丸粗面的博客">
+<meta property="og:description" content="Golang rune类型在说rune类型之前，先穿插一些编码的基础知识 ASCII、Unicode和UTF-8ASCIIASCII码诞生之初是用来转换英语和二进制的，因为在计算机内部，所有的信息都是二进制的。 一个字节(byte)有八位(bit)，可以表示的数字范围00000000 - 11111111，共有2^8中可能性，既256。 ASCII规定了128个字符的编码，比如A字母，对应的ASC">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%20rune%E7%B1%BB%E5%9E%8B%2Fthumbnail.png">
+<meta property="article:published_time" content="2021-05-19T14:26:17.000Z">
+<meta property="article:modified_time" content="2022-06-01T09:57:59.318Z">
+<meta property="article:author" content="KaKa">
+<meta property="article:tag" content="Golang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%20rune%E7%B1%BB%E5%9E%8B%2Fthumbnail.png"><link rel="shortcut icon" href="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/public/avatar.png"><link rel="canonical" href="https://qiuqideblog.com/2021/05/19/go-rune/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Golang rune类型',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-06-01 17:57:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/public/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%20rune%E7%B1%BB%E5%9E%8B%2Fthumbnail.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">鱼丸粗面的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Golang rune类型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-05-19T14:26:17.000Z" title="发表于 2021-05-19 22:26:17">2021-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-01T09:57:59.318Z" title="更新于 2022-06-01 17:57:59">2022-06-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Golang/">Golang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Golang rune类型"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Golang-rune类型"><a href="#Golang-rune类型" class="headerlink" title="Golang rune类型"></a>Golang rune类型</h2><p>在说<code>rune</code>类型之前，先穿插一些编码的基础知识</p>
+<h3 id="ASCII、Unicode和UTF-8"><a href="#ASCII、Unicode和UTF-8" class="headerlink" title="ASCII、Unicode和UTF-8"></a>ASCII、Unicode和UTF-8</h3><h4 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h4><p>ASCII码诞生之初是用来转换英语和二进制的，因为在计算机内部，所有的信息都是二进制的。</p>
+<p>一个字节(byte)有八位(bit)，可以表示的数字范围<code>00000000</code> - <code>11111111</code>，共有2^8中可能性，既256。</p>
+<p>ASCII规定了128个字符的编码，比如A字母，对应的ASCII码是<code>0100 0001</code>，十进制是65。!符号，对应的是<code>0010 0001</code>，十进制是33。</p>
+<div class="note info flat"><p>ASCII只用到了一个字节的后7位，第一位始终为0</p>
+</div>
+
+<h4 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h4><p>ASCII码只规定了英语和一些字符的编码，但是其他语言会有更多的字符，ASCII码就满足不了了，所以出现了Unicode，Unicode规定了世界上所有字符对应的二进制码，可以通过<a target="_blank" rel="noopener" href="http://www.chi2ko.com/tool/CJK.htm">中日韩Unicode编码表</a>查询中文对应的Unicode码</p>
+<h4 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h4><p>Unicode虽然规定了每个字符对应的二进制，但是并没有规定如何存储这些数据，它只是个对照表。</p>
+<p>比如汉字<code>一</code>对应的Unicode十六进制是<code>4E00</code>，二进制是<code>100111000000000</code>，有十五位。<code>龟</code>对应的Unicode十六进制是<code>9F9F</code>，二进制是<code>1001111110011111</code>，有十六位。他们都至少需要两个字节，别的字符还有占三、四个字节的。</p>
+<p>这样问题就来了，程序要怎么知道多少个字节表示一个字符？</p>
+<p>UTF-8就是用来解决这个问题的，它最大的特定就是它是一种变长的编码方式</p>
+<div class="note info flat"><p>UTF-8和Unicode的关系：UTF-8是Unicode的一种实现方式</p>
+</div>
+
+<p>UTF-8的编码规则其实很简单，就两条：</p>
+<ol>
+<li>对于单字节的符号，第一位是<code>0</code>，后面7位是对应的Unicode码，所以UTF-8是兼容ASCII的</li>
+<li>对于<code>n</code>字节的符号，第一个字节的前<code>n</code>位都设置为<code>1</code>，后面紧跟一位设置为<code>0</code>，后面字节的前两位设置为<code>10</code>。剩下的没有提及的位都用来填充Unicode码</li>
+</ol>
+<p>下面是编码规则表</p>
+<pre class="line-numbers language-shell"><code class="language-shell">Unicode符号范围     |        UTF-8编码方式
+(十六进制)          |       （二进制）
+----------------------+---------------------------------------------
+0000 0000-0000 007F | 0xxxxxxx
+0000 0080-0000 07FF | 110xxxxx 10xxxxxx
+0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>比如要对<code>一</code>进行UTF-8编码，它的十六进制是<code>4E00</code>，对于规则表第三行，然后将对应的Unicode码<code>100111000000000</code>填充进去，UTF-8编码就是<code>11100100 10111000 10000000</code>，转为十六进制就是<code>E4B880</code></p>
+<h4 id="Little-endian-和-Big-endian"><a href="#Little-endian-和-Big-endian" class="headerlink" title="Little endian 和 Big endian"></a>Little endian 和 Big endian</h4><p>数据存储的方式有两种大端(Big endian)和小端(Little endian)，比如<code>E4B880</code>，采用大端存储就是<code>E4B880</code>，如果采用小端存储就是<code>80B8E4</code>。</p>
+<p>如果是单机环境是没有什么问题的，如果是网络通信，可能传递过来的数据大端方式，而本机采用的是小端方式，这样解析数据就会出现问题。但是一般网络传输都是采用大端方式</p>
+<p>一般<code>x86</code>的服务器都是采用小端方式，可以查看操作系统采用的方式</p>
+<pre class="line-numbers language-shell"><code class="language-shell">~$ lscpu
+Byte Order:          Little Endian<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="Rune-类型"><a href="#Rune-类型" class="headerlink" title="Rune 类型"></a>Rune 类型</h3><p>在Golang中字符串只是一个可读的字节片，从前面的部分知道，有很多字符得需要很多个字节才能表示，所以当我们对字符串进行类似切片中的索引操作时就会出现问题</p>
+<pre class="line-numbers language-go"><code class="language-go"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">"这是test"</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a len: %d\n"</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a[:1]: %s\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a[:3]: %s\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"% x\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// a len: 10</span>
+<span class="token comment" spellcheck="true">// a[:1]: �</span>
+<span class="token comment" spellcheck="true">// a[:3]: 这</span>
+<span class="token comment" spellcheck="true">//     e8 bf 99 e6 98 af 74 65 73 74</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出<code>a[:1]</code>时，因为切割字符<code>e8</code>不正确，没有在UTF-8找到对应的字符，所以输出了不可见字符</p>
+<div class="note info flat"><p><code>%x</code>输出每个字节对应的十六进制</p>
+</div>
+
+<p>但是使用<code>rune</code>类型就可以避免这种问题，先看一下<code>rune</code>的定义</p>
+<pre class="line-numbers language-go"><code class="language-go"><span class="token comment" spellcheck="true">// byte is an alias for uint8 and is equivalent to uint8 in all ways. It is</span>
+<span class="token comment" spellcheck="true">// used, by convention, to distinguish byte values from 8-bit unsigned</span>
+<span class="token comment" spellcheck="true">// integer values.</span>
+<span class="token keyword">type</span> <span class="token builtin">byte</span> <span class="token operator">=</span> <span class="token builtin">uint8</span>
+
+<span class="token comment" spellcheck="true">// rune is an alias for int32 and is equivalent to int32 in all ways. It is</span>
+<span class="token comment" spellcheck="true">// used, by convention, to distinguish character values from integer values.</span>
+<span class="token keyword">type</span> <span class="token builtin">rune</span> <span class="token operator">=</span> <span class="token builtin">int32</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>它底层是用四个字节存储数据，在Unicode标准中有一个定义<code>code point</code>，就是指单个字符对应的Unicode码，比如<code>这</code>对应<code>code point</code>是<code>U+8fd9</code>，对应的UTF-8十六进制就是<code>e8bf99</code>。所以<code>rune</code>类型就是对应Unicode标准中的<code>code point</code>，这样在切割字符串时就不会有问题了</p>
+<pre class="line-numbers language-go"><code class="language-go"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">rune</span><span class="token punctuation">(</span><span class="token string">"这是test"</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a len: %d\n"</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a[:1]: %s\n"</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a[:3]: %s\n"</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"% x\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// a len: 6</span>
+<span class="token comment" spellcheck="true">// a[:1]: 这</span>
+<span class="token comment" spellcheck="true">// a[:3]: 这是t</span>
+<span class="token comment" spellcheck="true">// [ 8fd9  662f  74  65  73  74]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对字符串进行<code>for range</code>操作时，每次获得的对象都是<code>rune</code>，所以也可以避免上述问题</p>
+<pre class="line-numbers language-go"><code class="language-go"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">"这是test"</span>
+<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> v <span class="token operator">:=</span> <span class="token keyword">range</span> a <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"% s"</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 这是test</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://qiuqideblog.com">KaKa</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://qiuqideblog.com/2021/05/19/go-rune/">https://qiuqideblog.com/2021/05/19/go-rune/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://qiuqideblog.com" target="_blank">鱼丸粗面的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Golang/">Golang</a></div><div class="post_share"><div class="social-share" data-image="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%20rune%E7%B1%BB%E5%9E%8B%2Fthumbnail.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/05/25/li-jie-oauth-2-0-yi/"><img class="prev-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/%E7%90%86%E8%A7%A3Oauth%202.0(%E4%B8%80)%E6%A6%82%E8%BF%B0%2Fthumbnail.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">理解Oauth 2.0(一)概述</div></div></a></div><div class="next-post pull-right"><a href="/2021/05/17/go-byte/"><img class="next-cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%E4%B8%AD%E7%9A%84%E4%BD%8D%E6%93%8D%E4%BD%9C%2Fthumbnail.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Golang中的位操作</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/13/go-error/" title="Golang的错误处理"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/thumbnail.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-13</div><div class="title">Golang的错误处理</div></div></a></div><div><a href="/2021/05/17/go-byte/" title="Golang中的位操作"><img class="cover" src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%E4%B8%AD%E7%9A%84%E4%BD%8D%E6%93%8D%E4%BD%9C%2Fthumbnail.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-17</div><div class="title">Golang中的位操作</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/public/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">KaKa</div><div class="author-info__description">天津理工大学 | 信息安全 | 后端开发</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">13</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LaoBan-ywcm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LaoBan-ywcm" target="_blank" title="Github"><i class="fab fa-brands fa-github-alt"></i></a><a class="social-icon" href="mailto:qiuqiandfqr@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Golang-rune%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">Golang rune类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ASCII%E3%80%81Unicode%E5%92%8CUTF-8"><span class="toc-number">1.1.</span> <span class="toc-text">ASCII、Unicode和UTF-8</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ASCII"><span class="toc-number">1.1.1.</span> <span class="toc-text">ASCII</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Unicode"><span class="toc-number">1.1.2.</span> <span class="toc-text">Unicode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UTF-8"><span class="toc-number">1.1.3.</span> <span class="toc-text">UTF-8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Little-endian-%E5%92%8C-Big-endian"><span class="toc-number">1.1.4.</span> <span class="toc-text">Little endian 和 Big endian</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rune-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Rune 类型</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/31/qie-er-nuo-bei-li-yi/" title="切尔诺贝利事件"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/%E5%88%87%E5%B0%94%E8%AF%BA%E8%B4%9D%E5%88%A9%E4%BA%8B%E4%BB%B6%2Fthumbnail.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="切尔诺贝利事件"/></a><div class="content"><a class="title" href="/2021/08/31/qie-er-nuo-bei-li-yi/" title="切尔诺贝利事件">切尔诺贝利事件</a><time datetime="2021-08-31T13:50:50.000Z" title="发表于 2021-08-31 21:50:50">2021-08-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/29/li-jie-oauth-2-0-san/" title="理解Oauth 2.0(三)授权类型"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/%E7%90%86%E8%A7%A3Oauth%202.0(%E4%B8%89)%E6%8E%88%E6%9D%83%E7%B1%BB%E5%9E%8B%2Fthumbnail.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="理解Oauth 2.0(三)授权类型"/></a><div class="content"><a class="title" href="/2021/06/29/li-jie-oauth-2-0-san/" title="理解Oauth 2.0(三)授权类型">理解Oauth 2.0(三)授权类型</a><time datetime="2021-06-29T11:51:35.000Z" title="发表于 2021-06-29 19:51:35">2021-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/15/elasticsearch-zhong-wen-fen-ci/" title="ElasticSearch 中文分词"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/ElasticSearch%20%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D%2Fthumbnail.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ElasticSearch 中文分词"/></a><div class="content"><a class="title" href="/2021/06/15/elasticsearch-zhong-wen-fen-ci/" title="ElasticSearch 中文分词">ElasticSearch 中文分词</a><time datetime="2021-06-15T12:16:52.000Z" title="发表于 2021-06-15 20:16:52">2021-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/31/li-jie-oauth-2-0-er/" title="理解Oauth 2.0(二)实现简单的OAuth2.0流程"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/%E7%90%86%E8%A7%A3Oauth%202.0(%E4%BA%8C)%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84OAuth2.0%E6%B5%81%E7%A8%8B%2Fthumbnail.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="理解Oauth 2.0(二)实现简单的OAuth2.0流程"/></a><div class="content"><a class="title" href="/2021/05/31/li-jie-oauth-2-0-er/" title="理解Oauth 2.0(二)实现简单的OAuth2.0流程">理解Oauth 2.0(二)实现简单的OAuth2.0流程</a><time datetime="2021-05-31T08:31:23.000Z" title="发表于 2021-05-31 16:31:23">2021-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/05/25/li-jie-oauth-2-0-yi/" title="理解Oauth 2.0(一)概述"><img src="https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/%E7%90%86%E8%A7%A3Oauth%202.0(%E4%B8%80)%E6%A6%82%E8%BF%B0%2Fthumbnail.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="理解Oauth 2.0(一)概述"/></a><div class="content"><a class="title" href="/2021/05/25/li-jie-oauth-2-0-yi/" title="理解Oauth 2.0(一)概述">理解Oauth 2.0(一)概述</a><time datetime="2021-05-25T11:24:21.000Z" title="发表于 2021-05-25 19:24:21">2021-05-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://blog-img-1256171178.cos.ap-beijing.myqcloud.com/Golang%20rune%E7%B1%BB%E5%9E%8B%2Fthumbnail.png')"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2022 By KaKa</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
