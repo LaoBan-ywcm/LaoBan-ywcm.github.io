@@ -5,9 +5,9 @@
   <subtitle>鱼丸粗面的博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://qiuqideblog.com/"/>
-  <updated>2022-06-01T14:58:20.031Z</updated>
-  <id>https://qiuqideblog.com/</id>
+  <link href="https://qiuqiblog.com/"/>
+  <updated>2022-06-01T15:00:25.486Z</updated>
+  <id>https://qiuqiblog.com/</id>
   
   <author>
     <name>KaKa</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>切尔诺贝利事件</title>
-    <link href="https://qiuqideblog.com/2021/08/31/qie-er-nuo-bei-li-yi/"/>
-    <id>https://qiuqideblog.com/2021/08/31/qie-er-nuo-bei-li-yi/</id>
+    <link href="https://qiuqiblog.com/2021/08/31/qie-er-nuo-bei-li-yi/"/>
+    <id>https://qiuqiblog.com/2021/08/31/qie-er-nuo-bei-li-yi/</id>
     <published>2021-08-31T13:50:50.000Z</published>
-    <updated>2022-06-01T14:58:20.031Z</updated>
+    <updated>2022-06-01T15:00:25.486Z</updated>
     
     <summary type="html">
     
@@ -35,19 +35,19 @@
     
     </summary>
     
-      <category term="读书" scheme="https://qiuqideblog.com/categories/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="读书" scheme="https://qiuqiblog.com/categories/%E8%AF%BB%E4%B9%A6/"/>
     
     
-      <category term="读书" scheme="https://qiuqideblog.com/tags/%E8%AF%BB%E4%B9%A6/"/>
+      <category term="读书" scheme="https://qiuqiblog.com/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
   <entry>
     <title>理解Oauth 2.0(三)授权类型</title>
-    <link href="https://qiuqideblog.com/2021/06/29/li-jie-oauth-2-0-san/"/>
-    <id>https://qiuqideblog.com/2021/06/29/li-jie-oauth-2-0-san/</id>
+    <link href="https://qiuqiblog.com/2021/06/29/li-jie-oauth-2-0-san/"/>
+    <id>https://qiuqiblog.com/2021/06/29/li-jie-oauth-2-0-san/</id>
     <published>2021-06-29T11:51:35.000Z</published>
-    <updated>2022-06-01T14:54:52.437Z</updated>
+    <updated>2022-06-01T15:00:14.637Z</updated>
     
     <summary type="html">
     
@@ -61,19 +61,19 @@
     
     </summary>
     
-      <category term="授权" scheme="https://qiuqideblog.com/categories/%E6%8E%88%E6%9D%83/"/>
+      <category term="授权" scheme="https://qiuqiblog.com/categories/%E6%8E%88%E6%9D%83/"/>
     
     
-      <category term="Oauth 2.0" scheme="https://qiuqideblog.com/tags/Oauth-2-0/"/>
+      <category term="Oauth 2.0" scheme="https://qiuqiblog.com/tags/Oauth-2-0/"/>
     
   </entry>
   
   <entry>
     <title>ElasticSearch 中文分词</title>
-    <link href="https://qiuqideblog.com/2021/06/15/elasticsearch-zhong-wen-fen-ci/"/>
-    <id>https://qiuqideblog.com/2021/06/15/elasticsearch-zhong-wen-fen-ci/</id>
+    <link href="https://qiuqiblog.com/2021/06/15/elasticsearch-zhong-wen-fen-ci/"/>
+    <id>https://qiuqiblog.com/2021/06/15/elasticsearch-zhong-wen-fen-ci/</id>
     <published>2021-06-15T12:16:52.000Z</published>
-    <updated>2022-06-01T10:12:45.522Z</updated>
+    <updated>2022-06-01T10:14:19.533Z</updated>
     
     <summary type="html">
     
@@ -87,19 +87,19 @@
     
     </summary>
     
-      <category term="数据库" scheme="https://qiuqideblog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://qiuqiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="ElasticSearch" scheme="https://qiuqideblog.com/tags/ElasticSearch/"/>
+      <category term="ElasticSearch" scheme="https://qiuqiblog.com/tags/ElasticSearch/"/>
     
   </entry>
   
   <entry>
     <title>理解Oauth 2.0(二)实现简单的OAuth2.0流程</title>
-    <link href="https://qiuqideblog.com/2021/05/31/li-jie-oauth-2-0-er/"/>
-    <id>https://qiuqideblog.com/2021/05/31/li-jie-oauth-2-0-er/</id>
+    <link href="https://qiuqiblog.com/2021/05/31/li-jie-oauth-2-0-er/"/>
+    <id>https://qiuqiblog.com/2021/05/31/li-jie-oauth-2-0-er/</id>
     <published>2021-05-31T08:31:23.000Z</published>
-    <updated>2022-06-01T10:46:50.786Z</updated>
+    <updated>2022-06-01T15:00:09.225Z</updated>
     
     <summary type="html">
     
@@ -113,19 +113,19 @@
     
     </summary>
     
-      <category term="授权" scheme="https://qiuqideblog.com/categories/%E6%8E%88%E6%9D%83/"/>
+      <category term="授权" scheme="https://qiuqiblog.com/categories/%E6%8E%88%E6%9D%83/"/>
     
     
-      <category term="Oauth 2.0" scheme="https://qiuqideblog.com/tags/Oauth-2-0/"/>
+      <category term="Oauth 2.0" scheme="https://qiuqiblog.com/tags/Oauth-2-0/"/>
     
   </entry>
   
   <entry>
     <title>理解Oauth 2.0(一)概述</title>
-    <link href="https://qiuqideblog.com/2021/05/25/li-jie-oauth-2-0-yi/"/>
-    <id>https://qiuqideblog.com/2021/05/25/li-jie-oauth-2-0-yi/</id>
+    <link href="https://qiuqiblog.com/2021/05/25/li-jie-oauth-2-0-yi/"/>
+    <id>https://qiuqiblog.com/2021/05/25/li-jie-oauth-2-0-yi/</id>
     <published>2021-05-25T11:24:21.000Z</published>
-    <updated>2022-06-01T10:44:51.304Z</updated>
+    <updated>2022-06-01T15:00:20.824Z</updated>
     
     <summary type="html">
     
@@ -139,17 +139,17 @@
     
     </summary>
     
-      <category term="授权" scheme="https://qiuqideblog.com/categories/%E6%8E%88%E6%9D%83/"/>
+      <category term="授权" scheme="https://qiuqiblog.com/categories/%E6%8E%88%E6%9D%83/"/>
     
     
-      <category term="Oauth 2.0" scheme="https://qiuqideblog.com/tags/Oauth-2-0/"/>
+      <category term="Oauth 2.0" scheme="https://qiuqiblog.com/tags/Oauth-2-0/"/>
     
   </entry>
   
   <entry>
     <title>Golang rune类型</title>
-    <link href="https://qiuqideblog.com/2021/05/19/go-rune/"/>
-    <id>https://qiuqideblog.com/2021/05/19/go-rune/</id>
+    <link href="https://qiuqiblog.com/2021/05/19/go-rune/"/>
+    <id>https://qiuqiblog.com/2021/05/19/go-rune/</id>
     <published>2021-05-19T14:26:17.000Z</published>
     <updated>2022-06-01T09:57:59.318Z</updated>
     
@@ -165,17 +165,17 @@
     
     </summary>
     
-      <category term="Golang" scheme="https://qiuqideblog.com/categories/Golang/"/>
+      <category term="Golang" scheme="https://qiuqiblog.com/categories/Golang/"/>
     
     
-      <category term="Golang" scheme="https://qiuqideblog.com/tags/Golang/"/>
+      <category term="Golang" scheme="https://qiuqiblog.com/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>Golang中的位操作</title>
-    <link href="https://qiuqideblog.com/2021/05/17/go-byte/"/>
-    <id>https://qiuqideblog.com/2021/05/17/go-byte/</id>
+    <link href="https://qiuqiblog.com/2021/05/17/go-byte/"/>
+    <id>https://qiuqiblog.com/2021/05/17/go-byte/</id>
     <published>2021-05-17T11:06:17.000Z</published>
     <updated>2022-06-01T09:49:28.521Z</updated>
     
@@ -191,17 +191,17 @@
     
     </summary>
     
-      <category term="Golang" scheme="https://qiuqideblog.com/categories/Golang/"/>
+      <category term="Golang" scheme="https://qiuqiblog.com/categories/Golang/"/>
     
     
-      <category term="Golang" scheme="https://qiuqideblog.com/tags/Golang/"/>
+      <category term="Golang" scheme="https://qiuqiblog.com/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>Golang的错误处理</title>
-    <link href="https://qiuqideblog.com/2021/04/13/go-error/"/>
-    <id>https://qiuqideblog.com/2021/04/13/go-error/</id>
+    <link href="https://qiuqiblog.com/2021/04/13/go-error/"/>
+    <id>https://qiuqiblog.com/2021/04/13/go-error/</id>
     <published>2021-04-13T12:39:17.000Z</published>
     <updated>2022-06-01T09:45:49.483Z</updated>
     
@@ -217,19 +217,19 @@
     
     </summary>
     
-      <category term="Golang" scheme="https://qiuqideblog.com/categories/Golang/"/>
+      <category term="Golang" scheme="https://qiuqiblog.com/categories/Golang/"/>
     
     
-      <category term="Golang" scheme="https://qiuqideblog.com/tags/Golang/"/>
+      <category term="Golang" scheme="https://qiuqiblog.com/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>Docer镜像原理-overlayfs</title>
-    <link href="https://qiuqideblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/"/>
-    <id>https://qiuqideblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/</id>
+    <link href="https://qiuqiblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/"/>
+    <id>https://qiuqiblog.com/2020/11/25/docer-jing-xiang-yuan-li-overlayfs/</id>
     <published>2020-11-25T05:39:17.000Z</published>
-    <updated>2022-05-13T08:03:12.892Z</updated>
+    <updated>2022-06-01T15:01:18.605Z</updated>
     
     <summary type="html">
     
@@ -243,17 +243,17 @@
     
     </summary>
     
-      <category term="docker" scheme="https://qiuqideblog.com/categories/docker/"/>
+      <category term="docker" scheme="https://qiuqiblog.com/categories/docker/"/>
     
     
-      <category term="docker" scheme="https://qiuqideblog.com/tags/docker/"/>
+      <category term="docker" scheme="https://qiuqiblog.com/tags/docker/"/>
     
   </entry>
   
   <entry>
     <title>docker中的Namespace和Cgroups</title>
-    <link href="https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/"/>
-    <id>https://qiuqideblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</id>
+    <link href="https://qiuqiblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/"/>
+    <id>https://qiuqiblog.com/2020/11/08/docker-zhong-de-namespace-he-cgroups/</id>
     <published>2020-11-08T13:42:32.000Z</published>
     <updated>2022-05-13T08:10:24.468Z</updated>
     
@@ -269,17 +269,17 @@
     
     </summary>
     
-      <category term="docker" scheme="https://qiuqideblog.com/categories/docker/"/>
+      <category term="docker" scheme="https://qiuqiblog.com/categories/docker/"/>
     
     
-      <category term="docker" scheme="https://qiuqideblog.com/tags/docker/"/>
+      <category term="docker" scheme="https://qiuqiblog.com/tags/docker/"/>
     
   </entry>
   
   <entry>
     <title>《Go语言实战》笔记</title>
-    <link href="https://qiuqideblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/"/>
-    <id>https://qiuqideblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/</id>
+    <link href="https://qiuqiblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/"/>
+    <id>https://qiuqiblog.com/2020/11/04/go-yu-yan-shi-zhan-bi-ji/</id>
     <published>2020-11-04T07:21:07.000Z</published>
     <updated>2022-06-01T09:44:40.509Z</updated>
     
@@ -300,8 +300,8 @@
   
   <entry>
     <title>HTTP笔记</title>
-    <link href="https://qiuqideblog.com/2020/11/04/http-bi-ji/"/>
-    <id>https://qiuqideblog.com/2020/11/04/http-bi-ji/</id>
+    <link href="https://qiuqiblog.com/2020/11/04/http-bi-ji/"/>
+    <id>https://qiuqiblog.com/2020/11/04/http-bi-ji/</id>
     <published>2020-11-04T06:30:24.000Z</published>
     <updated>2022-05-13T08:16:54.236Z</updated>
     
@@ -317,19 +317,19 @@
     
     </summary>
     
-      <category term="计算机网络" scheme="https://qiuqideblog.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+      <category term="计算机网络" scheme="https://qiuqiblog.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
     
-      <category term="HTTP" scheme="https://qiuqideblog.com/tags/HTTP/"/>
+      <category term="HTTP" scheme="https://qiuqiblog.com/tags/HTTP/"/>
     
-      <category term="HTTPS" scheme="https://qiuqideblog.com/tags/HTTPS/"/>
+      <category term="HTTPS" scheme="https://qiuqiblog.com/tags/HTTPS/"/>
     
   </entry>
   
   <entry>
     <title>Linux 学习笔记</title>
-    <link href="https://qiuqideblog.com/2020/09/05/linux-bi-ji/"/>
-    <id>https://qiuqideblog.com/2020/09/05/linux-bi-ji/</id>
+    <link href="https://qiuqiblog.com/2020/09/05/linux-bi-ji/"/>
+    <id>https://qiuqiblog.com/2020/09/05/linux-bi-ji/</id>
     <published>2020-09-05T08:47:41.000Z</published>
     <updated>2022-05-13T08:17:52.363Z</updated>
     
@@ -348,19 +348,19 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Linux" scheme="https://qiuqideblog.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://qiuqiblog.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>MongoDB复制集群搭建</title>
-    <link href="https://qiuqideblog.com/2020/09/03/mongo-replice/"/>
-    <id>https://qiuqideblog.com/2020/09/03/mongo-replice/</id>
+    <link href="https://qiuqiblog.com/2020/09/03/mongo-replice/"/>
+    <id>https://qiuqiblog.com/2020/09/03/mongo-replice/</id>
     <published>2020-09-03T07:22:51.000Z</published>
-    <updated>2022-05-13T08:18:51.938Z</updated>
+    <updated>2022-06-01T15:01:59.607Z</updated>
     
     <summary type="html">
     
@@ -374,19 +374,19 @@
     
     </summary>
     
-      <category term="数据库" scheme="https://qiuqideblog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://qiuqiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="数据库" scheme="https://qiuqideblog.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="https://qiuqiblog.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="MongoDB" scheme="https://qiuqideblog.com/tags/MongoDB/"/>
+      <category term="MongoDB" scheme="https://qiuqiblog.com/tags/MongoDB/"/>
     
   </entry>
   
   <entry>
     <title>rsync 学习</title>
-    <link href="https://qiuqideblog.com/2020/09/02/rsync/"/>
-    <id>https://qiuqideblog.com/2020/09/02/rsync/</id>
+    <link href="https://qiuqiblog.com/2020/09/02/rsync/"/>
+    <id>https://qiuqiblog.com/2020/09/02/rsync/</id>
     <published>2020-09-02T01:31:37.000Z</published>
     <updated>2022-05-13T08:26:45.883Z</updated>
     
@@ -402,17 +402,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Python实现无重复数字</title>
-    <link href="https://qiuqideblog.com/2020/07/13/python-random/"/>
-    <id>https://qiuqideblog.com/2020/07/13/python-random/</id>
+    <link href="https://qiuqiblog.com/2020/07/13/python-random/"/>
+    <id>https://qiuqiblog.com/2020/07/13/python-random/</id>
     <published>2020-07-13T14:15:49.000Z</published>
     <updated>2022-05-12T15:27:01.943Z</updated>
     
@@ -428,21 +428,21 @@
     
     </summary>
     
-      <category term="Python" scheme="https://qiuqideblog.com/categories/Python/"/>
+      <category term="Python" scheme="https://qiuqiblog.com/categories/Python/"/>
     
-      <category term="编程学习" scheme="https://qiuqideblog.com/categories/Python/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="https://qiuqiblog.com/categories/Python/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
+      <category term="Python" scheme="https://qiuqiblog.com/tags/Python/"/>
     
-      <category term="算法" scheme="https://qiuqideblog.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="https://qiuqiblog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>《Python3 面向对象编程》笔记 - 第4章 异常捕获</title>
-    <link href="https://qiuqideblog.com/2020/07/02/python-object-4/"/>
-    <id>https://qiuqideblog.com/2020/07/02/python-object-4/</id>
+    <link href="https://qiuqiblog.com/2020/07/02/python-object-4/"/>
+    <id>https://qiuqiblog.com/2020/07/02/python-object-4/</id>
     <published>2020-07-01T16:17:25.000Z</published>
     <updated>2022-05-13T08:22:47.279Z</updated>
     
@@ -458,21 +458,21 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
+      <category term="Python" scheme="https://qiuqiblog.com/tags/Python/"/>
     
-      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <category term="面向对象" scheme="https://qiuqiblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>《Git tags Explained》翻译</title>
-    <link href="https://qiuqideblog.com/2020/07/01/fanyi-git-tag/"/>
-    <id>https://qiuqideblog.com/2020/07/01/fanyi-git-tag/</id>
+    <link href="https://qiuqiblog.com/2020/07/01/fanyi-git-tag/"/>
+    <id>https://qiuqiblog.com/2020/07/01/fanyi-git-tag/</id>
     <published>2020-07-01T05:38:39.000Z</published>
     <updated>2022-05-13T08:14:39.854Z</updated>
     
@@ -489,19 +489,19 @@
     
     </summary>
     
-      <category term="文章翻译" scheme="https://qiuqideblog.com/categories/%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91/"/>
+      <category term="文章翻译" scheme="https://qiuqiblog.com/categories/%E6%96%87%E7%AB%A0%E7%BF%BB%E8%AF%91/"/>
     
     
-      <category term="Git" scheme="https://qiuqideblog.com/tags/Git/"/>
+      <category term="Git" scheme="https://qiuqiblog.com/tags/Git/"/>
     
-      <category term="翻译" scheme="https://qiuqideblog.com/tags/%E7%BF%BB%E8%AF%91/"/>
+      <category term="翻译" scheme="https://qiuqiblog.com/tags/%E7%BF%BB%E8%AF%91/"/>
     
   </entry>
   
   <entry>
     <title>《Python3 面向对象编程》笔记 - 第3章 对象相似时</title>
-    <link href="https://qiuqideblog.com/2020/06/29/python-object-3/"/>
-    <id>https://qiuqideblog.com/2020/06/29/python-object-3/</id>
+    <link href="https://qiuqiblog.com/2020/06/29/python-object-3/"/>
+    <id>https://qiuqiblog.com/2020/06/29/python-object-3/</id>
     <published>2020-06-29T14:20:09.000Z</published>
     <updated>2022-05-13T08:21:01.783Z</updated>
     
@@ -517,21 +517,21 @@
     
     </summary>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Python" scheme="https://qiuqideblog.com/tags/Python/"/>
+      <category term="Python" scheme="https://qiuqiblog.com/tags/Python/"/>
     
-      <category term="面向对象" scheme="https://qiuqideblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+      <category term="面向对象" scheme="https://qiuqiblog.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
-      <category term="笔记" scheme="https://qiuqideblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="https://qiuqiblog.com/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>RESTful API</title>
-    <link href="https://qiuqideblog.com/2020/06/27/restfule-api/"/>
-    <id>https://qiuqideblog.com/2020/06/27/restfule-api/</id>
+    <link href="https://qiuqiblog.com/2020/06/27/restfule-api/"/>
+    <id>https://qiuqiblog.com/2020/06/27/restfule-api/</id>
     <published>2020-06-27T15:45:19.000Z</published>
     <updated>2022-05-13T08:25:26.656Z</updated>
     
@@ -547,10 +547,10 @@
     
     </summary>
     
-      <category term="工作问题解决" scheme="https://qiuqideblog.com/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
+      <category term="工作问题解决" scheme="https://qiuqiblog.com/categories/%E5%B7%A5%E4%BD%9C%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/"/>
     
     
-      <category term="RESTful" scheme="https://qiuqideblog.com/tags/RESTful/"/>
+      <category term="RESTful" scheme="https://qiuqiblog.com/tags/RESTful/"/>
     
   </entry>
   
